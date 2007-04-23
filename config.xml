@@ -1,0 +1,7 @@
+<config>
+	<auth jid='user@server.com/Resource' pass='secreteating' server='__optional__' />
+	<rooms>
+		<muc room='jdev@conference.jabber.org' nick='SleekBot' />
+		<muc room='bar@conference.jabber.org' nick='SleekBot' />
+	</rooms>
+</config>
