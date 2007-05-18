@@ -11,8 +11,8 @@ class basebot(object):
 		self.addIMCommand('help', self.handle_help)
 		self.addMUCCommand('help', self.handle_help)
 		self.addHelp('help', 'Help Command', "Returns this list of help commands if no topic is specified.  Otherwise returns help on the specific topic.", 'help [topic]')
-		self.add_event_handler("message", self.handle_message_event)
-		self.add_event_handler("groupchat_message", self.handle_message_event)
+		self.add_event_handler("message", self.handle_message_event, threaded=True)
+		self.add_event_handler("groupchat_message", self.handle_message_event, threaded=True)
 	
 	def handle_message_event(self, msg):
 		if msg['type'] == 'groupchat':
