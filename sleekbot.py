@@ -20,15 +20,17 @@
 import logging
 import sleekxmpp.sleekxmpp
 from basebot import basebot
+from pingbot import pingbot
 from optparse import OptionParser
 from xml.etree import ElementTree as ET
 import os
 import time
 
-class sleekbot(sleekxmpp.sleekxmpp.xmppclient, basebot):
+class sleekbot(sleekxmpp.sleekxmpp.xmppclient, basebot, pingbot):
 	def __init__(self, botconfig, jid, password, ssl=False, plugin_config = {}):
 		sleekxmpp.sleekxmpp.xmppclient.__init__(self, jid, password, ssl, plugin_config)
 		basebot.__init__(self)
+		pingbot.__init__(self)
 		self.add_event_handler("session_start", self.start, threaded=True)
 		self.botconfig = botconfig
 	
