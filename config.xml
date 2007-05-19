@@ -4,4 +4,11 @@
 		<muc room='jdev@conference.jabber.org' nick='SleekBot' />
 		<muc room='bar@conference.jabber.org' nick='SleekBot' />
 	</rooms>
+	<plugins>
+		<bot>
+			<plugin name='pingbot'>
+				<config />
+			</plugin>
+		</bot>
+	</plugins>
 </config>

@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/env python2.5
 """
     This file is part of SleekXMPP.
 
@@ -20,20 +20,44 @@
 import logging
 import sleekxmpp.sleekxmpp
 from basebot import basebot
-from pingbot import pingbot
 from optparse import OptionParser
 from xml.etree import ElementTree as ET
 import os
 import time
+import plugins
 
-class sleekbot(sleekxmpp.sleekxmpp.xmppclient, basebot, pingbot):
+class sleekbot(sleekxmpp.sleekxmpp.xmppclient, basebot):
 	def __init__(self, botconfig, jid, password, ssl=False, plugin_config = {}):
 		sleekxmpp.sleekxmpp.xmppclient.__init__(self, jid, password, ssl, plugin_config)
 		basebot.__init__(self)
-		pingbot.__init__(self)
+		self.botplugin = {}
 		self.add_event_handler("session_start", self.start, threaded=True)
 		self.botconfig = botconfig
+		self.register_bot_plugins()
 	
+	def register_bot_plugins(self):
+		""" Registers all bot plugins required by botconfig.
+		"""
+		plugins = self.botconfig.findall('plugins/bot/plugin')
+		if plugins:
+			for plugin in plugins:
+				logging.info("Loading plugin %s." % (plugin.attrib['name']))
+				loaded = self.registerBotPlugin(plugin.attrib['name'], plugin.find('config'))
+				if not loaded:
+					logging.info("Loading plugin %s FAILED." % (plugin.attrib['name']))
+					
+	
+	def registerBotPlugin(self, pluginname, config):
+		""" Registers a bot plugin pluginname is the file and class name,
+		and config is an xml element passed to the plugin.
+		"""
+		#following taken from sleekxmpp.py
+		# discover relative "path" to the plugins module from the main app, and import it.
+		__import__("%s.%s" % (globals()['plugins'].__name__, pluginname))
+		# init the plugin class
+		self.botplugin[pluginname] = getattr(getattr(plugins, pluginname), pluginname)(self, config)
+		return True
+		
 	def start(self, event):
 		#TODO: make this configurable
 		self.requestRoster()
