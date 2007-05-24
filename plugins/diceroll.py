@@ -11,8 +11,11 @@ class diceroll(object):
 		self.bot.addHelp('roll', 'Roll Dice Command', "Rolls dice for you.\nExample: !roll (1 + d6 + 2d10 + 5 + d4) * 2", 'roll [dice calculation]')
 	
 	def handle_roll(self, command, args, msg):
-		d = diceCalc(args)
-		return d.show()
+		try:
+			d = diceCalc(args)
+			return d.show()
+		except:
+			return "Invalid dice calculation."
 		
 
 class Die(object):
