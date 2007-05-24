@@ -9,6 +9,9 @@
 			<plugin name='pingbot'>
 				<config />
 			</plugin>
+			<plugin name='diceroll'>
+				<config />
+			</plugin>
 		</bot>
 	</plugins>
 </config>
