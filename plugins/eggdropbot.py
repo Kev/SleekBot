@@ -42,10 +42,10 @@ class eggdropbot(object):
 		if not body:
 			return
 		groupchat = msg.get('room', '')
-		nick = msg.get('resource', '')
+		nick = msg.get('name', '')
 		self.tcl_print(body)
 		source = groupchat
-		self.tcl_exec('eggsupp_process_pub "' + nick + '" "' + self.get_hostmask(source) + '" "' + self.get_handle(nick) + '" "' + groupchat + '" "' + body + '"')
+		self.tcl_exec('eggsupp_process_pub "' + nick + '" "' + self.get_hostmask(groupchat+'/'+nick) + '" "' + self.get_handle(nick) + '" "' + groupchat + '" "' + body + '"')
 	
 	def handle_message_event(self, msg):
 		return
@@ -104,8 +104,10 @@ class eggdropbot(object):
 				print "I don't recognise this type of message, ignoring"
 			target = tokens[1]
 			body = tokens[2].lstrip(":")
+			#body = body.replace('<',"&lt;")
+			#body = body.replace('>',"&lt;")
 			#self.conn.msg(target, body)
-			self.bot.sendMessage("%s" % target, body)
+			self.bot.sendMessage("%s" % target, body, mtype='groupchat')
 			message = None
 			#message = self.tcl.getMessage()
 
