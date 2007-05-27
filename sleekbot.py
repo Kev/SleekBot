@@ -34,7 +34,38 @@ class sleekbot(sleekxmpp.sleekxmpp.xmppclient, basebot):
 		self.add_event_handler("session_start", self.start, threaded=True)
 		self.botconfig = botconfig
 		self.register_bot_plugins()
+		self.registerCommands()
 	
+	def registerCommands(self):
+		aboutform = self.plugin['xep_0004'].makeForm('form', "About SleekBot")
+		aboutform.addField('about', 'fixed', value=
+"""SleekBot was written by Nathan Fritz.
+SleekBot uses SleekXMPP which was also written by Nathan Fritz.
+-----------------------------------------------------------------
+Special thanks to Kevin Smith and David Search.
+Also, thank you Athena for putting up with me while I programmed.""")
+		self.plugin['xep_0050'].addCommand('about', 'About Sleekbot', aboutform)
+		pluginform = self.plugin['xep_0004'].makeForm('form', 'Plugins')
+		plugins = pluginform.addField('plugin', 'list-single', 'Plugins')
+		for key in self.botplugin:
+			plugins.addOption(key, key)
+		plugins = pluginform.addField('option', 'list-single', 'Commands')
+		plugins.addOption('about', 'About')
+		#plugins.addOption('config', 'Configure')
+		self.plugin['xep_0050'].addCommand('plugins', 'Plugins', pluginform, self.form_plugin_command, True)
+	
+	
+	def form_plugin_command(self, form):
+		value = form.getValues()
+		option = value['option']
+		plugin = value['plugin']
+		if option == 'about':
+			aboutform = self.plugin['xep_0004'].makeForm('form', "About SleekBot")
+			aboutform.addField('about', 'fixed', value=self.botplugin[plugin].about)
+			return aboutform, None, False
+		elif option == 'config':
+			pass
+
 	def register_bot_plugins(self):
 		""" Registers all bot plugins required by botconfig.
 		"""
@@ -45,7 +76,6 @@ class sleekbot(sleekxmpp.sleekxmpp.xmppclient, basebot):
 				loaded = self.registerBotPlugin(plugin.attrib['name'], plugin.find('config'))
 				if not loaded:
 					logging.info("Loading plugin %s FAILED." % (plugin.attrib['name']))
-					
 	
 	def registerBotPlugin(self, pluginname, config):
 		""" Registers a bot plugin pluginname is the file and class name,

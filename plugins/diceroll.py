@@ -6,6 +6,7 @@ class diceroll(object):
 	def __init__(self, bot, config):
 		self.bot = bot
 		self.config = config
+		self.about = "A nerdy plugin for rolling complex or\nsimple dice formulas."
 		self.bot.addIMCommand('roll', self.handle_roll)
 		self.bot.addMUCCommand('roll', self.handle_roll)
 		self.bot.addHelp('roll', 'Roll Dice Command', "Rolls dice for you.\nExample: !roll (1 + d6 + 2d10 + 5 + d4) * 2", 'roll [dice calculation]')

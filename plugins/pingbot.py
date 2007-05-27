@@ -4,6 +4,7 @@ class pingbot(object):
 	def __init__(self, bot, config):
 		self.bot = bot
 		self.config = config
+		self.about = "Pingbot allows users to ping other jids.\nWritten By: Kevin Smith"
 		self.bot.addIMCommand('ping', self.handle_ping)
 		self.bot.addMUCCommand('ping', self.handle_ping)
 		self.bot.addHelp('ping', 'Ping Command', "Discover latency to a jid.", 'ping jid')
