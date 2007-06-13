@@ -12,6 +12,12 @@
 			<plugin name='diceroll'>
 				<config />
 			</plugin>
+			<plugin name='xepbot'>
+				<config>
+					<xeps url='http://www.xmpp.org/extensions/xeps.xml'/>
+					<cache expiry='6' />
+				</config>
+			</plugin>
 		</bot>
 	</plugins>
 </config>
