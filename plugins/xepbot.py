@@ -55,13 +55,18 @@ class xepbot(object):
 
 	def handle_xep(self, command, args, msg):
 		self.ensureCacheIsRecent()
-		xepnumber = '%04i' % int(args)
-		response = 'The XEP you specified ("%s") could not be found' % xepnumber
+		try:
+			xepnumber = '%04i' % int(args)
+		except:
+			xepnumber = ''
 		if self.xeps == None:
 			return 'I have suffered a tremendous error: I cannot reach the XEP list (and have never been able to)'
+		response = ''
 		for xep in self.xeps.findall('xep'):
-			if xep.find('number').text == xepnumber:
-				response = '%(type)s XEP-%(number)s, %(name)s, is %(status)s (last updated %(updated)s): http://www.xmpp.org/extensions/xep-%(number)s.html'
+			if xep.find('number').text == xepnumber or xep.find('name').text.lower().find(args.lower()) >= 0:
+				if response != '':
+					response = response + "\n\n"
+				response = response + '%(type)s XEP-%(number)s, %(name)s, is %(status)s (last updated %(updated)s): http://www.xmpp.org/extensions/xep-%(number)s.html'
 				texts = {}
 				texts['type'] = xep.find('type').text 
 				texts['number'] = xep.find('number').text 
@@ -69,4 +74,6 @@ class xepbot(object):
 				texts['status'] = xep.find('status').text 
 				texts['updated'] = xep.find('updated').text
 				response = response % texts
+		if response == '':
+			response = 'The XEP you specified ("%s") could not be found' % args
 		return response
