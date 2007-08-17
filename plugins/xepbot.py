@@ -55,6 +55,8 @@ class xepbot(object):
 
 	def handle_xep(self, command, args, msg):
 		self.ensureCacheIsRecent()
+		if args == None or args == "":
+			return "Please supply a xep number or a search term"
 		try:
 			xepnumber = '%04i' % int(args)
 		except:
@@ -62,7 +64,11 @@ class xepbot(object):
 		if self.xeps == None:
 			return 'I have suffered a tremendous error: I cannot reach the XEP list (and have never been able to)'
 		response = ''
+		numResponses = 0
 		for xep in self.xeps.findall('xep'):
+			numResponses = numResponses + 1
+			if numResponses > 6:
+				continue
 			if xep.find('number').text == xepnumber or xep.find('name').text.lower().find(args.lower()) >= 0:
 				if response != '':
 					response = response + "\n\n"
@@ -74,6 +80,11 @@ class xepbot(object):
 				texts['status'] = xep.find('status').text 
 				texts['updated'] = xep.find('updated').text
 				response = response % texts
+		if numResponses > 6:
+			response = response + '\n\n%(number)s more results were found but not shown (too many results).'
+			numResponseKey = {}
+			numResponseKey['number'] = numResponses - 6
+			response = response % numResponseKey
 		if response == '':
 			response = 'The XEP you specified ("%s") could not be found' % args
 		return response
