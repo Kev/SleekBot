@@ -66,10 +66,10 @@ class xepbot(object):
 		response = ''
 		numResponses = 0
 		for xep in self.xeps.findall('xep'):
-			numResponses = numResponses + 1
-			if numResponses > 6:
-				continue
 			if xep.find('number').text == xepnumber or xep.find('name').text.lower().find(args.lower()) >= 0:
+				numResponses = numResponses + 1
+				if numResponses > 6:
+					continue
 				if response != '':
 					response = response + "\n\n"
 				response = response + '%(type)s XEP-%(number)s, %(name)s, is %(status)s (last updated %(updated)s): http://www.xmpp.org/extensions/xep-%(number)s.html'
