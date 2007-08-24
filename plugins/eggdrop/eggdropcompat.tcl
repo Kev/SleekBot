@@ -1,5 +1,5 @@
 ### These initial functions are the ones which eggdrop provides and which we therefore must do too
-
+### The complete list of available eggdrop commands is available from http://www.eggheads.org/support/egghtml/1.6.18/tcl-commands.html - by the time we're finished here, hopefully we'll implement them all
 set eggdrop_time_bindings [list]
 set eggdrop_join_bindings [list]
 set eggdrop_part_bindings [list]
@@ -272,6 +272,19 @@ proc chandname2name {channel_dname} {
 	return $channel_dname
 }
 
+#putserv <text> [options]
+#    Description: sends text to the server, like '.dump' (intended for direct server commands); output is queued so that the bot won't flood itself off the server.
+#    Options:
+#        -next: push messages to the front of the queue
+#        -normal: no effect
+#    Returns: nothing
+#    Module: server
+proc putserv {text args} {
+	puts "putserv: '$text $args'"
+	global eggdrop_message_queue
+	lappend eggdrop_message_queue $text
+}
+
 #puthelp <text> [options]
 #    Description: sends text to the server, like 'putserv', but it uses a different queue intended for sending messages to channels or people.
 #    Options:
@@ -284,6 +297,56 @@ proc puthelp {text args} {
 	global eggdrop_message_queue
 	lappend eggdrop_message_queue $text
 }
+
+#putquick <text> [options]
+#    Description: sends text to the server, like 'putserv', but it uses a different (and faster) queue.
+#    Options:
+#        -next: push messages to the front of the queue
+#        -normal: no effect
+#    Returns: nothing
+#    Module: server
+proc putquick {text args} {
+	puts "putquick: '$text $args'"
+	global eggdrop_message_queue
+	lappend eggdrop_message_queue $text
+}
+#putkick <channel> <nick,nick,...> [reason]
+#    Description: sends kicks to the server and tries to put as many nicks into one kick command as possible.
+#    Returns: nothing
+#    Module: irc
+proc putkick {channel nicks reason} {
+	puts "putkick: '$channel $nicks $reason'"
+}
+#putlog <text>
+#    Description: sends text to the bot's logfile, marked as 'misc' (o)
+#    Returns: nothing
+#    Module: core
+proc putlog {text} {
+	puts "putlog: '$text'"
+}
+#putcmdlog <text>
+#    Description: sends text to the bot's logfile, marked as 'command' (c)
+#    Returns: nothing
+#    Module: core
+proc putcmdlog {text} {
+	puts "putcmdlog: '$text'"
+}
+#putxferlog <text>
+#    Description: sends text to the bot's logfile, marked as 'file-area' (x)
+#    Returns: nothing
+#    Module: core
+proc putxferlog {text} {
+	puts "putxferlog: '$text'"
+}
+
+#putloglev <level(s)> <channel> <text>
+#    Description: sends text to the bot's logfile, tagged with all of the valid levels given. Use "*" to indicate all log levels.
+#    Returns: nothing
+#    Module: core
+proc putloglev {levels channel text} {
+	puts "putloglev: '$levels $channel $text'"
+}
+
 
 #userlist [flags]
 #    Returns: a list of users on the bot. You can use the flag matching system here ([global]{&/|}[chan]{&/|}[bot]). '&' specifies "and"; '|' specifies "or".
