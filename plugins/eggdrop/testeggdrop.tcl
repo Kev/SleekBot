@@ -1,5 +1,5 @@
-source "scripts/support.tcl"
-source "scripts/eggdropcompat.tcl"
+source "plugins/eggdrop/support.tcl"
+source "plugins/eggdrop/eggdropcompat.tcl"
 source "scripts/bmotion/bMotion.tcl"
 
 puts "second time"

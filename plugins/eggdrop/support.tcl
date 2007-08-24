@@ -1,6 +1,7 @@
 ### These are the TCL functions called from the eggdrop compatability plugin.
 # It would be much easier to not try and emulate eggdrop, but who really cares? :)  prefixed with eggsupp_ (eggdrop support)
 
+set current_unixtime 0
 
 proc eggsupp_process_join {nick hostmask handle channel} {
 	global eggdrop_join_bindings
@@ -109,6 +110,11 @@ proc eggsupp_process_msg {} {
 #these are private messages
 }
 
+proc eggsupp_set_unixtime {unixtime} {
+	global current_unixtime
+	set current_unixtime unixtime
+}
+
 proc eggsupp_process_time {minute hour day month year } {
   global eggdrop_time_bindings
   puts "Time event $minute $hour $day $month $year"
@@ -162,15 +168,15 @@ proc eggsupp_second_tick {args} {
 proc eggsupp_minute_tick {args} {
   global eggdrop_timer
   #puts "Second tick"
-  for {set i 0} {$i < [llength eggdrop_timer]} {incr i} {
-    set length  [llength eggdrop_timer]
+  for {set i 0} {$i < [kllength eggdrop_timer]} {incr i} {
+    set length  [kllength eggdrop_timer]
     set item [lindex $eggdrop_timer $i]
     if {$item == ""} {
       continue
     }
     array set timer $item
-    puts "minute loop $length $item"
-    puts "timer(TIME) is $timer(TIME)"
+    #puts "minute loop $length $item"
+    #puts "timer(TIME) is $timer(TIME)"
     set timer(TIME) [expr {$timer(TIME)-1}]
     if {$timer(TIME) == 0} {
       puts "Timer expired, running '$timer(PROC)'"
@@ -197,4 +203,19 @@ proc eggsup_get_message_queue {} {
 	set eggdrop_message_queue [lreplace $eggdrop_message_queue 0 0]
 	puts "Returning $message"
 	return $message
+}
+
+
+
+
+#this is an ugly ugly hack because for some unknown reason, llength is failing for me
+proc kllength {list} {
+	set len 0
+	catch {
+	  while {1 < 2} {
+        set tempvalue [lindex $list len]
+        incr len
+      }
+    } err
+    return $len
 }

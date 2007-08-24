@@ -1,3 +1,33 @@
+#These are variables set by eggdrop:
+#Value: the current nickname the bot is using (for example: "Valis", "Valis0", etc.)
+set botnick "erk"
+#Value: the current nick!user@host that the server sees (for example: "Valis!valis@crappy.com")
+set botname "erk!erk@erk"
+#Value: the current server's real name (what server calls itself) and port bot is connected to (for example: "irc.math.ufl.edu:6667") Note that this does not nececerilly match the servers internet address.
+set server "fakeircmucserver"
+#Value: the current server's internet address (hostname or IP) and port bot is connected to. This will correspond to the entry in server list (for example: "eu.undernet.org:6667"). Note that this does not necessarily match the name server calls itself.
+set serveraddress "fake.address:6667"
+#Value: current bot version "1.1.2+pl1 1010201 pl1"; first item is the text version, second item is a numerical version, and any following items are the names of patches that have been added
+set version "1.6.0 1060000"
+#Value: the current numeric bot version (for example: "1010201"). Numerical version is in the format of "MNNRRPP", where:
+#    M major release number
+#   NN minor release number
+#    RR sub-release number
+#    PP patch level for that sub-release
+set numversion 1060000
+#Value: the unixtime value for when the bot was started
+set uptime 10
+#Value: the unixtime value for when the bot connected to its current server
+set server-online 1
+#Value: the last command binding which was triggered. This allows you to identify which command triggered a Tcl proc.
+set lastbind ""
+#Value: 1 if bot's nick is juped(437); 0 otherwise
+set isjuped 0
+#Value: the value of the HANDLEN define in src/eggdrop.h
+set handlen ""
+#Value: the filename of the config file Eggdrop is currently using
+set config "eggdropbot.py"
+
 ### These initial functions are the ones which eggdrop provides and which we therefore must do too
 ### The complete list of available eggdrop commands is available from http://www.eggheads.org/support/egghtml/1.6.18/tcl-commands.html - by the time we're finished here, hopefully we'll implement them all
 set eggdrop_time_bindings [list]
@@ -6,6 +36,8 @@ set eggdrop_part_bindings [list]
 set eggdrop_msg_bindings [list]
 set eggdrop_pub_bindings [list]
 set eggdrop_pubm_bindings [list]
+set eggdrop_topc_bindings [list]
+set eggdrop_kick_bindings [list]
 set eggdrop_utimer [list]
 set eggdrop_timer [list]
 
@@ -399,6 +431,82 @@ proc putlog {text} {
   puts "log     : $text"
 }
 
+
+
+
+proc channels {} {
+  puts "channels"
+  return "sleek@conference.psi-im.org"
+}
+
+proc channel {command name args} {
+  puts "channel $command $name $args"
+  return true 
+}
+
+set _rand [pid]
+    # random returns a value in the range 0..range-1
+proc rand {range} {
+    global _rand
+    set period 233280
+    set _rand [expr ($_rand * 9301 + 49297) % $period]
+    return [expr int(($_rand/double($period)) * $range)]
+
+}
+
+
+proc isbotnick {nick} {
+  if {$nick == "Iono"} {
+    return 1
+  }
+  if {$nick == "BoreDa"} {
+    return 1
+  }
+  return 0
+}
+
+proc matchattr {handle flags args} {
+  set channel args
+  return 1
+}
+
+#chandname2name <channel-dname>
+#    Description: these two functions are important to correctly support !channels. The bot differentiates between channel description names (chan dnames) and real channel names (chan names). The chan dnames are what you would normally call the channel, such as "!channel". The chan names are what the IRC server uses to identify the channel. They consist of the chan dname prefixed with an ID; such as "!ABCDEchannel".
+#    For bot functions like isop, isvoice, etc. you need to know the chan dnames. If you communicate with the server, you usually get the chan name, though. That's what you need the channame2dname function for.
+#    If you only have the chan dname and want to directly send raw server commands, use the chandname2name command.
+#    For non-!channels, chan dname and chan name are the same.
+#    Module: irc
+proc chandname2name {channel_dname} {
+	return $channel_dname
+}
+
+
+
+#userlist [flags]
+#    Returns: a list of users on the bot. You can use the flag matching system here ([global]{&/|}[chan]{&/|}[bot]). '&' specifies "and"; '|' specifies "or".
+#    Module: core
+proc userlist {args} {
+  return {};
+}
+
+#validuser <handle>
+#Returns: 1 if a user by that name exists; 0 otherwise
+#Module: core
+proc validuser {handle} {
+	return 0
+}
+
+#loadhelp <helpfile-name>
+# Description: attempts to load the specified help file from the help/ directory.
+# Returns: nothing
+# Module: core
+proc loadhelp {helpfile_name} {
+
+}
+
+###9. Miscellaneous commands
+
+
 #bind <type> <flags> <keyword/mask> [proc-name]
 #    Description: You can use the 'bind' command to attach Tcl procedures to certain events. flags are the flags the user must have to trigger the event (if applicable). proc-name is the name of the Tcl procedure to call for this command (see below for the format of the procedure call). If the proc-name is omitted, no binding is added. Instead, the current binding is returned (if it's stackable, a list of the current bindings is returned).
 #    Returns: name of the command that was added, or (if proc-name was omitted), a list of the current bindings for this command
@@ -454,6 +562,34 @@ proc bind_part {flags keywordmask procname} {
   set binding(CHANNEL) [lindex $keywordmask 0]
   set binding(MASK) [lindex $keywordmask 1]
   lappend eggdrop_part_bindings [array get binding]
+}
+
+#TOPC (stackable)
+#bind topc <flags> <mask> <proc>
+#procname <nick> <user@host> <handle> <channel> <topic>
+#Description: triggered by a topic change. mask can contain wildcards and is matched against '#channel <new topic>'.
+#  Module: irc
+proc bind_topc {flags keywordmask procname} {
+  global eggdrop_topc_bindings
+  array set binding {}
+  set binding(PROC) $procname
+  set binding(CHANNEL) [lindex $keywordmask 0]
+  set binding(MASK) [lindex $keywordmask 1]
+  lappend eggdrop_topc_bindings [array get binding]
+}
+
+##KICK (stackable)
+#bind kick <flags> <mask> <proc>
+#procname <nick> <user@host> <handle> <channel> <target> <reason>
+#Description: triggered when someone is kicked off the channel. The mask is matched against '#channel target' where the target is the nickname of the person who got kicked (can contain wildcards). The proc is called with the nick, user@host, and handle of the kicker, plus the channel, the nickname of the person who was kicked, and the reason; flags are ignored.
+#Module: irc
+proc bind_kick {flags keywordmask procname} {
+  global eggdrop_kick_bindings
+  array set binding {}
+  set binding(PROC) $procname
+  set binding(CHANNEL) [lindex $keywordmask 0]
+  set binding(MASK) [lindex $keywordmask 1]
+  lappend eggdrop_kick_bindings [array get binding]
 }
 
 #MSG
@@ -574,39 +710,41 @@ proc bind_link {flags keywordmask procname} {
 }
 
 
-
-proc channels {} {
-  puts "channels"
-  return "psi-test@conference.doomsong.co.uk"
-}
-
-proc channel {command name args} {
-  puts "channel $command $name $args"
-  return true 
-}
-
-set _rand [pid]
-    # random returns a value in the range 0..range-1
-proc rand {range} {
-    global _rand
-    set period 233280
-    set _rand [expr ($_rand * 9301 + 49297) % $period]
-    return [expr int(($_rand/double($period)) * $range)]
-
-}
-
+#    unbind <type> <flags> <keyword/mask> <proc-name>
+#        Description: removes a previously created bind
+#        Returns: name of the command that was removed
+#        Module: core
+#    binds [type/mask]
+#        Returns: a list of Tcl binds, each item in the list is a sublist of five elements: {<type> <flags> <name> <hits> <proc>}
+#        Module: core
+#    logfile [<modes> <channel> <filename>]
+#        Description: creates a new logfile, which will log the modes given for the channel listed. If no logfile is specified, a list of existing logfiles will be returned. "*" indicates all channels. You can also change the modes and channel of an existing logfile with this command. Entering a blank mode and channel ("") makes the bot stop logging there.
+#        Returns: filename of logfile created, or, if no logfile is specified, a list of logfiles such as: {mco * eggdrop.log} {jp #lame lame.log}
+#        Module: core
+#    maskhost <nick!user@host>
+#        Returns: masked hostmask for the string given ("n!u@1.2.3.4" -> "*!u@1.2.3.*", "n!u@lame.com" -> "*!u@lame.com", "n!u@a.b.edu" -> "*!u@*.b.edu")
+#        Module: core
 #utimer <seconds> <tcl-command>
 #    Description: executes the given Tcl command after a certain number of seconds have passed
 #    Returns: a timerID
 #    Module: core
 proc utimer {seconds command} {
-  puts "utimer: $seconds $command"
   global eggdrop_utimer
+  set numtimers1 [kllength eggdrop_utimer]
+  #puts "utimer called, before $numtimers1 active timers: \n $eggdrop_utimer"
+  puts "utimer: $seconds $command"
+
   array set timer {}
   set timer(TIME) $seconds
   set timer(PROC) $command
   set timer(ID) [rand 65536]
   lappend eggdrop_utimer [array get timer]
+
+  set numtimers [kllength eggdrop_utimer]
+  #puts "putting on the utimer queue $command $seconds $timer(ID) $numtimers timers now active"
+  #puts "utimer called, after $numtimers1 active timers: \n $eggdrop_utimer"
+  set indexthing [lindex $eggdrop_utimer 1]
+  #puts "first index: '$indexthing'"
   return $timer(ID)
 }
 
@@ -623,37 +761,6 @@ proc timer {minutes command} {
   set timer(ID) [rand 65536]
   lappend eggdrop_timer [array get timer]
   return $timer(ID)
-}
-
-proc isbotnick {nick} {
-  if {$nick == "BoreDa"} {
-    return 1
-  }
-  return 0
-}
-
-proc matchattr {handle flags args} {
-  set channel args
-  return 1
-}
-
-#chandname2name <channel-dname>
-#    Description: these two functions are important to correctly support !channels. The bot differentiates between channel description names (chan dnames) and real channel names (chan names). The chan dnames are what you would normally call the channel, such as "!channel". The chan names are what the IRC server uses to identify the channel. They consist of the chan dname prefixed with an ID; such as "!ABCDEchannel".
-#    For bot functions like isop, isvoice, etc. you need to know the chan dnames. If you communicate with the server, you usually get the chan name, though. That's what you need the channame2dname function for.
-#    If you only have the chan dname and want to directly send raw server commands, use the chandname2name command.
-#    For non-!channels, chan dname and chan name are the same.
-#    Module: irc
-proc chandname2name {channel_dname} {
-	return $channel_dname
-}
-
-
-
-#userlist [flags]
-#    Returns: a list of users on the bot. You can use the flag matching system here ([global]{&/|}[chan]{&/|}[bot]). '&' specifies "and"; '|' specifies "or".
-#    Module: core
-proc userlist {args} {
-  return {};
 }
 
 #timers
@@ -721,4 +828,133 @@ proc killutimer {timerID} {
     }
   }
 }
+#    unixtime
+#        Returns: a long integer which represents the number of seconds that have passed since 00:00 Jan 1, 1970 (GMT).
+#        Module: core
+proc unixtime {} {
+	global current_unixtime
+	return current_unixtime
+}
 
+#    duration <seconds>
+#        Returns: the number of seconds converted into years, weeks, days, hours, minutes, and seconds. 804600 seconds is turned into 1 week 2 days 7 hours 30 minutes.
+#        Module: core
+#    strftime <formatstring> [time]
+#        Returns: a formatted string of time using standard strftime format. If time is specified, the value of the specified time is used. Otherwise, the current time is used.
+#        Module: core
+#    ctime <unixtime>
+#        Returns: a formatted date/time string based on the current locale settings from the unixtime string given; for example "Fri Aug 3 11:34:55 1973"
+#        Module: core
+#    myip
+#        Returns: a long number representing the bot's IP address, as it might appear in (for example) a DCC request
+#        Module: core
+#    rand <limit>
+#        Returns: a random integer between 0 and limit-1
+#        Module: core
+#    control <idx> <command>
+#        Description: removes an idx from the party line and sends all future input to the Tcl command given. The command will be called with two parameters: the idx and the input text. The command should return 0 to indicate success and 1 to indicate that it relinquishes control of the user back to the bot. If the input text is blank (""), it indicates that the connection has been dropped. Also, if the input text is blank, never call killdcc on it, as it will fail with "invalid idx".
+#        Returns: nothing
+#        Module: core
+#    sendnote <from> <to[@bot]> <message>
+#        Description: simulates what happens when one user sends a note to another
+#        Returns:
+#            0
+#            the send failed
+#            1
+#            the note was delivered locally or sent to another bot
+#            2
+#            the note was stored locally
+#            3
+#            the user's notebox is too full to store a note
+#            4
+#            a Tcl binding caught the note
+#            5
+#            the note was stored because the user is away
+#        Module: core
+#    link [via-bot] <bot>
+#        Description: attempts to link to another bot directly. If you specify a via-bot, it tells the via-bot to attempt the link.
+#        Returns: 1 if the link will be attempted; 0 otherwise
+#        Module: core
+#    unlink <bot>
+#        Description: attempts to unlink a bot from the botnet
+#        Returns: 1 on success; 0 otherwise
+#        Module: core
+#    encrypt <key> <string>
+#        Returns: encrypted string (using the currently loaded encryption module), encoded into ASCII using base-64
+#        Module: encryption
+#    decrypt <key> <encrypted-base64-string>
+#        Returns: decrypted string (using the currently loaded encryption module)
+#        Module: encryption
+#    encpass <password>
+#        Returns: encrypted string (using the currently loaded encryption module)
+#        Module: encryption
+#    die [reason]
+#        Description: causes the bot to log a fatal error and exit completely. If no reason is given, "EXIT" is used.
+#        Returns: nothing
+#        Module: core
+#    unames
+#        Returns: the current operating system the bot is using
+#        Module: core
+#    dnslookup <ip-address/hostname> <proc> [[arg1] [arg2] ... [argN]]
+#        Description: This issues an asynchronous dns lookup request. The command will block if dns module is not loaded; otherwise it will either return immediately or immediately call the specified proc (e.g. if the lookup is already cached).
+#        As soon as the request completes, the specified proc will be called as follows: <proc> <ipaddress> <hostname> <status> [[arg1] [arg2] ... [argN]]
+#        status is 1 if the lookup was successful and 0 if it wasn't. All additional parameters (called arg1, arg2 and argN above) get appended to the proc's other parameters.
+#        Returns: nothing
+#        Module: core
+#    md5 <string>
+#        Returns: the 128 bit MD5 message-digest of the specified string
+#        Module: core
+#    callevent <event>
+#        Description: triggers the evnt bind manually for a certain event. For example: callevent rehash.
+#        Returns: nothing
+#        Module: core
+#    traffic
+#        Returns: a list of sublists containing information about the bot's traffic usage in bytes. Each sublist contains five elements: type, in-traffic today, in-traffic total, out-traffic today, out-traffic total (in that order).
+#        Module: core
+#    modules
+#        Returns: a list of sublists containing information about the bot's currently loaded modules. Each sublist contains three elements: module, version, and dependencies. Each dependency is also a sublist containing the module name and version.
+#        Module: core
+#    loadmodule <module>
+#        Description: attempts to load the specified module.
+#        Returns: "Already loaded." if the module is already loaded, "" if successful, or the reason the module couldn't be loaded.
+#        Module: core
+#    unloadmodule <module>
+#        Description: attempts to unload the specified module.
+#        Returns: "No such module" if the module is not loaded, "" otherwise.
+#        Module: core
+#    loadhelp <helpfile-name>
+#        Description: attempts to load the specified help file from the help/ directory.
+#        Returns: nothing
+#        Module: core
+#    unloadhelp <helpfile-name>
+#        Description: attempts to unload the specified help file.
+#        Returns: nothing
+#        Module: core
+#    reloadhelp
+#        Description: reloads the bot's help files.
+#        Returns: nothing
+#        Module: core
+#    restart
+#        Description: rehashes the bot, kills all timers, reloads all modules, and reconnects the bot to the next server in its list.
+#        Returns: nothing
+#        Module: core
+#    rehash
+#        Description: rehashes the bot
+#        Returns: nothing
+#        Module: core
+#    stripcodes <strip-flags> <string>
+#        Description: strips specified control characters from the string given. strip-flags can be any combination of the following:
+#            b
+#            remove all boldface codes
+#            c
+#            remove all color codes
+#            r
+#            remove all reverse video codes
+#            u
+#            remove all underline codes
+#            a
+#            remove all ANSI codes
+#            g
+#            remove all ctrl-g (bell) codes
+#        Returns: the stripped string
+#        Module: core

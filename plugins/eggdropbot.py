@@ -12,6 +12,7 @@ class eggdropbot(object):
 	def __init__(self, bot, config):
 		self.bot = bot
 		self.config = config
+		self.about = "Eggdropbot allows sleekbots to run Eggdrop IRC (TCL) scripts, providing the (currently partial) Eggdrop API re-implemented for XMPP MUC.\nWritten By: Kevin Smith"
 		self.bot.addIMCommand('eggdrop', self.handle_eggdrop)
 		self.bot.addMUCCommand('eggdrop', self.handle_eggdrop)
 		self.bot.addHelp('eggdrop', 'Eggdrop control command', "Configure eggdrop compatability support.", 'eggdrop [args]')
@@ -117,7 +118,7 @@ class eggdropbot(object):
 			#self.conn.msg(target, body)
 			##body = body.replace(':', "%%%")
 			##body = body.replace('!', "%%%")
-			illegals = re.compile("[^a-zA-Z0-9!: @#$%^&*/=+-]")
+			illegals = re.compile("[^a-zA-Z0-9!: @#$%^&*/=+_'\\\\\"-]")
 			body = illegals.sub("", body)
 			self.bot.sendMessage("%s" % target, body, mtype='groupchat')
 			message = None
@@ -134,6 +135,7 @@ class eggdropbot(object):
 			secondsPassed = newSecond - lastSecond
 			for i in range(math.floor(secondsPassed)):
 				self.secondTick()
+				self.sendUnixTime()
 			newTime = datetime.now()
 			if newTime.minute != lastTime.minute:
 				 self.minuteTick()
@@ -154,6 +156,9 @@ class eggdropbot(object):
 	def timeEvent(self):
 		now = datetime.now()
 		self.queueExec("eggsupp_process_time "+str(now.minute).zfill(2)+" "+str(now.hour).zfill(2)+" "+str(now.day).zfill(2)+" "+str(now.month).zfill(2)+" "+str(now.year))
+	def sendUnixTime(self):
+		now = int(time.time())
+		self.queueExec("eggsupp_set_unixtime "+str(now))
 	def tryQueue(self):
 		notend = True
 		while notend:
