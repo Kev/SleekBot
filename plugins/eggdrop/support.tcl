@@ -77,7 +77,7 @@ proc eggsupp_process_pub {nick hostmask handle channel text} {
 			continue
 		}
 		array set binding $tmpbinding
-		puts "pub command: $binding(COMMAND) $binding(PROC) checking against '$command' (with '$rest')"
+		#puts "pub command: $binding(COMMAND) $binding(PROC) checking against '$command' (with '$rest')"
 		if {$binding(COMMAND) == $command} {
 			puts "Running: $binding(PROC) $nick $hostmask $handle $channel $text"
 			eval {$binding(PROC) $nick $hostmask $handle $channel $rest}

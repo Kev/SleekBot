@@ -11,14 +11,389 @@ set eggdrop_timer [list]
 
 set eggdrop_message_queue [list]
 
-proc setudef {param1 param2} {
-  puts "setudef"
+
+###1. Output commands
+
+#putserv <text> [options]
+#    Description: sends text to the server, like '.dump' (intended for direct server commands); output is queued so that the bot won't flood itself off the server.
+#    Options:
+#        -next: push messages to the front of the queue
+#        -normal: no effect
+#    Returns: nothing
+#    Module: server
+proc putserv {text args} {
+	puts "putserv: '$text $args'"
+	global eggdrop_message_queue
+	lappend eggdrop_message_queue $text
 }
 
+#puthelp <text> [options]
+#    Description: sends text to the server, like 'putserv', but it uses a different queue intended for sending messages to channels or people.
+#    Options:
+#        -next: push messages to the front of the queue
+#        -normal: no effect
+#    Returns: nothing
+#    Module: server
+proc puthelp {text args} {
+	puts "puthelp: '$text $args'"
+	global eggdrop_message_queue
+	lappend eggdrop_message_queue $text
+}
+
+#putquick <text> [options]
+#    Description: sends text to the server, like 'putserv', but it uses a different (and faster) queue.
+#    Options:
+#        -next: push messages to the front of the queue
+#        -normal: no effect
+#    Returns: nothing
+#    Module: server
+proc putquick {text args} {
+	puts "putquick: '$text $args'"
+	global eggdrop_message_queue
+	lappend eggdrop_message_queue $text
+}
+#putkick <channel> <nick,nick,...> [reason]
+#    Description: sends kicks to the server and tries to put as many nicks into one kick command as possible.
+#    Returns: nothing
+#    Module: irc
+proc putkick {channel nicks reason} {
+	puts "putkick: '$channel $nicks $reason'"
+}
+#putlog <text>
+#    Description: sends text to the bot's logfile, marked as 'misc' (o)
+#    Returns: nothing
+#    Module: core
+proc putlog {text} {
+	puts "putlog: '$text'"
+}
+#putcmdlog <text>
+#    Description: sends text to the bot's logfile, marked as 'command' (c)
+#    Returns: nothing
+#    Module: core
+proc putcmdlog {text} {
+	puts "putcmdlog: '$text'"
+}
+#putxferlog <text>
+#    Description: sends text to the bot's logfile, marked as 'file-area' (x)
+#    Returns: nothing
+#    Module: core
+proc putxferlog {text} {
+	puts "putxferlog: '$text'"
+}
+
+#putloglev <level(s)> <channel> <text>
+#    Description: sends text to the bot's logfile, tagged with all of the valid levels given. Use "*" to indicate all log levels.
+#    Returns: nothing
+#    Module: core
 proc putloglev {level channel text} {
   puts "log $level $channel : $text"
 }
 
+#dumpfile <nick> <filename>
+#    Description: dumps file from the help/text directory to a user on IRC via msg (one line per msg). The user has no flags, so the flag bindings won't work within the file.
+#    Returns: nothing
+#   Module: core
+proc dumpfile {nick filename} {
+	puts "dumpfile $nick $filename"
+}
+
+#queuesize [queue]
+#    Returns: the number of messages in all queues. If a queue is specified, only the size of this queue is returned. Valid queues are: mode, server, help.
+#    Module: server
+proc queuesize {queue} {
+	puts "queuesize $queue"
+	return 0
+	#FIXME - parameters
+}
+
+#clearqueue <queue>
+#    Description: removes all messages from a queue. Valid arguments are: mode, server, help, or all.
+#    Returns: the number of deleted lines from the specified queue.
+#    Module: server
+proc clearqueue {queue} {
+	puts "clearqueue $queue"
+	return 0
+}
+
+### 2. User record manipulation commands
+
+#    countusers
+#        Returns: number of users in the bot's database
+#        Module: core
+#    validuser <handle>
+#        Returns: 1 if a user by that name exists; 0 otherwise
+#        Module: core
+#    finduser <nick!user@host>
+#        Description: finds the user record which most closely matches the given nick!user@host
+#        Returns: the handle found, or "*" if none
+#        Module: core
+#    userlist [flags]
+#        Returns: a list of users on the bot. You can use the flag matching system here ([global]{&/|}[chan]{&/|}[bot]). '&' specifies "and"; '|' specifies "or".
+#        Module: core
+#    passwdok <handle> <pass>
+#        Description: checks the password given against the user's password. Check against the password "" (a blank string) or "-" to find out if a user has no password set.
+#        Returns: 1 if the password matches for that user; 0 otherwise
+#        Module: core
+#    getuser <handle> <entry-type> [extra info]
+#        Description: an interface to the new generic userfile support. Valid entry types are:
+#            BOTFL
+#            returns the current bot-specific flags for the user (bot-only)
+#            BOTADDR
+#            returns a list containing the bot's address, telnet port, and relay port (bot-only)
+#            HOSTS
+#            returns a list of hosts for the user
+#            LASTON
+#            returns a list containing the unixtime last seen and the last seen place. LASTON #channel returns the time last seen time for the channel or 0 if no info exists.
+#            INFO
+#            returns the user's global info line
+#            XTRA
+#            returns the user's XTRA info
+#            COMMENT
+#            returns the master-visible only comment for the user
+#            EMAIL
+#            returns the user's e-mail address
+#            URL
+#            returns the user's url
+#            HANDLE
+#            returns the user's handle as it is saved in the userfile
+#            PASS
+#            returns the user's encrypted password
+#        Returns: info specific to each entry-type
+#        Module: core
+#    setuser <handle> <entry-type> [extra info]
+#        Description: this is the counterpart of getuser. It lets you set the various values. Other then the ones listed below, the entry-types are the same as getuser's.
+#            HOSTS
+#            if used with no third arg, all hosts for the user will be cleared. Otherwise, *1* hostmask is added :P
+#            LASTON
+#            This setting has 3 forms. "setuser <handle> LASTON <unixtime> <place>" sets global LASTON time, "setuser <handle> LASTON <unixtime>" sets global LASTON time (leaving the place field empty), and "setuser <handle> LASTON <unixtime> <channel>" sets a users LASTON time for a channel (if it is a valid channel).
+#            PASS
+#            sets a users password (no third arg will clear it)
+#        Returns: nothing
+#        Module: core
+#    chhandle <old-handle> <new-handle>
+#        Description: changes a user's handle
+#        Returns: 1 on success; 0 if the new handle is invalid or already used, or if the user can't be found
+#        Module: core
+#    chattr <handle> [changes [channel]]
+#        Description: changes the attributes for a user record, if you include any. Changes are of the form '+f', '-o', '+dk', '-o+d', etc. If changes are specified in the format of <changes> <channel<, the channel-specific flags for that channel are altered. You can now use the +o|-o #channel format here too.
+#        Returns: new flags for the user (if you made no changes, the current flags are returned). If a channel was specified, the global AND the channel-specific flags for that channel are returned in the format of globalflags|channelflags. "*" is returned if the specified user does not exist.
+#        Module: core
+#    botattr <handle> [changes [channel]]
+#        Description: similar to chattr except this modifies bot flags rather than normal user attributes.
+#        Returns: new flags for the bot (if you made no changes, the current flags are returned). If a channel was specified, the global AND the channel-specific flags for that channel are returned in the format of globalflags|channelflags. "*" is returned if the specified bot does not exist.
+#        Module: core
+#    matchattr <handle> <flags> [channel]
+#        Returns: 1 if the specified user has the specified flags; 0 otherwise
+#        Module: core
+#    adduser <handle> [hostmask]
+#        Description: creates a new user entry with the handle and hostmask given (with no password and the default flags)
+#        Returns: 1 if successful; 0 if the handle already exists
+#        Module: core
+#    addbot <handle> <address>
+#        Description: adds a new bot to the userlist with the handle and bot address given (with no password and no flags)
+#        Returns: 1 if successful; 0 if the bot already exists
+#        Module: core
+#    deluser <handle>
+#        Description: attempts to erase the user record for a handle
+#        Returns: 1 if successful, 0 if no such user exists
+#        Module: core
+#    delhost <handle> <hostmask>
+#        Description: deletes a hostmask from a user's host list
+#        Returns: 1 on success; 0 if the hostmask (or user) doesn't exist
+#        Module: core
+#    addchanrec <handle> <channel>
+#        Description: adds a channel record for a user
+#        Returns: 1 on success; 0 if the user or channel does not exist
+#        Module: channels
+#    delchanrec <handle> <channel>
+#        Description: removes a channel record for a user. This includes all associated channel flags.
+#        Returns: 1 on success; 0 if the user or channel does not exist
+#        Module: channels
+#    haschanrec <handle> <channel>
+#        Returns: 1 if the given handle has a chanrec for the specified channel; 0 otherwise
+#        Module: channels
+#    getchaninfo <handle> <channel>
+#        Returns: info line for a specific channel (behaves just like 'getinfo')
+#        Module: channels
+#    setchaninfo <handle> <channel> <info>
+#        Description: sets the info line on a specific channel for a user. If info is "none", it will be removed.
+#        Returns: nothing
+#        Module: channels
+#    newchanban <channel> <ban> <creator> <comment> [lifetime] [options]
+#        Description: adds a ban to the ban list of a channel; creator is given credit for the ban in the ban list. lifetime is specified in minutes. If lifetime is not specified, ban-time (usually 60) is used. Setting the lifetime to 0 makes it a permanent ban.
+#        Options:
+#            sticky: forces the ban to be always active on a channel, even with dynamicbans on
+#            none: no effect
+#        Returns: nothing
+#        Module: channels
+#    newban <ban> <creator> <comment> [lifetime] [options]
+#        Description: adds a ban to the global ban list (which takes effect on all channels); creator is given credit for the ban in the ban list. lifetime is specified in minutes. If lifetime is not specified, global-ban-time (usually 60) is used. Setting the lifetime to 0 makes it a permanent ban.
+#        Options:
+#            sticky: forces the ban to be always active on a channel, even with dynamicbans on
+#            none: no effect
+#        Returns: nothing
+#        Module: channels
+#    newchanexempt <channel> <exempt> <creator> <comment> [lifetime] [options]
+#        Description: adds a exempt to the exempt list of a channel; creator is given credit for the exempt in the exempt list. lifetime is specified in minutes. If lifetime is not specified, exempt-time (usually 60) is used. Setting the lifetime to 0 makes it a permanent exempt. The exempt will not be removed until the corresponding ban has been removed. For timed bans, once the time period has expired, the exempt will not be removed until the corresponding ban has either expired or been removed.
+#        Options:
+#            sticky: forces the exempt to be always active on a channel, even with dynamicexempts on
+#            none: no effect
+#        Returns: nothing
+#        Module: channels
+#    newexempt <exempt> <creator> <comment> [lifetime] [options]
+#        Description: adds a exempt to the global exempt list (which takes effect on all channels); creator is given credit for the exempt in the exempt list. lifetime is specified in minutes. If lifetime is not specified, exempt-time (usually 60) is used. Setting the lifetime to 0 makes it a permanent exempt. The exempt will not be removed until the corresponding ban has been removed.
+#        Options:
+#            sticky: forces the exempt to be always active on a channel, even with dynamicexempts on
+#            none: no effect
+#        Returns: nothing
+#        Module: channels
+#    newchaninvite <channel> <invite> <creator> <comment> [lifetime] [options]
+#        Description: adds a invite to the invite list of a channel; creator is given credit for the invite in the invite list. lifetime is specified in minutes. If lifetime is not specified, invite-time (usually 60) is used. Setting the lifetime to 0 makes it a permanent invite. The invite will not be removed until the channel has gone -i.
+#        Options:
+#            sticky: forces the invite to be always active on a channel, even with dynamicinvites on
+#            none: no effect
+#        Returns: nothing
+#        Module: channels
+#    newinvite <invite> <creator> <comment> [lifetime] [options]
+#        Description: adds a invite to the global invite list (which takes effect on all channels); creator is given credit for the invite in the invite list. lifetime is specified in minutes. If lifetime is not specified, invite-time (usually 60) is used. Setting the lifetime to 0 makes it a permanent invite. The invite will not be removed until the channel has gone -i.
+#        Options:
+#            sticky: forces the invite to be always active on a channel, even with dynamicinvites on
+#            none: no effect
+#        Returns: nothing
+#        Module: channels
+#    stick <banmask> [channel]
+#        Description: makes a ban sticky, or, if a channel is specified, then it is set sticky on that channel only.
+#        Returns: 1 on success; 0 otherwise
+#        Module: channels
+#    unstick <banmask> [channel]
+#        Description: makes a ban no longer sticky, or, if a channel is specified, then it is unstuck on that channel only.
+#        Returns: 1 on success; 0 otherwise
+#        Module: channels
+#    stickexempt <exemptmask> [channel]
+#        Description: makes an exempt sticky, or, if a channel is specified, then it is set sticky on that channel only.
+#        Returns: 1 on success; 0 otherwise
+#        Module: channels
+#    unstickexempt <exemptmask> [channel]
+#        Description: makes an exempt no longer sticky, or, if a channel is specified, then it is unstuck on that channel only.
+#        Returns: 1 on success; 0 otherwise
+#        Module: channels
+#    stickinvite <invitemask> [channel]
+#        Description: makes an invite sticky, or, if a channel is specified, then it is set sticky on that channel only.
+#        Returns: 1 on success; 0 otherwise
+#        Module: channels
+#    unstickinvite <invitemask> [channel]
+#        Description: makes an invite no longer sticky, or, if a channel is specified, then it is unstuck on that channel only.
+#        Returns: 1 on success; 0 otherwise
+#        Module: channels
+#    killchanban <channel> <ban>
+#        Description: removes a ban from the ban list for a channel
+#        Returns: 1 on success; 0 otherwise
+#        Module: channels
+#    killban <ban>
+#        Description: removes a ban from the global ban list
+#        Returns: 1 on success; 0 otherwise
+#        Module: channels
+#    killchanexempt <channel> <exempt>
+#        Description: removes an exempt from the exempt list for a channel
+#        Returns: 1 on success; 0 otherwise
+#        Module: channels
+#    killexempt <exempt>
+#        Description: removes an exempt from the global exempt list
+#        Returns: 1 on success; 0 otherwise
+#        Module: channels
+#    killchaninvite <channel> <invite>
+#        Description: removes an invite from the invite list for a channel
+#        Returns: 1 on success; 0 otherwise
+#        Module: channels
+#    killinvite <invite>
+#        Description: removes an invite from the global invite list
+#        Returns: 1 on success; 0 otherwise
+#        Module: channels
+#    ischanjuped <channel>
+#        Returns: 1 if the channel is juped, and the bot is unable to join; 0 otherwise
+#        Module: channels
+#    isban <ban> [channel]
+#        Returns: 1 if the specified ban is in the global ban list; 0 otherwise. If a channel is specified, that channel's ban list is checked as well.
+#        Module: channels
+#    ispermban <ban> [channel]
+#        Returns: 1 if the specified ban is in the global ban list AND is marked as permanent; 0 otherwise. If a channel is specified, that channel's ban list is checked as well.
+#        Module: channels
+#    isexempt <exempt> [channel]
+#        Returns: 1 if the specified exempt is in the global exempt list; 0 otherwise. If a channel is specified, that channel's exempt list is checked as well.
+#        Module: channels
+#    ispermexempt <exempt> [channel]
+#        Returns: 1 if the specified exempt is in the global exempt list AND is marked as permanent; 0 otherwise. If a channel is specified, that channel's exempt list is checked as well.
+#        Module: channels
+#    isinvite <invite> [channel]
+#        Returns: 1 if the specified invite is in the global invite list; 0 otherwise. If a channel is specified, that channel's invite list is checked as well.
+#        Module: channels
+#    isperminvite <invite> [channel]
+#        Returns: 1 if the specified invite is in the global invite list AND is marked as permanent; 0 otherwise. If a channel is specified, that channel's invite list is checked as well.
+#        Module: channels
+#    isbansticky <ban> [channel]
+#        Returns: 1 if the specified ban is marked as sticky in the global ban list; 0 otherwise. If a channel is specified, that channel's ban list is checked as well.
+#        Module: channels
+#    isexemptsticky <exempt> [channel]
+#        Returns: 1 if the specified exempt is marked as sticky in the global exempt list; 0 otherwise. If a channel is specified, that channel's exempt list is checked as well.
+#        Module: channels
+#    isinvitesticky <invite> [channel]
+#        Returns: 1 if the specified invite is marked as sticky in the global invite list; 0 otherwise. If a channel is specified, that channel's invite list is checked as well.
+#        Module: channels
+#    matchban <nick!user@host> [channel]
+#        Returns: 1 if the specified nick!user@host matches a ban in the global ban list; 0 otherwise. If a channel is specified, that channel's ban list is checked as well.
+#        Module: channels
+#    matchexempt <nick!user@host> [channel]
+#        Returns: 1 if the specified nick!user@host matches an exempt in the global exempt list; 0 otherwise. If a channel is specified, that channel's exempt list is checked as well.
+#        Module: channels
+#    matchinvite <nick!user@host> [channel]
+#        Returns: 1 if the specified nick!user@host matches an invite in the global invite list; 0 otherwise. If a channel is specified, that channel's invite list is checked as well.
+#        Module: channels
+#    banlist [channel]
+#        Returns: a list of global bans, or, if a channel is specified, a list of channel-specific bans. Each entry is a sublist containing: hostmask, comment, expiration timestamp, time added, last time active, and creator. The three timestamps are in unixtime format.
+#        Module: channels
+#    exemptlist [channel]
+#        Returns: a list of global exempts, or, if a channel is specified, a list of channel-specific exempts. Each entry is a sublist containing: hostmask, comment, expiration timestamp, time added, last time active, and creator. The three timestamps are in unixtime format.
+#        Module: channels
+#    invitelist [channel]
+#        Returns: a list of global invites, or, if a channel is specified, a list of channel-specific invites. Each entry is a sublist containing: hostmask, comment, expiration timestamp, time added, last time active, and creator. The three timestamps are in unixtime format.
+#        Module: channels
+#    newignore <hostmask> <creator> <comment> [lifetime]
+#        Description: adds an entry to the ignore list; creator is given credit for the ignore. lifetime is how many minutes until the ignore expires and is removed. If lifetime is not specified, ignore-time (usually 60) is used. Setting the lifetime to 0 makes it a permanent ignore.
+#        Returns: nothing
+#        Module: core
+#    killignore <hostmask>
+#        Description: removes an entry from the ignore list
+#        Returns: 1 if successful; 0 otherwise
+#        Module: core
+#    ignorelist
+#        Returns: a list of ignores. Each entry is a sublist containing: hostmask, comment, expiration timestamp, time added, and creator. The timestamps are in unixtime format.
+#        Module: core
+#    isignore <hostmask>
+#        Returns: 1 if the ignore is in the list; 0 otherwise
+#        Module: core
+#    save
+#        Description: writes the user and channel files to disk
+#        Returns: nothing
+#        Module: core
+#    reload
+#        Description: loads the userfile from disk, replacing whatever is in memory
+#        Returns: nothing
+#        Module: core
+#    backup
+#        Description: makes a simple backup of the userfile that's on disk. If the channels module is loaded, this also makes a simple backup of the channel file.
+#        Returns: nothing
+#        Module: core
+#    getting-users
+#        Returns: 1 if the bot is currently downloading a userfile from a sharebot (and hence, user records are about to drastically change); 0 if not
+#        Module: core
+
+
+
+
+
+proc setudef {param1 param2} {
+  puts "setudef"
+}
 
 proc putlog {text} {
   puts "log     : $text"
@@ -272,80 +647,6 @@ proc chandname2name {channel_dname} {
 	return $channel_dname
 }
 
-#putserv <text> [options]
-#    Description: sends text to the server, like '.dump' (intended for direct server commands); output is queued so that the bot won't flood itself off the server.
-#    Options:
-#        -next: push messages to the front of the queue
-#        -normal: no effect
-#    Returns: nothing
-#    Module: server
-proc putserv {text args} {
-	puts "putserv: '$text $args'"
-	global eggdrop_message_queue
-	lappend eggdrop_message_queue $text
-}
-
-#puthelp <text> [options]
-#    Description: sends text to the server, like 'putserv', but it uses a different queue intended for sending messages to channels or people.
-#    Options:
-#        -next: push messages to the front of the queue
-#        -normal: no effect
-#    Returns: nothing
-#    Module: server
-proc puthelp {text args} {
-	puts "puthelp: '$text $args'"
-	global eggdrop_message_queue
-	lappend eggdrop_message_queue $text
-}
-
-#putquick <text> [options]
-#    Description: sends text to the server, like 'putserv', but it uses a different (and faster) queue.
-#    Options:
-#        -next: push messages to the front of the queue
-#        -normal: no effect
-#    Returns: nothing
-#    Module: server
-proc putquick {text args} {
-	puts "putquick: '$text $args'"
-	global eggdrop_message_queue
-	lappend eggdrop_message_queue $text
-}
-#putkick <channel> <nick,nick,...> [reason]
-#    Description: sends kicks to the server and tries to put as many nicks into one kick command as possible.
-#    Returns: nothing
-#    Module: irc
-proc putkick {channel nicks reason} {
-	puts "putkick: '$channel $nicks $reason'"
-}
-#putlog <text>
-#    Description: sends text to the bot's logfile, marked as 'misc' (o)
-#    Returns: nothing
-#    Module: core
-proc putlog {text} {
-	puts "putlog: '$text'"
-}
-#putcmdlog <text>
-#    Description: sends text to the bot's logfile, marked as 'command' (c)
-#    Returns: nothing
-#    Module: core
-proc putcmdlog {text} {
-	puts "putcmdlog: '$text'"
-}
-#putxferlog <text>
-#    Description: sends text to the bot's logfile, marked as 'file-area' (x)
-#    Returns: nothing
-#    Module: core
-proc putxferlog {text} {
-	puts "putxferlog: '$text'"
-}
-
-#putloglev <level(s)> <channel> <text>
-#    Description: sends text to the bot's logfile, tagged with all of the valid levels given. Use "*" to indicate all log levels.
-#    Returns: nothing
-#    Module: core
-proc putloglev {levels channel text} {
-	puts "putloglev: '$levels $channel $text'"
-}
 
 
 #userlist [flags]

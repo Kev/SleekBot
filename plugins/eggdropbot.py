@@ -4,6 +4,7 @@ import Queue
 import thread
 import time
 import math
+import re
 from datetime import datetime
 from traceback import print_exc
 
@@ -45,6 +46,13 @@ class eggdropbot(object):
 		nick = msg.get('name', '')
 		self.tcl_print(body)
 		source = groupchat
+		quote = re.compile("'")
+		body = quote.sub("\\'", body)
+		doublequote = re.compile('"')
+		body = doublequote.sub('\\"', body)
+		#slash = re.compile('\\\\')
+		#body = slash.sub('\\\\\\\\',body)
+		print "Escaped output = %%%" + body + "%%%"
 		self.tcl_exec('eggsupp_process_pub "' + nick + '" "' + self.get_hostmask(groupchat+'/'+nick) + '" "' + self.get_handle(nick) + '" "' + groupchat + '" "' + body + '"')
 	
 	def handle_message_event(self, msg):
@@ -100,15 +108,20 @@ class eggdropbot(object):
 		while message != None:
 			print "eggdropbot.py got message " + str(message)
 			tokens = message.split(" ",2)
-			if tokens[0] != "PRIVMSG":
+			if tokens[0].lower() != "privmsg":
 				print "I don't recognise this type of message, ignoring"
 			target = tokens[1]
-			body = tokens[2].lstrip(":")
+			body = tokens[2].lstrip(":")#.replace(':',"%%%%")
 			#body = body.replace('<',"&lt;")
 			#body = body.replace('>',"&lt;")
 			#self.conn.msg(target, body)
+			##body = body.replace(':', "%%%")
+			##body = body.replace('!', "%%%")
+			illegals = re.compile("[^a-zA-Z0-9!: @#$%^&*/=+-]")
+			body = illegals.sub("", body)
 			self.bot.sendMessage("%s" % target, body, mtype='groupchat')
 			message = None
+			time.sleep(1)
 			#message = self.tcl.getMessage()
 
 	def loop(self):
