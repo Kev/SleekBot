@@ -86,7 +86,7 @@ class seen(object):
         if seenData['status'] != None:
             status = "(%s)" % seenData['status']
         state = "in"
-        if seenData['show'] == 'unavailable':
+        if 'type' in seenData.keys() and seenData['type'] == 'unavailable':
             state = "leaving"
         #if seenData['show'] == None:
         #    state = "joining"
