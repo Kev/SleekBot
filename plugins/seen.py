@@ -74,8 +74,20 @@ class seen(object):
         seenData = self.seenstore.get(args)
         if seenData == None:
             return "I have never seen '" + args + "'"
-        sinceTime = seenData['dateTime'].isoformat()
+        sinceTimeSeconds = (datetime.datetime.now() - seenData['dateTime']).seconds
+        sinceTime = ""
+        if sinceTimeSeconds >= 3600:
+            sinceTime = "%d hours ago" % (sinceTimeSeconds / 3600)
+        elif sinceTimeSeconds >= 60:
+            sinceTime = "%d minutes ago" % (sinceTimeSeconds / 60)
+        else:
+            sinceTime = "%d seconds ago" % sinceTimeSeconds
         status = ""
         if seenData['status'] != None:
             status = "(%s)" % seenData['status']
-        return "'%s' was last seen in %s %s ago %s"  %(args, seenData['room'], sinceTime, status)
+        state = "in"
+        if seenData['show'] == 'unavailable':
+            state = "leaving"
+        #if seenData['show'] == None:
+        #    state = "joining"
+        return "'%s' was last seen %s %s %s %s"  %(args, state, seenData['room'], sinceTime, status)
