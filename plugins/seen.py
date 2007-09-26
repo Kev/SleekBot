@@ -10,7 +10,6 @@ class seenstore(object):
         
     
     def update(self, nick, seenData):
-        print "updating seen for " + nick
         self.data[nick.lower()] = seenData
         self.savedefault()
 
