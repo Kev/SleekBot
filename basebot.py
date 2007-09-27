@@ -10,11 +10,20 @@ class basebot(object):
 		self.help = []
 		self.addIMCommand('help', self.handle_help)
 		self.addMUCCommand('help', self.handle_help)
-		self.addHelp('help', 'Help Command', "Returns this list of help commands if no topic is specified.  Otherwise returns help on the specific topic.", 'help [topic]')
+		self.addHelp('help', 'Help Command', "Returns this list of help commands if no topic is specified.	Otherwise returns help on the specific topic.", 'help [topic]')
 		self.add_event_handler("message", self.handle_message_event, threaded=True)
 		self.add_event_handler("groupchat_message", self.handle_message_event, threaded=True)
 	
+	def shouldAnswerToMessage(self, msg):
+		""" Checks whether the bot is configured to respond to the sender of a message.
+			Overload this if you want ACLs of some description.
+		"""
+		return True
+	
 	def handle_message_event(self, msg):
+		print msg.keys()
+		if not self.shouldAnswerToMessage(msg):
+			return
 		if msg['type'] == 'groupchat':
 			prefix = self.muc_prefix
 		else:

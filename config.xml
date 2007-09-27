@@ -1,5 +1,24 @@
 <config>
-	<auth jid='user@server.com/Resource' pass='secreteating' server='__optional__' />
+	<!--Bot authorisation details-->
+	<auth jid='user@server.com/Resource' pass='secreteating' priority='10' server='__optional__' />
+	<!--When this is set, the bot will ignore requests from anyone who isn't a member (see <users>). When it isn't set, the bot will respond to anyone except outcasts. If you run the bot in an anonymous room, you almost certainly want this set to false-->
+<!--  <require-membership /> -->
+	<!--Users the bot knows about. Owners have full access to the bot, admins have the next layer of access. If require-membership is set, the bot won't respond to anyone unless they have at least a member entry. Banned users are always ignored.-->
+	<users>
+		<owner>
+			<jid>yourjid@server.com</jid>
+			<jid>anotherjid@backupserver.com</jid>
+		</owner>
+		<admin>
+			<jid>trusteduser@server.com</jid>
+		</admin>
+		<member>
+			<jid>arbitrarybotuser@server.com</jid>
+		</member>
+		<banned>
+			<jid>banneduser@server.com</jid>
+		</banned>
+	</users>
 	<rooms>
 		<muc room='jdev@conference.jabber.org' nick='SleekBot' />
 		<muc room='bar@conference.jabber.org' nick='SleekBot' />
