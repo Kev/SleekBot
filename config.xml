@@ -2,6 +2,9 @@
 	<!--Bot authorisation details-->
 	<auth jid='user@server.com/Resource' pass='secreteating' priority='10' server='__optional__' />
 	<!--When this is set, the bot will ignore requests from anyone who isn't a member (see <users>). When it isn't set, the bot will respond to anyone except outcasts. If you run the bot in an anonymous room, you almost certainly want this set to false-->
+	<rooms>
+		<muc room='bar@conference.jabber.org' nick='SleekBot' />
+	</rooms>
 <!--  <require-membership /> -->
 	<!--Users the bot knows about. Owners have full access to the bot, admins have the next layer of access. If require-membership is set, the bot won't respond to anyone unless they have at least a member entry. Banned users are always ignored.-->
 	<users>
@@ -19,10 +22,7 @@
 			<jid>banneduser@server.com</jid>
 		</banned>
 	</users>
-	<rooms>
-		<muc room='jdev@conference.jabber.org' nick='SleekBot' />
-		<muc room='bar@conference.jabber.org' nick='SleekBot' />
-	</rooms>
+
 	<plugins>
 		<bot>
 			<plugin name='pingbot'>
@@ -33,6 +33,16 @@
 			</plugin>
 			<plugin name='uptime'>
 				<config />
+			</plugin>
+			<plugin name='seen'>
+				<config />
+			</plugin>
+			<plugin name='rssbot'>
+				<config>
+					<feed url='http://planet.psi-im.org/atom.xml' refresh='20'>
+						<muc room='bar@conference.jabber.org' />
+					</feed>
+				</config>
 			</plugin>
 			<plugin name='xepbot'>
 				<config>

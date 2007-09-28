@@ -1,0 +1,26 @@
+About
+============================================================================
+SleekBot is an easily extendable Bot for XMPP (aka Jabber, Google Talk, etc) 
+written in Python using the elegant SleekXMPP library.
+
+Homepage: http://sleekbot.googlecode.com/
+Authors (by surname): 
+    Nathan Fritz, jabber id: fritzy [at] netflint.net
+    Kevin Smith, jabber id: kevdadrum {at] jabber.ex.ac.uk
+
+
+
+Requirements
+============================================================================
+* Python 2.5 or newer
+
+
+Suggested Packages
+============================================================================
+* TLSlite (http://trevp.net/tlslite/)
+    Required for authentication on many servers.
+* PythonDNS
+    You may need to specify your server in your config if you don't have this.
+* TCL/Tkinter
+    Required for the eggdrop plugin.
+
