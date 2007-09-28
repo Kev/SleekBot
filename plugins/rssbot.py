@@ -48,7 +48,7 @@ class rssbot(object):
         """
         self.loadCache(feedUrl)
         while True:
-            print "looping on feed %s" % feedUrl
+            #print "looping on feed %s" % feedUrl
             if self.bot['xep_0045']:
                 feed = feedparser.parse(feedUrl)
                 for item in feed['entries']:
@@ -56,13 +56,13 @@ class rssbot(object):
                         self.rssCache[feedUrl] = []
                     if item['title'] in self.rssCache[feedUrl]:
                         continue
-                    print u"found new item %s" % item['title']
+                    #print u"found new item %s" % item['title']
                     for muc in rooms:
                         if muc in self.bot['xep_0045'].getJoinedRooms():
-                            print u"sending to room %s" %muc
+                            #print u"sending to room %s" %muc
                             self.sendItem(item, muc, feed['channel']['title'])
                     self.rssCache[feedUrl].append(item['title'])
-                    print u"remembering new item %s" % item['title']
+                    #print u"remembering new item %s" % item['title']
             time.sleep(float(refresh)*60)
             
     def sendItem(self, item, muc, feedName):
