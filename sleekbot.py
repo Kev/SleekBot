@@ -147,6 +147,8 @@ Also, thank you Athena for putting up with me while I programmed.""")
                 return
             return self.shouldAnswerToJid("%s/%s" % (msg['room'], msg['name']))
         else:
+            if msg['jid'] in self['xep_0045'].getJoinedRooms():
+                return self.shouldAnswerToJid("%s/%s" % (msg['jid'], msg['resource']))
             return self.shouldAnswerToJid(msg.get('jid', ''))
     
     def shouldAnswerToJid(self, passedJid):
