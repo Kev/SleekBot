@@ -25,6 +25,9 @@
 
 	<plugins>
 		<bot>
+			<plugin name='admin'>
+				<config />
+			</plugin>
 			<plugin name='pingbot'>
 				<config />
 			</plugin>

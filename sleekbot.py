@@ -27,14 +27,23 @@ import time
 import plugins
 
 class sleekbot(sleekxmpp.sleekxmpp.xmppclient, basebot):
-    def __init__(self, botconfig, jid, password, ssl=False, plugin_config = {}):
+    def __init__(self, configFile, jid, password, ssl=False, plugin_config = {}):
+        self.configFile = configFile
+        self.botconfig = self.loadConfig(configFile)
         sleekxmpp.sleekxmpp.xmppclient.__init__(self, jid, password, ssl, plugin_config)
         basebot.__init__(self)
+        self.rooms = {}
         self.botplugin = {}
+        self.pluginModules = {}
         self.add_event_handler("session_start", self.start, threaded=True)
-        self.botconfig = botconfig
+        self.loadConfig(self.configFile)
         self.register_bot_plugins()
         self.registerCommands()
+    
+    def loadConfig(self, configFile):
+        """ Loads the specified config. Does not attempt to make changes based upon config.
+        """
+        return ET.parse(configFile)
     
     def registerCommands(self):
         aboutform = self.plugin['xep_0004'].makeForm('form', "About SleekBot")
@@ -77,13 +86,31 @@ Also, thank you Athena for putting up with me while I programmed.""")
                 if not loaded:
                     logging.info("Loading plugin %s FAILED." % (plugin.attrib['name']))
     
-    def registerBotPlugin(self, pluginname, config):
-        """ Registers a bot plugin pluginname is the file and class name,
-        and config is an xml element passed to the plugin.
+    def deregister_bot_plugins(self):
+        """ Unregister all loaded bot plugins.
+        """
+        for plugin in self.botplugin.keys():
+            self.deregisterBotPlugin(plugin)
+    
+    def plugin_name_to_module(self, pluginname):
+        """ Takes a plugin name, and returns a module name
         """
         #following taken from sleekxmpp.py
         # discover relative "path" to the plugins module from the main app, and import it.
-        __import__("%s.%s" % (globals()['plugins'].__name__, pluginname))
+        return "%s.%s" % (globals()['plugins'].__name__, pluginname)
+    
+    def deregisterBotPlugin(self, pluginname):
+        """ Unregisters a bot plugin.
+        """
+        del self.botplugin[pluginname]
+    
+    def registerBotPlugin(self, pluginname, config):
+        """ Registers a bot plugin pluginname is the file and class name,
+        and config is an xml element passed to the plugin. Will reload the plugin module,
+        so previously loaded plugins can be updated.
+        """
+        self.pluginModules[self.plugin_name_to_module(pluginname)] = __import__(self.plugin_name_to_module(pluginname))
+        reload(self.pluginModules[self.plugin_name_to_module(pluginname)])
         # init the plugin class
         self.botplugin[pluginname] = getattr(getattr(plugins, pluginname), pluginname)(self, config)
         return True
@@ -131,6 +158,7 @@ Also, thank you Athena for putting up with me while I programmed.""")
         bareJid = self.getjidbare(jid)
         nick = self.getjidresource(jid)
         if bareJid in self.plugin['xep_0045'].getJoinedRooms():
+            logging.debug("Checking real jid for %s %s (%s)" %(bareJid, nick, jid))
             realJid = self.plugin['xep_0045'].getJidProperty(bareJid, nick, 'jid')
             if realJid:
                 return realJid
@@ -175,13 +203,40 @@ Also, thank you Athena for putting up with me while I programmed.""")
         self.sendPresence(ppriority = self.botconfig.find('auth').attrib['priority'])
         self.joinRooms()
     
+    def rehash(self):
+        """ Re-reads the config file, making appropriate runtime changes.
+            Causes all plugins to be reloaded (or unloaded). The XMPP stream, and
+            channels will not be disconnected.
+        """
+        self.deregister_bot_plugins()
+        self.botconfig = self.loadConfig(self.configFile)
+        self.register_bot_plugins()
+        self.joinRooms()
+    
     
     def joinRooms(self):
-        rooms = self.botconfig.findall('rooms/muc')
-        if rooms:
-            for room in rooms:
-                logging.info("Joining room %s as %s." % (room.attrib['room'], room.attrib['nick']))
-                self.plugin['xep_0045'].joinMUC(room.attrib['room'], room.attrib['nick'])
+        newRoomXml = self.botconfig.findall('rooms/muc')
+        newRooms = {}
+        if newRoomXml:
+            for room in newRoomXml:
+                newRooms[room.attrib['room']] = room.attrib['nick']
+        for room in self.rooms.keys():
+            if room not in newRooms.keys():
+                logging.info("Parting room %s." % room)
+                self.plugin['xep_0045'].leaveMUC(room, self.rooms[room])
+                del self.rooms[room]
+        for room in newRooms.keys():
+            if room not in self.rooms.keys():
+                self.rooms[room] = newRooms[room]
+                logging.info("Joining room %s as %s." % (room, newRooms[room]))
+                self.plugin['xep_0045'].joinMUC(room, newRooms[room])
+
+    def die(self):
+        """ Kills the bot.
+        """
+        self.deregister_bot_plugins()
+        logging.info("Disconnecting bot")
+        self.disconnect()
 
 if __name__ == '__main__':
     #parse command line arguements
@@ -196,7 +251,8 @@ if __name__ == '__main__':
 
     #load xml config
     logging.info("Loading config file: %s" % opts.configfile)
-    config = ET.parse(os.path.expanduser(opts.configfile))
+    configFile = os.path.expanduser(opts.configfile)
+    config = ET.parse(configFile)
     auth = config.find('auth')
     
     #init
@@ -205,12 +261,12 @@ if __name__ == '__main__':
     plugin_config = {}
     plugin_config['xep_0092'] = {'name': 'SleekBot', 'version': '0.1-dev'}
     
-    con = sleekbot(config, auth.attrib['jid'], auth.attrib['pass'], plugin_config=plugin_config)
+    stream = sleekbot(configFile, auth.attrib['jid'], auth.attrib['pass'], plugin_config=plugin_config)
     if not auth.get('server', None):
         # we don't know the server, but the lib can probably figure it out
-        con.connect() 
+        stream.connect() 
     else:
-        con.connect((auth.attrib['server'], 5222))
-    con.process()
-    while con.connected:
+        stream.connect((auth.attrib['server'], 5222))
+    stream.process()
+    while stream.connected:
         time.sleep(1)
