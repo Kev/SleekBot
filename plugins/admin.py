@@ -43,12 +43,13 @@ class admin(object):
                 #system message
                 jid = None
             else:
-                jid = self.bot.getRealJid("%s/%s" % (msg['room'], msg['name']))
+                jid = self.bot.getjidbare(self.bot.getRealJid("%s/%s" % (msg['room'], msg['name'])))
         else:
             if msg['jid'] in self.bot['xep_0045'].getJoinedRooms():
-                jid = self.bot.getRealJid("%s/%s" % (msg['jid'], msg['resource']))
+                jid = jid = self.bot.getjidbare(self.bot.getRealJid("%s/%s" % (msg['jid'], msg['resource'])))
             else:
                 jid = self.bot.getjidbare(msg.get('jid', ''))
+        logging.debug("admin.py checking for owner status on jid %s" % jid)
         return jid in self.bot.getOwners()
             
     def handle_rehash(self, command, args, msg):
