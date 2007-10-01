@@ -89,6 +89,7 @@ class rssbot(object):
         #    return
         #print u"found content in key %s" % contentKey
         content = self.bot.xmlesc(item['content'][0].value)
+        content = item['content'][0].value
         text = u"Update from feed %s\n%s\n%s" % (feedName, self.bot.xmlesc(item['title']), content)
         self.bot.sendMessage(muc, text, mtype='groupchat')
     

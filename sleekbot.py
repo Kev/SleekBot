@@ -104,7 +104,7 @@ Also, thank you Athena for putting up with me while I programmed.""")
         """
         logging.info("Unloading plugin %s" % pluginname)
         if hasattr(self.botplugin[pluginname], 'shutDown'):
-            logging.info("Plugin has a shutDown() method, so calling that.")
+            logging.debug("Plugin has a shutDown() method, so calling that.")
             self.botplugin[pluginname].shutDown()
         del self.botplugin[pluginname]
     
@@ -189,7 +189,7 @@ Also, thank you Athena for putting up with me while I programmed.""")
             Accepts 'None' jids (acts as an unknown user).
         """     
         print "Checking if I should respond to jid %s" % passedJid
-        jid = self.getRealJid(passedJid)
+        jid = self.getjidbare(self.getRealJid(passedJid))
         print "Checking if I should respond to real jid %s" % jid
         if jid in self.getBannedUsers():
             print "Found against banned jid %s" % jid 
