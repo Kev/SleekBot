@@ -34,7 +34,7 @@ class rssbot(object):
         self.rssCache = {}
         feeds = self.config.findall('feed')
         self.threads = {}
-        self.shutDown = False
+        self.shuttingDown = False
         if feeds:
             for feed in feeds:
                 logging.info("rssbot.py script starting with feed %s." % feed.attrib['url'])
@@ -47,18 +47,18 @@ class rssbot(object):
                 logging.info("Creating new thread to manage feed.")
                 self.threads[feed.attrib['url']] = thread.start_new(self.loop,(feed.attrib['url'], feed.attrib['refresh'], rooms))
                 
-    def __del__(self):
-        self.shutDown = True
+    def shutDown(self):
+        self.shuttingDown = True
         logging.info("Shutting down RSSBot plugin")
-        for feed in self.threads.keys():
-            logging.info("rssbot.py script starting with feed %s." % feed)
-            self.threads[feed].exit()
+        #for feed in self.threads.keys():
+        #    logging.info("rssbot.py killing thread for feed %s." % feed)
+        #    self.threads[feed].exit()
 
     def loop(self, feedUrl, refresh, rooms):
         """ The main thread loop that polls an rss feed with a specified frequency
         """
         self.loadCache(feedUrl)
-        while not self.shutDown:
+        while not self.shuttingDown:
             #print "looping on feed %s" % feedUrl
             if self.bot['xep_0045']:
                 feed = feedparser.parse(feedUrl)

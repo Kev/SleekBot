@@ -103,6 +103,9 @@ Also, thank you Athena for putting up with me while I programmed.""")
         """ Unregisters a bot plugin.
         """
         logging.info("Unloading plugin %s" % pluginname)
+        if hasattr(self.botplugin[pluginname], 'shutDown'):
+            logging.info("Plugin has a shutDown() method, so calling that.")
+            self.botplugin[pluginname].shutDown()
         del self.botplugin[pluginname]
     
     def registerBotPlugin(self, pluginname, config):
