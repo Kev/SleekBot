@@ -37,18 +37,7 @@ class admin(object):
     def message_from_owner(self, msg):
         """ Was this message sent from a room owner?
         """
-        jid = None
-        if msg['type'] == 'groupchat':
-            if msg['name'] == "":
-                #system message
-                jid = None
-            else:
-                jid = self.bot.getjidbare(self.bot.getRealJid("%s/%s" % (msg['room'], msg['name'])))
-        else:
-            if msg['jid'] in self.bot['xep_0045'].getJoinedRooms():
-                jid = jid = self.bot.getjidbare(self.bot.getRealJid("%s/%s" % (msg['jid'], msg['resource'])))
-            else:
-                jid = self.bot.getjidbare(msg.get('jid', ''))
+        jid = self.bot.getRealJidFromMessage(msg)
         logging.debug("admin.py checking for owner status on jid %s" % jid)
         return jid in self.bot.getOwners()
             

@@ -170,6 +170,21 @@ Also, thank you Athena for putting up with me while I programmed.""")
                 return None
         return jid
 
+    def getRealJidFromMessage(self, msg):
+        jid = None
+        if msg['type'] == 'groupchat':
+            if msg['name'] == "":
+                #system message
+                jid = None
+            else:
+                jid = self.getjidbare(self.getRealJid("%s/%s" % (msg['room'], msg['name'])))
+        else:
+            if msg['jid'] in self['xep_0045'].getJoinedRooms():
+                jid = jid = self.bot.getjidbare(self.getRealJid("%s/%s" % (msg['jid'], msg['resource'])))
+            else:
+                jid = self.getjidbare(msg.get('jid', ''))
+        return jid
+
     def shouldAnswerToMessage(self, msg):
         """ Checks whether the bot is configured to respond to the sender of a message.
         """     
