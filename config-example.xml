@@ -28,6 +28,9 @@
 			<plugin name='admin'>
 				<config />
 			</plugin>
+			<plugin name='say'>
+				<config />
+			</plugin>
 			<plugin name='pingbot'>
 				<config />
 			</plugin>
