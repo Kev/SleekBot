@@ -245,6 +245,14 @@ Also, thank you Athena for putting up with me while I programmed.""")
         logging.info("Disconnecting bot")
         self.disconnect()
 
+    def restart(self):
+        """ Cause the bot to be completely restarted (will reconnect etc.)
+        """
+        global shouldRestart
+        shouldRestart = True
+        logging.info("Restarting bot")
+        self.die()
+
 if __name__ == '__main__':
     #parse command line arguements
     optp = OptionParser()
@@ -256,24 +264,28 @@ if __name__ == '__main__':
     
     logging.basicConfig(level=opts.loglevel, format='%(levelname)-8s %(message)s')
 
-    #load xml config
-    logging.info("Loading config file: %s" % opts.configfile)
-    configFile = os.path.expanduser(opts.configfile)
-    config = ET.parse(configFile)
-    auth = config.find('auth')
+    global shouldRestart
+    shouldRestart = True
+    while shouldRestart:
+        shouldRestart = False
+        #load xml config
+        logging.info("Loading config file: %s" % opts.configfile)
+        configFile = os.path.expanduser(opts.configfile)
+        config = ET.parse(configFile)
+        auth = config.find('auth')
     
-    #init
-    logging.info("Logging in as %s" % auth.attrib['jid'])
+        #init
+        logging.info("Logging in as %s" % auth.attrib['jid'])
     
-    plugin_config = {}
-    plugin_config['xep_0092'] = {'name': 'SleekBot', 'version': '0.1-dev'}
+        plugin_config = {}
+        plugin_config['xep_0092'] = {'name': 'SleekBot', 'version': '0.1-dev'}
     
-    stream = sleekbot(configFile, auth.attrib['jid'], auth.attrib['pass'], plugin_config=plugin_config)
-    if not auth.get('server', None):
-        # we don't know the server, but the lib can probably figure it out
-        stream.connect() 
-    else:
-        stream.connect((auth.attrib['server'], 5222))
-    stream.process()
-    while stream.connected:
-        time.sleep(1)
+        bot = sleekbot(configFile, auth.attrib['jid'], auth.attrib['pass'], plugin_config=plugin_config)
+        if not auth.get('server', None):
+            # we don't know the server, but the lib can probably figure it out
+            bot.connect() 
+        else:
+            bot.connect((auth.attrib['server'], 5222))
+        bot.process()
+        while bot.connected:
+            time.sleep(1)

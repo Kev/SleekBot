@@ -30,6 +30,9 @@ class admin(object):
         self.bot.addIMCommand('die', self.handle_die)
         self.bot.addMUCCommand('die', self.handle_die)
         self.bot.addHelp('die', 'Die command', "Kill the bot.", 'kill')
+        self.bot.addIMCommand('restart', self.handle_restart)
+        self.bot.addMUCCommand('restart', self.handle_restart)
+        self.bot.addHelp('restart', 'Restart command', "Restart the bot, reconnecting etc.", 'restart')
 
     def message_from_owner(self, msg):
         """ Was this message sent from a room owner?
@@ -52,6 +55,14 @@ class admin(object):
         if self.message_from_owner(msg):
             self.bot.rehash()
             response = "Rehashed boss"
+        else:
+            response = "You are insufficiently cool, go away."
+        return response
+        
+    def handle_restart(self, command, args, msg):
+        if self.message_from_owner(msg):
+            self.bot.restart()
+            response = "Restarted boss"
         else:
             response = "You are insufficiently cool, go away."
         return response
