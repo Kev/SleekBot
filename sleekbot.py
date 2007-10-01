@@ -177,10 +177,14 @@ Also, thank you Athena for putting up with me while I programmed.""")
                 #system message
                 jid = None
             else:
-                jid = self.getjidbare(self.getRealJid("%s/%s" % (msg['room'], msg['name'])))
+                jid = self.getRealJid("%s/%s" % (msg['room'], msg['name']))
+                if jid:
+                    jid = self.getjidbare(jid)
         else:
             if msg['jid'] in self['xep_0045'].getJoinedRooms():
-                jid = jid = self.bot.getjidbare(self.getRealJid("%s/%s" % (msg['jid'], msg['resource'])))
+                jid = self.getRealJid("%s/%s" % (msg['jid'], msg['resource']))
+                if jid:
+                    jid = self.getjidbare(jid)
             else:
                 jid = self.getjidbare(msg.get('jid', ''))
         return jid
@@ -191,7 +195,7 @@ Also, thank you Athena for putting up with me while I programmed.""")
         if msg['type'] == 'groupchat':
             if msg['name'] == "":
                 #system message
-                return
+                return False
             return self.shouldAnswerToJid("%s/%s" % (msg['room'], msg['name']))
         else:
             if msg['jid'] in self['xep_0045'].getJoinedRooms():
@@ -204,7 +208,9 @@ Also, thank you Athena for putting up with me while I programmed.""")
             Accepts 'None' jids (acts as an unknown user).
         """     
         print "Checking if I should respond to jid %s" % passedJid
-        jid = self.getjidbare(self.getRealJid(passedJid))
+        jid = self.getRealJid(passedJid)
+        if jid:
+            jid = self.getjidbare(jid)
         print "Checking if I should respond to real jid %s" % jid
         if jid in self.getBannedUsers():
             print "Found against banned jid %s" % jid 
