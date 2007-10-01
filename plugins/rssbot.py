@@ -22,6 +22,7 @@ import feedparser
 import thread
 import time
 import re
+import pickle
 
 class rssbot(object):
     def __init__(self, bot, config):
@@ -32,6 +33,8 @@ class rssbot(object):
         #self.bot.addHelp('xep', 'Xep Command', "Returns details of the specified XEP.", 'xep [number]')
         self.rssCache = {}
         feeds = self.config.findall('feed')
+        self.threads = {}
+        self.shutDown = False
         if feeds:
             for feed in feeds:
                 logging.info("rssbot.py script starting with feed %s." % feed.attrib['url'])
@@ -41,13 +44,21 @@ class rssbot(object):
                 rooms = []
                 for roomXml in roomsXml:
                     rooms.append(roomXml.attrib['room'])
-                thread.start_new(self.loop,(feed.attrib['url'], feed.attrib['refresh'], rooms))
+                logging.info("Creating new thread to manage feed.")
+                self.threads[feed.attrib['url']] = thread.start_new(self.loop,(feed.attrib['url'], feed.attrib['refresh'], rooms))
+                
+    def __del__(self):
+        self.shutDown = True
+        logging.info("Shutting down RSSBot plugin")
+        for feed in self.threads.keys():
+            logging.info("rssbot.py script starting with feed %s." % feed)
+            self.threads[feed].exit()
 
     def loop(self, feedUrl, refresh, rooms):
         """ The main thread loop that polls an rss feed with a specified frequency
         """
         self.loadCache(feedUrl)
-        while True:
+        while not self.shutDown:
             #print "looping on feed %s" % feedUrl
             if self.bot['xep_0045']:
                 feed = feedparser.parse(feedUrl)
@@ -63,6 +74,8 @@ class rssbot(object):
                             self.sendItem(item, muc, feed['channel']['title'])
                     self.rssCache[feedUrl].append(item['title'])
                     #print u"remembering new item %s" % item['title']
+                    logging.debug("Saving updated feed cache for %s" % feedUrl)
+                    self.saveCache(feedUrl)
             time.sleep(float(refresh)*60)
             
     def sendItem(self, item, muc, feedName):
@@ -82,7 +95,7 @@ class rssbot(object):
     def cacheFilename(self, feedUrl):
         """ Returns the filename used to store the cache for a feedUrl
         """
-        rep = re.compile('s/\W//g')
+        rep = re.compile('\W')
         return "rsscache-%s.dat" % rep.sub('', feedUrl)
     
     def loadCache(self, feed):
@@ -90,13 +103,13 @@ class rssbot(object):
         """
         try:
             f = open(self.cacheFilename(feed), 'rb')
+            self.rssCache[feed] = pickle.load(f)
         except:
             print "Error loading rss data %s" % self.cacheFilename(feed)
             return
-        self.rssCache[feed] = pickle.load(f)
         f.close()
         
-    def saveCache(self):
+    def saveCache(self, feed):
         """ Saves the cache of entries
         """
         try:

@@ -102,6 +102,7 @@ Also, thank you Athena for putting up with me while I programmed.""")
     def deregisterBotPlugin(self, pluginname):
         """ Unregisters a bot plugin.
         """
+        logging.info("Unloading plugin %s" % pluginname)
         del self.botplugin[pluginname]
     
     def registerBotPlugin(self, pluginname, config):
@@ -208,13 +209,16 @@ Also, thank you Athena for putting up with me while I programmed.""")
             Causes all plugins to be reloaded (or unloaded). The XMPP stream, and
             channels will not be disconnected.
         """
+        logging.info("Deregistering bot plugins for rehash")
         self.deregister_bot_plugins()
+        logging.info("Reloading config file")
         self.botconfig = self.loadConfig(self.configFile)
         self.register_bot_plugins()
         self.joinRooms()
     
     
     def joinRooms(self):
+        logging.info("Re-syncing with required channels")
         newRoomXml = self.botconfig.findall('rooms/muc')
         newRooms = {}
         if newRoomXml:
