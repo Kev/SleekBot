@@ -32,7 +32,7 @@ class say(object):
     def handle_say(self, command, args, msg):
         if self.bot.getRealJidFromMessage(msg) not in self.bot.getOwners():
             return "I'm not your monkey."
-        if args.count(" ") <= 1:
+        if args.count(" ") >= 1:
             [muc, text] = args.split(" ",1)
         else:
             return "Insufficient parameters."
