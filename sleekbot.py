@@ -276,6 +276,7 @@ Also, thank you Athena for putting up with me while I programmed.""")
         """ Kills the bot.
         """
         self.deregister_bot_plugins()
+        self.rooms = {}
         logging.info("Disconnecting bot")
         self.disconnect()
 
