@@ -1,6 +1,8 @@
 import random
 import time
 import sys
+import re
+import traceback
 
 class diceroll(object):
 	def __init__(self, bot, config):
@@ -16,6 +18,7 @@ class diceroll(object):
 			d = diceCalc(args)
 			return d.show()
 		except:
+			traceback.print_exc()
 			return "Invalid dice calculation."
 		
 
@@ -103,24 +106,17 @@ class diceCalc(object):
 		self.dicesets = []
 		self.inputstr = inputstr
 		self.total = 0
-		self.calc = ''
-		for word in inputstr.split(' '):
-			if 'd' in word:
-				newword = ''
-				newcalc = ''
-				for char in word:
-					if char in ['1', '2', '3', '4','5','6','7','8','9','0','d']:
-						newword += char
-					else:
-						newcalc += char
-				self.dicesets.append(self.dstring(newword))
+		self.calc = inputstr
+		finddice = re.compile('[0-9]*d[0-9]+')
+		while True:
+				match = finddice.search(self.calc)
+				if match is None:
+					break
+				print match.group()
+				self.dicesets.append(self.dstring(match.group()))
 				self.dicesets[-1].roll()
-				self.calc += str(self.dicesets[-1].total)
-				self.calc += newcalc + ' '
-			else:
-				self.calc += word + ' '
+				self.calc = self.calc[:match.start()] + str(self.dicesets[-1].total) + self.calc[match.end():]
 		self.total = eval(self.calc)
-
 
 	def dstring(self, inputstr):
 		times, sides = inputstr.split('d', 1)
@@ -129,8 +125,8 @@ class diceCalc(object):
 		return Die(int(sides)) * int(times)
 	
 	def show(self):
-		#output = "%s= %s\n" % (self.calc, self.total)
-		output = "%s" % self.total
+		output = "%s = %s\n" % (self.inputstr, self.total)
+		#output = "%s\n" % self.total
 		dicelist = []
 		for dice in self.dicesets:
 			for die in dice.dice_list:
