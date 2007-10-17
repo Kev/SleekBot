@@ -25,6 +25,7 @@ from xml.etree import ElementTree as ET
 import os
 import time
 import plugins
+import sys
 
 class sleekbot(sleekxmpp.sleekxmpp.xmppclient, basebot):
     def __init__(self, configFile, jid, password, ssl=False, plugin_config = {}):
@@ -109,15 +110,24 @@ Also, thank you Athena for putting up with me while I programmed.""")
         del self.botplugin[pluginname]
     
     def registerBotPlugin(self, pluginname, config):
-        """ Registers a bot plugin pluginname is the file and class name,
-        and config is an xml element passed to the plugin. Will reload the plugin module,
-        so previously loaded plugins can be updated.
-        """
-        self.pluginModules[self.plugin_name_to_module(pluginname)] = __import__(self.plugin_name_to_module(pluginname))
-        reload(self.pluginModules[self.plugin_name_to_module(pluginname)])
-        # init the plugin class
-        self.botplugin[pluginname] = getattr(getattr(plugins, pluginname), pluginname)(self, config)
-        return True
+		""" Registers a bot plugin pluginname is the file and class name,
+		and config is an xml element passed to the plugin. Will reload the plugin module,
+		so previously loaded plugins can be updated.
+		"""
+		#f self.pluginModules.has_key(pluginname):
+		#	del sys.modules[self.plugin_name_to_module(pluginname)]
+		#	self.pluginModules[pluginname] = reload(self.pluginModules[pluginname])
+		#else:
+		#	self.pluginModules[pluginname] = __import__(self.plugin_name_to_module(pluginname))
+# init the plugin class
+		#self.botplugin[pluginname] = getattr(getattr(self.pluginModules[pluginname], pluginname), pluginname)(self, config)
+		try:
+			reload(globals()['plugins'].__dict__[pluginname])
+		except:
+			__import__(self.plugin_name_to_module(pluginname))
+		self.botplugin[pluginname] = getattr(globals()['plugins'].__dict__[pluginname], pluginname)(self, config)
+			
+		return True
         
     def getOwners(self):
         """ Returns a list of all the jids belonging to bot owners
@@ -234,6 +244,9 @@ Also, thank you Athena for putting up with me while I programmed.""")
             channels will not be disconnected.
         """
         logging.info("Deregistering bot plugins for rehash")
+        del globals()['plugins']
+        globals()['plugins'] = __import__('plugins')
+        self.clearCommands()
         self.deregister_bot_plugins()
         logging.info("Reloading config file")
         self.botconfig = self.loadConfig(self.configFile)

@@ -13,6 +13,15 @@ class basebot(object):
 		self.addHelp('help', 'Help Command', "Returns this list of help commands if no topic is specified.	Otherwise returns help on the specific topic.", 'help [topic]')
 		self.add_event_handler("message", self.handle_message_event, threaded=True)
 		self.add_event_handler("groupchat_message", self.handle_message_event, threaded=True)
+		
+	def clearCommands(self):
+		self.im_commands = {}
+		self.muc_commands = {}
+		self.polls = []
+		self.help = []
+		self.addIMCommand('help', self.handle_help)
+		self.addMUCCommand('help', self.handle_help)
+		self.addHelp('help', 'Help Command', "Returns this list of help commands if no topic is specified.	Otherwise returns help on the specific topic.", 'help [topic]')
 	
 	def shouldAnswerToMessage(self, msg):
 		""" Checks whether the bot is configured to respond to the sender of a message.
