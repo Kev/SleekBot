@@ -125,8 +125,8 @@ class diceCalc(object):
 		return Die(int(sides)) * int(times)
 	
 	def show(self):
-		output = "%s = %s\n" % (self.calc, self.total)
-		#output = "%s\n" % self.total
+		#output = "%s = %s\n" % (self.calc, self.total)
+		output = "%s\n" % self.total
 		dicelist = []
 		for dice in self.dicesets:
 			for die in dice.dice_list:

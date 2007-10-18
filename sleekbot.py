@@ -159,7 +159,7 @@ Also, thank you Athena for putting up with me while I programmed.""")
                 userJids = user.findall('jid')
                 if userJids:
                     for jid in userJids:
-                        print "appending %s to %s list" % (jid.text, userClass)
+                        logging.debug("appending %s to %s list" % (jid.text, userClass))
                         jids.append(jid.text)
         return jids
 
@@ -217,16 +217,12 @@ Also, thank you Athena for putting up with me while I programmed.""")
             Pass in a muc jid if you want, it'll be converted to a real jid if possible
             Accepts 'None' jids (acts as an unknown user).
         """     
-        print "Checking if I should respond to jid %s" % passedJid
         jid = self.getRealJid(passedJid)
         if jid:
             jid = self.getjidbare(jid)
-        print "Checking if I should respond to real jid %s" % jid
         if jid in self.getBannedUsers():
-            print "Found against banned jid %s" % jid 
             return False
         if not self.botconfig.find('require-membership'):
-            print "Membership is not required" 
             return True
         if jid in self.getMembers() or jid in self.getAdmins() or jid in self.getOwners():
             return True

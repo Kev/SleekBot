@@ -4,6 +4,7 @@ import logging
 import random
 import thread
 import time
+import copy
 
 class remember(object):
 	def __init__(self, bot, config):
@@ -15,34 +16,76 @@ class remember(object):
 		self.idlemin = int(self.config.get('idlemin', 60))
 		self.idlemax = int(self.config.get('idlemax', 600))
 		self.bot.add_event_handler("groupchat_message", self.handle_message_event, threaded=True)
-		self.search = re.compile("(([Tt]he|[mM]y)[\s\w]+ (is|are|can|has|got)|I am|i am|I'm|(?=^|,|\.\s|\?)?[\w']+ (is|are|can|got|has))[\s\w']+")
+		self.search = re.compile("(([Tt]he|[mM]y)[\s\w\-0-9]+ (is|are|can|has|got)|I am|i am|I'm|(?=^|,|\.\s|\?)?[\w'0-9\-]+ (is|are|can|got|has))[\s\w'0-9\-]+")
 		self.prep = ["Let's see... %s.", '%s.', 'I know that %s.', 'I heard that %s.', 'Rumor has it that %s.', 'Did you hear that %s?', 'A little bird told me that %s.', '%s?!??!']
 		self.bot.addIMCommand('know', self.handle_know_request)
 		self.bot.addMUCCommand('know', self.handle_know_request)
 		self.bot.addHelp('know', 'Random knowledge command.', "Get a random tidbit the bot has picked up", '!know')
 		self.running = True
 		self.lastroom = None
+		self.lastmessage = ''
 		thread.start_new(self.idle, tuple())
 	
 	def idle(self):
 		while self.running:
 			time.sleep(random.randint(self.idlemin, self.idlemax))
 			if self.lastroom:
-				self.bot.sendMessage(self.lastroom, self.knowledge(), mtype='groupchat')
+				msg = self.lastmessage.split(' ')
+				msgs = copy.copy(msg)
+				for word in msgs:
+					if len(word) < 5:
+						msg.remove(word)
+				if len(msg) > 0:
+					searchword = msg[random.randint(0, len(msg) - 1)]
+					reply = self.searchKnow(searchword)
+					if not reply:
+						reply = self.knowledge()
+				else:
+					reply = self.knowledge()
+				self.bot.sendMessage(self.lastroom, reply, mtype='groupchat')
 	
 	def handle_know_request(self, command, args, msg):
-		return self.knowledge()
+		if args:
+			search = args
+		else:
+			search = None
+		return self.knowledge(search)
 	
-	def knowledge(self):
+	def getRandomKnow(self):
+		return self.know[random.randint(0, len(self.know) - 1)]
+	
+	def searchKnow(self, search):
+		found = []
+		for know in self.know:
+			if search in know:
+				found.append("%s  " % self.wrapKnow(know))
+		if not found:
+			return False
+		found = found[random.randint(0, len(found) - 1)]
+		return found
+		
+	
+	def knowledge(self, search=None):
 		if len(self.know) > 0:
-			r = "%s" % (self.prep[random.randint(0, len(self.prep) - 1)]) % (self.know[random.randint(0, len(self.know) - 1)])
-			r = r[0].upper() + r[1:]
-			return r
+			if search:
+				found = self.searchKnow(search)
+				if not found:
+					found = "I don't know anything about %s." % search
+			else:
+				found = self.wrapKnow(self.getRandomKnow())
+			return found
 		return "I know nothing."
+	
+	def wrapKnow(self, know):
+		r = "%s" % (self.prep[random.randint(0, len(self.prep) - 1)]) % (know,)
+		r = r[0].upper() + r[1:]
+		return r
+		
 	
 	def handle_message_event(self, msg):
 		self.lastroom = msg['room']
 		if self.bot.rooms[msg['room']] != (msg['name']) and not msg['message'].startswith('!'):
+			self.lastmessage = msg['message']
 			self.command = re.compile("^%s.*know.*?" % self.bot.rooms[msg['room']])
 			match = self.command.search(msg['message'])
 			if match:
