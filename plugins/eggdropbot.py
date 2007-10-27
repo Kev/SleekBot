@@ -45,6 +45,9 @@ class eggdropbot(object):
 			return
 		groupchat = msg.get('room', '')
 		nick = msg.get('name', '')
+		if nick == "SleekEggs":
+#FIXME - check for ignoring old messages
+			return
 		self.tcl_print(body)
 		source = groupchat
 		quote = re.compile("'")
@@ -147,7 +150,7 @@ class eggdropbot(object):
 			self.process_message_queue()
 
 	def queueExec(self, command):
-		print "Queueing command\n" + command
+		#print "Queueing command\n" + command
 		self.queue.put(command)
 	def minuteTick(self):
 		self.queue.put("eggsupp_minute_tick")

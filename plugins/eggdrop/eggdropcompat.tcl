@@ -155,17 +155,30 @@ proc clearqueue {queue} {
 #    validuser <handle>
 #        Returns: 1 if a user by that name exists; 0 otherwise
 #        Module: core
+
 #    finduser <nick!user@host>
 #        Description: finds the user record which most closely matches the given nick!user@host
 #        Returns: the handle found, or "*" if none
 #        Module: core
+proc finduser {mask} {
+#FIXME
+	return "*"
+}
+
 #    userlist [flags]
 #        Returns: a list of users on the bot. You can use the flag matching system here ([global]{&/|}[chan]{&/|}[bot]). '&' specifies "and"; '|' specifies "or".
 #        Module: core
+proc userlist {flags} {
+	return ""
+#FIXME
+}
+
+
 #    passwdok <handle> <pass>
 #        Description: checks the password given against the user's password. Check against the password "" (a blank string) or "-" to find out if a user has no password set.
 #        Returns: 1 if the password matches for that user; 0 otherwise
 #        Module: core
+
 #    getuser <handle> <entry-type> [extra info]
 #        Description: an interface to the new generic userfile support. Valid entry types are:
 #            BOTFL
@@ -192,6 +205,12 @@ proc clearqueue {queue} {
 #            returns the user's encrypted password
 #        Returns: info specific to each entry-type
 #        Module: core
+proc getuser {handle entrytype exttrainfo} {
+#FIXME FIXME
+	return ""
+}
+
+
 #    setuser <handle> <entry-type> [extra info]
 #        Description: this is the counterpart of getuser. It lets you set the various values. Other then the ones listed below, the entry-types are the same as getuser's.
 #            HOSTS
@@ -419,6 +438,291 @@ proc clearqueue {queue} {
 #        Returns: 1 if the bot is currently downloading a userfile from a sharebot (and hence, user records are about to drastically change); 0 if not
 #        Module: core
 
+####3. Channel commands
+
+#    channel add <name> [option-list]
+
+#        Description: adds a channel record for the bot to monitor. The full list of possible options are given in doc/settings/mod.channels. Note that the channel options must be in a list (enclosed in {}).
+
+#        Returns: nothing
+
+#        Module: channels
+#    channel set <name> <options...>
+
+#        Description: sets options for the channel specified. The full list of possible options are given in doc/settings/mod.channels.
+
+#        Returns: nothing
+
+#        Module: channels
+#    channel info <name>
+
+#        Returns: a list of info about the specified channel's settings.
+
+#        Module: channels
+#    channel get <name> <setting>
+
+#        Returns: The value of the setting you specify. For flags, a value of 0 means it is disabled (-), and non-zero means enabled (+).
+
+#        Module: channels
+#    channel remove <name>
+
+#        Description: removes a channel record from the bot and makes the bot no longer monitor the channel
+
+#        Returns: nothing
+
+#        Module: channels
+#    savechannels
+
+#        Description: saves the channel settings to the channel-file if one is defined.
+
+#        Returns: nothing
+
+#        Module: channels
+#    loadchannels
+
+#        Description: reloads the channel settings from the channel-file if one is defined.
+
+#        Returns: nothing
+
+#        Module: channels
+#    channels
+
+#        Returns: a list of the channels the bot has a channel record for
+
+#        Module: channels
+#    channame2dname <channel-name>
+#    chandname2name <channel-dname>
+
+#        Description: these two functions are important to correctly support !channels. The bot differentiates between channel description names (chan dnames) and real channel names (chan names). The chan dnames are what you would normally call the channel, such as "!channel". The chan names are what the IRC server uses to identify the channel. They consist of the chan dname prefixed with an ID; such as "!ABCDEchannel".
+
+#        For bot functions like isop, isvoice, etc. you need to know the chan dnames. If you communicate with the server, you usually get the chan name, though. That's what you need the channame2dname function for.
+
+#        If you only have the chan dname and want to directly send raw server commands, use the chandname2name command.
+
+#        For non-!channels, chan dname and chan name are the same.
+
+#        Module: irc
+#    isbotnick <nick>
+
+#        Returns: 1 if the nick matches the botnick; 0 otherwise
+
+#        Module: server
+#    botisop [channel]
+
+#        Returns: 1 if the bot has ops on the specified channel (or any channel if no channel is specified); 0 otherwise
+
+#        Module: irc
+#    botishalfop [channel]
+
+#        Returns: 1 if the bot has halfops on the specified channel (or any channel if no channel is specified); 0 otherwise
+
+#        Module: irc
+#    botisvoice [channel]
+
+#        Returns: 1 if the bot has a voice on the specified channel (or any channel if no channel is specified); 0 otherwise
+
+#        Module: irc
+
+#    botonchan [channel]
+#        Returns: 1 if the bot is on the specified channel (or any channel if no channel is specified); 0 otherwise
+#        Module: irc
+proc botonchan {channel} {
+#FIXME
+	return 1
+}
+
+#    isop <nickname> [channel]
+#        Returns: 1 if someone by the specified nickname is on the channel (or any channel if no channel name is specified) and has ops; 0 otherwise
+#        Module: irc
+proc isop {nickname channel} {
+	return 0
+#FIXME
+}
+
+#    ishalfop <nickname> [channel]
+#        Returns: 1 if someone by the specified nickname is on the channel (or any channel if no channel name is specified) and has halfops; 0 otherwise
+#        Module: irc
+
+#    wasop <nickname> <channel>
+#        Returns: 1 if someone that just got opped/deopped in the chan had op before the modechange; 0 otherwise
+#        Module: irc
+proc wasop {nickname channel} {
+  return 0
+}
+
+#    washalfop <nickname> <channel>
+#        Returns: 1 if someone that just got halfopped/dehalopped in the chan had halfop before the modechange; 0 otherwise
+#        Module: irc
+
+#    isvoice <nickname> [channel]
+#        Returns: 1 if someone by that nickname is on the channel (or any channel if no channel is specified) and has voice (+v); 0 otherwise
+#        Module: irc
+
+#    onchan <nickname> [channel]
+#        Returns: 1 if someone by that nickname is on the specified channel (or any channel if none is specified); 0 otherwise
+#        Module: irc
+proc onchan {nickname channel} {
+	return 0
+#FIXME
+}
+
+#    nick2hand <nickname> [channel]
+#        Returns: the handle of a nickname on a channel. If a channel is not specified, the bot will check all of its channels. If the nick is not found, "" is returned. If the nick is found but does not have a handle, "*" is returned.
+#        Module: irc
+
+proc nick2hand {nickname channel} {
+	return nickname
+#FIXME
+}
+
+#    hand2nick <handle> [channel]
+
+#        Returns: nickname of the first person on the specified channel (if one is specified) whose nick!user@host matches the given handle; "" is returned if no match is found. If no channel is specified, all channels are checked.
+
+#        Module: irc
+#    handonchan <handle> [channel]
+
+#        Returns: 1 if the the nick!user@host for someone on the channel (or any channel if no channel name is specified) matches for the handle given; 0 otherwise
+
+#        Module: irc
+
+#    ischanban <ban> <channel>
+#        Returns: 1 if the specified ban is on the given channel's ban list (not the bot's banlist for the channel)
+#        Module: irc
+proc ischanban {ban channel} {
+	return 0
+}
+
+
+#    ischanexempt <exempt> <channel>
+
+#        Returns: 1 if the specified exempt is on the given channel's exempt list (not the bot's exemptlist for the channel)
+
+#        Module: irc
+#    ischaninvite <invite> <channel>
+
+#        Returns: 1 if the specified invite is on the given channel's invite list (not the bot's invitelist for the channel)
+
+#        Module: irc
+#    chanbans <channel>
+
+#        Returns: a list of the current bans on the channel. Each element is a sublist of the form {<ban> <bywho> <age>}. age is seconds from the bot's point of view
+
+#        Module: irc
+#    chanexempts <channel>
+
+#        Returns: a list of the current exempts on the channel. Each element is a sublist of the form {<exempts> <bywho> <age>}. age is seconds from the bot's point of view
+
+#        Module: irc
+#    chaninvites <channel>
+
+#        Returns: a list of the current invites on the channel. Each element is a sublist of the form {<invites> <bywho> <age>}. age is seconds from the bot's point of view
+
+#        Module: irc
+#    resetbans <channel>
+
+#        Description: removes all bans on the channel that aren't in the bot's ban list and refreshes any bans that should be on the channel but aren't
+
+#        Returns: nothing
+
+#        Module: irc
+#    resetexempts [channel]
+
+#        Description: removes all exempt on the channel that aren't in the bot's exempt list and refreshes any exempts that should be on the channel but aren't
+
+#        Returns: nothing
+
+#        Module: irc
+#    resetinvites [channel]
+
+#        Description: removes all invites on the channel that aren't in the bot's invite list and refreshes any invites that should be on the channel but aren't
+
+#        Returns: nothing
+
+#        Module: irc
+#    resetchan <channel>
+
+#        Description:
+
+#        Returns: rereads in the channel info from the server
+
+#        Module: irc
+
+#    getchanhost <nickname> [channel]
+#        Returns: user@host of the specified nickname (the nickname is not included in the returned host). If a channel is not specified, bot will check all of its channels. If the nickname is not on the channel(s), "" is returned.
+#        Module: irc
+proc getchanhost {nickname channel} {
+#FIXME
+	return ""
+}
+
+#    getchanjoin <nickname> <channel>
+
+#        Returns: timestamp (unixtime format) of when the specified nickname joined the channel
+
+#        Module: irc
+#    onchansplit <nick> [channel]
+
+#        Returns: 1 if that nick is split from the channel (or any channel if no channel is specified); 0 otherwise
+
+#        Module: irc
+
+#    chanlist <channel> [flags[&chanflags]]
+#        Description: flags are any global flags; the '&' denotes to look for channel specific flags. Examples:
+#            n
+#            Global Owner
+#            &n
+#            Channel Owner
+#            o&m
+#            Global Op, Channel Master
+#        Returns: list of nicknames currently on the bot's channel that have all of the flags specified;. If no flags are given, all of the nicknames are returned. Please note that if you're executing chanlist after a part or sign bind, the gone user will still be listed, so you can check for wasop, isop, etc.
+#        Module: irc
+proc chanlist {channel flags} {
+#FIXME
+	return ""
+}
+
+#    getchanidle <nickname> <channel>
+#        Returns: number of minutes that person has been idle; 0 if the specified user isn't on the channel
+#        Module: irc
+#    getchanmode <channel>
+#        Returns: string of the type "+ntik key" for the channel specified
+#        Module: irc
+#    jump [server [port [password]]]
+#        Description: jumps to the server specified, or (if none is specified) the next server in the bot's serverlist
+#        Returns: nothing
+#        Module: server
+#    pushmode <channel> <mode> [arg]
+#        Description: sends out a channel mode change (ex: pushmode #lame +o goober) through the bot's queuing system. All the mode changes will be sent out at once (combined into one line as much as possible) after the script finishes, or when 'flushmode' is called.
+#        Returns: nothing
+#        Module: irc
+#    flushmode <channel>
+#        Description: forces all previously pushed channel mode changes to be sent to the server, instead of when the script is finished (just for the channel specified)
+#        Returns: nothing
+#        Module: irc
+#    topic <channel>
+#        Returns: string containing the current topic of the specified channel
+#        Module: irc
+#    validchan <channel>
+#        Description: checks if the bot has a channel record for the specified channel. Note that this does not necessarily mean that the bot is ON the channel.
+#        Returns: 1 if the channel exists, 0 if not
+#        Module: nothing
+#    isdynamic <channel>
+#        Returns: 1 if the channel is a dynamic channel; 0 otherwise
+#        Module: channels
+#    setudef <flag/int/str> <name>
+#        Description: initializes a user defined channel flag, string, or integer setting. You can use it like any other flag/setting. IMPORTANT: Don't forget to reinitialize your flags/settings after a restart, or it'll be lost.
+#        Returns: nothing
+#        Module: channels
+#    renudef <flag/int/str> <oldname> <newname>
+#        Description: renames a user defined channel flag, string, or integer setting.
+#        Returns: nothing
+#        Module: channels
+#    deludef <flag/int/str> <name>
+#        Description: deletes a user defined channel flag, string, or integer setting.
+#        Returns: nothing
+#        Module: channels
+
 
 
 
@@ -456,6 +760,7 @@ proc rand {range} {
 
 
 proc isbotnick {nick} {
+#FIXME
   if {$nick == "Iono"} {
     return 1
   }
@@ -714,9 +1019,15 @@ proc bind_link {flags keywordmask procname} {
 #        Description: removes a previously created bind
 #        Returns: name of the command that was removed
 #        Module: core
+
 #    binds [type/mask]
 #        Returns: a list of Tcl binds, each item in the list is a sublist of five elements: {<type> <flags> <name> <hits> <proc>}
 #        Module: core
+proc binds {typemask} {
+#FIXME
+	return {}
+}
+
 #    logfile [<modes> <channel> <filename>]
 #        Description: creates a new logfile, which will log the modes given for the channel listed. If no logfile is specified, a list of existing logfiles will be returned. "*" indicates all channels. You can also change the modes and channel of an existing logfile with this command. Entering a blank mode and channel ("") makes the bot stop logging there.
 #        Returns: filename of logfile created, or, if no logfile is specified, a list of logfiles such as: {mco * eggdrop.log} {jp #lame lame.log}
@@ -958,3 +1269,279 @@ proc unixtime {} {
 #            remove all ctrl-g (bell) codes
 #        Returns: the stripped string
 #        Module: core
+
+proc stripcodes {stripflags thestring} {
+	return thestring
+#FIXME
+}
+
+
+###4. Dcc commands
+
+#    putdcc <idx> <text>
+
+#        Description: sends text to the idx specified
+
+#        Returns: nothing
+
+#        Module: core
+#    dccbroadcast <message>
+
+#        Description: sends a message to everyone on the party line across the botnet, in the form of "*** <message>" for local users and "*** (Bot) <message>" for users on other bots
+
+#        Returns: nothing
+
+#        Module: core
+#    dccputchan <channel> <message>
+
+#        Description: sends your message to everyone on a certain channel on the botnet, in a form exactly like dccbroadcast does. Valid channels are 0 through 99999.
+
+#        Returns: nothing
+
+#        Module: core
+#    boot <user@bot> [reason]
+
+#        Description: boots a user from the partyline
+
+#        Returns: nothing
+
+#        Module: core
+#    dccsimul <idx> <text>
+
+#        Description: simulates text typed in by the dcc user specified. Note that in v0.9, this only simulated commands; now a command must be preceded by a '.' to be simulated.
+
+#        Returns: nothing
+
+#        Module: core
+#    hand2idx <handle>
+
+#        Returns: the idx (a number greater than or equal to zero) for the user given if the user is on the party line in chat mode (even if she is currently on a channel or in chat off), the file area, or in the control of a script. -1 is returned if no idx is found. If the user is on multiple times, the oldest idx is returned.
+
+#        Module: core
+#    idx2hand <idx>
+
+#        Returns: handle of the user with the given idx
+
+#        Module: core
+#    valididx <idx>
+
+#        Returns: 1 if the idx currently exists; 0 otherwise
+
+#        Module: core
+#    getchan <idx>
+
+#        Returns: the current party line channel for a user on the party line; "0" indicates he's on the group party line, "-1" means he has chat off, and a value from 1 to 99999 is a private channel
+
+#        Module: core
+#    setchan <idx> <channel>
+
+#        Description: sets a party line user's channel. The party line user is not notified that she is now on a new channel. A channel name can be used (provided it exists).
+
+#        Returns: nothing
+
+#        Module: core
+#    console <idx> [channel] [console-modes]
+
+#        Description: changes a dcc user's console mode, either to an absolute mode (like "mpj") or just adding/removing flags (like "+pj" or "-moc" or "+mp-c"). The user's console channel view can be changed also (as long as the new channel is a valid channel).
+
+#        Returns: a list containing the user's (new) channel view and (new) console modes, or nothing if that user isn't currently on the partyline
+
+#        Module: core
+#    echo <idx> [status]
+
+#        Description: turns a user's echo on or off; the status has to be a 1 or 0
+
+#        Returns: new value of echo for that user (or the current value, if status was omitted)
+
+#        Module: core
+#    strip <idx> [+/-strip-flags]
+
+#        Description: modifies the strip-flags for a user. The supported strip-flags are:
+
+#            b
+#            	
+
+#            remove all boldface codes
+
+#            c
+#            	
+
+#            remove all color codes
+
+#            r
+#            	
+
+#            remove all reverse video codes
+
+#            u
+#            	
+
+#            remove all underline codes
+
+#            a
+#            	
+
+#            remove all ANSI codes
+
+#            g
+#            	
+
+#            remove all ctrl-g (bell) codes
+
+#        Returns: new strip-flags for the specified user (or the current flags, if strip-flags was omitted)
+
+#        Module: core
+#    putbot <bot-nick> <message>
+
+#        Description: sends a message across the botnet to another bot. If no script intercepts the message on the other end, the message is ignored.
+
+#        Returns: nothing
+
+#        Module: core
+#    putallbots <message>
+
+#        Description: sends a message across the botnet to all bots. If no script intercepts the message on the other end, the message is ignored.
+
+#        Returns: nothing
+
+#        Module: core
+#    killdcc <idx>
+
+#        Description: kills a partyline or file area connection
+
+#        Returns: nothing
+
+#        Module: core
+#    bots
+
+#        Returns: list of the bots currently connected to the botnet
+
+#        Module: core
+#    botlist
+
+#        Returns: a list of bots currently on the botnet. Each item in the list is a sublist with four elements: bot, uplink, version, sharing status:
+
+#            bot
+#            	
+
+#            the bot's botnetnick
+
+#            uplink
+#            	
+
+#            the bot the bot is connected to
+
+#            version
+#            	
+
+#            its current numeric version
+
+#            sharing
+#            	
+
+#            a "+" if the bot is a sharebot; "-" otherwise
+
+#        Module: core
+#    killdcc <idx>
+
+#        Description: kills a partyline or file area connection
+
+#        Returns: nothing
+
+#        Module: core
+
+#    islinked <bot>
+#        Returns: 1 if the bot is currently linked; 0 otherwise
+#        Module: core
+
+proc islinked {bot} {
+	return 0
+}
+
+#    dccused
+
+#        Returns: number of dcc connections currently in use
+
+#        Module: core
+#    dcclist [type]
+
+#        Returns: a list of active connections, each item in the list is a sublist containing six elements: {<idx> <handle> <hostname> <type> {<other>} <timestamp>}
+
+#        The types are: chat, bot, files, file_receiving, file_sending, file_send_pending, script, socket (these are connections that have not yet been put under 'control'), telnet, and server. The timestamp is in unixtime format.
+
+#        Module: core
+#    whom <chan>
+
+#        Returns: list of people on the botnet who are on that channel. 0 is the default party line. Each item in the list is a sublist with six elements: nickname, bot, hostname, access flag ('-', '@', '+', or '*'), minutes idle, and away message (blank if the user is not away). If you specify * for channel, every user on the botnet is returned with an extra argument indicating the channel the user is on.
+
+#        Module: core
+#    getdccidle <idx>
+
+#        Returns: number of seconds the dcc chat/file system/script user has been idle
+
+#        Module: core
+#    getdccaway <idx>
+
+#        Returns: away message for a dcc chat user (or "" if the user is not set away)
+
+#        Module: core
+#    setdccaway <idx> <message>
+
+#        Description: sets a party line user's away message and marks them away. If set to "", the user is marked as no longer away.
+
+#        Returns: nothing
+
+#        Module: core
+#    connect <host> <port>
+
+#        Description: makes an outgoing connection attempt and creates a dcc entry for it. A 'control' command should be used immediately after a successful 'connect' so no input is lost.
+
+#        Returns: idx of the new connection
+
+#        Module: core
+#    listen <port> <type> [options] [flag]
+
+#        Description: opens a listening port to accept incoming telnets; type must be one of "bots", "all", "users", "script", or "off":
+
+#            listen <port> bots [mask]
+
+#                Description: accepts connections from bots only; the optional mask is used to identify permitted bot names. If the mask begins with '@', it is interpreted to be a mask of permitted hosts to accept connections from.
+
+#                Returns: port number
+#            listen <port> users [mask]
+
+#                Description: accepts connections from users only (no bots); the optional mask is used to identify permitted nicknames. If the mask begins with '@', it is interpreted to be a mask of permitted hosts to accept connections from.
+
+#                Returns: port number
+#            listen <port> all [mask]
+
+#                Description: accepts connections from anyone; the optional mask is used to identify permitted nicknames/botnames. If the mask begins with '@', it is interpreted to be a mask of permitted hosts to accept connections from.
+
+#                Returns: port number
+#            listen <port> script <proc> [flag]
+
+#                Description: accepts connections which are immediately routed to a proc. The proc is called with one parameter: the idx of the new connection. Flag may currently only be 'pub', which makes the bot allow anyone to connect.
+
+#                Returns: port number
+#            listen <port> off
+
+#                Description: stop listening on a port
+
+#                Returns: nothing
+
+#        Module: core
+#    dccdumpfile <idx> <filename>
+
+#        Description: dumps out a file from the text directory to a dcc chat user. The flag matching that's used everywhere else works here, too.
+
+#        Returns: nothing
+
+#        Module: core
+
+
+
+##other sections
+
+proc connect {host port} {
+	return 0
+}
