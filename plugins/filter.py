@@ -66,12 +66,13 @@ class leetFilter():
         pass
     
     def filter(self, text):
-        for i in range(len(text)):
-            leets = self.mappings.get(text[i], [])
+        result = ''
+        for char in text:
+            leets = self.mappings.get(char, [char])
             if len(leets) == 0:
                 continue
-            text = text[:i] + leets[random.randint(0, len(leets) - 1)] + text[i+1:]
-        return text
+            result += leets[random.randint(0, len(leets) - 1)]
+        return result
             
 
 class filter(object):
