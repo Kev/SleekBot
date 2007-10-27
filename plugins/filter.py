@@ -22,6 +22,17 @@ import re
 import random
 from xml.etree import ElementTree as ET
 
+class robberFilter():
+    def filter(self, text):
+        consonants = 'bcdfghjklmnpqrstvwxz'
+        outstring = ''
+        for char in text:
+            if char in consonants:
+                outstring = outstring + char + 'o' + char
+            else:
+                outstring += char
+        return outstring
+
 class leetFilter():
     def __init__(self):
         self.mappings = {
@@ -72,6 +83,7 @@ class filter(object):
         self.bot.addHelp('filter', 'Text filter command', "Parses the text through a filter.", 'filter filtertype text')
         self.availableFilters = {}
         self.availableFilters['leet'] = leetFilter()
+        self.availableFilters['robber'] = robberFilter()
 
     def handle_filter(self, command, args, msg):
         if args == None or args == "" or len(args.split(" ")) < 2:
