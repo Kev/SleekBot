@@ -107,6 +107,10 @@ class diceCalc(object):
 		self.inputstr = inputstr
 		self.total = 0
 		self.calc = inputstr
+		valid = re.compile('^[0-9d()+\-*/ ]+$')
+		if valid.match(inputstr) is None:
+			self.total = "%s is not a valid dice calc." % inputstr
+			return
 		finddice = re.compile('[0-9]*d[0-9]+')
 		while True:
 				match = finddice.search(self.calc)

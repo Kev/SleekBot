@@ -16,7 +16,7 @@ class remember(object):
 		self.idlemin = int(self.config.get('idlemin', 60))
 		self.idlemax = int(self.config.get('idlemax', 600))
 		self.bot.add_event_handler("groupchat_message", self.handle_message_event, threaded=True)
-		self.search = re.compile("(([Tt]he|[mM]y)[\s\w\-0-9]+ (is|are|can|has|got)|I am|i am|I'm|(?=^|,|\.\s|\?)?[\w'0-9\-]+ (is|are|can|got|has))[\s\w'0-9\-]+")
+		self.search = re.compile("""(([Tt]he|[mM]y)[\s\w\-0-9]+ (is|are|can|has|got)|I am|i am|I'm|(?=^|,|\.\s|\?)?[\w'0-9\-]+ (is|are|can|got|has))[\s\w'0-9\-:$@%^&*"]+""")
 		self.prep = ["Let's see... %s.", '%s.', 'I know that %s.', 'I heard that %s.', 'Rumor has it that %s.', 'Did you hear that %s?', 'A little bird told me that %s.', '%s?!??!']
 		self.bot.addIMCommand('know', self.handle_know_request)
 		self.bot.addMUCCommand('know', self.handle_know_request)
@@ -35,14 +35,15 @@ class remember(object):
 				for word in msgs:
 					if len(word) < 5:
 						msg.remove(word)
-				if len(msg) > 0:
+				while len(msg) > 0:
 					searchword = msg[random.randint(0, len(msg) - 1)]
 					reply = self.searchKnow(searchword)
 					if not reply:
-						reply = self.knowledge()
-				else:
-					reply = self.knowledge()
-				self.bot.sendMessage(self.lastroom, reply, mtype='groupchat')
+						reply = msg.remove(searchword)
+					else:
+						self.bot.sendMessage(self.lastroom, reply, mtype='groupchat')
+						self.lastmessage = ''
+						break
 	
 	def handle_know_request(self, command, args, msg):
 		if args:
