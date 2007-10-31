@@ -21,7 +21,6 @@ class diceroll(object):
 			traceback.print_exc()
 			return "Invalid dice calculation."
 		
-
 class Die(object):
 	def __init__(self, sides):
 		self.sides = sides
@@ -37,6 +36,13 @@ class Die(object):
 			dielist.append(Die(self.sides))
 		return Dice(dielist)
 	
+	def __cmp__(self, other):
+		if self.value > other.value:
+			return 1
+		if self.value < other.value:
+			return -1;
+		return 0
+		
 	def __retr__(self):
 		return self.__str__()
 	
@@ -44,6 +50,7 @@ class Die(object):
 		if self.value == 0:
 			self.roll()
 		return "d%s: %s" % (self.sides, self.value)
+		
 			
 class Dice(object):
 	def __init__(self, dice_list):
@@ -59,9 +66,27 @@ class Dice(object):
 		self.base = self.total
 		return self.total
 	
+	def dropLow(self, number):
+		self.dice_list.sort()
+		sum = 0
+		for die in self.dice_list[number:] :
+			sum += die.value
+		return sum
+	
+	def dropHigh(self, number):
+		self.dice_list.sort()
+		sum = 0
+		for die in self.dice_list[:(-1*number)] :
+			sum += die.value
+		return sum
+		
 	def __repr__(self):
 		return self.show()
 	
+	def sort(self):
+		self.dice_list.sort()
+		return self
+		
 	def show(self):
 		if self.total == 0:
 			self.roll()
@@ -119,6 +144,7 @@ class diceCalc(object):
 				print match.group()
 				self.dicesets.append(self.dstring(match.group()))
 				self.dicesets[-1].roll()
+				self.dicesets[-1].sort()
 				self.calc = self.calc[:match.start()] + str(self.dicesets[-1].total) + self.calc[match.end():]
 		self.total = eval(self.calc)
 
@@ -130,12 +156,15 @@ class diceCalc(object):
 	
 	def show(self):
 		#output = "%s = %s\n" % (self.calc, self.total)
-		output = "%s\n" % self.total
+		output = "Total: %s\n" % self.total
+		numDice = 0
 		dicelist = []
 		for dice in self.dicesets:
+			dice.dice_list.sort()
 			for die in dice.dice_list:
-				dicelist.append(str(die))
+				dicelist.append( str(die) )
+				numDice += 1
+		if numDice < 2 :
+			output = ""
 		output += ', '.join(dicelist)
 		return output
-		
-
