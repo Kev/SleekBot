@@ -45,4 +45,6 @@ class xmChannel(object):
 		channelNumber = self.data[begindex : endex]
 		
 		output = channelNumber + " - " + channelName + " is playing \"" + title + "\" by " + artist
+		if output.find("<paddata>") > 0:
+			x = 4/0
 		return output
