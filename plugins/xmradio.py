@@ -46,5 +46,5 @@ class xmChannel(object):
 		
 		output = channelNumber + " - " + channelName + " is playing \"" + title + "\" by " + artist
 		if output.find("<paddata>") > 0:
-			x = 4/0
+			raise Exception, "No channel info found."
 		return output
