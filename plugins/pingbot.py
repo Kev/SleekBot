@@ -30,7 +30,7 @@ class pingbot(object):
 			
 	def handle_ping(self, command, args, msg):
 		latency = self.bot['xep_0199'].sendPing(args, 10)
-		if latency == False:
+		if latency == None:
 			response = "No response when pinging " + args
 		else:
 			response = "Ping response received from %s in %d seconds." % (args, latency)
