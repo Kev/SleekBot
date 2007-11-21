@@ -111,7 +111,7 @@ class sleekmotion(object):
         logging.debug("sleekmotion getting value for '%s'" %varname)
         
         if varname not in self.store.store.keys():
-            return "funny thing from an amusing list I've not defined yet"
+            return "funny thing from an amusing list I've not defined yet (%s)" % varname
         
         return self.store.store[varname][random.randint(0,len(self.store.store[varname])-1)]
         
