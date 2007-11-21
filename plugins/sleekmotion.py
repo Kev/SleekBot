@@ -121,6 +121,13 @@ class sleekmotion(object):
         while not r.search(modified) == None:
             varname = r.search(modified).group('varname')
             modified = re.sub(r, self.variableValue(varname), modified)
+        
+        ready = False
+        
+        while not ready:
+            newModified = self.parseResponse(modified, message)
+            ready = newModified == modified
+            modified = newModified
         return modified
     
         
