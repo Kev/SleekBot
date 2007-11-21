@@ -23,6 +23,8 @@ class bmotion_simples(object):
     def __init__(self, bot, config):
         self.bot = bot
         self.config = config
+        
+        
         self.bot.botplugin['sleekmotion'].addValues('blessyous', [
             "gesuntheit",
             "bless you",

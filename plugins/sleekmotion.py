@@ -70,6 +70,8 @@ class sleekmotion(object):
                 self.botNicks.append(nick.text)
         
         self.bot.add_event_handler("groupchat_message", self.handle_message, threaded=True)
+        import sleekmotion_abstracts
+        sleekmotion_abstracts.importInto(self)
         
     def registerTrigger(self, name, regexp, frequency, response):
         """ Add a trigger, with id 'name', triggered when text matches 'regexp', 
