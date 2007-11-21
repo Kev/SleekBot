@@ -90,7 +90,7 @@ class sleekmotion(object):
     def ruser(self):
         """ Returns a random nickname that the bot knows about.
         """
-        self.store['names'] = ["Kev",'albert','remko','textshell','hal','infiniti','psidekick','xepbot']
+        self.store.store['names'] = ["Kev",'albert','remko','textshell','hal','infiniti','psidekick','xepbot']
         return self.store['names'](random.randint(0,len(self.store[names])-1))
     
     def variableValue(self, varname):
