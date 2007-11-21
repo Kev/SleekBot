@@ -91,7 +91,7 @@ class sleekmotion(object):
         """ Returns a random nickname that the bot knows about.
         """
         self.store.store['names'] = ["Kev",'albert','remko','textshell','hal','infiniti','psidekick','xepbot']
-        return self.store['names'](random.randint(0,len(self.store[names])-1))
+        return self.store.store['names'](random.randint(0,len(self.store[names])-1))
     
     def variableValue(self, varname):
         """ Return a random value from a variable.
