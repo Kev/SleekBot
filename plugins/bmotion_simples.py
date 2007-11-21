@@ -65,6 +65,6 @@ class bmotion_simples(object):
 
         self.bot.botplugin['sleekmotion'].registerTrigger("notbot", "%botnicks('s| is) a bot", 60, "notbots")
 
-        self.bot.botplugin['sleekmotion'].registerTrigger("arebot", "((is %botnicks a bot)|(are you a bot,? %botnicks)|(^%botnicks%:? are you a bot))", 60, "%VAR{nos}")
+        self.bot.botplugin['sleekmotion'].registerTrigger("arebot", "((is %botnicks a bot)|(are you a bot,? %botnicks)|(^%botnicks:? are you a bot))", 60, "%VAR{nos}")
  
 

@@ -62,6 +62,13 @@ class sleekmotion(object):
         #self.bot.addMUCCommand('chatiness', self.handle_chatiness)
         #self.bot.addHelp('chatiness', 'Chatiness command', "Multiplier for the chatiness of a bot.", 'chatiness 0-100')
         self.commands = {}
+        self.botNicks = ['sleek']
+        nicks = self.config.findall('botNick')
+        if nicks:
+            self.botNicks = []
+            for nick in nicks:
+                self.botNicks.append(nick.text)
+        
         self.bot.add_event_handler("groupchat_message", self.handle_message, threaded=True)
         
     def registerTrigger(self, name, regexp, frequency, response):
@@ -131,10 +138,21 @@ class sleekmotion(object):
             modified = newModified
         return modified
     
+    def botNickRegexp(self):
+        """ Returns a regexp string matching bot nicks.
+        """
+        return "(%s)" % "|".join(self.botNicks)
+    
     def parseTrigger(self, trigger):
         """ Parse special strings from a trigger regexp.
         """
-        return trigger
+        r = re.compile('%botnicks')
+        modified = trigger
+        while not r.search(modified) == None:
+            modified = re.sub(r, self.botNickRegexp(), modified)
+        
+        logging.debug("trigger transformed to '%s'" % modified)
+        return modified
         
     def handle_message(self, message):
         body = message.get('message', '')
