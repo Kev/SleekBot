@@ -32,8 +32,8 @@ class sneezes(object):
             "hehe, someone must be talking about you %VAR{smiles}",
             "good thing I bought this haz-mat suit",
             "Rogue bogey!",
-            "/ducks",
-            '/hides behind %ruser',
+            "/me ducks",
+            '/me hides behind %ruser',
             "Great. Now I'm gonna get a cold %VAR{unsmiles}",
             "Eek. Don't give it to me",
             "%% - I recommend %VAR{sillyThings}"])
