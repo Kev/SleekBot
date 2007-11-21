@@ -23,7 +23,7 @@ class sneezes(object):
     def __init__(self, bot, config):
         self.bot = bot
         self.config = config
-        self.bot['sleekmotion'].store('blessyous', [
+        self.bot.botplugin['sleekmotion'].addValues('blessyous', [
             "gesuntheit",
             "bless you",
             "Bless you",
@@ -38,7 +38,7 @@ class sneezes(object):
             "Eek. Don't give it to me",
             "%% - I recommend %VAR{sillyThings}"])
         self.about = "'sneezes' Says thing when people sneeze. \nBased on the bMotion plugin.\nWritten by Kevin Smith"
-        self.bot['sleekmotion'].addReaction('sneeze', '^\*?(/me sneezes|.hatsjoe|wachoo|sneezes|.a+tchoo+)', 60, 'blessyous')
+        self.bot.botplugin['sleekmotion'].registerTrigger('sneeze', '^\*?(/me sneezes|.hatsjoe|wachoo|sneezes|.a+tchoo+)', 60, 'blessyous')
         
             
 

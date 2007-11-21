@@ -61,11 +61,12 @@ class sleekmotion(object):
         #self.bot.addIMCommand('chatiness', self.handle_chatiness)
         #self.bot.addMUCCommand('chatiness', self.handle_chatiness)
         #self.bot.addHelp('chatiness', 'Chatiness command', "Multiplier for the chatiness of a bot.", 'chatiness 0-100')
-        self.commands = []
+        self.commands = {}
+        self.bot.add_event_handler("groupchat_message", self.handle_message, threaded=True)
         
     def registerTrigger(self, name, regexp, frequency, response):
         """ Add a trigger, with id 'name', triggered when text matches 'regexp', 
-            with a frequency%, and where the response is either a list or function.
+            with a frequency%, and where the response is either a var name or function.
         """
         responses = None
         function = None
@@ -73,14 +74,15 @@ class sleekmotion(object):
             function = response
         else:
             responses = response
-        command = {'regexp':trigger, 'frequency':frequency, 'function':function, 'responses':responses}
+        command = {'name':name, 'regexp':regexp, 'frequency':frequency, 'function':function, 'responseVar':responses}
         self.commands[name] = command
+        logging.debug("Registering trigger '%s' (%s) " %(name,regexp))
     
-    def store(self, varName, values):
+    def addValues(self, varName, values):
         """ Adds the list of values to the variable in the store.
         """
-        if value in values:
-            if self.store.store[varName] == None:
+        for value in values:
+            if varName not in self.store.store.keys():
                 self.store.store[varName] = []
             if value not in self.store.store[varName]:
                 self.store.store[varName].append(value)
@@ -94,7 +96,12 @@ class sleekmotion(object):
     def variableValue(self, varname):
         """ Return a random value from a variable.
         """
-        return self.store[varname](random.randint(0,len(self.store[varname])-1))
+        logging.debug("sleekmotion getting value for '%s'" %varname)
+        
+        if varname not in self.store.store.keys():
+            return "funny thing from an amusing list I've not defined yet"
+        
+        return self.store.store[varname][random.randint(0,len(self.store.store[varname])-1)]
         
     def parseResponse(self, response, message):
         """ Parses special strings out of the response.
@@ -115,19 +122,20 @@ class sleekmotion(object):
     
         
     def handle_message(self, message):
-        body = msg.get('message', '')
+        body = message.get('message', '')
+        logging.debug("sleekmotion handling message body '%s'" % body)
         for trigger in self.commands.values():
-            if re.compile(trigger.regexp).search(body):
-                if not trigger.function == None:
-                    response = self.commands[trigger](body, message)
+            logging.debug("Comparing for trigger '%s'" % trigger['regexp'])
+            if re.compile(trigger['regexp']).search(body):
+                if not trigger['function'] == None:
+                    response = trigger.function(body, message)
                 else:
-                    response = trigger.responses(random.randint(0,len(trigger.responses)-1))
-                
+                    response = self.variableValue(trigger['responseVar'])
                 response = self.parseResponse(response, message)
-                
-                if msg['type'] == 'groupchat':
-                    self.sendMessage("%s" % message.get('room', ''), response, mtype=message.get('type', 'groupchat'))
+                logging.debug("Responding with '%s'" % response)
+                if message['type'] == 'groupchat':
+                    self.bot.sendMessage("%s" % message.get('room', ''), response, mtype=message.get('type', 'groupchat'))
                 else:
-                    self.sendMessage("%s/%s" % (message.get('jid', ''), message.get('resource', '')), response, mtype=message.get('type', 'chat'))
+                    self.bot.sendMessage("%s/%s" % (message.get('jid', ''), message.get('resource', '')), response, mtype=message.get('type', 'chat'))
         
     
