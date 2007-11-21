@@ -1,5 +1,5 @@
 """
-    sneezes.py - A plugin which reacts to sneezes.
+    bmotion_simples.py - A port of the bmotion simple stuffs.
     Copyright (C) 2007 Kevin Smith
 
     SleekBot is free software; you can redistribute it and/or modify
@@ -19,7 +19,7 @@
 
 import logging
 
-class sneezes(object):
+class bmotion_simples(object):
     def __init__(self, bot, config):
         self.bot = bot
         self.config = config
@@ -37,8 +37,18 @@ class sneezes(object):
             "Great. Now I'm gonna get a cold %VAR{unsmiles}",
             "Eek. Don't give it to me",
             "%% - I recommend %VAR{sillyThings}"])
-        self.about = "'sneezes' Says thing when people sneeze. \nBased on the bMotion plugin.\nWritten by Kevin Smith"
-        self.bot.botplugin['sleekmotion'].registerTrigger('sneeze', '^\*?(/me sneezes|.hatsjoe|wachoo|sneezes|.a+tchoo+)', 60, 'blessyous')
-        
             
+        self.bot.botplugin['sleekmotion'].addValues('goonthens', ["sssh sekrit",  "go on then", "oh go on then", "ok then, but don't tell anyone"])
+            
+        self.about = "'bmotion_simples' Simple ports of all the bmotion simple plugins. \nBased on the bMotion plugin.\nWritten by Kevin Smith"
+        
+        self.bot.botplugin['sleekmotion'].registerTrigger('sneeze', '^\*?(/me sneezes|.hatsjoe|wachoo|sneezes|.a+tchoo+)', 60, 'blessyous')
+        self.bot.botplugin['sleekmotion'].registerTrigger("zzz","^zzz+",50, 'handcoffees')
+        self.bot.botplugin['sleekmotion'].registerTrigger("takethat","^take that!",60, ["and party!","and party"])
+        self.bot.botplugin['sleekmotion'].registerTrigger("wrongsmiley",'{^L\($}' 60 ["taunt","fail","WORST. SMILEY. EVER.","try realigning your fingers for that one","E_SMILEY"])
+        self.bot.botplugin['sleekmotion'].registerTrigger("bisto","^ahh+$",10, "Bisto!")
+        self.bot.botplugin['sleekmotion'].registerTrigger("thinkso","^(no, )?i do(n't| not) think so",10, ["Mr Negative","I DO think so.", "and what would you know?"])
+        self.bot.botplugin['sleekmotion'].registerTrigger("littlebit", "(what, )?not even a little bit", 40, "goonthens")
+
+ 
 

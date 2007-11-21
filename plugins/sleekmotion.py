@@ -72,6 +72,9 @@ class sleekmotion(object):
         function = None
         if type(response) == type(self.registerTrigger):
             function = response
+        
+        if type(response) == type([]):
+        
         else:
             responses = response
         command = {'name':name, 'regexp':regexp, 'frequency':frequency, 'function':function, 'responseVar':responses}
@@ -127,6 +130,8 @@ class sleekmotion(object):
         for trigger in self.commands.values():
             logging.debug("Comparing for trigger '%s'" % trigger['regexp'])
             if re.compile(trigger['regexp']).search(body):
+                if random.randint(0,100) < trigger['frequency'] * self.store.chatiness:
+                    continue
                 if not trigger['function'] == None:
                     response = trigger.function(body, message)
                 else:
