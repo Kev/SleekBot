@@ -37,18 +37,34 @@ class bmotion_simples(object):
             "Great. Now I'm gonna get a cold %VAR{unsmiles}",
             "Eek. Don't give it to me",
             "%% - I recommend %VAR{sillyThings}"])
-            
+        
         self.bot.botplugin['sleekmotion'].addValues('goonthens', ["sssh sekrit",  "go on then", "oh go on then", "ok then, but don't tell anyone"])
+        
+        self.bot.botplugin['sleekmotion'].addValues('here_responses',[        "%VAR{nos}"])
+        
+        self.bot.botplugin['sleekmotion'].addValues('notbots', ["no I'm not",
+          "am not %VAR{unsmiles}",
+          "am not",
+          "LIES.",
+          "SILENCE%FUNC{colen}",
+          "LIES, ALL LIES%|(unless a witness steps forward)",
+          "/me smothers %%%|shh, someone will hear",
+          "shh%|sekrit"])
             
         self.about = "'bmotion_simples' Simple ports of all the bmotion simple plugins. \nBased on the bMotion plugin.\nWritten by Kevin Smith"
         
         self.bot.botplugin['sleekmotion'].registerTrigger('sneeze', '^\*?(/me sneezes|.hatsjoe|wachoo|sneezes|.a+tchoo+)', 60, 'blessyous')
         self.bot.botplugin['sleekmotion'].registerTrigger("zzz","^zzz+",50, 'handcoffees')
         self.bot.botplugin['sleekmotion'].registerTrigger("takethat","^take that!",60, ["and party!","and party"])
-        self.bot.botplugin['sleekmotion'].registerTrigger("wrongsmiley",'{^L\($}' 60 ["taunt","fail","WORST. SMILEY. EVER.","try realigning your fingers for that one","E_SMILEY"])
+        self.bot.botplugin['sleekmotion'].registerTrigger("wrongsmiley",'{^L\($}', 60, ["taunt","fail","WORST. SMILEY. EVER.","try realigning your fingers for that one","E_SMILEY"])
         self.bot.botplugin['sleekmotion'].registerTrigger("bisto","^ahh+$",10, "Bisto!")
-        self.bot.botplugin['sleekmotion'].registerTrigger("thinkso","^(no, )?i do(n't| not) think so",10, ["Mr Negative","I DO think so.", "and what would you know?"])
+        self.bot.botplugin['sleekmotion'].registerTrigger("thinkso","^(no, )?(i|I) do(n't| not) think so",10, ["Mr Negative","I DO think so.", "and what would you know?"])
         self.bot.botplugin['sleekmotion'].registerTrigger("littlebit", "(what, )?not even a little bit", 40, "goonthens")
 
+        self.bot.botplugin['sleekmotion'].registerTrigger("here","^any ?(one|body) (here|alive|talking)", 40, "here_responses")
+
+        self.bot.botplugin['sleekmotion'].registerTrigger("notbot", "%botnicks('s| is) a bot", 60, "notbots")
+
+        self.bot.botplugin['sleekmotion'].registerTrigger("arebot", "((is %botnicks a bot)|(are you a bot,? %botnicks)|(^%botnicks%:? are you a bot))", 60, "%VAR{nos}")
  
 

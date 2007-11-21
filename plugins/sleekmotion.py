@@ -70,14 +70,14 @@ class sleekmotion(object):
         """
         responses = None
         function = None
+        responseList = None
         if type(response) == type(self.registerTrigger):
             function = response
-        
-        if type(response) == type([]):
-        
+        elif type(response) == type([]):
+            responseList = response
         else:
             responses = response
-        command = {'name':name, 'regexp':regexp, 'frequency':frequency, 'function':function, 'responseVar':responses}
+        command = {'name':name, 'regexp':regexp, 'frequency':frequency, 'function':function, 'responseVar':responses, 'responseList':responseList}
         self.commands[name] = command
         logging.debug("Registering trigger '%s' (%s) " %(name,regexp))
     
@@ -109,6 +109,7 @@ class sleekmotion(object):
     def parseResponse(self, response, message):
         """ Parses special strings out of the response.
         """
+        logging.debug("Parsing response '%s'" % response)
         r = re.compile('%ruser')
         
         modified = response
@@ -122,25 +123,32 @@ class sleekmotion(object):
             varname = r.search(modified).group('varname')
             modified = re.sub(r, self.variableValue(varname), modified)
         
-        ready = False
+        ready = (response == modified)
         
         while not ready:
             newModified = self.parseResponse(modified, message)
-            ready = newModified == modified
+            ready = (newModified == modified)
             modified = newModified
         return modified
     
+    def parseTrigger(self, trigger):
+        """ Parse special strings from a trigger regexp.
+        """
+        return trigger
         
     def handle_message(self, message):
         body = message.get('message', '')
         logging.debug("sleekmotion handling message body '%s'" % body)
         for trigger in self.commands.values():
             logging.debug("Comparing for trigger '%s'" % trigger['regexp'])
-            if re.compile(trigger['regexp']).search(body):
+            if re.compile(self.parseTrigger(trigger['regexp'])).search(body):
                 if random.randint(0,100) < trigger['frequency'] * self.store.chatiness:
+                    logging.debug("Deciding not to respond to match")
                     continue
                 if not trigger['function'] == None:
                     response = trigger.function(body, message)
+                elif not trigger['responseList'] == None:
+                        response = trigger['responseList'][random.randint(0,len(trigger['responseList'])-1)]
                 else:
                     response = self.variableValue(trigger['responseVar'])
                 response = self.parseResponse(response, message)
