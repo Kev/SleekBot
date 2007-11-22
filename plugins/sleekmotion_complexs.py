@@ -38,6 +38,8 @@ class sleekmotion_complexs(object):
         t("wins", "^%botnicks:? (wins|exactly|precisely|perfect|nice one|yes)[!1.]*$", 100, self.wins)
         t("wins2", "(nice one|well said|exactly|previsely|perfect|right one|yes|victory for),? %botnicks[!1.]*$", 100, self.wins)
         t("watchout", "^%botnicks,?:? (watchout|watch out|watch it|careful|run( for (it|the hills))?|hide|duck)!?", 100, self.watchout)
+        v("woots", ["i like %%", "\\o/", "%REPEAT{3:7} %%", "\\o/ %%", "hurrah", "wh%REPEAT{3:7:e} %%", "%VAR{smiles}"])
+        t("woot", "^[a-zA-Z0-9]+[!1~]+$", 5, self.woot)
         
     def xmas(self, nick, jid, handle, body, message):
         self.bot.botplugin['sleekmotion'].makeHappy()
@@ -59,3 +61,11 @@ class sleekmotion_complexs(object):
         self.bot.botplugin['sleekmotion'].makeUnLonely()
         self.bot.botplugin['sleekmotion'].driftFriendship(handle,1)
         return "%VAR{hides}"
+    
+    def woot(self, nick, jid, handle, body, message):
+        response = self.bot.botplugin['sleekmotion'].variableValue("woots")
+        item = re.compile('^(?P<item>[a-zA-Z0-9]+)[!1~]+$').search(body).group('item')
+        r = re.compile('%%')
+        while r.search(response):
+            response = re.sub(r, item, response)
+        return response
