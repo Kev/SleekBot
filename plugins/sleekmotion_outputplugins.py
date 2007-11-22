@@ -27,6 +27,13 @@ def pinkytransform(oldstring):
     output += " %VAR{narfs}"
     return output
 
+def gollumtransform(oldstring):
+    output = oldstring
+    if re.compile('[.!?]$').search(oldstring):
+      output += "."
+    output += " %VAR{preciouses}"
+    return output
+
 def typostransform( oldstring):
     corrections = []
     wordpairs = {'the':'teh','is':'si','I':'i'}
@@ -82,5 +89,6 @@ class sleekmotion_outputplugins(object):
         plugins = []
         plugins.append({'name':'typos','function':typostransform,'probability':10})
         plugins.append({'name':'pinky','function':pinkytransform,'probability':10})
+        plugins.append({'name':'gollum','function':gollumtransform,'probability':10})
         for plugin in plugins:
             self.bot.botplugin['sleekmotion'].registerOutputPlugin(plugin)

@@ -2020,3 +2020,5 @@ def importInto(sleekmotion):
     ])
 
     i("narfs",["zort!", "narf", "poit.", "poit!", "narf!"])
+
+    i("preciouses",["my precious", "precious", "preciouses", "the precious"])
