@@ -88,6 +88,7 @@ def typostransform( oldstring):
         if r.search(output) and random.randint(0,100) < typochance:
             modified = re.sub(r, flip[1], output)
             corrections.append("s/%s/%s/" %(flip[1],flip[0]))
+            modified = re.sub(r, flip[1], modified)
             typochance *= 0.6
 
     if len(corrections) > 0:

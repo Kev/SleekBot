@@ -121,7 +121,7 @@ class sleekmotion(object):
         """
         response = ""
         colen = ["!","$","%","^","&","*","(",")","@","#"]
-        for i in random.randint(4,12):
+        for i in range(random.randint(4,12)):
             response = response + colen[random.randint(0,len(colen)-1)]
         return response
     
@@ -177,14 +177,14 @@ class sleekmotion(object):
             min = int(r.search(modified).group('min'))
             max = int(r.search(modified).group('max'))
             replacement = ""
-            for i in random.randint(min,max):
+            for i in range(random.randint(min,max)):
                 replacement = replacement + string
             modified = re.sub(r, replacement, modified)
         
         #TODO
         #/action
         #%NUMBER{}
-
+        #%me
         ready = (response == modified)
         
         while not ready:

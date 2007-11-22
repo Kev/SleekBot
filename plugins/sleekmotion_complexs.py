@@ -34,6 +34,9 @@ class sleekmotion_complexs(object):
         
         t("xmas", "(merry|happy|have a good) (xmas|christmas|chrismas|newyear|new year) %botnicks", 100, self.xmas)
         t("asl", "^([a-zA-Z]+(:|,| )*)?a/?s/?l\??$", 100, self.asl)
+        v("wins",["victory for %me%colen", "this victory strengthens the soul of %me!", "%VAR{harhars}", "%VAR{thanks}", "wh%REPEAT{2:6:e}! do I get %VAR{sillyThings} now?"])
+        t("wins", "^%botnicks:? (wins|exactly|precisely|perfect|nice one|yes)[!1.]*$", 100, self.wins)
+        t("wins2", "(nice one|well said|exactly|previsely|perfect|right one|yes) %botnicks[!1.]*$", 100, self.wins)
         
     def xmas(self, nick, jid, handle, body, message):
         self.bot.botplugin['sleekmotion'].makeHappy()
@@ -44,3 +47,9 @@ class sleekmotion_complexs(object):
     
     def asl(self, nick, jid, handle, body, message):
         return "%s: %d/%s/%s" % (nick, random.randint(12,65), self.bot.botplugin['sleekmotion'].getGender(), "%VAR{locations}")
+
+    def wins(self, nick, jid, handle, body, message):
+        self.bot.botplugin['sleekmotion'].makeHappy()
+        self.bot.botplugin['sleekmotion'].makeUnLonely()
+        self.bot.botplugin['sleekmotion'].driftFriendship(handle,1)
+        return "%VAR{wins}"
