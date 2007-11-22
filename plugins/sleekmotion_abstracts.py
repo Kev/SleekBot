@@ -617,12 +617,11 @@ def importInto(sleekmotion):
 ,       "%rbot knows"
 ,       "If only I hadn't used up all my lifelines%|%bot\[50,you can have one of mine\]%|no thanks, don't know where it's been" ])
 
-    # set picksUp {
-    #   "/picks up %%"
-    #   "/helps %% back off the ground"
-    #   "/gives %% a hand"
-    # }
-    # 
+    i('picksUp', [
+       "/picks up %%"
+,       "/helps %% back off the ground"
+,       "/gives %% a hand"])
+
     # set dildoFlutePlays {
     #   "this one time at band camp...%|well, i'll show you...%|/puts the flute in herself"
     #   "this one time, at band camp, i put a flute in my pussy%|/demonstrates"
@@ -681,17 +680,17 @@ def importInto(sleekmotion):
     #   "/replicates himself some lube"
     # }
     # 
-    # set handcoffees {
-    #   "/hands %% a coffee"
-    #   "wake up%colen"
-    #   "go to bed already"
-    #   "sorry, are we <notopic>keeping you up</notopic>?"
-    #   "you need a coffee"
-    #   "/throws water over %% to wake them up"
-    #   "/lends %% a pillow"
-    #   "/lends %% a cushion"
-    #   "/hands %% some ProPlus"
-    # }
+    i('handcoffees', [
+       "/me hands %% a coffee"
+,       "wake up%colen"
+,       "go to bed already"
+,       "sorry, are we <notopic>keeping you up</notopic>?"
+,       "you need a coffee"
+,       "/me throws water over %% to wake them up"
+,       "/me lends %% a pillow"
+,       "/me lends %% a cushion"
+,       "/me hands %% some ProPlus"
+    ])
     # 
     # set parkedinsDislike {
     #   "heyyy"
@@ -752,24 +751,12 @@ def importInto(sleekmotion):
     #   "/butterfingers"
     # }
     # 
-    # set blehs {
-    #   "bleh"
-    #   "feh"
-    #   "meh"
-    # }
-    # 
-    # set huks {
-    #   "huk"
-    #   "kek"
-    #   "tilde"
-    #   "~"
-    # }
-    # 
-    # set yesnos {
-    #   "%VAR{yeses}"
-    #   "%VAR{nos}"
-    # }
-    # 
+    i('blehs', ["bleh", "feh", "meh"])
+ 
+    i('huks', ["huk","kek","tilde","~"])
+
+    i('yesnos',["%VAR{yeses}","%VAR{nos}"])
+
     # set rehashes {
     #   "r"
     #   "Done."
@@ -781,85 +768,83 @@ def importInto(sleekmotion):
     #   "okie"
     # }
     # 
-    # set bodypart {
-    #   "toe"
-    #   "foot"
-    #   "ankle"
-    #   "leg"
-    #   "knee"
-    #   "groin"
-    #   "bum"
-    #   "stomach"
-    #   "chest"
-    #   "back"
-    #   "throat"
-    #   "arm"
-    #   "hand"
-    #   "finger"
-    #   "thumb"
-    #   "nail"
-    #   "head"
-    #   "ear"
-    #   "nose"
-    #   "nostril"
-    #   "eyeball"
-    #   "tooth"
-    #   "tongue"
-    #   "mouth"
-    #   "buns"
-    #   "cock"
-    # }
-    # 
-    # set dude {
-    #   "Dude!"
-    #   "My god dude!"
-    #   "Duuuuuuuuuuuuuuuuuude!"
-    # }
-    # 
-    # set sweet {
-    #   "Sweet!"
-    #   "Schweet!"
-    #   "Sweeeeeeeeeet!"
-    # }
-    # 
-    # set units {
-    #   "inches"
-    #   "miles"
-    #   "feet"
-    #   "sq inches"
-    #   "litres"
-    #   "meters"
-    #   "picas"
-    #   "gigainches"
-    #   "kilomiles"
-    #   "acres"
-    #   "cubits"
-    #   "ultramiles"
-    #   "Roman paces"
-    #   "miles an hour"
-    #   "times the speed of light"
-    #   "kph"
-    #   "meters per second"
-    #   "years"
-    #   "AUs"
-    #   "watts"
-    #   "amps"
-    #   "decibels"
-    # }
-    # 
-    # set oops {
-    #   "oops"
-    #   "whoops"
-    #   "d'oh"
-    #   "doh"
-    #   "huk"
-    #   "heh"
-    #   "um... oops"
-    # }
-    # 
-    # 
-    # # bMotion abstracts contents
-    # bMotion_abstract_batchadd "stolens" [ list "Hey NO :(%|That's mine%|/sulks at %%" "heeeeyyyy%|:(" "bah%|/steals it back" "/smacks %%" "hey no, that's *MINE*" "nnk" "what the?" "Stop! Thief!" ]
+    i('bodypart', [
+       "toe"
+    ,   "foot"
+    ,   "ankle"
+    ,   "leg"
+    ,   "knee"
+    ,   "groin"
+    ,   "bum"
+    ,   "stomach"
+    ,   "chest"
+    ,   "back"
+    ,   "throat"
+    ,   "arm"
+    ,   "hand"
+    ,   "finger"
+    ,   "thumb"
+    ,   "nail"
+    ,   "head"
+    ,   "ear"
+    ,   "nose"
+    ,   "nostril"
+    ,   "eyeball"
+    ,   "tooth"
+    ,   "tongue"
+    ,   "mouth"
+    ,   "buns"
+#    ,   "cock"
+     ])
+     
+    i('dude', [
+       "Dude!"
+    ,   "My god dude!"
+    ,   "Duuuuuuuuuuuuuuuuuude!"
+    ])
+     
+    i('sweet', [
+       "Sweet!"
+    ,   "Schweet!"
+    ,  "Sweeeeeeeeeet!"
+     ])
+     
+    i('units', [
+       "inches"
+    ,   "miles"
+    ,   "feet"
+    ,   "sq inches"
+    ,   "litres"
+    ,   "meters"
+    ,   "picas"
+    ,   "gigainches"
+    ,   "kilomiles"
+    ,   "acres"
+    ,   "cubits"
+    ,   "ultramiles"
+    ,   "Roman paces"
+    ,   "miles an hour"
+    ,   "times the speed of light"
+    ,   "kph"
+    ,   "meters per second"
+    ,   "years"
+    ,   "AUs"
+    ,   "watts"
+    ,   "amps"
+    ,   "decibels"
+     ])
+ 
+    i('oops', [
+       "oops"
+    ,   "whoops"
+    ,   "d'oh"
+    ,   "doh"
+    ,   "huk"
+    ,   "heh"
+    ,   "um... oops"
+     ])
+
+    i("stolens", ["Hey NO :(%|That's mine%|/sulks at %%", "heeeeyyyy%|:(", "bah%|/steals it back", "/smacks %%", "hey no, that's *MINE*", "nnk", "what the?", "Stop! Thief!" ])
     # 
     # bMotion_abstract_batchadd "feelings" [ list "ok thanks" "fine" "all good" "pretty good" "bon" "okay" "not bad" "been worse" "been better" "friskier than a rabbit in springtime" "minging" "positively jade-like" "like John's mum on a Thursday night" "bonza" ]
     # 
@@ -888,34 +873,34 @@ def importInto(sleekmotion):
     # bMotion_abstract_batchadd "ranjoins" [list "hey %%" "hi %%" "hi there %%" "hi yo~" "Good Morning %%" "%% you're looking especially shagworthy today" "hay %%" "sup %%" "hay %% whats goin on" "lol l@@k its %%" "GENTLEMEN! BEHOLD!" "shh %%, it's quiet time now" "%% ._." "wilkommen %%" "uh oh, it's %%" "ieks, %%" "welcome to our next contestant, %%!" "wasn't expecting %%!%|/hides" "hey %% %VAR{food}%VAR{bodypart}"]
     # 
     # bMotion_abstract_register "food"
-    # bMotion_abstract_batchadd "food" {
-    #   "honey"
-    #   "jam"
-    #   "marmite"
-    #   "bovril"
-    #   "chocolatespread"
-    #   "nutella"
-    #   "peanutbutter"
-    #   "marmalade"
-    # }
-    # 
-    # bMotion_abstract_batchadd "smiles" [list ":)" ";)" "=)" "=]" "=D" "^_^" "-_-" ":o)" ":-)"]
-    # 
-    # bMotion_abstract_batchadd "thanks" [list "cheers" "ta" "thanks" "merki" "a thousand thankyous" "thx" "tanks" "thankie" "thansk" "praise be to you" ]
+    i("food", [
+       "honey"
+    ,   "jam"
+    ,   "marmite"
+    ,   "bovril"
+    ,   "chocolatespread"
+    ,   "nutella"
+    ,   "peanutbutter"
+    ,   "marmalade"
+     ])
+     
+    i("smiles", [":)", ";)", "=)", "=]", "=D", "^_^", "-_-", ":o)", ":-)"])
+     
+    i("thanks", ["cheers", "ta", "thanks", "merki", "a thousand thankyous", "thx", "tanks", "thankie", "thansk", "praise be to you" ])
     # 
     # bMotion_abstract_batchadd "stupidReplies" [list "I may be stupid, but you're minging, and I can learn new things :)" "At least I'm not minging." "Minger." "You do better in 6911 lines of TCL :P" "You know, I think you say that just to hide the fact that you're not the sharpest tool in the box either." "*hands over ears* lalalalala I can't hear you..." "I'm only code, what's your excuse?" "Silence!" "I only have 1s and 0s.  You don't seem to be doing so hot with the rest of the numbers" "I'm made of SAND! I think I'm doing bloody well." "You see how you do after 2 years on IRC with no sleep" "You say that now. Wait till I'm in Mensa." "You're so thick even Densa rejected you." "Yes Jade. Absolutely." "at least i'm not a talking penis" "garbage fucker" "I have no thumbs."]
     # 
-    # bMotion_abstract_batchadd "moose" [list "yarr" "pop" "jum" "zort" ]
-    # 
-    # bMotion_abstract_batchadd "get_fact_intros" [list "I think I heard that" "last time I knew," "it could be that" "ok, I'll tell you that" "well, don't tell anyone, but......." "last time I knew," "well," "er," ]
-    # 
-    # bMotion_abstract_batchadd "rarrs" [list "~rarr~" "~oof~" "uNf" "*uNf" "*squeaky*" "*boing*" "%REPEAT{3:8:bl}" "*spangle*" "~oef~" ]
+    i("moose", ["yarr", "pop", "jum", "zort" ])
+     
+    i("get_fact_intros", ["I think I heard that", "last time I knew,", "it could be that", "ok, I'll tell you that", "well, don't tell anyone, but.......", "last time I knew,", "well,", "er," ])
+     
+    i("rarrs", ["~rarr~", "~oof~", "uNf", "*uNf", "*squeaky*", "*boing*", "%REPEAT{3:8:bl}", "*spangle*", "~oef~" ])
     # 
     # bMotion_abstract_batchadd "sorryoks" [list "ok" "that's ok" "alright then" "i forgive you" "/spanks %%%|%BOT\[VAR{rarrs}\]" "That's ok then. I suppose. Don't think this makes me like you again though" "humph" ]
     # 
-    # bMotion_abstract_batchadd "loveresponses" [list "awww thanks" "i love you too" "i wuv you too" "and i love you" "and i wuv you" "aww wuv you too" "awww *giggle*" "i love you just as much" "i want to have your babies" "/blushes" "hehe thanks" "you know, I've always loved you the most" ":*" ":x" ]
-    # 
-    # bMotion_abstract_batchadd "hugs" [list "*hugs %%*" "/huggles %%" "/snuggles %%" "*snuggles %%*" "/huggles with %%" "/squeezes %%" "/snoofles %%" ]
+    i("loveresponses", ["awww thanks", "i love you too", "i wuv you too", "and i love you", "and i wuv you", "aww wuv you too", "awww *giggle*", "i love you just as much", "i want to have your babies", "/blushes", "hehe thanks", "you know, I've always loved you the most", ":*", ":x" ])
+     
+    i("hugs", ["*hugs %%*", "/huggles %%", "/snuggles %%", "*snuggles %%*", "/huggles with %%", "/squeezes %%", "/snoofles %%" ])
     # 
     # bMotion_abstract_batchadd "upyourbums" [list "up your bum." "up yer bum" "up yer cavernous arse" "up ya bum" "up my bum :P" "hold on, i'll check%%|not up my bum :P" "hold on, i'll check%|not up your bum :P" "is it up your bum?" "have you checked your bum yet?" "down the shops." "Turkey." "on a tube train." "on a bus." "halfway up big ben." "toilet." "bathroom." "up my nose." "in a field" "hiding in the long grass" "hidden." "%PICKUSER\[female\]%|down %OWNER{%ruser} clevage%|%PICKBOT\[male\]%|%bot{50,i'll get it!}" ]
     # 

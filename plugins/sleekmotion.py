@@ -114,6 +114,15 @@ class sleekmotion(object):
             return "funny thing from an amusing list I've not defined yet (%s)" % varname
         
         return self.store.store[varname][random.randint(0,len(self.store.store[varname])-1)]
+    
+    def getColenChars(self):
+        """ Return 'Colen characters'.
+        """
+        response = ""
+        colen = ["!","$","%","^","&","*","(",")","@","#"]
+        for i in random.randint(4,12):
+            response = response + colen[random.randint(0,len(colen)-1)]
+        return response
         
     def parseResponse(self, response, message):
         """ Parses special strings out of the response.
@@ -126,6 +135,22 @@ class sleekmotion(object):
         while r.search(modified):
             user = self.ruser()
             modified = re.sub(r, user, modified)
+        
+        print type(message)
+        print message
+        
+        r = re.compile('%%')
+        while r.search(modified):
+            if message['type'] == 'groupchat':
+                nick = message['name']
+            else:
+                nick = message['name']
+            modified = re.sub(r, nick, modified)
+        
+        r = re.compile('%colen')
+        while r.search(modified):
+            colen = self.getColenChars()
+            modified = re.sub(r, colen, modified)
             
         r = re.compile('%VAR\\{(?P<varname>.+)\\}')
         while not r.search(modified) == None:
