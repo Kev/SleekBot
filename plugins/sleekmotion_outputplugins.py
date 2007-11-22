@@ -34,16 +34,16 @@ def diddlydotstransform(oldstring):
 
 def pinkytransform(oldstring):
     output = oldstring
-    if re.compile('[.!?]$').search(oldstring):
+    if not re.compile('[.!?]$').search(oldstring):
       output += "."
-    output += " %VAR{narfs}"
+    output += " %VAR{narfs}."
     return output
 
 def gollumtransform(oldstring):
     output = oldstring
-    if re.compile('[.!?]$').search(oldstring):
+    if not re.compile('[.!?]$').search(oldstring):
       output += "."
-    output += " %VAR{preciouses}"
+    output += " %VAR{preciouses}."
     return output
 
 def typostransform( oldstring):
