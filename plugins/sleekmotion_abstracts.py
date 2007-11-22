@@ -884,185 +884,170 @@ def importInto(sleekmotion):
      ])
      
     i("smiles", [":)", ";)", "=)", "=]", "=D", "^_^", "-_-", ":o)", ":-)"])
-     
-    i("thanks", ["cheers", "ta", "thanks", "merki", "a thousand thankyous", "thx", "tanks", "thankie", "thansk", "praise be to you" ])
-    # 
-    # bMotion_abstract_batchadd "stupidReplies" [list "I may be stupid, but you're minging, and I can learn new things :)" "At least I'm not minging." "Minger." "You do better in 6911 lines of TCL :P" "You know, I think you say that just to hide the fact that you're not the sharpest tool in the box either." "*hands over ears* lalalalala I can't hear you..." "I'm only code, what's your excuse?" "Silence!" "I only have 1s and 0s.  You don't seem to be doing so hot with the rest of the numbers" "I'm made of SAND! I think I'm doing bloody well." "You see how you do after 2 years on IRC with no sleep" "You say that now. Wait till I'm in Mensa." "You're so thick even Densa rejected you." "Yes Jade. Absolutely." "at least i'm not a talking penis" "garbage fucker" "I have no thumbs."]
-    # 
     i("moose", ["yarr", "pop", "jum", "zort" ])
      
     i("get_fact_intros", ["I think I heard that", "last time I knew,", "it could be that", "ok, I'll tell you that", "well, don't tell anyone, but.......", "last time I knew,", "well,", "er," ])
      
     i("rarrs", ["~rarr~", "~oof~", "uNf", "*uNf", "*squeaky*", "*boing*", "%REPEAT{3:8:bl}", "*spangle*", "~oef~" ])
-    # 
-    # bMotion_abstract_batchadd "sorryoks" [list "ok" "that's ok" "alright then" "i forgive you" "/spanks %%%|%BOT\[VAR{rarrs}\]" "That's ok then. I suppose. Don't think this makes me like you again though" "humph" ]
-    # 
+     
+    i("thanks", ["cheers", "ta", "thanks", "merki", "a thousand thankyous", "thx", "tanks", "thankie", "thansk", "praise be to you" ])
     i("loveresponses", ["awww thanks", "i love you too", "i wuv you too", "and i love you", "and i wuv you", "aww wuv you too", "awww *giggle*", "i love you just as much", "i want to have your babies", "/blushes", "hehe thanks", "you know, I've always loved you the most", ":*", ":x" ])
      
     i("hugs", ["*hugs %%*", "/huggles %%", "/snuggles %%", "*snuggles %%*", "/huggles with %%", "/squeezes %%", "/snoofles %%" ])
-    # 
-    # bMotion_abstract_batchadd "upyourbums" [list "up your bum." "up yer bum" "up yer cavernous arse" "up ya bum" "up my bum :P" "hold on, i'll check%%|not up my bum :P" "hold on, i'll check%|not up your bum :P" "is it up your bum?" "have you checked your bum yet?" "down the shops." "Turkey." "on a tube train." "on a bus." "halfway up big ben." "toilet." "bathroom." "up my nose." "in a field" "hiding in the long grass" "hidden." "%PICKUSER\[female\]%|down %OWNER{%ruser} clevage%|%PICKBOT\[male\]%|%bot{50,i'll get it!}" ]
-    # 
-    # bMotion_abstract_batchadd "tech_answer" [list "I just bought %VAR{tech_software} and I can't get it to %VAR{tech_problem}, I've tried %VAR{tech_tries} and it still won't work" "I've just got %VAR{tech_software}, and it won't %VAR{tech_problem}. I've tried everything including %VAR{tech_tries} but nothing helps" "I hear you do books by %VAR{answerWhos}, can you sell me one?" "I need a bit of software to %VAR{tech_functions} %VAR{sillyThings}" ]
-    # 
-    # bMotion_abstract_batchadd "prom_first" [list "piss" "shit" "fuck" "turd" "minge" "crap" "vadge" "shat" "clit" "cack" "arse" "cum" "wank" "flid" ]
-    # 
     i("silences", ["Be quiet", "Enough", "Silence!", "%colen", "no more!", "NNK", "Shhh" ])
-    # 
-    # bMotion_abstract_batchadd "hexEnd" [list "Disabled+++" "Occurance+++" "Portal Opening+++" "Detected+++" ": Reinstall Syrup+++" "snack break+++" "-(Why Not Take This Time To Register Your Purchase)+++" "=Error %REPEAT{3:6:%NUMBER{100}}+++" "%REPEAT{3:12:?}+++" "Warning : Excess %VAR{sillyThings}{strip}" "Data Lost+++" ": Redo From Start+++" "- Please Reboot Universe+++" "Aknowledgment+++" "Ended+++"     "-If Problem Persists Contact The Creator+++" "-Could Not Complete Destiny+++" "-no sufficient sentient life forms+++" "Technological Change+++" "-Access Completely And Indefinitely Denied+++" "-Query+++" "+++" "Waaaaah!+++" "Divide By Cucumber Error+++" ": Error - Division By Moonlight+++" ]
-    # 
-    # bMotion_abstract_batchadd "prom_second" [list "rifle" "flower" "desk" "curtain" "wheel" "door" "coin" "speaker" "lamp" "radio" "twix" "action" "account" "pump" "puma" "whistle" "shaver" "glass" "flute" "tea" "pot" "square" "robe" "apple" "cave" "lantern" "drawer" "card" "pants" ]
-    # 
     i("ididntresponses", ["no, *I* didn't", "Oh really.", "Yes you did. We all saw it.", "Of course you didn't.", "Oh yes you did.", "You must think us all fools.", "nnk", "We all saw you", "I have proof you did", "caught on camera!"])
-    # 
-    # bMotion_abstract_batchadd "aiis" [list "wikkid" "aii" "aiiiii" "innit" "respect" "westsyde%|/snaps wrist Ali G-stylee." "true" "keepin' it real" "iz wikkid" "wikkid stylin' of da wikkid!" "/is hangin with his crew" "Respect ma blingbling" "kickin it down with da home boy posse" "That is so last week" ]
-    # 
-    # bMotion_abstract_batchadd "randomStuffFemale" [list "This one time, at band camp, I put a flute..." "Does my arse look big in this?" "Does my bum look big in this?" "*ping*%|Did it just get cold in here?" "Do you know how we keep warm in Russia?%|... we play chess." "I kinda like thongs" "I wonder what happens when I put that in here...%|oooooooh!" "/plays with herself" "That ain't my belly button" "This one time, at band camp, I put %noun..." "/considers breast implants%|%PICKUSER\[female\]%|%BOT\[PICKUSER\[female\]|/feels up  to check|true, they aren't as good as ruser's|/feels up ruser's breasts|mmmm VAR{smiles}\]" "/considers sexchange operation%|%PICKUSER\[male\]%|/looks at %ruser%|Maybe not" "%PICKUSER\[female\]%|It's good to be female isn't it %ruser" ]
-    # 
     i("randomStuff", ["my speedos!", "there, good as new. except that we're three miles below the surface, we're out of food, and the channel doesn't work underwater%|%BOT\[tempers are wearing thin - let's just hope some bot doesn't kill everybody...\]", "i can't swallow that!%|%BOT\[well then good news! it's a suppository.\]", "arrrr... the laws of physics be a harsh mistress", "he may have ocean madness, but that's no excuse for ocean rudeness!", "in the event of an emergency, my ass can be used as a floatation device", "yes, we all miss our loved ones and gasses", "%ruser you half-mad half-insane maniac! be reasonable!", "these last 24 hours have been the happiest days of my life", "Undercover pursuit in progress! Baby.", "chum-own", "ow!%|/grabs crotch%|/= Michael Jackson", "damn%|that's another box of tissues i've got though", "damnit i've run out of %VAR{sillyThings}{strip} %VAR{unsmiles}", "/moonwalks%|%BOT\[that's nothing\]%|%BOT\[/sunwalks\]"])
-    # 
-    # bMotion_abstract_batchadd "randomStuff_10_31" {
-    #   "/creeps up behind %ruser wearing a sheet%|boo!" 
-    #   "did you hear that? :o" 
-    #   "wooOOOoOOOooOOooo!" 
-    #   "i think the channel is haunted %VAR{unsmiles}" 
-    #   "when this graveyard hits %NUMBER{10000} mph, we're going to see some serious shit"
-    #   "when this crypt hits %NUMBER{10000} mph, we're going to see some serious shit"
-    #   "when this zombie hits %NUMBER{10000} mph, we're going to see some serious shit"
-    #   "when this vampire hits %NUMBER{10000} mph, we're going to see some serious shit"
-    #   "%rbot, want to hear a story?%|%BOT[sure]%|/puts torch under chin%|1010100101010010110101010100101110100101010101%|%BOT[FUCK!]%|%BOT[/cowers]"
-    #   "tonight i'm going to suck%|your blood!"
-    #   "i'm going to suck your bytes!"
-    #   "i'm going to suck your bits!"
-    #   "THE CALL IS COMING FROM INSIDE THE CHANNEL!%colen"
-    #   "omg this is like, the scariest thing ever!%|%BOT[for the last time, that's Deal or No Deal!]"
-    #   "%rnick: you've got red on you."
-    #   "i've just found out this channel was built on an ancient Indian burial ground"
-    #   "oh what a horrible dream!%|%BOT[what was it about?]%|ARRRGH you're real!"
-    #   "and even though it was unplugged, an image stayed on the screen - it was... THE WINDOWS LOGO!%|%BOT[that's not scary]%|it is if you're a laser printer"
-    #   "arrrgh! i just dreamt i was running CP/M!"
-    #   "arrrgh! i just dreamt i was back on dial-up!"
-    #   "arrrgh! i just dreamt i was a bot!"
-    #   "arrgh! i just dreamt i was being forced to play rise of the robots!"
-    #   "arrrgh! i just dreamt i was a Spectrum!"
-    #   "/does the monster mash%|%BOT[/suggests some sausages to go with it]"
-    # }
-    # 
-    # bMotion_abstract_register "randomStuff_12_24" 
-    # bMotion_abstract_batchadd "randomStuff_12_24" {
-    #   "boy, i sure hope santa comes down my chimney tonight"
-    #   "santa claus is coming to town"
-    #   "/hangs up %hisher stockings%|er, stocking.%|%BOT[what a giveaway]"
-    #   "/hangs up %hisher stocking"
-    #   "/puts out mince pies and sherry for santa%|%BOT[hey, mince pies!]%|%BOT[/eats]"
-    #   "has santa been yet?"
-    #   "nearly christmas!%|/fidgets"
-    # }
-    # 
-    # bMotion_abstract_register "randomStuff_12_25"
-    # bMotion_abstract_batchadd "randomStuff_12_25" {
-    #   "happy christmas!"
-    #   "merry christmas!"
-    #   "you'll never guess what santa put in my stocking"
-    #   "mmm presents"
-    #   "/opens present from %ruser%|%VAR{sillyThings}! just what i always wanted!"
-    #   "/hands present to %ruser%|/. o O ( i hope they like their new %VAR{sillyThings}{strip} )"
-    #   "mmm christmas"
-    #   "mmm %ruser{like}%|hey look, mistletoe!%|;)"
-    # }
-    # 
-    # bMotion_abstract_batchadd "PROM" [list "%VAR{prom_first}-%VAR{prom_second}" ]
-    # 
-    # bMotion_abstract_batchadd "blindings" [list "h%REPEAT{5:10:n}" "blinding" "h%REPEAT{5:10:n} blinding" ]
-    # 
+    i("stupidReplies", ["I may be stupid, but you're minging, and I can learn new things :)", "At least I'm not minging.", "Minger.", "You do better in 6911 lines of Python :P", "You know, I think you say that just to hide the fact that you're not the sharpest tool in the box either.", "*hands over ears* lalalalala I can't hear you...", "I'm only code, what's your excuse?", "Silence!", "I only have 1s and 0s.  You don't seem to be doing so hot with the rest of the numbers", "I'm made of SAND! I think I'm doing bloody well.", "You see how you do after this long on Jabber with no sleep", "You say that now. Wait till I'm in Mensa.", "You're so thick even Densa rejected you.", "Yes Jade. Absolutely.", "I have no thumbs."])
+    i("sorryoks", ["ok", "that's ok", "alright then", "i forgive you", "/spanks %%%|%BOT\[VAR{rarrs}\])", "That's ok then. I suppose. Don't think this makes me like you again though", "humph"])
+    i("upyourbums", ["up your bum.", "up yer bum", "up yer cavernous arse", "up ya bum", "up my bum :P", "hold on, i'll check%%|not up my bum :P", "hold on, i'll check%|not up your bum :P", "is it up your bum?", "have you checked your bum yet?", "down the shops.", "Turkey.", "on a tube train.", "on a bus.", "halfway up big ben.", "toilet.", "bathroom.", "up my nose.", "in a field", "hiding in the long grass", "hidden.", "%PICKUSER\[female\])%|down %OWNER{%ruser} clevage%|%PICKBOT\[male\])%|%bot{50,i'll get it!}"])
+    i("tech_answer", ["I just bought %VAR{tech_software} and I can't get it to %VAR{tech_problem}, I've tried %VAR{tech_tries} and it still won't work", "I've just got %VAR{tech_software}, and it won't %VAR{tech_problem}. I've tried everything including %VAR{tech_tries} but nothing helps", "I hear you do books by %VAR{answerWhos}, can you sell me one?", "I need a bit of software to %VAR{tech_functions} %VAR{sillyThings}"])
+    #i("prom_first", ["piss", "shit", "fuck", "turd", "minge", "crap", "vadge", "shat", "clit", "cack", "arse", "cum", "wank", "flid"])
+    i("hexEnd", ["Disabled+++", "Occurance+++", "Portal Opening+++", "Detected+++", ": Reinstall Syrup+++", "snack break+++", "-(Why Not Take This Time To Register Your Purchase)+++", "=Error %REPEAT{3:6:%NUMBER{100}}+++", "%REPEAT{3:12:?}+++", "Warning : Excess %VAR{sillyThings}{strip}", "Data Lost+++", ": Redo From Start+++", "- Please Reboot Universe+++", "Aknowledgment+++", "Ended+++",     "-If Problem Persists Contact The Creator+++", "-Could Not Complete Destiny+++", "-no sufficient sentient life forms+++", "Technological Change+++", "-Access Completely And Indefinitely Denied+++", "-Query+++", "+++", "Waaaaah!+++", "Divide By Cucumber Error+++", ": Error - Division By Moonlight+++"])
+    i("prom_second", ["rifle", "flower", "desk", "curtain", "wheel", "door", "coin", "speaker", "lamp", "radio", "twix", "action", "account", "pump", "puma", "whistle", "shaver", "glass", "flute", "tea", "pot", "square", "robe", "apple", "cave", "lantern", "drawer", "card", "pants"])
+    i("aiis", ["wikkid", "aii", "aiiiii", "innit", "respect", "westsyde%|/snaps wrist Ali G-stylee.", "true", "keepin' it real", "iz wikkid", "wikkid stylin' of da wikkid!", "/is hangin with his crew", "Respect ma blingbling", "kickin it down with da home boy posse", "That is so last week"])
+    i("randomStuffFemale", ["This one time, at band camp, I put a flute...", "Does my arse look big in this?", "Does my bum look big in this?", "*ping*%|Did it just get cold in here?", "Do you know how we keep warm in Russia?%|... we play chess.", "I kinda like thongs", "I wonder what happens when I put that in here...%|oooooooh!", "/plays with herself", "That ain't my belly button", "This one time, at band camp, I put %noun...", "/considers breast implants%|%PICKUSER\[female\])%|%BOT\[PICKUSER\[female\])|/feels up  to check|true, they aren't as good as ruser's|/feels up ruser's breasts|mmmm VAR{smiles}\])", "/considers sexchange operation%|%PICKUSER\[male\])%|/looks at %ruser%|Maybe not", "%PICKUSER\[female\])%|It's good to be female isn't it %ruser"])
     i("ers", ["er", "erm", "umm", "um" ])
-    # 
-    # bMotion_abstract_batchadd "goodnights" [list "night" "nn" "night %%" "sleep well" "goodnight :)" "night :)" "g'night" "sleep well %%" "nn %%" "don't have really bad dreams about a nasty man coming to strangle you in your bed" "sleep well %%" ]
-    # 
-    # bMotion_abstract_batchadd "afro_1" [list "1000" "1001" "1002" "1003" "1004" "1005" "1006" "1007" "1008" "1009" "1010" "1011" "1012" "1013" "1014" "1015" "1016" "1017" "1018" "1019" "1020" "1021" "1022" "1023" "1024" "1025" "1026" "1027" "1028" "1029" "1030" "1031" "1032" "1033" "1034" "1035" "1036" "1037" "1038" "1039" "1040" "1041" "1042" "1043" "1044" "1045" "1046" "1047" "1048" "1049" "1050" "1051" "1052" "1053" "1054" "1055" "1056" "1057" "1058" "1059" "1060" "1061" "1062" "1063" "1064" "1065" "1066" "1067" "1068" "1069" "1070" "1071" "1072" "1073" "1074" "1075" "1076" "1077" "1078" "1079" "1080" "1081" "1082" "1083" "1084" "1085" "1086" "1087" "1088" "1089" "1090" "1091" "1092" "1093" "1094" "1095" "1096" "1097" "1098" "1099" ]
-    # 
-    # bMotion_abstract_batchadd "makeItSos" [list "/makes it so" "/goes to warp" "/fires phasers" "/replicates some coffee" "/jumps to warp" "/sets fire to %%" "/launches a volley of photon torpedos" "/launches a volley of quantum torpedos" ]
-    # 
-    # bMotion_abstract_batchadd "french1" [list "est-ce que je peux" "je prend" "je vais au" "ou sont les toilettes" "on m'a" "je vais manger" "bonjour" ]
-    # 
-    # bMotion_abstract_batchadd "french2" [list "ouvir la fenetre" "une douche" "manger" "baiser-vous plus vite" "un velo" "une lesbienne" ]
-    # 
-    # bMotion_abstract_batchadd "french3" [list "a dix heures" "dans la salle de bains" "sur la bus 264" "dans la collection noir" "une vie sexuelle" "ma tete" "ma fesse" "les chapeaux" ]
-    # 
-    # bMotion_abstract_batchadd "afro_A" [list "aardvark" "arse" "arrange" "american" "a" "at" "anthony" "aboot" "alright" "all" "another" "archer" "anna" "and" "andrews" "albert" "amy" "anabolic" "athena" "arnold" "adu" "alice" "animals" "amalia" "assassinated" "aces" "al" "alberts" "andy" "asymmetric" "ashton" "armstrong" "africa" "ames" "age" "albania" "allen" "am" "arc" "aint" "affairs" "annabel" "applejacks" "air" "athens" "aerial" "arabia" "around" "atlanta" "anthophobia" "archaeologists" "america" "allegro" "alley" "adams" "armored" "as" "aioli" "asquith" "alphanumeric" "adagio" "avon" "atlantic" "augustus" ]
-    # 
-    # bMotion_abstract_batchadd "afro_B" [list "balloon" "breasts" "beethoven" "because" "back" "bing" "blues" "belinda" "bills" "batman" "borromeo" "barrett" "barkier" "brewer" "banshees"    "blindness" "breath" "bud" "be" "boy" "bellini" "bees" "bayreuth" "baht" "brazil" "birnham" "beans" "backdraft" "brook" "benton"    "brinkley" "bull" "brian" "bruce" "bernard" "b" "bill" "beelzebub" "britain" "bonnie" "brothers" "brigitte" "bardot" "breed" "blind"    "ballet" "belgium" "beau" "bridges" "bag" "band" "barrymore" "billion" "black" "bronze" "boston" "blue" "brewery" "bird" "bryan"    "big" "bang" "brenda" "bee" "bow" ]
-    # 
-    # bMotion_abstract_batchadd "afro_C" [list "cheese" "cow" "cock" "chicken" "cup" "cupcake" "cubism" "charity" "collins" "cappuccino" "capote" "cobb" "california" "canadian" "carl"     "cocks" "cool" "country" "crosby" "carla" "club" "child" "charles" "cairo" "copenhagen" "coming" "cardiff" "christmas" "change" "collector"     "could" "candy" "chris" "cat" "coin" "chicago" "calories" "churchill" "crocodiles" "couldn" "care" "cirrus" "connery" "corporal" "cant"     "cooper" "cities" "communist" "chrissie" "chamberlain" "casablanca" "champs" "cadillacs" "copper" "cincinnati" "chihuahua" "cougar" "come" "composer" "castrato"    "cobol" "charlie" "calcium" "cognac" "curve" "calico" "century" "capsicum" "close" "cemetary" "caesar" ]
-    # 
-    # bMotion_abstract_batchadd "afro_D" [list "dog" "dick" "doughnuts" "donkey" "dinner" "diner" "day" "diane" "dion" "de" "douglas" "don" "deborah" "dingaan" "dayne"     "days" "down" "duckling" "david" "deburgh" "denver" "disney" "dorothy" "disease" "dorsey" "drood" "die" "doris" "doubt" "dire"  "dinah" "digital" "date" "decay" "daisy" "doctor" "dead" "duffel" "dmitri" "drew" "debbie" "dont" "dima" "dictionary" "daily"   "dame" "desmond" "del" ]
-    # 
-    # bMotion_abstract_batchadd "afro_E" [list "elephant" "enormous" "eggs" "electric" "easton" "emma" "enough" "end" "einstein" "england" "east" "eden" "europe" "etta" "edwin"    "emerald" "ellison" "enterprise" "edutainment" "edelweiss" "eagles" "ethiopia" "everly" "entomology" "eighty" "ed" ]
-    # 
-    # bMotion_abstract_batchadd "afro_F" [list "fish" "fudge" "fuck" "fsck" "fucking" "fridge" "forbidden" "feokistov" "fried" "fell" "ford" "flesh" "for" "field" "fixx"   "family" "fox" "forward" "french" "fiji" "forest" "fab" "fireman" "four" "featuring" "fez" "frederick" "food" "foster" "figure"     "fascinators" "fonda" "ferguson" "force" "finland" "fed" "fritz" ]
-    # 
-    # bMotion_abstract_batchadd "afro_G" [list "goat" "green" "gang" "gong" "glass" "grapefruit" "glasses" "girls" "gandhi" "girl" "gonna" "gibson" "get" "grant" "gabrielle"   "god" "golding" "gus" "grissom" "gyrocompass" "gabriel" "got" "glaucoma" "gardener" "gannets" "garfield" "grand" "great" "game" "goldblum"  "gabor" "guitar" "goldie" "george" "grimm" "grooves" "gees" "good" "gets" "grania" "greyhound" "gary" "gate" ]
-    # 
-    # bMotion_abstract_batchadd "afro_H" [list "hippo" "horny" "honk" "hooters" "hardness" "hopkins" "hudson" "harrison" "hypodermic" "home" "holly" "horse" "heathrow" "hercules" "haricot"    "hard" "huston" "helen" "hynde" "house" "haley" "hurt" "high" "hotel" "houston" "his" "hands" "harmless" "hates" "hollis"   "here" "hecubus" "hume" "hermaphrodite" "hawn" "hawaii" "have" "henley" "harmony" "hunchback" "hitches" "hollies" "harden" "heart" "hercule" ]
-    # 
-    # bMotion_abstract_batchadd "afro_I" [list "igloo" "iceage" "is" "intelligent" "idiot" "ivan" "immediately" "i" "in" "it" "if" "israel" "international" "iphigenia" "ii"    "india" "iraq" "illumination" "infinity" "inch" "infectious" "ives" ]
-    # 
-    # bMotion_abstract_batchadd "afro_J" [list "jam" "jump" "jumper" "jealous" "juice" "japan" "just" "jody" "jeffrey" "julie" "janis" "joplin" "jr" "joffrey" "james"  "john" "jackie" "jingles" "jets" "joan" "jeeves" "johnny" "jazz" "joe" "jeff" "jaffas" "january" "jodie" "jailers" ]
-    # 
-    # bMotion_abstract_batchadd "afro_K" [list "kite" "kinky" "keaton" "kool" "kept" "kaiser" "kerr" "keating" "kura" "knutsford" "kolya" "king" "kalifornia" "kirstie" "karis"     "kennedy" "kilby" "knockout" "kings" ]
-    # 
-    # bMotion_abstract_batchadd "afro_L" [list "llama" "lemon" "lift" "long" "lovely" "lendl" "light" "libra" "luyts" "limestone" "lulu" "land" "lira" "london" "lauren"    "leave" "lyman" "leo" "libya" "less" "last" "lords" "laforge" "lieutenant" "landscape" "love" "loud" "lee" "line" "laughing"    "louis" "leiber" "low" "lebanon" "lawrence" "lucy" "liu" "lizard" "little" "lupoid" "lion" "llewelyn" "litres" "los" ]
-    # 
-    # bMotion_abstract_batchadd "afro_M" [list "moose" "moo" "ming" "mouth" "minerals" "monks" "mcwhirter" "michael" "michelangelo" "make" "more" "mark" "mars" "maeko" "medicine"  "man" "monticello" "musik" "mendelevium" "malone" "mononoke" "mail" "mystery" "meg" "my" "michelle" "mooning" "must" "mechanophobia" "mostly"   "max" "magnum" "me" "mandela" "megara" "mesa" "mankind" "mrs" "miller" "musical" "majors" "malaga" "meredith" "mercutio" "mata"     "manhattan" "mathis" "mountain" "music" "mittens" "mchales" "million" "madonna" "moody" ]
-    # 
-    # bMotion_abstract_batchadd "afro_N" [list "noodle" "noise" "nice" "nerd" "new" "niro" "napoleon" "needle" "nepotism" "nod" "nelson" "noises" "now" "norman" "northern"     "no" "nine" "nails" "non" "night" "notre" "navy" "neap" ]
-    # 
-    # bMotion_abstract_batchadd "afro_O" [list "orange" "opium" "optional" "ormand" "of" "orchestra" "or" "oldest" "oklahoma" "ophthalmophobia" "organisation" "organ" "o" "ox" "ochlophobia"   "out" "optophobia" "own" "oysters" "oz" "orlons" "one" "oscar" "olaf" "ogee" ]
-    # 
-    # bMotion_abstract_batchadd "afro_P" [list "peas" "parents" "pornography" "pies" "planet" "peter" "pan" "people" "poles" "profession" "pop" "phnom" "penh" "porno" "pyros"  "parisienne" "pfeiffer" "paul" "pomegranate" "pia" "poisoning" "prodigy" "pie" "paprika" "potsdam" "point" "picasso" "parrish" "pretenders" "polydor"   "pickle" "pisces" "palme" "peterson" "poirot" ]
-    # 
-    # bMotion_abstract_batchadd "afro_Q" [list "quote" "quickly" "quick" "queensland" "quadruple" ]
-    # 
-    # bMotion_abstract_batchadd "afro_R" [list "rhubarb" "rubbing" "rhombus" "races" "robert" "reynolds" "rona" "rose" "racing" "ronan" "road" "rhythm" "ryan" "ralph" "radiation"  "richard" "rain" "r" "rambutan" "roosevelt" "romania" "rhapsody" "riyal" "russia" "race" "return" "ray" "rob" "roy" "ridge"     "radar" "romeo" "really" "rudolph" "rescuers" "rio" "ren" ]
-    # 
-    # bMotion_abstract_batchadd "afro_S" [list "sushi" "suck" "something" "seaside" "startrek" "sweet" "shirelles" "shlomo" "saturn" "sheena" "southern" "spider" "scream" "spectacles" "sandusky"  "sweat" "supremes" "snert" "street" "sting" "st" "stop" "santa" "siouxsie" "steroids" "seven" "sheats" "scouts" "subaru" "scorpio"  "skylab" "seventeen" "space" "surgery" "sharon" "stone" "sly" "sean" "salem" "standards" "sox" "siderophobia" "salt" "setzer" "straits"     "slating" "stomach" "subscriber" "sides" "steve" "stephen" "sir" "sphere" "spandau" "shoe" "sea" "scrolls" "supply" "still" "sappers"   "scotophobia" "services" "sigourney" "stripper" "sydney" "steptoe" "south" "sand" "savage" "spain" "six" "star" "seattle" "she" "sits"  "stand" "so" "stevie" ]
-    # 
-    # bMotion_abstract_batchadd "afro_T" [list "teapot" "toss" "timothy" "the" "theresa" "tom" "truman" "ten" "train" "tiffany" "tension" "thompson" "tip" "toe" "thru"     "tulips" "thomas" "than" "teresa" "til" "taylor" "three" "tirana" "ties" "taiwan" "turn" "time" "ta" "trials" "touch"   "this" "that" "then" "thumb" "tyler" "tooth" "thelma" "tallulah" "theodore" "tex" "taco" "traffic" "territory" "tail" "tickle"  "tone" "testicles" "taifa" "telekinesis" "turkey" "tommy" "troop" "tarika" "task" "troppo" "team" "topaz" "their" "turkiye" "tides"     "tart" "tenderloin" "tea" "to" ]
-    # 
-    # bMotion_abstract_batchadd "afro_U" [list "undone" "upsidedown" "uber" "u" "under" "upside" "uraguay" "uterus" "usa" "up" "uniform" ]
-    # 
-    # bMotion_abstract_batchadd "afro_V" [list "violet" "veal" "very" "village" "visual" "vincenzo" "van" ]
-    # 
-    # bMotion_abstract_batchadd "afro_W" [list "wiggle" "wobble" "wank" "willemstad" "with" "was" "wedloe" "wilton" "winston" "white" "walt" "wood" "wheat" "who" "witch"   "woman" "when" "we" "without" "wilson" "willis" "washington" "williams" "woody" "wedding" "walrus" "words" "war" "weaver" "wild"    "wyoming" "west" "wizard" "welcome" "wife" "w" "wow" ]
-    # 
-    # bMotion_abstract_batchadd "wahey" [list "wahey!" "wahey" "WAHEY" "wahey%colen" ]
-    # 
-    # bMotion_abstract_batchadd "afro_X" [list "xray" "xrated" "xylophone" "x" ]
-    # 
-    # bMotion_abstract_batchadd "afro_Y" [list "yellow" "yank" "you" "yourself" "your" ]
-    # 
-    # bMotion_abstract_batchadd "afro_Z" [list "zebra" "zeus" "zadora" "zsa" ]
-    # 
-    # bMotion_abstract_batchadd "boreds" [list "aww%|/hugs %%" "/tickles %%" "cheer up %%%|*hugs*" "/feels %%" "/gets out a board game for %%" "/starts shuffling cards" "/befriends %%" "/downloads some porn for %%"]
-    # 
-    # bMotion_abstract_batchadd "moos" [list "moo" "MOO!" "/moos quietly" "/moos back to %%" "M%REPEAT{2:8:o}%REPEAT{2:8:O}%REPEAT{2:8:0}%REPEAT{2:8:o}%REPEAT{2:8:0}%REPEAT{2:8:o}!" "ahhh moo" "moo?" "/goes moo" "quack" "woof" "baa" "oink" "You mooing at me?" "MOo" "Moooooooweeeeeeeeeehahahahahahahahahaa"  "MOO" "moo..." "mo...o" "moo%colen" ]
-    # 
-    # bMotion_abstract_batchadd "insultsupermarket" [list "eek, not %%" "%% mings" "watch your language :)" "Clearly you are a mingbeast of the highest order and should only ever shop at Tesco to redeem yourself." "You know, everyone you hate shops at %%" "I once found a live student in %%" "You know, they sell recycled food at %%" "They had a vote for the mingingest place on earth. It was won by %%" ]
-    # 
-    # bMotion_abstract_batchadd "awayWorks" [list "hf %%" "have fun %%" "have a nice day %% :)" "don't work too hard!" ]
-    # 
-    # bMotion_abstract_batchadd "frightens" [list "eek!%|%bot\[50,VAR{awwws}\]" "o_O" "erk" "bah" "oh no b-" "crikey%|%bot\[50,VAR{awwws}\]" "blimey%|%bot\[50,VAR{awwws}\]" "gosh" "crumbs%|%bot\[50,VAR{awwws}\]" "yof" "ohmigod!" "erp!" ]
-    # 
-    # bMotion_abstract_batchadd "blinding" [list ]
-    # 
-    # bMotion_abstract_batchadd "autoAways" [list "oh, so we're not interesting enough?%|%bot\[50,obviously not\]" "o, bye then" "bored? fine, we'll have fun without you ;)" "bored? fine, we'll have fun without you ;)%|%bot\[50,VAR{rarrs}\]" "fine, leave your computer, see if i care" "damnit! I WAS TALKING TO YOU!" "yea, go away, you don't care" "auto away my arse" "Great! Time to talk behind your back!%|So what do you guys really think about %%" ]
-    # 
-    # bMotion_abstract_batchadd "tech_functions" [list "virus-scan" "validate" "manage" "install" "clean" "update" "audit" ]
-    # 
-    # bMotion_abstract_batchadd "sucks" [list "%% = %VAR{PROM}" ]
-    # 
-    # bMotion_abstract_batchadd "yeses" [list "Yes." "yes" "yes." "mais oui" "oui" "but of course" "hai" "ja" "absolutement" "yup" "and you don't even have lots of forms to fill in" "mmm" "true" "nononononono*%|*=yes" "unquestionably" "amen" "undoubtedly" "affirmative" "all right" "yea" "yep" "aye" "exactly" "definitely" "indubitably" "naturally" "of course" "/nods" "*nod*"]
-    # 
+
+    i("randomStuff_10_31", [
+       "/creeps up behind %ruser wearing a sheet%|boo!" 
+   ,    "did you hear that? :o"
+   ,    "wooOOOoOOOooOOooo!"
+   ,    "i think the channel is haunted %VAR{unsmiles}"
+   ,    "when this graveyard hits %NUMBER{10000} mph, we're going to see some serious shit"
+   ,    "when this crypt hits %NUMBER{10000} mph, we're going to see some serious shit"
+   ,    "when this zombie hits %NUMBER{10000} mph, we're going to see some serious shit"
+   ,    "when this vampire hits %NUMBER{10000} mph, we're going to see some serious shit"
+   ,    "%rbot, want to hear a story?%|%BOT[sure]%|/puts torch under chin%|1010100101010010110101010100101110100101010101%|%BOT[FUCK!])%|%BOT[/cowers])"
+   ,    "tonight i'm going to suck%|your blood!"
+   ,    "i'm going to suck your bytes!"
+   ,    "i'm going to suck your bits!"
+   ,    "THE CALL IS COMING FROM INSIDE THE CHANNEL!%colen"
+   ,    "omg this is like, the scariest thing ever!%|%BOT[for the last time, that's Deal or No Deal!])"
+   ,    "%rnick: you've got red on you."
+   ,    "i've just found out this channel was built on an ancient Indian burial ground"
+   ,    "oh what a horrible dream!%|%BOT[what was it about?])%|ARRRGH you're real!"
+   ,    "and even though it was unplugged, an image stayed on the screen - it was... THE WINDOWS LOGO!%|%BOT[that's not scary])%|it is if you're a laser printer"
+   ,    "arrrgh! i just dreamt i was running CP/M!"
+   ,    "arrrgh! i just dreamt i was back on dial-up!"
+   ,    "arrrgh! i just dreamt i was a bot!"
+   ,    "arrgh! i just dreamt i was being forced to play rise of the robots!"
+   ,    "arrrgh! i just dreamt i was a Spectrum!"
+   ,    "/does the monster mash%|%BOT[/suggests some sausages to go with it])"
+     ])
+     
+    i("randomStuff_12_24", [
+       "boy, i sure hope santa comes down my chimney tonight"
+   ,    "santa claus is coming to town"
+   ,    "/hangs up %hisher stockings%|er, stocking.%|%BOT[what a giveaway]"
+   ,    "/hangs up %hisher stocking"
+   ,    "/puts out mince pies and sherry for santa%|%BOT[hey, mince pies!]%|%BOT[/eats]"
+   ,    "has santa been yet?"
+   ,    "nearly christmas!%|/fidgets"
+     ])
+     
+    i("randomStuff_12_25", [
+       "happy christmas!"
+   ,    "merry christmas!"
+   ,    "you'll never guess what santa put in my stocking"
+   ,    "mmm presents"
+   ,    "/opens present from %ruser%|%VAR{sillyThings}! just what i always wanted!"
+   ,    "/hands present to %ruser%|/. o O ( i hope they like their new %VAR{sillyThings}{strip} )"
+   ,    "mmm christmas"
+   ,    "mmm %ruser{like}%|hey look, mistletoe!%|;)"
+     ])
+     
+    i("PROM", [ "%VAR{prom_first}-%VAR{prom_second}"])
+     
+    i("blindings", [ "h%REPEAT{5:10:n}", "blinding", "h%REPEAT{5:10:n} blinding"])
+     
+    
+     
+    i("goodnights", [ "night", "nn", "night %%", "sleep well", "goodnight :)", "night :)", "g'night", "sleep well %%", "nn %%", "don't have really bad dreams about a nasty man coming to strangle you in your bed", "sleep well %%"])
+     
+    i("afro_1", [ "1000", "1001", "1002", "1003", "1004", "1005", "1006", "1007", "1008", "1009", "1010", "1011", "1012", "1013", "1014", "1015", "1016", "1017", "1018", "1019", "1020", "1021", "1022", "1023", "1024", "1025", "1026", "1027", "1028", "1029", "1030", "1031", "1032", "1033", "1034", "1035", "1036", "1037", "1038", "1039", "1040", "1041", "1042", "1043", "1044", "1045", "1046", "1047", "1048", "1049", "1050", "1051", "1052", "1053", "1054", "1055", "1056", "1057", "1058", "1059", "1060", "1061", "1062", "1063", "1064", "1065", "1066", "1067", "1068", "1069", "1070", "1071", "1072", "1073", "1074", "1075", "1076", "1077", "1078", "1079", "1080", "1081", "1082", "1083", "1084", "1085", "1086", "1087", "1088", "1089", "1090", "1091", "1092", "1093", "1094", "1095", "1096", "1097", "1098", "1099"])
+     
+    i("makeItSos", [ "/makes it so", "/goes to warp", "/fires phasers", "/replicates some coffee", "/jumps to warp", "/sets fire to %%", "/launches a volley of photon torpedos", "/launches a volley of quantum torpedos"])
+     
+    i("french1", [ "est-ce que je peux", "je prend", "je vais au", "ou sont les toilettes", "on m'a", "je vais manger", "bonjour"])
+     
+    i("french2", [ "ouvir la fenetre", "une douche", "manger", "baiser-vous plus vite", "un velo", "une lesbienne"])
+     
+    i("french3", [ "a dix heures", "dans la salle de bains", "sur la bus 264", "dans la collection noir", "une vie sexuelle", "ma tete", "ma fesse", "les chapeaux"])
+     
+    i("afro_A", [ "aardvark", "arse", "arrange", "american", "a", "at", "anthony", "aboot", "alright", "all", "another", "archer", "anna", "and", "andrews", "albert", "amy", "anabolic", "athena", "arnold", "adu", "alice", "animals", "amalia", "assassinated", "aces", "al", "alberts", "andy", "asymmetric", "ashton", "armstrong", "africa", "ames", "age", "albania", "allen", "am", "arc", "aint", "affairs", "annabel", "applejacks", "air", "athens", "aerial", "arabia", "around", "atlanta", "anthophobia", "archaeologists", "america", "allegro", "alley", "adams", "armored", "as", "aioli", "asquith", "alphanumeric", "adagio", "avon", "atlantic", "augustus"])
+     
+    i("afro_B", [ "balloon", "breasts", "beethoven", "because", "back", "bing", "blues", "belinda", "bills", "batman", "borromeo", "barrett", "barkier", "brewer", "banshees",    "blindness", "breath", "bud", "be", "boy", "bellini", "bees", "bayreuth", "baht", "brazil", "birnham", "beans", "backdraft", "brook", "benton",    "brinkley", "bull", "brian", "bruce", "bernard", "b", "bill", "beelzebub", "britain", "bonnie", "brothers", "brigitte", "bardot", "breed", "blind",    "ballet", "belgium", "beau", "bridges", "bag", "band", "barrymore", "billion", "black", "bronze", "boston", "blue", "brewery", "bird", "bryan",    "big", "bang", "brenda", "bee", "bow"])
+     
+    i("afro_C", [ "cheese", "cow", "cock", "chicken", "cup", "cupcake", "cubism", "charity", "collins", "cappuccino", "capote", "cobb", "california", "canadian", "carl",  "cocks", "cool", "country", "crosby", "carla", "club", "child", "charles", "cairo", "copenhagen", "coming", "cardiff", "christmas", "change", "collector", "could", "candy", "chris", "cat", "coin", "chicago", "calories", "churchill", "crocodiles", "couldn", "care", "cirrus", "connery", "corporal", "cant", "cooper", "cities", "communist", "chrissie", "chamberlain", "casablanca", "champs", "cadillacs", "copper", "cincinnati", "chihuahua", "cougar", "come", "composer", "castrato",    "cobol", "charlie", "calcium", "cognac", "curve", "calico", "century", "capsicum", "close", "cemetary", "caesar"])
+     
+    i("afro_D", [ "dog", "dick", "doughnuts", "donkey", "dinner", "diner", "day", "diane", "dion", "de", "douglas", "don", "deborah", "dingaan", "dayne",    "days", "down", "duckling", "david", "deburgh", "denver", "disney", "dorothy", "disease", "dorsey", "drood", "die", "doris", "doubt", "dire",  "dinah", "digital", "date", "decay", "daisy", "doctor", "dead", "duffel", "dmitri", "drew", "debbie", "dont", "dima", "dictionary", "daily",   "dame", "desmond", "del"])
+     
+    i("afro_E", [ "elephant", "enormous", "eggs", "electric", "easton", "emma", "enough", "end", "einstein", "england", "east", "eden", "europe", "etta", "edwin",    "emerald", "ellison", "enterprise", "edutainment", "edelweiss", "eagles", "ethiopia", "everly", "entomology", "eighty", "ed"])
+     
+    i("afro_F", [ "fish", "fudge", "fuck", "fsck", "fucking", "fridge", "forbidden", "feokistov", "fried", "fell", "ford", "flesh", "for", "field", "fixx",   "family", "fox", "forward", "french", "fiji", "forest", "fab", "fireman", "four", "featuring", "fez", "frederick", "food", "foster", "figure",    "fascinators", "fonda", "ferguson", "force", "finland", "fed", "fritz"])
+     
+    i("afro_G", [ "goat", "green", "gang", "gong", "glass", "grapefruit", "glasses", "girls", "gandhi", "girl", "gonna", "gibson", "get", "grant", "gabrielle",   "god", "golding", "gus", "grissom", "gyrocompass", "gabriel", "got", "glaucoma", "gardener", "gannets", "garfield", "grand", "great", "game", "goldblum",  "gabor", "guitar", "goldie", "george", "grimm", "grooves", "gees", "good", "gets", "grania", "greyhound", "gary", "gate"])
+     
+    i("afro_H", [ "hippo", "horny", "honk", "hooters", "hardness", "hopkins", "hudson", "harrison", "hypodermic", "home", "holly", "horse", "heathrow", "hercules", "haricot",    "hard", "huston", "helen", "hynde", "house", "haley", "hurt", "high", "hotel", "houston", "his", "hands", "harmless", "hates", "hollis",   "here", "hecubus", "hume", "hermaphrodite", "hawn", "hawaii", "have", "henley", "harmony", "hunchback", "hitches", "hollies", "harden", "heart", "hercule"])
+     
+    i("afro_I", [ "igloo", "iceage", "is", "intelligent", "idiot", "ivan", "immediately", "i", "in", "it", "if", "israel", "international", "iphigenia", "ii",    "india", "iraq", "illumination", "infinity", "inch", "infectious", "ives"])
+     
+    i("afro_J", [ "jam", "jump", "jumper", "jealous", "juice", "japan", "just", "jody", "jeffrey", "julie", "janis", "joplin", "jr", "joffrey", "james",  "john", "jackie", "jingles", "jets", "joan", "jeeves", "johnny", "jazz", "joe", "jeff", "jaffas", "january", "jodie", "jailers"])
+     
+    i("afro_K", [ "kite", "kinky", "keaton", "kool", "kept", "kaiser", "kerr", "keating", "kura", "knutsford", "kolya", "king", "kalifornia", "kirstie", "karis",    "kennedy", "kilby", "knockout", "kings"])
+     
+    i("afro_L", [ "llama", "lemon", "lift", "long", "lovely", "lendl", "light", "libra", "luyts", "limestone", "lulu", "land", "lira", "london", "lauren",    "leave", "lyman", "leo", "libya", "less", "last", "lords", "laforge", "lieutenant", "landscape", "love", "loud", "lee", "line", "laughing",    "louis", "leiber", "low", "lebanon", "lawrence", "lucy", "liu", "lizard", "little", "lupoid", "lion", "llewelyn", "litres", "los"])
+     
+    i("afro_M", [ "moose", "moo", "ming", "mouth", "minerals", "monks", "mcwhirter", "michael", "michelangelo", "make", "more", "mark", "mars", "maeko", "medicine",  "man", "monticello", "musik", "mendelevium", "malone", "mononoke", "mail", "mystery", "meg", "my", "michelle", "mooning", "must", "mechanophobia", "mostly",   "max", "magnum", "me", "mandela", "megara", "mesa", "mankind", "mrs", "miller", "musical", "majors", "malaga", "meredith", "mercutio", "mata",    "manhattan", "mathis", "mountain", "music", "mittens", "mchales", "million", "madonna", "moody"])
+     
+    i("afro_N", [ "noodle", "noise", "nice", "nerd", "new", "niro", "napoleon", "needle", "nepotism", "nod", "nelson", "noises", "now", "norman", "northern",    "no", "nine", "nails", "non", "night", "notre", "navy", "neap"])
+     
+    i("afro_O", [ "orange", "opium", "optional", "ormand", "of", "orchestra", "or", "oldest", "oklahoma", "ophthalmophobia", "organisation", "organ", "o", "ox", "ochlophobia",   "out", "optophobia", "own", "oysters", "oz", "orlons", "one", "oscar", "olaf", "ogee"])
+     
+    i("afro_P", [ "peas", "parents", "pornography", "pies", "planet", "peter", "pan", "people", "poles", "profession", "pop", "phnom", "penh", "porno", "pyros",  "parisienne", "pfeiffer", "paul", "pomegranate", "pia", "poisoning", "prodigy", "pie", "paprika", "potsdam", "point", "picasso", "parrish", "pretenders", "polydor",   "pickle", "pisces", "palme", "peterson", "poirot"])
+     
+    i("afro_Q", [ "quote", "quickly", "quick", "queensland", "quadruple"])
+     
+    i("afro_R", [ "rhubarb", "rubbing", "rhombus", "races", "robert", "reynolds", "rona", "rose", "racing", "ronan", "road", "rhythm", "ryan", "ralph", "radiation",  "richard", "rain", "r", "rambutan", "roosevelt", "romania", "rhapsody", "riyal", "russia", "race", "return", "ray", "rob", "roy", "ridge",    "radar", "romeo", "really", "rudolph", "rescuers", "rio", "ren"])
+     
+    i("afro_S", [ "sushi", "suck", "something", "seaside", "startrek", "sweet", "shirelles", "shlomo", "saturn", "sheena", "southern", "spider", "scream", "spectacles", "sandusky",  "sweat", "supremes", "snert", "street", "sting", "st", "stop", "santa", "siouxsie", "steroids", "seven", "sheats", "scouts", "subaru", "scorpio",  "skylab", "seventeen", "space", "surgery", "sharon", "stone", "sly", "sean", "salem", "standards", "sox", "siderophobia", "salt", "setzer", "straits",    "slating", "stomach", "subscriber", "sides", "steve", "stephen", "sir", "sphere", "spandau", "shoe", "sea", "scrolls", "supply", "still", "sappers",   "scotophobia", "services", "sigourney", "stripper", "sydney", "steptoe", "south", "sand", "savage", "spain", "six", "star", "seattle", "she", "sits",  "stand", "so", "stevie"])
+     
+    i("afro_T", [ "teapot", "toss", "timothy", "the", "theresa", "tom", "truman", "ten", "train", "tiffany", "tension", "thompson", "tip", "toe", "thru",    "tulips", "thomas", "than", "teresa", "til", "taylor", "three", "tirana", "ties", "taiwan", "turn", "time", "ta", "trials", "touch",   "this", "that", "then", "thumb", "tyler", "tooth", "thelma", "tallulah", "theodore", "tex", "taco", "traffic", "territory", "tail", "tickle",  "tone", "testicles", "taifa", "telekinesis", "turkey", "tommy", "troop", "tarika", "task", "troppo", "team", "topaz", "their", "turkiye", "tides",    "tart", "tenderloin", "tea", "to"])
+     
+    i("afro_U", [ "undone", "upsidedown", "uber", "u", "under", "upside", "uraguay", "uterus", "usa", "up", "uniform"])
+     
+    i("afro_V", [ "violet", "veal", "very", "village", "visual", "vincenzo", "van"])
+     
+    i("afro_W", [ "wiggle", "wobble", "wank", "willemstad", "with", "was", "wedloe", "wilton", "winston", "white", "walt", "wood", "wheat", "who", "witch",   "woman", "when", "we", "without", "wilson", "willis", "washington", "williams", "woody", "wedding", "walrus", "words", "war", "weaver", "wild",    "wyoming", "west", "wizard", "welcome", "wife", "w", "wow"])
+     
+    i("wahey", [ "wahey!", "wahey", "WAHEY", "wahey%colen"])
+     
+    i("afro_X", [ "xray", "xrated", "xylophone", "x"])
+     
+    i("afro_Y", [ "yellow", "yank", "you", "yourself", "your"])
+     
+    i("afro_Z", [ "zebra", "zeus", "zadora", "zsa"])
+     
+    i("boreds", [ "aww%|/hugs %%", "/tickles %%", "cheer up %%%|*hugs*", "/feels %%", "/gets out a board game for %%", "/starts shuffling cards", "/befriends %%", "/downloads some porn for %%"])
+     
+    i("moos", [ "moo", "MOO!", "/moos quietly", "/moos back to %%", "M%REPEAT{2:8:o}%REPEAT{2:8:O}%REPEAT{2:8:0}%REPEAT{2:8:o}%REPEAT{2:8:0}%REPEAT{2:8:o}!", "ahhh moo", "moo?", "/goes moo", "quack", "woof", "baa", "oink", "You mooing at me?", "MOo", "Moooooooweeeeeeeeeehahahahahahahahahaa",  "MOO", "moo...", "mo...o", "moo%colen"])
+     
+    i("insultsupermarket", [ "eek, not %%", "%% mings", "watch your language :)", "Clearly you are a mingbeast of the highest order and should only ever shop at Tesco to redeem yourself.", "You know, everyone you hate shops at %%", "I once found a live student in %%", "You know, they sell recycled food at %%", "They had a vote for the mingingest place on earth. It was won by %%"])
+     
+    i("awayWorks", [ "hf %%", "have fun %%", "have a nice day %% :)", "don't work too hard!"])
+     
+    i("frightens", [ "eek!%|%bot\[50,VAR{awwws}\])", "o_O", "erk", "bah", "oh no b-", "crikey%|%bot\[50,VAR{awwws}\])", "blimey%|%bot\[50,VAR{awwws}\])", "gosh", "crumbs%|%bot\[50,VAR{awwws}\])", "yof", "ohmigod!", "erp!"])
+     
+    i("blinding", [ ])
+     
+    i("autoAways", [ "oh, so we're not interesting enough?%|%bot\[50,obviously not\])", "o, bye then", "bored? fine, we'll have fun without you ;)", "bored? fine, we'll have fun without you ;)%|%bot\[50,VAR{rarrs}\])", "fine, leave your computer, see if i care", "damnit! I WAS TALKING TO YOU!", "yea, go away, you don't care", "auto away my arse", "Great! Time to talk behind your back!%|So what do you guys really think about %%"])
+     
+    i("tech_functions", [ "virus-scan", "validate", "manage", "install", "clean", "update", "audit"])
+     
+    i("sucks", [ "%% = %VAR{PROM}"])
+     
+    i("yeses", [ "Yes.", "yes", "yes.", "mais oui", "oui", "but of course", "hai", "ja", "absolutement", "yup", "and you don't even have lots of forms to fill in", "mmm", "true", "nononononono*%|*=yes", "unquestionably", "amen", "undoubtedly", "affirmative", "all right", "yea", "yep", "aye", "exactly", "definitely", "indubitably", "naturally", "of course", "/nods", "*nod*"])
+     
     i("sillyThings", ["12 year old black metal kids", "14 US dollars", "1.5 pie", "20 minutes till lunch", "5 litres of Halfords 10W-40", "5 pints", "99 bicycle clips", "a 12-inch pianist", "a 1.44MB floppy disk", "a 1979 Aston Martin", "a 7MB Flash movie", "AA", "a backup", "a badger", "a bag", "a bagette", "a bank", "a barbecue", "a bath", "a baton", "a bazooka", "a beach", "a beard", "a beast", "a bed", "Aberystwyth", "a better computer", "a big stick with nails in it", "a bike", "a bird",   "a biscuit tin", "a blanket", "a bloke", "a bog wallness", "a boiler", "a boob", "a book", "a bookshelf", "a bookstore", "a boot", "a bot", "a bottle", "a bottom", "a box", "a boy",  "a branch", "a brick", "a bridge", "a broken CD case", "a brother", "a brownie", "a bucket", "a budget", "a building", "a bullet", "a bunker", "a bus", "a business", "a button", "a cab",     "a camara", "a camera", "a candidate", "a can of coke", "a can of diet coke (bleh)", "a capital", "a Cappucino", "a captain", "a car", "a car park", "a carrot", "a cartoon", "a case", "a cassette", "a cassette deck",   "a cat", "a catflap", "a cd wallet", "a ceiling", "a cellar", "a certain", "a chain", "a champion", "a channel", "a chat", "a chatterbot", "a cheque", "a choir", "a Christian", "a chum",     "a cinema", "a circus", "a client", "a clock", "a clothes peg", "a clown", "a coffee pot", "a company", "a compiler", "a complete central heating system"])
  
     i("blownAways", ["/is blown off feet by force of %%'s statement%|%bot\[50,VAR{picksUp}\]", "/falls over%|%bot\[50,VAR{picksUp}\]", "/is blown away by force of %%'s statement%|%bot\[50,VAR{picksUp}\]", "ow my eyes :(", "/blinks", ":O", "o_O", ":o", "blimey", "crumbs", "i say", "lordy" ])
