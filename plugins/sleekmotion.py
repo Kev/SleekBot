@@ -245,7 +245,7 @@ class sleekmotion(object):
         for trigger in self.commands.values():
             logging.debug("Comparing for trigger '%s'" % trigger['regexp'])
             if re.compile(self.parseTrigger(trigger['regexp'])).search(body):
-                if random.randint(0,100) < trigger['frequency'] * self.store.chatiness:
+                if random.randint(0,99) >= (trigger['frequency'] * self.store.chatiness):
                     logging.debug("Deciding not to respond to match")
                     continue
                 if not trigger['function'] == None:

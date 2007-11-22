@@ -37,4 +37,4 @@ class sleekmotion_complexs(object):
         self.bot.botplugin['sleekmotion'].makeUnLonely()
         self.bot.botplugin['sleekmotion'].driftFriendship(handle,3)
         name = self.bot.botplugin['sleekmotion'].getRealName(handle, nick)
-        return "merry christmas and happy new year %s %VAR{smiles}" % name
+        return "merry christmas and happy new year "+name+" %VAR{smiles}"
