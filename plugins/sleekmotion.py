@@ -238,6 +238,11 @@ class sleekmotion(object):
         """ Adjust the bot's friendship towards handle by amount.
         """
         pass
+    
+    def getGender(self):
+        """ Return the bot's gender
+        """
+        return "M"
         
     def handle_message(self, message):
         body = message.get('message', '')

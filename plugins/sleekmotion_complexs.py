@@ -19,6 +19,8 @@
 """
 
 import logging
+import random
+import re
 
 class sleekmotion_complexs(object):
     def __init__(self, bot, config):
@@ -31,6 +33,7 @@ class sleekmotion_complexs(object):
         v = self.bot.botplugin['sleekmotion'].addValues
         
         t("xmas", "(merry|happy|have a good) (xmas|christmas|chrismas|newyear|new year) %botnicks", 100, self.xmas)
+        t("asl", "^([a-zA-Z]+(:|,| )*)?a/?s/?l\??$", 100, self.asl)
         
     def xmas(self, nick, jid, handle, body, message):
         self.bot.botplugin['sleekmotion'].makeHappy()
@@ -38,3 +41,6 @@ class sleekmotion_complexs(object):
         self.bot.botplugin['sleekmotion'].driftFriendship(handle,3)
         name = self.bot.botplugin['sleekmotion'].getRealName(handle, nick)
         return "merry christmas and happy new year "+name+" %VAR{smiles}"
+    
+    def asl(self, nick, jid, handle, body, message):
+        return "%s: %d/%s/%s" % (nick, random.randint(12,65), self.bot.botplugin['sleekmotion'].getGender(), "%VAR{locations}")
