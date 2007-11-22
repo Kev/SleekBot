@@ -40,6 +40,8 @@ class sleekmotion_complexs(object):
         t("watchout", "^%botnicks,?:? (watchout|watch out|watch it|careful|run( for (it|the hills))?|hide|duck)!?", 100, self.watchout)
         v("woots", ["i like %%", "\\o/", "%REPEAT{3:7} %%", "\\o/ %%", "hurrah", "wh%REPEAT{3:7:e} %%", "%VAR{smiles}"])
         t("woot", "^[a-zA-Z0-9]+[!1~]+$", 5, self.woot)
+        t("sorry1", "(i'm)?( )?(very)?( )?sorry(,)? %botnicks", 100, self.sorry)
+        t("sorry2", "%botnicks:? sorry", 100, self.sorry)
         
     def xmas(self, nick, jid, handle, body, message):
         self.bot.botplugin['sleekmotion'].makeHappy()
@@ -69,3 +71,10 @@ class sleekmotion_complexs(object):
         while r.search(response):
             response = re.sub(r, item, response)
         return response
+        
+    def sorry(self, nick, jid, handle, body, message):
+        self.bot.botplugin['sleekmotion'].makeHappy()
+        self.bot.botplugin['sleekmotion'].makeUnLonely()
+        self.bot.botplugin['sleekmotion'].driftFriendship(handle,3)
+        name = self.bot.botplugin['sleekmotion'].getRealName(handle, nick)
+        return "%VAR{sorryok} %%"
