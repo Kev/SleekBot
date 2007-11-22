@@ -1,6 +1,7 @@
 """
     bmotion_simples.py - A port of the bmotion simple stuffs.
-    Copyright (C) 2007 Kevin Smith
+    Copyright (C) 2007 Kevin Smith.
+    Original logic copyright of bMotion project.
 
     SleekBot is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -62,7 +63,7 @@ class bmotion_simples(object):
         self.bot.botplugin['sleekmotion'].registerTrigger("bisto","^ahh+$",10, "Bisto!")
         self.bot.botplugin['sleekmotion'].registerTrigger("thinkso","^(no, )?(i|I) do(n't| not) think so",10, ["Mr Negative","I DO think so.", "and what would you know?"])
         self.bot.botplugin['sleekmotion'].registerTrigger("littlebit", "(what, )?not even a little bit", 40, "goonthens")
-
+        self.bot.botplugin['sleekmotion'].registerTrigger("nn", "(nn|gn|nite|night|nite ?nite),? (%botnicks|all)!*$", 100, ["nn %VAR{unsmiles}", "nn", "nite", "night", "nn %%", "sleep well", "sweet dreams"])
         self.bot.botplugin['sleekmotion'].registerTrigger("here","^any ?(one|body) (here|alive|talking)", 40, "here_responses")
 
         self.bot.botplugin['sleekmotion'].registerTrigger("notbot", "%botnicks('s| is) a bot", 60, "notbots")
@@ -97,3 +98,6 @@ class bmotion_simples(object):
         self.bot.botplugin['sleekmotion'].registerTrigger("right", "%botnicks: (i see|ri+ght|ok|all? ?right|whatever)", 60, [ "it's true %VAR{unsmiles}", "it's true%colen", "yes", "what", "you don't believe me?"] )
         self.bot.botplugin['sleekmotion'].registerTrigger("hal", "%botnicks:?,?;? open the cargo bay doors?", 70, [ "I'm sorry %%, I can't do that."] )
         self.bot.botplugin['sleekmotion'].registerTrigger("only4", "^only [0-9]+", 80, [ "well actually %NUMBER{100}", "that's quite a lot", "that's not very many", "well that's usually enough to get me functioning"] )
+        
+        #some complex which are simple:
+        self.bot.botplugin['sleekmotion'].registerTrigger("shocked", "^((((=|:|;)-?(o|0))|(!+))|blimey|crumbs|i say)$", 40, "%VAR{shocked}")

@@ -183,7 +183,7 @@ class sleekmotion(object):
         
         #TODO
         #/action
-        
+        #%NUMBER{}
 
         ready = (response == modified)
         
