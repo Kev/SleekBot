@@ -30,13 +30,13 @@ class sleekmotion_simples(object):
             "gesuntheit",
             "bless you",
             "Bless you",
-            "/me hands %% a tissue",
+            "/hands %% a tissue",
             "e%REPEAT{2:5:w}%|*wipe*",
             "hehe, someone must be talking about you %VAR{smiles}",
             "good thing I bought this haz-mat suit",
             "Rogue bogey!",
-            "/me ducks",
-            '/me hides behind %ruser',
+            "/ducks",
+            '/hides behind %ruser',
             "Great. Now I'm gonna get a cold %VAR{unsmiles}",
             "Eek. Don't give it to me",
             "%% - I recommend %VAR{sillyThings}"])
@@ -51,12 +51,12 @@ class sleekmotion_simples(object):
           "LIES.",
           "SILENCE%FUNC{colen}",
           "LIES, ALL LIES%|(unless a witness steps forward)",
-          "/me smothers %%%|shh, someone will hear",
+          "/smothers %%%|shh, someone will hear",
           "shh%|sekrit"])
             
         self.about = "'bmotion_simples' Simple ports of all the bmotion simple plugins. \nBased on the bMotion plugin.\nWritten by Kevin Smith"
         t = self.bot.botplugin['sleekmotion'].registerTrigger
-        t('sneeze', '^\*?(/me sneezes|.hatsjoe|wachoo|sneezes|.a+tchoo+)', 60, '%VAR{blessyous}')
+        t('sneeze', '^\*?(/sneezes|.hatsjoe|wachoo|sneezes|.a+tchoo+)', 60, '%VAR{blessyous}')
         t("zzz","^zzz+",50, '%VAR{handcoffees}')
         t("takethat","^take that!",60, ["and party!","and party"])
         t("wrongsmiley",'{^L\($}', 60, ["taunt","fail","WORST. SMILEY. EVER.","try realigning your fingers for that one","E_SMILEY"])

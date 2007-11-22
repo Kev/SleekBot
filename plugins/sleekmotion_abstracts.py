@@ -72,16 +72,16 @@ def importInto(sleekmotion):
 
     i('silenceAways', [
       "bah",
-      "/me goes to find someone more interesting to talk to",
+      "/goes to find someone more interesting to talk to",
       ":(",
       "fine",
-      "/me stamps foot%|*sulk*",
-      "/me talks to %ruser instead",
+      "/stamps foot%|*sulk*",
+      "/talks to %ruser instead",
       "hai!",
       "nnk"])
 
     i('lovesits', [
-      "/me loves it",
+      "/loves it",
       "stop making me horny",
       "~oof~",
       "~rarr~",
@@ -234,15 +234,15 @@ def importInto(sleekmotion):
  ,       "/helps %% back off the ground"
  ,       "/gives %% a hand"])
     i('handcoffees', [
-        "/me hands %% a coffee"
+        "/hands %% a coffee"
  ,       "wake up%colen"
  ,       "go to bed already"
  ,       "sorry, are we <notopic>keeping you up</notopic>?"
  ,       "you need a coffee"
- ,       "/me throws water over %% to wake them up"
- ,       "/me lends %% a pillow"
- ,       "/me lends %% a cushion"
- ,       "/me hands %% some ProPlus"
+ ,       "/throws water over %% to wake them up"
+ ,       "/lends %% a pillow"
+ ,       "/lends %% a cushion"
+ ,       "/hands %% some ProPlus"
      ])
     
     i('hiddenBehinds', [

@@ -193,7 +193,8 @@ class sleekmotion(object):
             modified = newModified
         
         if allowOutputPlugins:
-            modified = self.applyOutputPlugins(modified, message)    
+            modified = self.applyOutputPlugins(modified, message)
+               
         
         return modified
     
@@ -214,9 +215,13 @@ class sleekmotion(object):
         return modified
     
     def parseMultiline(self, response):
-        """ Parses | out into multiple strings.
+        """ Parses | out into multiple strings and actions.
         """
-        return response.split('|')
+        responses = response.split('|')
+        for i in range(len(responses)):
+            if responses[i][0] == '/':
+                responses[i] = '/me ' + responses[i][1:]
+        return responses
     
     def getRealName(self, handle, nick):
         """ Fetch a real name for this handle. If none is available,
