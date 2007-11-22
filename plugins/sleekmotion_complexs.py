@@ -36,7 +36,8 @@ class sleekmotion_complexs(object):
         t("asl", "^([a-zA-Z]+(:|,| )*)?a/?s/?l\??$", 100, self.asl)
         v("wins",["victory for %me%colen", "this victory strengthens the soul of %me!", "%VAR{harhars}", "%VAR{thanks}", "wh%REPEAT{2:6:e}! do I get %VAR{sillyThings} now?"])
         t("wins", "^%botnicks:? (wins|exactly|precisely|perfect|nice one|yes)[!1.]*$", 100, self.wins)
-        t("wins2", "(nice one|well said|exactly|previsely|perfect|right one|yes) %botnicks[!1.]*$", 100, self.wins)
+        t("wins2", "(nice one|well said|exactly|previsely|perfect|right one|yes|victory for),? %botnicks[!1.]*$", 100, self.wins)
+        t("watchout", "^%botnicks,?:? (watchout|watch out|watch it|careful|run( for (it|the hills))?|hide|duck)!?", 100, self.watchout)
         
     def xmas(self, nick, jid, handle, body, message):
         self.bot.botplugin['sleekmotion'].makeHappy()
@@ -53,3 +54,8 @@ class sleekmotion_complexs(object):
         self.bot.botplugin['sleekmotion'].makeUnLonely()
         self.bot.botplugin['sleekmotion'].driftFriendship(handle,1)
         return "%VAR{wins}"
+
+    def watchout(self, nick, jid, handle, body, message):
+        self.bot.botplugin['sleekmotion'].makeUnLonely()
+        self.bot.botplugin['sleekmotion'].driftFriendship(handle,1)
+        return "%VAR{hides}"
