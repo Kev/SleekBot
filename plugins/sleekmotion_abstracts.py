@@ -2018,3 +2018,5 @@ def importInto(sleekmotion):
     ,"east"
     ,"west"
     ])
+
+    i("narfs",["zort!", "narf", "poit.", "poit!", "narf!"])

@@ -20,6 +20,13 @@
 import random
 import re
 
+def pinkytransform(oldstring):
+    output = oldstring
+    if re.compile('[.!?]$').search(oldstring):
+      output += "."
+    output += " %VAR{narfs}"
+    return output
+
 def typostransform( oldstring):
     corrections = []
     wordpairs = {'the':'teh','is':'si','I':'i'}
@@ -59,7 +66,7 @@ def typostransform( oldstring):
 
     for flip in flips:
         r = re.compile(flip[0])
-        if r.search(output) and random.randin(0,100) < typochance:
+        if r.search(output) and random.randint(0,100) < typochance:
             modified = re.sub(r, flip[1], output)
             corrections.append("s/%s/%s/" %(flip[1],flip[0]))
             typochance *= 0.6
@@ -74,5 +81,6 @@ class sleekmotion_outputplugins(object):
         self.config = config
         plugins = []
         plugins.append({'name':'typos','function':typostransform,'probability':10})
+        plugins.append({'name':'pinky','function':pinkytransform,'probability':10})
         for plugin in plugins:
             self.bot.botplugin['sleekmotion'].registerOutputPlugin(plugin)
