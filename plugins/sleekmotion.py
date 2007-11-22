@@ -62,6 +62,7 @@ class sleekmotion(object):
         #self.bot.addMUCCommand('chatiness', self.handle_chatiness)
         #self.bot.addHelp('chatiness', 'Chatiness command', "Multiplier for the chatiness of a bot.", 'chatiness 0-100')
         self.commands = {}
+        self.outputPlugins = {}
         self.botNicks = ['sleek']
         nicks = self.config.findall('botNick')
         if nicks:
@@ -103,7 +104,7 @@ class sleekmotion(object):
         """ Returns a random nickname that the bot knows about.
         """
         self.store.store['names'] = ["Kev",'albert','remko','textshell','hal','infiniti','psidekick','xepbot']
-        return self.store.store['names'](random.randint(0,len(self.store[names])-1))
+        return self.store.store['names'](random.randint(0,len(self.store.store['names'])-1))
     
     def variableValue(self, varname):
         """ Return a random value from a variable.
@@ -123,11 +124,27 @@ class sleekmotion(object):
         for i in random.randint(4,12):
             response = response + colen[random.randint(0,len(colen)-1)]
         return response
+    
+    def registerOutputPlugin(self, plugin):
+        """ Adds the specified output plugin.
+        """
+        self.outputPlugins[plugin['name']] = plugin
+    
+    def applyOutputPlugins(self, response, message):
+        """ For each registered output plugin, possibly apply it.
+        """
+        modified = response
+        for plugin in self.outputPlugins.values():
+            if random.randint(0, 99) < plugin['probability']:
+                logging.debug("Applying output plugin '%s'" % plugin['name'])
+                modified = plugin['function'](modified)
+                modified = self.parseResponse(modified, message, False)
+        return modified
         
-    def parseResponse(self, response, message):
+    def parseResponse(self, response, message, allowOutputPlugins = True):
         """ Parses special strings out of the response.
         """
-        logging.debug("Parsing response '%s'" % response)
+        logging.debug("Parsing response '%s' (outputplugins = %s)" % (response, str(allowOutputPlugins)))
         r = re.compile('%ruser')
         
         modified = response
@@ -135,9 +152,6 @@ class sleekmotion(object):
         while r.search(modified):
             user = self.ruser()
             modified = re.sub(r, user, modified)
-        
-        print type(message)
-        print message
         
         r = re.compile('%%')
         while r.search(modified):
@@ -170,9 +184,13 @@ class sleekmotion(object):
         ready = (response == modified)
         
         while not ready:
-            newModified = self.parseResponse(modified, message)
+            newModified = self.parseResponse(modified, message, False)
             ready = (newModified == modified)
             modified = newModified
+        
+        if allowOutputPlugins:
+            modified = self.applyOutputPlugins(modified, message)    
+        
         return modified
     
     def botNickRegexp(self):
@@ -190,6 +208,12 @@ class sleekmotion(object):
         
         logging.debug("trigger transformed to '%s'" % modified)
         return modified
+    
+    def parseMultiline(self, response):
+        """ Parses | out into multiple strings.
+        """
+        return response.split('|')
+        
         
     def handle_message(self, message):
         body = message.get('message', '')
@@ -208,9 +232,10 @@ class sleekmotion(object):
                     response = self.variableValue(trigger['responseVar'])
                 response = self.parseResponse(response, message)
                 logging.debug("Responding with '%s'" % response)
-                if message['type'] == 'groupchat':
-                    self.bot.sendMessage("%s" % message.get('room', ''), response, mtype=message.get('type', 'groupchat'))
-                else:
-                    self.bot.sendMessage("%s/%s" % (message.get('jid', ''), message.get('resource', '')), response, mtype=message.get('type', 'chat'))
+                for responseLine in self.parseMultiline(response):
+                    if message['type'] == 'groupchat':
+                        self.bot.sendMessage("%s" % message.get('room', ''), responseLine, mtype=message.get('type', 'groupchat'))
+                    else:
+                        self.bot.sendMessage("%s/%s" % (message.get('jid', ''), message.get('resource', '')), responseLine, mtype=message.get('type', 'chat'))
         
     
