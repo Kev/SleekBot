@@ -20,6 +20,18 @@
 import random
 import re
 
+def diddlydotstransform(oldstring):
+    outputwords = oldstring.split()
+    for i in range(len(outputwords)):
+        word = outputwords[i]
+        if re.compile("^[a-z]+$").search(word):
+            if not re.compile("(which|about|these|those|their|there)").search(word):
+                if random.randint(0,100) > 80:
+                    outputwords[i] = '"%s"' % word
+                    break
+    output = " ".join(outputwords)
+    return output
+
 def pinkytransform(oldstring):
     output = oldstring
     if re.compile('[.!?]$').search(oldstring):
@@ -90,5 +102,6 @@ class sleekmotion_outputplugins(object):
         plugins.append({'name':'typos','function':typostransform,'probability':10})
         plugins.append({'name':'pinky','function':pinkytransform,'probability':10})
         plugins.append({'name':'gollum','function':gollumtransform,'probability':10})
+        plugins.append({'name':'diddlydot','function':diddlydotstransform,'probability':10})
         for plugin in plugins:
             self.bot.botplugin['sleekmotion'].registerOutputPlugin(plugin)
