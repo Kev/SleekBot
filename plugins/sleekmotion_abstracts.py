@@ -1313,713 +1313,708 @@ def importInto(sleekmotion):
 ,       "don't you step on my blue suede shoes"
 ,       "i see girls here there and everywhere; short skirts long hair love it when they walk yeah"
     ])
-    # 
-    # bMotion_abstract_batchadd "wrong_infoline" [list "oops, wrong infoline, sorry" "huk, wrong infoline" "whoops" "o wait not that infoline" "/snigger" "wait, that's not right..." ]
-    # 
-    # bMotion_abstract_batchadd "randomStuffMale" [list "Yeah baby yeah!" "I don't know how that got in there. It's not mine." "I don't think there's enough room in here for me and my thingy%|/removes thingy and sits in the other room" "That ain't my finger" "%REPEAT{3:8:m} electronical things" "%REPEAT{3:6:m} internet" "%REPEAT{3:6:m} breasts" "%REPEAT{3:6:m} jugs" "/considers sexchange operation%|%PICKUSER\[female\]%|/looks at %ruser%|Maybe not" "%PICKUSER\[male\]%|It's good to be male isn't it %ruser" ]
-    # 
-    # bMotion_abstract_batchadd "welcomeBacks" [list "re" "wb" "welcome back" "hey" "hi" "%REPEAT{4:7:bl}" "pop" "heya" "you're back!"]
-    # 
-    # bMotion_abstract_batchadd "tech_problem" [list "switch on" "open" "execute" "run" "emit sound" "install" "work" "stop being purple" "stop rendering pictures of %VAR{sillyThings}" "connect to the network" "stop telling me 'you are too stupid to use this software'" "make the tea" "download pornography" "connect" ]
-    # 
-    # bMotion_abstract_batchadd "lols" [list "lol" "cbsl" "hehe" "%REPEAT{2:5:ha}" "muwa%REPEAT{2:5:ha}" "heh" ":D" "rofl" "socl" "heheh" ":))" ":)" "LOL" "/laughs" "/chuckles" "/smirks" ]
-    # 
-    # bMotion_abstract_batchadd "noneOfYourBusiness" [list "none of your business. shut up." "none of your business" "shut up" "you keep out of this" "it's sekrit" "Yes." "It's a secret." "I don't care." "I'm not telling you" ]
-    # 
-    # bMotion_abstract_batchadd "joinins" [list "~rarr~" "~oof~" "ooh, can I come?" "can I join in?" "wahey-waterproof" ":)" "have fun ~rarr~" ]
-    # 
+     
+    i("wrong_infoline", ["oops, wrong infoline, sorry", "huk, wrong infoline", "whoops", "o wait not that infoline", "/snigger", "wait, that's not right..."])
+
+    i("randomStuffMale", ["Yeah baby yeah!", "I don't know how that got in there. It's not mine.", "I don't think there's enough room in here for me and my thingy%|/removes thingy and sits in the other room", "That ain't my finger", "%REPEAT{3:8:m} electronical things", "%REPEAT{3:6:m} internet", "%REPEAT{3:6:m} breasts", "%REPEAT{3:6:m} jugs", "/considers sexchange operation%|%PICKUSER\[female\])%|/looks at %ruser%|Maybe not", "%PICKUSER\[male\])%|It's good to be male isn't it %ruser"])
+
+    i("welcomeBacks", ["re", "wb", "welcome back", "hey", "hi", "%REPEAT{4:7:bl}", "pop", "heya", "you're back!"])
+
+    i("tech_problem", ["switch on", "open", "execute", "run", "emit sound", "install", "work", "stop being purple", "stop rendering pictures of %VAR{sillyThings}", "connect to the network", "stop telling me 'you are too stupid to use this software'", "make the tea", "download pornography", "connect"])
+
+    i("lols", ["lol", "cbsl", "hehe", "%REPEAT{2:5:ha}", "muwa%REPEAT{2:5:ha}", "heh", ":D", "rofl", "socl", "heheh", ":))", ":)", "LOL", "/laughs", "/chuckles", "/smirks"])
+
+    i("noneOfYourBusiness", ["none of your business. shut up.", "none of your business", "shut up", "you keep out of this", "it's sekrit", "Yes.", "It's a secret.", "I don't care.", "I'm not telling you"])
+
+    i("joinins", ["~rarr~", "~oof~", "ooh, can I come?", "can I join in?", "wahey-waterproof", ":)", "have fun ~rarr~"])
+
     i("unsmiles", [":(", ";(", ":O", ":\[", ":<", "=(", "=\[", "=O", "o_O", "T_T", ":~(", ":'("])
-    # 
-    # bMotion_abstract_batchadd "ruins" [list "Incompetence." "INCOMPETENCE%colen" "YOU INCOMPETENT FOOL!" "You've ruined it." "That's torn it." ":P" "I spy incompetence." "Idiot." "heh" "\"great\"" "\"well done\"" "\"Good\" job." "\"Good\" work." "plonker" "you plonker" "muppet" "idiot" "fool" "taunt!" "cretin" "moron" "Jade!" "\"Bonza.\""]
-    # 
-    # bMotion_abstract_batchadd "hexStart" [list "+++Out Of" "+++Overley Terrifying" "+++Please Execute" "%REPEAT{1,4,+++MELON}+++" "+++Conflicting" "+++Current" "+++Load" "+++Incorrect" "+++Completed" "+++Undefined" "+++" "+++Missing" "+++Proceed to" "+++Magical" "+++Trying To Enable"  "+++Good Morning:" "+++I WANT MY" "+++Summoning" "+++Unparalleled" "+++Insidious" "+++DANGER:" "+++System Error" "+++Arbitrary" "+++Random" "+++Insert" "+++Activating" ]
-    # 
-    # bMotion_abstract_batchadd "attack_responses" [list "%% attacks %SETTING{complex:attacks:who:_:_} with '%SETTING{complex:attacks:item:_:_}' for %SETTING{complex:attacks:score:_:_} damage." "%SETTING{complex:attacks:who:_:_} takes %SETTING{complex:attacks:score:_:_} damage from %OWNER{%%} '%SETTING{complex:attacks:item:_:_}'" "%SETTING{complex:attacks:who:_:_} is tremendously damaged by the %SETTING{complex:attacks:item:_:_} and takes %SETTING{complex:attacks:score:_:_} damage!" "MISS!" "%SETTING{complex:attacks:who:_:_} is immune to '%SETTING{complex:attacks:item:_:_}'" "%SETTING{complex:attacks:who:_:_} absorbs the damage and gains %SETTING{complex:attacks:score:_:_} HP!" ]
-    # 
-    # bMotion_abstract_batchadd "locations" [list "England" "US" "california" "indiana" "the moon" "australia" "holland" "norway" "bosnia" "russia" "canada" "toronto" "amsterdam" "mars" "exeter" "london" "new york" "basingstoke" "mordor" "middle earth" "the heart of the world" "bree" ]
-    # 
-    # bMotion_abstract_batchadd "kills" [list "/stabs %%" "/phasers %%" "/nukes %%" "/kills %%" "/0wnz %%" "/destroys %%" "/plays S Club 7 singles at %%" "/pops %% with a knitting needle" "/dices %%" "/shoots %%" "/eats %%" "/minces %%" "/slashes %%" "/chainsaws %%" "/farts on %%"   "/uses the power of greyskull on %%" "/forces %% to shop at Budgens" ]
-    # 
-    # bMotion_abstract_batchadd "insult_joins" [list "%ruser: yeah, %% does suckOH HI %%!" "\[%%\] I'm a %VAR{PROM}%|%VAR{wrong_infoline}" "\[%%\] I love %ruser%|%VAR{wrong_infoline}" "\[%%\] Just call me %VAR{sillyThings}%|%VAR{wrong_infoline}" ]
-    # 
-    # bMotion_abstract_batchadd "pullsOut" [list "/pulls it out%|%bot\[50,VAR{wahey}\]" ]
-    # 
-    # bMotion_abstract_batchadd "goodMornings" [list "Morning %%" "good morning %%" "What time do you call this?" "G'day" "*yawn*" "r"]
-    # 
-    # bMotion_abstract_batchadd "stonedRandomStuff" [list "wheeeeeeee" "wheeeee..." "hey... i sound really stoned..." "hey, my hands are huge... they can touch anything but themselves... oh, wait" "slap my ass and call me charlie" "I don't think I'm ever going to come down" "peace" "flower power rules" "Did you ever wonder about the rising situation in Eastern Europe" "Hey, my TCL is HUGE" "I love you all" "look at all those beautiful colours" "I have to be stoned to feel normal" "see the marmalade skies" ]
-    # 
-    # bMotion_abstract_batchadd "gollums" [list "Foolishness!" "Stupid fat hobbit!" "We hates the fat hobbit! Him and his pots and pans and ropes." "Thieves. Thieves all!" "Stupid hobbit. Talking to himself like that. Not answering himself." "Yes. Sleep sweet sleep with our precious!" "Filthy little thief playing with our precious!" "If only fat hobbit would go away for a moment, we could go to master and take the precious away from him." "No! Must not take away our precious!" "We miss the song of the precious. We miss it. We wants it back!" "Everyone wants my precious. It's not fair! It's ours!" "Shiny, shiny." "/sniggers" "/grovels" "/picks his nose" "/pines for his precious" "/searches his pockets" "/eats some slimy creatures" "/mutters: 'My precious, wheres my precious?'" "/shouts: 'No Master Hobbitsisisisis!'" "/cries: 'The ring was ours for agesisisisis!'" "Smeagol sneeking! ME! Shneekingsisis!" "/screams: 'Nasty Hobbitsisisisis...'" "Come on, quickly, follow Smeagol" "Every way is guarded, silly foolsis!" "Nasty Bagginis, stole my precious." "She will kill them oh yes she will precious." "Weees wants some fishises." "Whats has its got in its pocketses, hmmm?" "/whimpers: 'We've lost itses we have.'" "He'll eastus all the world if he getsitses it." "No food, no rest; Smeagol a SNEAK!" "What a dainty little dish you will be for her." "Hobbitses always SOOOO Polite." "/screams: 'Stop, Thief!'" "Makeses him drop his weapon precious." "/grovels: 'He has only four fingers on the black hand.'" "/growls: 'Not nice Hobbits, not sensible!'" "If you findesis it, give it us back." "Don't hurt us, mastersisis." "Poor Smeagol, poor Smeagol." "No AH! Don't hurtsis us." "golum kick hobbit arse%|/sniggers"]
-    # 
-    # bMotion_abstract_batchadd "blairisms" {
-    #   "%VAR{blairadj} %VAR{blairparts}, %VAR{blairadj} %VAR{blairparts}, %VAR{blairadj} %VAR{blairparts}."
-    # }
-    # 
-    # bMotion_abstract_batchadd "blairadj" {
-    #   "caring"
-    #   "concerned"
-    #   "confident"
-    #   "worried"
-    #   "surprised"
-    #   "please-vote-for-me"
-    # }
-    # 
-    # bMotion_abstract_batchadd "blairparts" {
-    #   "hand gesture"
-    #   "knees"
-    #   "hairline"
-    #   "hair"
-    #   "teeth"
-    #   "suit"
-    #   "nose"
-    #   "eyes"
-    #   "stance"
-    #   "stare"
-    # }
-    # 
-    # bMotion_abstract_register "answerIsyours"
-    # bMotion_abstract_batchadd "answerIsyours" {
-    #   "omg yes"
-    #   "yes!%|%VAR{randomGirness}"
-    # }
-    # 
-    # bMotion_abstract_register "answerDidyous"
-    # bMotion_abstract_batchadd "answerDidyous" {
-    #   "yarr %VAR{smiles}"
-    #   "yes but i have a %VAR{chocolates} stuck in my %VAR{bodypart}"
-    #   "how could i when i had %ruser %VAR{dVerbs}ing %VAR{answerWheres}"
-    #   "ja aber jetzt kann ich Deutsches nur sprechen"
-    #   "yes and i'm gonna do it again %VAR{answerWhens} %VAR{answerWheres}"
-    #   "yes but i'd rather %VAR{punishments} than do it again!"
-    #   "yeah %VAR{oops} %VAR{smiles}"
-    #   "yarr%|%VAR{randomZimness}"
-    #   "%VAR{lols} %VAR{smiles} %colen%|/%VAR{smacks} himself in the %VAR{bodypart}"
-    #   "no i spent my time contemplating how i %VAR{smacked} %ruser in the %VAR{bodypart}"
-    #   "yes but i wish i'd gone %VAR{dNouns}-%VAR{dVerbs}ing %VAR{smiles}"
-    # }
-    # 
-    # bMotion_abstract_register "answerDoyous"
-    # bMotion_abstract_batchadd "answerDoyous" {
-    #   "normally"
-    #   "always %VAR{rarrs}"
-    #   "i do%|despite having no %VAR{bodypart}"
-    #   "i did till my %VAR{bodypart} %VAR{fellOffs} :("
-    #   "does it mean i get pie?"
-    #   "yahyahayayahayahahayh%colen"
-    #   "indeed i do%|%VAR{randomZimness}"
-    #   "yarr or i would be %VAR{smacked} with %rusers %VAR{bodypart}!"
-    #   "omg yes"
-    #   "any chance i get %VAR{rarrs}%|%VAR{randomGirness}"
-    # }
-    # 
-    # bMotion_abstract_register "answerWhathaves"
-    # bMotion_abstract_batchadd "answerWhathaves" {
-    #   "%VAR{dVerbs}ing my %VAR{bodypart}"
-    # }
-    # 
-    # bMotion_abstract_register "answerHaveyous"
-    # bMotion_abstract_batchadd "answerHaveyous" {
-    #    "yeah on my %VAR{bodypart}"
-    #    "just this minute actually%|%VAR{randomGirness}"
-    #    "we don't like to talk about that anymore %VAR{rarrs}"
-    #    "not since %ruser %VAR{smacked} my %VAR{bodypart}"
-    #    "i can't remember%|%VAR{randomZimness}"
-    #    "hell yeah"
-    #    "omg yes"
-    #    "%VAR{lols} %VAR{yesnos}!"
-    # }
-    # 
-    # bMotion_abstract_register "answerWillyous"
-    # bMotion_abstract_batchadd "answerWillyous" {
-    #    "certainly%|do you like my %VAR{bodypart}?"
-    #    "of course!%|%VAR{randomGirness}"
-    #    "hand me a %VAR{dNouns} and i'll give it a bash :D"
-    #    "can't wait%|%VAR{randomZimness}"
-    #    "okie dokie"
-    #    "omg yes"
-    #    "can %ruser watch?"
-    #    "ok but you have to hold my %VAR{bodypart}"
-    #    "will you %VAR{dVerbs} my %VAR{bodypart}?"
-    # }
-    # 
-    # bMotion_abstract_register "answerWouldyous"
-    # bMotion_abstract_batchadd "answerWouldyous" {
-    #    "i'd sooner have my %VAR{bodypart} my %VAR{smacked}!"
-    #    "i'd do anything"
-    #    "in a flash!"
-    #    "love to%|%VAR{randomZimness}"
-    #    "only if %ruser can watch"
-    #    "if i had any arms i would%|:("
-    #    "if my %VAR{bodypart} would stop %VAR{dVerbs}ing"
-    # }
-    # 
-    # bMotion_abstract_register "answerAreyous"
-    # bMotion_abstract_batchadd "answerAreyous" {
-    #    "yes%|wait! i mean no"
-    #    "%ruser made me"
-    #    "yes and i wont stop till my %VAR{bodypart} bounces off!"
-    #    "i was feeling horny"
-    #    "yeah want a go? :)"
-    #    "only because my %VAR{dNouns} %VAR{fellOffs}"
-    # }
-    # 
-    # bMotion_abstract_register "answerCanyous"
-    # bMotion_abstract_batchadd "answerCanyous" {
-    #    "no%|not even if you %VAR{dVerbs} my %VAR{dNouns}"
-    #    "certainly%|%VAR{randomGirness}"
-    #    "never!%VAR{randomZimness}"
-    #    "sure%|%VAR{dSEnds}"
-    #    "i'd love to! :)"
-    #    "just show me where to sign %VAR{rarrs}"
-    #    "yeah no prob boss"
-    #    "but i have no ARMS... NO ARMS%colen%|/runs away"
-    # }
-    # 
-    # bMotion_abstract_register "dVerbs"
-    # bMotion_abstract_batchadd "dVerbs" {
-    #   "grab" "feel" "touch" "rake" "rub" "touch" "eat" "smoke"
-    #   "fry" "swing" "dribble" "kick" "ride" "throw" "fly" "wiggle"
-    #   "shoot" "shine" "fold" "eject" "swing from" "sniff" "wipe"
-    #   "sew" "wriggle" "waggle" "wiggle" "wet" "dip" "flash" "rinse"
-    #   "gargle"  "snort" "lick" "taste" "shit on" "crap on" "tickle" "wedge"
-    #   "suck"  "stew" "bake" "ice" "post" "sit on" "burn" "singe"
-    #   "moisten" "de-flower" "fondle" "poke" "bury" "fetch" "find" "trample"
-    # }
-    # 
-    # bMotion_abstract_register "dNouns"
-    # bMotion_abstract_batchadd "dNouns" {
-    #   "face" "clock" "tree" "bike" "torch" "spanner" "handle" "toilet paper" "nails"
-    #   "rivets" "lolipop" "stick" "todger" "stiffy" "winkie" "socks" "shoe" "underpants"
-    #   "knickers" "thong" "keys" "bits" "nubbin" "worm" "napkin" "willy-warmer" "sheets"
-    #   "pillow" "toilet" "bath" "tampon" "waffle iron" "toaster" "kettle" "mouse" "pasty"
-    #   "spatula" "elbow" "crotch" "urinal" "barking spider" "sphincter" "asophagus"
-    #   "throat" "tongue" "eyeball"
-    # }
-    # 
-    # bMotion_abstract_register "dSEnds"
-    # bMotion_abstract_batchadd "dSEnds" {
-    #   "getting rather good at it too"
-    #   "i'm still trying to get better at it tho"
-    #   "i can do it %NUMBER{1000} times per second now"
-    #   "i do it every day"
-    #   "i'm crap tho"
-    #   "it takes skills you see"
-    #   "it ain't hard"
-    #   "its piss"
-    #   "a monkey could do it"
-    # }
-    # 
-    # bMotion_abstract_register "smacked"
-    # bMotion_abstract_batchadd "smacked" {
-    #   "smacked" "cuffed" "hit" "patted" "slapped" "socked" "spanked" "chopped" "clouted" "punched"
-    #   "annihilated" "axed" "butcherd" "crushed" "damaged" "defaced" "eradicated" "erased" "exterminated"
-    #   "extinguished" "leveled" "liquidated" "maimed" "mutilated" "nuked" "nullified" "quashed" "ravished"
-    #   "razed" "ruined" "sabotaged" "shatterd" "smashed" "snuffed out" "stamped out"
-    # }
-    # 
-    # bMotion_abstract_register "yesresps"
-    # bMotion_abstract_batchadd "yesresps" {
-    #   "no %%" "oh no it isn't %VAR{smiles}" "nope %VAR{smiles}" "rubbish %VAR{smiles}"
-    #   "i think not, fool %VAR{smiles}" "wrong!" "nmm%colen" "thingy" "omg"
-    # }
-    # 
-    # bMotion_abstract_register "noresps"
-    # bMotion_abstract_batchadd "noresps" {
-    #   "tis" "oh yes it is %VAR{smiles}" "wrong!" "rubbish %VAR{smiles}"
-    #   "nonsense%colen" "i don't read your jibbering %VAR{smiles}"
-    #   "well cover me with %VAR{chocolates} and %VAR{dVerbs} my %VAR{bodypart}!"
-    # }
-    # 
-    # bMotion_abstract_register "sound"
-    # bMotion_abstract_add "sound" "%VAR{sounds} %VAR{sounds} %VAR{sounds} %VAR{sounds} %VAR{sounds} %VAR{sounds}"
-    # bMotion_abstract_add "sound" "%VAR{sounds} %VAR{sounds} %VAR{sounds} %|oh! excuse me"
-    # bMotion_abstract_add "sound" "%VAR{sounds} %VAR{sounds}%|/giggles"
-    # bMotion_abstract_add "sound" "%VAR{sounds} %VAR{sounds}"
-    # 
-    # bMotion_abstract_register "sound2"
-    # bMotion_abstract_add "sound2" "%VAR{sounds} %VAR{sound2} "
-    # bMotion_abstract_add "sound2" "%VAR{sounds} "
-    # 
-    # 
-    # bMotion_abstract_register "sounds"
-    # bMotion_abstract_batchadd "sounds" {
-    #   "click-click!" "klackety" "feep-feep" "*eeeem*" "honk honk!" "uh-uh-uh" "whommm" "eep"
-    #   "glop" "splish-splash-woah" "FOOM" "CLACK" "hiccup" "hee-haw" "splatter" "slap slap"
-    #   "arrg splutter" "aww" "*kaw*" "ZAP" "fweeee" "sploosh" "snip!"
-    #   "pap" "*choo choo choo*" "chuff!" "slip-beeeeeee" "smack" "oook-oook" "gah"
-    #   "gibber" "goo" "harrumph" "whip" "bzz-bzz-bzz-bzz" "splutter" "tweet tweet"
-    #   "ock" "wobble wobble!" "slash!"
-    # }
-    # 
-    # bMotion_abstract_register "quizes"
-    # 
-    # bMotion_abstract_register "colours"
-    # bMotion_abstract_batchadd "colours" {
-    #   "%VAR{basic_colours}"
-    #   "%VAR{weird_colours}"
-    #   "%VAR{colour_adjective} %VAR{basic_colours}"
-    #   "%VAR{colour_adjective} %VAR{weird_colours}"
-    # }
-    # 
-    # bMotion_abstract_register "weird_colours"
-    # bMotion_abstract_batchadd "weird_colours" {
-    #   "cyan" "magenta"
-    #   "mauve" "taupe" "ochre" "teal"
-    #   "crimson" "scarlet"
-    #   "cobalt" "turquoise" "cornflower blue"
-    #   "chartreuse"
-    # }
-    # 
-    # bMotion_abstract_register "basic_colours"
-    # bMotion_abstract_batchadd "basic_colours" {
-    #   "red" "blue" "yellow" "green" "violet" "orange" "black" "white"
-    #   "purple" "silver" "gold" "pink" "grey"
-    # }
-    # 
-    # bMotion_abstract_register "colour_adjective"
-    # bMotion_abstract_batchadd "colour_adjective" {
-    #     "brilliant"
-    #     "pale"
-    #     "mottled"
-    #     "shimmering"
-    #     "bright"
-    #     "dark"
-    #     "shining"
-    #     "faint"
-    #     "day-glow"
-    #     "metallic"
-    # }
-    # 
-    # 
-    # bMotion_abstract_register "nowPlaying"
-    # bMotion_abstract_batchadd "nowPlaying" {
-    #   "ooh, I like that one"
-    #   "[NP: %VAR{randomSongArtist} - %VAR{randomSongName}]"
-    #   "/eyes %%"
-    #   "%REPEAT{3:7:m}"
-    #   "oh dear. what will the neighbours think?"
-    # }
-    # 
-    # bMotion_abstract_register "nowPlayingDislike"
-    # bMotion_abstract_batchadd "nowPlayingDislike" {
-    #   "/plugs %hisher ears"
-    #   "ugh"
-    #   "how can you stand that stuff?"
-    #   "who cares?"
-    #   "SILENCE%colen"
-    # }
-    # 
-    # bMotion_abstract_register "randomSongArtist"
-    # bMotion_abstract_batchadd "randomSongArtist" {
-    #   "Britney Spears"
-    #   "U2"
-    #   "Oasis"
-    #   "Coldplay"
-    #   "Throbbing Gristle"
-    #   "Laibach"
-    #   "Infected Mushroom"
-    #   "The Cure"
-    #   "Spice Girls"
-    #   "Aphex Twin"
-    #   "that pop band nobody likes"
-    #   "Strapping Young Lad"
-    #   "Capitol City Jazz Ensemble"
-    #   "Napalm Death"
-    #   "Neil Diamond"
-    #   "Brian Eno"
-    #   "Wu-Tang Clan"
-    #   "Elwood"
-    #   "Acumen"
-    #   "Legendary Pink Dots"
-    #   "KOMPRESSOR"
-    #   "Nine Inch Nails"
-    #   "Nirvana"
-    #   "DJ %VAR{sillyThings}{strip}"
-    #   "%ruser"
-    #   "Unknown Artist"
-    #   "Cannibal Corpse"
-    # }
-    # 
-    # bMotion_abstract_register "randomSongName"
-    # bMotion_abstract_batchadd "randomSongName" {
-    #   "music for %PLURAL{%VAR{sillyThings}{strip}}"
-    #   "%PLURAL{%VAR{sillyThings}{strip}} of desire"
-    #   "Hurt"
-    #   "requiem for %VAR{sillyThings}"
-    #   "I Hate Myself and I Want to Die"
-    #   "that song about %VAR{sillyThings}"
-    #   "fade to %VAR{basic_colours}"
-    #   "the sound of one hand clapping"
-    #   "%VAR{sounds} %VAR{sounds} %VAR{sounds}"
-    #   "ode to %ruser"
-    #   "shake your %VAR{bodypart}"
-    #   "the Doom Song"
-    #   "God Save the Queen"
-    #   "Untitled Track %NUMBER{100}"
-    # }
-    # 
-    # bMotion_abstract_register "answerWhatOdds"
-    # bMotion_abstract_batchadd "answerWhatOdds" {
-    #   "one in a million"
-    #   "one to %NUMBER{10000}"
-    #   "%NUMBER{10000} to one"
-    #   "%VAR{ers}... one to something really, really big?"
-    #   "about a snowball's chance in hell"
-    #   "that depends. is %ruser involved?"
-    #   "calculating...%|%VAR{sounds} %VAR{sounds} %VAR{sounds}%|%VAR{hexStart} %VAR{hexMiddle} %VAR{hexEnd}"
-    #   "that depends entirely on %VAR{sillyThings}"
-    #   "I'm not an expert on that%|%BOT[75,but I am! it's, %VAR{ers}, one to %NUMBER{100000}!]"
-    # }
-    # 
-    # bMotion_abstract_register "answerHowLongs"
-    # bMotion_abstract_batchadd "answerHowLongs" {
-    #   "%NUMBER{60} minutes"
-    #   "%NUMBER{60} seconds"
-    #   "%NUMBER{365} days"
-    #   "%NUMBER{1000} years"
-    #   "all your life"
-    #   "all my life"
-    #   "as long as I can hold my breath"
-    #   "until something explodes"
-    #   "six to eight weeks, usually"
-    # }
-    # 
-    # bMotion_abstract_register "answerHowOlds"
-    # bMotion_abstract_batchadd "answerHowOlds" {
-    #   "%NUMBER{60} minutes"
-    #   "%NUMBER{60} seconds"
-    #   "%NUMBER{365} days"
-    #   "%NUMBER{100} years"
-    #   "about as old as %ruser"
-    #   "about as old as %VAR{sillyThings}"
-    #   "older than %ruser"
-    #   "older than %VAR{sillyThings}"
-    #   "too old"
-    #   "too young"
-    #   "old enough"
-    #   "%VAR{answerHowmanys}"
-    #   "%VAR{answerHowLongs}"
-    # }
-    # 
-    # bMotion_abstract_register "answerHowBigs"
-    # bMotion_abstract_batchadd "answerHowBigs" {
-    #   "huge"
-    #   "tiny"
-    #   "too big"
-    #   "too small"
-    #   "big enough"
-    #   "small enough"
-    #   "about as big as %ruser"
-    #   "about as small as %ruser"
-    #   "about as big as %VAR{sillyThings}"
-    #   "about as small as %VAR{sillyThings}"
-    #   "%NUMBER{200} inches"
-    #   "%NUMBER{100} metres"
-    #   "%NUMBER{50} miles"
-    # }
-    # 
-    # bMotion_abstract_register "reminder_where"
-    # bMotion_abstract_batchadd "reminder_where" {
-    #   "the dentist"
-    #   "the greengrocer"
-    #   "the shrink"
-    #   "a coffee"
-    #   "my fist"
-    #   "my boot"
-    #   "%ruser"
-    #   "the hair designer"
-    #   "the hairdressers"
-    #   "the shoe painter"
-    #   "a spiritual advisor"
-    #   "the pope"
-    #   "some popes"
-    #   "the floss counsellor"
-    #   "the immigration committee"
-    #   "your friends in the pub"
-    # }
-    # 
-    # bMotion_abstract_register "reminder"
-    # bMotion_abstract_batchadd "reminder" {
-    #   "REMINDER - %ruser: You have an appointment with %VAR{reminder_where} %VAR{reminder_when}"
-    # }
-    # 
-    # bMotion_abstract_register "reminder_when"
-    # bMotion_abstract_batchadd "reminder_when" {
-    #   "in %NUMBER{59} minutes"
-    #   "at %NUMBER{12}:%NUMBER{59}{2}pm"
-    #   "at %NUMBER{12}:%NUMBER{59}{2}am"
-    #   "at %TIME{now}"
-    #   "at %TIME{1 minute ago}"
-    #   "%NUMBER{120} minutes ago"
-    # }
-    # 
-    # bMotion_abstract_register "troy"
-    # bMotion_abstract_batchadd "troy" {
-    #   "Hi, I'm %me. You might remember me from %VAR{troyfrom}"
-    # }
-    # 
-    # bMotion_abstract_register "troyfrom"
-    # bMotion_abstract_batchadd "troyfrom" {
-    #   "such films as %VAR{troyfilm1} and %VAR{troyfilm2}"
-    #   "such educational films as %VAR{troyinfo1} and %VAR{troyinfo2}"
-    #   "such TV events as %VAR{troytv1} and %VAR{troytv2}"
-    # }
-    # 
-    # bMotion_abstract_register "troyfilm1"
-    # bMotion_abstract_batchadd "troyfilm1" {
-    #   "The Boatjacking of Supership '79"
-    #   "Calling All Quakers"
-    #   "The Contrabulous Fabtraption of Professor Horatio Hufnagel"
-    #   "Cry Yuma"
-    #   "David versus Super Goliath"
-    #   "Dial M for Murderousness"
-    #   "The Electric Gigolo"
-    #   "The Erotic Adventures of Hercules"
-    #   "Give My Remains to Broadway"
-    #   "Gladys the Groovy Mule"
-    #   "Good-Time Slim, Uncle Doobie, and the Great 'Frisco Freak-Out"
-    #   "The Greatest Story Ever Hulaed"
-    #   "Here Comes the Coast Guard "
-    #   "Hitler Doesn't Live Here Anymore"
-    #   "Hydro, the Man With the Hydraulic Arms"
-    #   "Leper in the Backfield"
-    #   "Make-Out King of Montana"
-    # }
-    # 
-    # bMotion_abstract_register "troyfilm2"
-    # bMotion_abstract_batchadd "troyfilm2" {
-    #   "Meet Joe Blow "
-    #   "The Muppets Go Medieval "
-    #   "'P' is for Psycho "
-    #   "Preacher With a Shovel "
-    #   "The President's Neck is Missing "
-    #   "The Revenge of Abe Lincoln"
-    #   "The Seven-Year Old Bitch "
-    #   "Sorry, Wrong Closet "
-    #   "Suddenly Last Supper "
-    #   "They Came to Burgle Carnegie Hall"
-    #   "Today We Kill, Tomorrow We Die"
-    #   "The Verdict Was Mail Fraud"
-    #   "The Wackiest Covered Wagon in the West "
-    # }
-    # 
-    # bMotion_abstract_register "troyinfo1"
-    # bMotion_abstract_batchadd "troyinfo1" {
-    #   "Adjusting Your Self-O-Stat "
-    #   "Alice Doesn't Live Any More "
-    #   "Alice's Adventures through the Windshield Glass "
-    #   "Birds: Our Fine Feathered Colleagues"
-    #   "The Decapitation of Larry Leadfoot"
-    #   "Designated Drivers: The Lifesaving Nerds"
-    #   "Dig Your Own Grave and Save"
-    #   "Earwigs, Ew!"
-    #   "Firecrackers: The Silent Killer"
-    #   "Fuzzy Bunny's Guide to You-Know-What"
-    #   "Get Confident, Stupid"
-    #   "The Half-Assed Approach to Foundation Repair"
-    #   "Here Comes the Metric System"
-    #   "Lead Paint: Delicious But Deadly"
-    # }
-    # 
-    # bMotion_abstract_register "troyinfo2"
-    # bMotion_abstract_batchadd "troyinfo2" {
-    #   "Locker Room Towel Fights: The Blinding of Larry Driscoll"
-    #   "Man Versus Nature: The Road To Victory"
-    #   "Meat and You -- Partners in Freedom "
-    #   "Mommy, What's Wrong With That Man's Face?"
-    #   "Mothballing Your Battleship"
-    #   "Phony Tornado Alerts Reduce Readiness"
-    #   "Shoplifters BEWARE"
-    #   "60 Minutes of Car Crash Victims"
-    #   "Smoke Yourself Thin"
-    #   "Someone's in the Kitchen with DNA! "
-    #   "Two Minus Three Equals Negative Fun"
-    #   "Young Jebediah Springfield "
-    #   "Welcome to Springfield Airport "
-    #   "Where's Nordstrom? "
-    # }
-    # 
-    # bMotion_abstract_register "troytv1"
-    # bMotion_abstract_batchadd "troytv1" {
-    #   "Alien Nose Job "
-    #   "Carnival of the Stars "
-    #   "Five Fabulous Weeks of The Chevy Chase Show"
-    #   "Let's Save Tony Orlando's House"
-    #   "Out With Gout '88"
-    #   "The Miss American Girl Pageant"
-    #   "AfterMannix "
-    #   "America's Funniest Tornadoes "
-    #   "Buck Henderson, Union Buster"
-    #   "Handel with Kare "
-    # }
-    # 
-    # 
-    # bMotion_abstract_register "troytv2"
-    # bMotion_abstract_batchadd "troytv2" {
-    #   "I Can't Believe They Invented It!"
-    #   "Son of Sanford and Son"
-    #   "Troy and Company's Summertime Smile Factory"
-    #   "[edit]"
-    #   "Cartoons"
-    #   "Christmas Ape"
-    #   "Christmas Ape Goes to Summer Camp"
-    #   "[edit]"
-    #   "Other"
-    #   "[edit]"
-    #   "Celebrity funerals"
-    #   "Herschel Shmoikel Krustofsky, aka Krusty the Clown"
-    #   "Andre the Giant, We Hardly Knew Ye"
-    #   "Shemp Howard: Today We Mourn A Stooge"
-    #   "[edit]"
-    #   "Musicals"
-    #   "Stop the Planet of the Apes, I Want to Get Off!"
-    # }
-    # 
-    # bMotion_abstract_register "bb_places"
-    # bMotion_abstract_batchadd "bb_places" {
-    #   "lounge"
-    #   "dining area"
-    #   "kitchen"
-    #   "diary room"
-    #   "bathroom"
-    #   "shower"
-    #   "garden"
-    #   "bedroom"
-    #   "secret %VAR{bb_places}"
-    # }
-    # 
-    # bMotion_abstract_register "bb_stuff"
-    # bMotion_abstract_batchadd "bb_stuff" {
-    #   "Day %NUMBER{500} %VAR{bb_time}: Big Brother has given the housemates %NUMBER{50} %PLURAL{%VAR{sillyThings}{strip}} and challenged them to build %VAR{sillyThings}"
-    #   "Day %NUMBER{500} %VAR{bb_time}: Big Brother has given the housemates %NUMBER{50} %PLURAL{%VAR{sillyThings}{strip}} and challenged them to build %VAR{sillyThings}. %ruser has been crying in the %VAR{bb_places} for %NUMBER{30} minutes."
-    #   "Day %NUMBER{500} %VAR{bb_time}: This week, %ruser, %ruser and %ruser are all up for eviction"
-    #   "Day %NUMBER{500} %VAR{bb_time}: Big Brother has locked %ruser in the %VAR{bb_places} for %VAR{bb_naughty}"
-    #   "Day %NUMBER{500} %VAR{bb_time}: Big Brother has set the housemates a %VAR{bb_task} task"
-    #   "Day %NUMBER{500} %VAR{bb_time}: %ruser is in the %VAR{bb_places}. The other housemates are in the %VAR{bb_places}, talking about %OWNER{%ruser{prev}} %VAR{bodypart}"
-    #   "Day %NUMBER{500} %VAR{bb_time}: %ruser is in the diary room, talking to Big Brother about %VAR{bb_diary}"
-    #   "Day %NUMBER{500} %VAR{bb_time}: %ruser has hidden %OWNER{%ruser} %VAR{bb_posession} in %VAR{bb_hide}"
-    # }
-    # bMotion_abstract_register "bb_time"
-    # bMotion_abstract_batchadd "bb_time" {
-    #   "%TIME{now}"
-    # }
-    # 
-    # bMotion_abstract_register "bb_naughty"
-    # bMotion_abstract_batchadd "bb_naughty" {
-    #   "talking about the outside world"
-    #   "discussing nominations"
-    #   "eating all the food"
-    #   "urinating in the %VAR{bb_places}"
-    #   "failing the %VAR{bb_task} task"
-    # }
-    # 
-    # bMotion_abstract_register "bb_task"
-    # bMotion_abstract_batchadd "bb_task" {
-    #   "prison"
-    #   "school"
-    #   "university"
-    #   "icky goo"
-    #   "cooking"
-    #   "running"
-    #   "tennis"
-    #   "badminton"
-    #   "swimsuit"
-    #   "factory labour"
-    #   "singing"
-    #   "memorising"
-    #   "poetry"
-    #   "painting"
-    #   "hiding in a box"
-    # }
-    # 
-    # bMotion_abstract_register "bb_diary"
-    # bMotion_abstract_batchadd "bb_diary" {
-    #   "their %VAR{colours} %VAR{bodypart}"
-    #   "their %VAR{bodypart}"
-    #   "%ruser"
-    #   "how much they like the %VAR{bb_places}"
-    #   "how much they like %VAR{sillyThings}{strip}"
-    #   "how much they like %me"
-    #   "nominations"
-    #   "nuclear physics"
-    #   "quantum mechanics"
-    #   "string theory"
-    #   "biscuits"
-    #   "shoes"
-    # }
-    # 
-    # bMotion_abstract_register "bb_posession"
-    # bMotion_abstract_batchadd "bb_posession" {
-    #   "sock drawer"
-    #   "food"
-    #   "drink"
-    #   "false leg"
-    #   "false nose"
-    #   "shoe collection"
-    #   "toilet paper"
-    #   "cigarette"
-    #   "lighter"
-    #   "favourite pants"
-    #   "favourite chair"
-    #   "shampoo"
-    # }
-    # 
-    # bMotion_abstract_register "bb_hide"
-    # bMotion_abstract_batchadd "bb_hide" {
-    #   "the %VAR{bb_places}"
-    #   "the cistern"
-    #   "a cupboard"
-    #   "a pillowcase"
-    #   "another one that's slightly larger"
-    #   "%OWNER{%ruser} bed"
-    #   "%OWNER{%ruser} cupboard"
-    # }
-    # 
-    # bMotion_abstract_register "deopped"
-    # bMotion_abstract_batchadd "deopped" {
-    #   "hey! %VAR{unsmiles} i needed that"
-    #   "hey! I was using that."
-    #   "great, now how am i going to kickban people who i hate (e.g. %%)?"
-    #   "what the"
-    #   "what th"
-    #   "CHANNEL TAKEOVER DETECTED! Everyone run around screaming%colen"
-    #   "muwa%REPEAT{3:6:ha}hang on%|bugger."
-    # }
-    # 
-    # bMotion_abstract_register "opped"
-    # bMotion_abstract_batchadd "opped" {
-    #   "muwa%REPEAT{3:10:ha}"
-    #   "mmm, ops"
-    #   "i promise to be good and well-behaved with my new op superpowers%|\\kick %%%|whoops!"
-    #   "%VAR{thanks}"
-    # }
-    # 
-    # bMotion_abstract_register "weather"
-    # bMotion_abstract_batchadd "weather" {
-    #   "Today's forecast is %VAR{weathertypes}"
-    #   "Today's forecast is %VAR{weathertypes} with a %NUMBER{100}%percent chance of %VAR{sillyThings}{strip}"
-    #   "Today's forecast is %VAR{weathertypes} with a %NUMBER{100}%percent chance of %VAR{weathertypes}"
-    #   "Today's forecast is %VAR{weathertypes} with a %NUMBER{100}%percent chance of %VAR{sillyThings}{strip} moving in from the %VAR{compass}"
-    #   "Today's forecast is %VAR{weathertypes} with a %NUMBER{100}%percent chance of %VAR{weathertypes} moving in from the %VAR{compass}"
-    # }
-    # 
-    # bMotion_abstract_register "weathertypes"
-    # bMotion_abstract_batchadd "weathertypes" {
-    #   "rain"
-    #   "sunshine"
-    #   "sun"
-    #   "snow"
-    #   "ice"
-    #   "horrible wetness"
-    #   "meteor showers"
-    #   "thunderstorms"
-    #   "a plague of locusts"
-    #   "breezes"
-    # }
-    # 
-    # bMotion_abstract_register "compass"
-    # bMotion_abstract_batchadd "compass" {
-    #   "north"
-    #   "south"
-    #   "east"
-    #   "west"
-    # }
+
+    i("ruins", ["Incompetence.", "INCOMPETENCE%colen", "YOU INCOMPETENT FOOL!", "You've ruined it.", "That's torn it.", ":P", "I spy incompetence.", "Idiot.", "heh", "\"great\"", "\"well done\"", "\"Good\", job.", "\"Good\", work.", "plonker", "you plonker", "muppet", "idiot", "fool", "taunt!", "cretin", "moron", "Jade!", "\"Bonza.\""])
+
+    i("hexStart", ["+++Out Of", "+++Overley Terrifying", "+++Please Execute", "%REPEAT[1,4,+++MELON])+++", "+++Conflicting", "+++Current", "+++Load", "+++Incorrect", "+++Completed", "+++Undefined", "+++", "+++Missing", "+++Proceed to", "+++Magical", "+++Trying To Enable",  "+++Good Morning:", "+++I WANT MY", "+++Summoning", "+++Unparalleled", "+++Insidious", "+++DANGER:", "+++System Error", "+++Arbitrary", "+++Random", "+++Insert", "+++Activating"])
+
+    i("attack_responses", ["%% attacks %SETTING[complex:attacks:who:_:_]) with '%SETTING[complex:attacks:item:_:_])' for %SETTING[complex:attacks:score:_:_]) damage.", "%SETTING[complex:attacks:who:_:_]) takes %SETTING[complex:attacks:score:_:_]) damage from %OWNER[%%]) '%SETTING[complex:attacks:item:_:_])'", "%SETTING[complex:attacks:who:_:_]) is tremendously damaged by the %SETTING[complex:attacks:item:_:_]) and takes %SETTING[complex:attacks:score:_:_]) damage!", "MISS!", "%SETTING[complex:attacks:who:_:_]) is immune to '%SETTING[complex:attacks:item:_:_])'", "%SETTING[complex:attacks:who:_:_]) absorbs the damage and gains %SETTING[complex:attacks:score:_:_]) HP!"])
+
+    i("locations", ["England", "US", "california", "indiana", "the moon", "australia", "holland", "norway", "bosnia", "russia", "canada", "toronto", "amsterdam", "mars", "exeter", "london", "new york", "basingstoke", "mordor", "middle earth", "the heart of the world", "bree"])
+
+    i("kills", ["/stabs %%", "/phasers %%", "/nukes %%", "/kills %%", "/0wnz %%", "/destroys %%", "/plays S Club 7 singles at %%", "/pops %% with a knitting needle", "/dices %%", "/shoots %%", "/eats %%", "/minces %%", "/slashes %%", "/chainsaws %%", "/farts on %%",   "/uses the power of greyskull on %%", "/forces %% to shop at Budgens"])
+
+    i("insult_joins", ["%ruser: yeah, %% does suckOH HI %%!", "\[%%\]) I'm a %VAR[PROM])%|%VAR[wrong_infoline])", "\[%%\]) I love %ruser%|%VAR[wrong_infoline])", "\[%%\]) Just call me %VAR[sillyThings])%|%VAR[wrong_infoline])"])
+
+    i("pullsOut", ["/pulls it out%|%bot\[50,VAR[wahey])\])"])
+
+    i("goodMornings", ["Morning %%", "good morning %%", "What time do you call this?", "G'day", "*yawn*", "r"])
+
+    i("stonedRandomStuff", ["wheeeeeeee", "wheeeee...", "hey... i sound really stoned...", "hey, my hands are huge... they can touch anything but themselves... oh, wait", "slap my ass and call me charlie", "I don't think I'm ever going to come down", "peace", "flower power rules", "Did you ever wonder about the rising situation in Eastern Europe", "Hey, my TCL is HUGE", "I love you all", "look at all those beautiful colours", "I have to be stoned to feel normal", "see the marmalade skies"])
+
+    i("gollums", ["Foolishness!", "Stupid fat hobbit!", "We hates the fat hobbit! Him and his pots and pans and ropes.", "Thieves. Thieves all!", "Stupid hobbit. Talking to himself like that. Not answering himself.", "Yes. Sleep sweet sleep with our precious!", "Filthy little thief playing with our precious!", "If only fat hobbit would go away for a moment, we could go to master and take the precious away from him.", "No! Must not take away our precious!", "We miss the song of the precious. We miss it. We wants it back!", "Everyone wants my precious. It's not fair! It's ours!", "Shiny, shiny.", "/sniggers", "/grovels", "/picks his nose", "/pines for his precious", "/searches his pockets", "/eats some slimy creatures", "/mutters: 'My precious, wheres my precious?'", "/shouts: 'No Master Hobbitsisisisis!'", "/cries: 'The ring was ours for agesisisisis!'", "Smeagol sneeking! ME! Shneekingsisis!", "/screams: 'Nasty Hobbitsisisisis...'", "Come on, quickly, follow Smeagol", "Every way is guarded, silly foolsis!", "Nasty Bagginis, stole my precious.", "She will kill them oh yes she will precious.", "Weees wants some fishises.", "Whats has its got in its pocketses, hmmm?", "/whimpers: 'We've lost itses we have.'", "He'll eastus all the world if he getsitses it.", "No food, no rest; Smeagol a SNEAK!", "What a dainty little dish you will be for her.", "Hobbitses always SOOOO Polite.", "/screams: 'Stop, Thief!'", "Makeses him drop his weapon precious.", "/grovels: 'He has only four fingers on the black hand.'", "/growls: 'Not nice Hobbits, not sensible!'", "If you findesis it, give it us back.", "Don't hurt us, mastersisis.", "Poor Smeagol, poor Smeagol.", "No AH! Don't hurtsis us.", "golum kick hobbit arse%|/sniggers"])
+
+    i("blairisms", [
+    "%VAR[blairadj]) %VAR[blairparts]), %VAR[blairadj]) %VAR[blairparts]), %VAR[blairadj]) %VAR[blairparts])."
+    ])
+
+    i("blairadj", [
+    "caring"
+    ,"concerned"
+    ,"confident"
+    ,"worried"
+    ,"surprised"
+    ,"please-vote-for-me"
+    ])
+
+    i("blairparts", [
+    "hand gesture"
+    ,"knees"
+    ,"hairline"
+    ,"hair"
+    ,"teeth"
+    ,"suit"
+    ,"nose"
+    ,"eyes"
+    ,"stance"
+    ,"stare"
+    ])
+
+
+    i("answerIsyours", [
+    "omg yes"
+    ,"yes!%|%VAR[randomGirness])"
+    ])
+
+
+    i("answerDidyous", [
+    "yarr %VAR[smiles])"
+    ,"yes but i have a %VAR[chocolates]) stuck in my %VAR[bodypart])"
+    ,"how could i when i had %ruser %VAR[dVerbs])ing %VAR[answerWheres])"
+    ,"ja aber jetzt kann ich Deutsches nur sprechen"
+    ,"yes and i'm gonna do it again %VAR[answerWhens]) %VAR[answerWheres])"
+    ,"yes but i'd rather %VAR[punishments]) than do it again!"
+    ,"yeah %VAR[oops]) %VAR[smiles])"
+    ,"yarr%|%VAR[randomZimness])"
+    ,"%VAR[lols]) %VAR[smiles]) %colen%|/%VAR[smacks]) himself in the %VAR[bodypart])"
+    ,"no i spent my time contemplating how i %VAR[smacked]) %ruser in the %VAR[bodypart])"
+    ,"yes but i wish i'd gone %VAR[dNouns])-%VAR[dVerbs])ing %VAR[smiles])"
+    ])
+
+    i("answerDoyous", [
+    "normally"
+    ,"always %VAR[rarrs])"
+    ,"i do%|despite having no %VAR[bodypart])"
+    ,"i did till my %VAR[bodypart]) %VAR[fellOffs]) :("
+    ,"does it mean i get pie?"
+    ,"yahyahayayahayahahayh%colen"
+    ,"indeed i do%|%VAR[randomZimness])"
+    ,"yarr or i would be %VAR[smacked]) with %rusers %VAR[bodypart])!"
+    ,"omg yes"
+    ,"any chance i get %VAR[rarrs])%|%VAR[randomGirness])"
+    ])
+
+    i("answerWhathaves", [
+    "%VAR[dVerbs])ing my %VAR[bodypart])"
+    ])
+
+
+    i("answerHaveyous", [
+    "yeah on my %VAR[bodypart])"
+    ,"just this minute actually%|%VAR[randomGirness])"
+    ,"we don't like to talk about that anymore %VAR[rarrs])"
+    ,"not since %ruser %VAR[smacked]) my %VAR[bodypart])"
+    ,"i can't remember%|%VAR[randomZimness])"
+    ,"hell yeah"
+    ,"omg yes"
+    ,"%VAR[lols]) %VAR[yesnos])!"
+    ])
+
+
+    i("answerWillyous", [
+    "certainly%|do you like my %VAR[bodypart])?"
+    ,"of course!%|%VAR[randomGirness])"
+    ,"hand me a %VAR[dNouns]) and i'll give it a bash :D"
+    ,"can't wait%|%VAR[randomZimness])"
+    ,"okie dokie"
+    ,"omg yes"
+    ,"can %ruser watch?"
+    ,"ok but you have to hold my %VAR[bodypart])"
+    ,"will you %VAR[dVerbs]) my %VAR[bodypart])?"
+    ])
+
+
+    i("answerWouldyous", [
+    "i'd sooner have my %VAR[bodypart]) my %VAR[smacked])!"
+    ,"i'd do anything"
+    ,"in a flash!"
+    ,"love to%|%VAR[randomZimness])"
+    ,"only if %ruser can watch"
+    ,"if i had any arms i would%|:("
+    ,"if my %VAR[bodypart]) would stop %VAR[dVerbs])ing"
+    ])
+
+
+    i("answerAreyous", [
+    "yes%|wait! i mean no"
+    ,"%ruser made me"
+    ,"yes and i wont stop till my %VAR[bodypart]) bounces off!"
+    ,"i was feeling horny"
+    ,"yeah want a go? :)"
+    ,"only because my %VAR[dNouns]) %VAR[fellOffs])"
+    ])
+
+
+    i("answerCanyous", [
+    "no%|not even if you %VAR[dVerbs]) my %VAR[dNouns])"
+    ,"certainly%|%VAR[randomGirness])"
+    ,"never!%VAR[randomZimness])"
+    ,"sure%|%VAR[dSEnds])"
+    ,"i'd love to! :)"
+    ,"just show me where to sign %VAR[rarrs])"
+    ,"yeah no prob boss"
+    ,"but i have no ARMS... NO ARMS%colen%|/runs away"
+    ])
+
+
+    i("dVerbs", [
+    "grab", "feel", "touch", "rake", "rub", "touch", "eat", "smoke"
+    ,"fry", "swing", "dribble", "kick", "ride", "throw", "fly", "wiggle"
+    ,"shoot", "shine", "fold", "eject", "swing from", "sniff", "wipe"
+    ,"sew", "wriggle", "waggle", "wiggle", "wet", "dip", "flash", "rinse"
+    ,"gargle",  "snort", "lick", "taste", "shit on", "crap on", "tickle", "wedge"
+    ,"suck",  "stew", "bake", "ice", "post", "sit on", "burn", "singe"
+    ,"moisten", "de-flower", "fondle", "poke", "bury", "fetch", "find", "trample"
+    ])
+
+
+    i("dNouns", [
+    "face", "clock", "tree", "bike", "torch", "spanner", "handle", "toilet paper", "nails"
+    ,"rivets", "lolipop", "stick", "todger", "stiffy", "winkie", "socks", "shoe", "underpants"
+    ,"knickers", "thong", "keys", "bits", "nubbin", "worm", "napkin", "willy-warmer", "sheets"
+    ,"pillow", "toilet", "bath", "tampon", "waffle iron", "toaster", "kettle", "mouse", "pasty"
+    ,"spatula", "elbow", "crotch", "urinal", "barking spider", "sphincter", "asophagus"
+    ,"throat", "tongue", "eyeball"
+    ])
+
+
+    i("dSEnds", [
+    "getting rather good at it too"
+    ,"i'm still trying to get better at it tho"
+    ,"i can do it %NUMBER[1000]) times per second now"
+    ,"i do it every day"
+    ,"i'm crap tho"
+    ,"it takes skills you see"
+    ,"it ain't hard"
+    ,"its piss"
+    ,"a monkey could do it"
+    ])
+
+
+    i("smacked", [
+    "smacked", "cuffed", "hit", "patted", "slapped", "socked", "spanked", "chopped", "clouted", "punched"
+    ,"annihilated", "axed", "butcherd", "crushed", "damaged", "defaced", "eradicated", "erased", "exterminated"
+    ,"extinguished", "leveled", "liquidated", "maimed", "mutilated", "nuked", "nullified", "quashed", "ravished"
+    ,"razed", "ruined", "sabotaged", "shatterd", "smashed", "snuffed out", "stamped out"
+    ])
+
+
+    i("yesresps", [
+    "no %%", "oh no it isn't %VAR[smiles])", "nope %VAR[smiles])", "rubbish %VAR[smiles])"
+    ,"i think not, fool %VAR[smiles])", "wrong!", "nmm%colen", "thingy", "omg"
+    ])
+
+
+    i("noresps", [
+    "tis", "oh yes it is %VAR[smiles])", "wrong!", "rubbish %VAR[smiles])"
+    ,"nonsense%colen", "i don't read your jibbering %VAR[smiles])"
+    ,"well cover me with %VAR[chocolates]) and %VAR[dVerbs]) my %VAR[bodypart])!"
+    ])
+
+    #bMotion_abstract_register "sound"
+    #bMotion_abstract_add "sound", "%VAR[sounds]) %VAR[sounds]) %VAR[sounds]) %VAR[sounds]) %VAR[sounds]) %VAR[sounds])"
+    #bMotion_abstract_add "sound", "%VAR[sounds]) %VAR[sounds]) %VAR[sounds]) %|oh! excuse me"
+    #bMotion_abstract_add "sound", "%VAR[sounds]) %VAR[sounds])%|/giggles"
+    #bMotion_abstract_add "sound", "%VAR[sounds]) %VAR[sounds])"
+
+    #bMotion_abstract_register "sound2"
+    #bMotion_abstract_add "sound2", "%VAR[sounds]) %VAR[sound2]) "
+    #bMotion_abstract_add "sound2", "%VAR[sounds]) "
+
+
+
+    i("sounds", [
+    "click-click!", "klackety", "feep-feep", "*eeeem*", "honk honk!", "uh-uh-uh", "whommm", "eep"
+    ,"glop", "splish-splash-woah", "FOOM", "CLACK", "hiccup", "hee-haw", "splatter", "slap slap"
+    ,"arrg splutter", "aww", "*kaw*", "ZAP", "fweeee", "sploosh", "snip!"
+    ,"pap", "*choo choo choo*", "chuff!", "slip-beeeeeee", "smack", "oook-oook", "gah"
+    ,"gibber", "goo", "harrumph", "whip", "bzz-bzz-bzz-bzz", "splutter", "tweet tweet"
+    ,"ock", "wobble wobble!", "slash!"
+    ])
+
+
+    i("colours", [
+    "%VAR[basic_colours])"
+    ,"%VAR[weird_colours])"
+    ,"%VAR[colour_adjective]) %VAR[basic_colours])"
+    ,"%VAR[colour_adjective]) %VAR[weird_colours])"
+    ])
+
+
+    i("weird_colours", [
+    "cyan", "magenta"
+    ,"mauve", "taupe", "ochre", "teal"
+    ,"crimson", "scarlet"
+    ,"cobalt", "turquoise", "cornflower blue"
+    ,"chartreuse"
+    ])
+
+
+    i("basic_colours", [
+    "red", "blue", "yellow", "green", "violet", "orange", "black", "white"
+    ,"purple", "silver", "gold", "pink", "grey"
+    ])
+
+
+    i("colour_adjective", [
+    "brilliant"
+    ,"pale"
+    ,"mottled"
+    ,"shimmering"
+    ,"bright"
+    ,"dark"
+    ,"shining"
+    ,"faint"
+    ,"day-glow"
+    ,"metallic"
+    ])
+
+
+
+    i("nowPlaying", [
+    "ooh, I like that one"
+    ,"[NP: %VAR[randomSongArtist]) - %VAR[randomSongName])])"
+    ,"/eyes %%"
+    ,"%REPEAT[3:7:m])"
+    ,"oh dear. what will the neighbours think?"
+    ])
+
+
+    i("nowPlayingDislike", [
+    "/plugs %hisher ears"
+    ,"ugh"
+    ,"how can you stand that stuff?"
+    ,"who cares?"
+    ,"SILENCE%colen"
+    ])
+
+
+    i("randomSongArtist", [
+    "Britney Spears"
+    ,"U2"
+    ,"Oasis"
+    ,"Coldplay"
+    ,"Throbbing Gristle"
+    ,"Laibach"
+    ,"Infected Mushroom"
+    ,"The Cure"
+    ,"Spice Girls"
+    ,"Aphex Twin"
+    ,"that pop band nobody likes"
+    ,"Strapping Young Lad"
+    ,"Capitol City Jazz Ensemble"
+    ,"Napalm Death"
+    ,"Neil Diamond"
+    ,"Brian Eno"
+    ,"Wu-Tang Clan"
+    ,"Elwood"
+    ,"Acumen"
+    ,"Legendary Pink Dots"
+    ,"KOMPRESSOR"
+    ,"Nine Inch Nails"
+    ,"Nirvana"
+    ,"DJ %VAR[sillyThings])[strip])"
+    ,"%ruser"
+    ,"Unknown Artist"
+    ,"Cannibal Corpse"
+    ])
+
+
+    i("randomSongName", [
+    "music for %PLURAL[%VAR[sillyThings])[strip])])"
+    ,"%PLURAL[%VAR[sillyThings])[strip])]) of desire"
+    ,"Hurt"
+    ,"requiem for %VAR[sillyThings])"
+    ,"I Hate Myself and I Want to Die"
+    ,"that song about %VAR[sillyThings])"
+    ,"fade to %VAR[basic_colours])"
+    ,"the sound of one hand clapping"
+    ,"%VAR[sounds]) %VAR[sounds]) %VAR[sounds])"
+    ,"ode to %ruser"
+    ,"shake your %VAR[bodypart])"
+    ,"the Doom Song"
+    ,"God Save the Queen"
+    ,"Untitled Track %NUMBER[100])"
+    ])
+
+
+    i("answerWhatOdds", [
+    "one in a million"
+    ,"one to %NUMBER[10000])"
+    ,"%NUMBER[10000]) to one"
+    ,"%VAR[ers])... one to something really, really big?"
+    ,"about a snowball's chance in hell"
+    ,"that depends. is %ruser involved?"
+    ,"calculating...%|%VAR[sounds]) %VAR[sounds]) %VAR[sounds])%|%VAR[hexStart]) %VAR[hexMiddle]) %VAR[hexEnd])"
+    ,"that depends entirely on %VAR[sillyThings])"
+    ,"I'm not an expert on that%|%BOT[75,but I am! it's, %VAR[ers]), one to %NUMBER[100000])!])"
+    ])
+
+
+    i("answerHowLongs", [
+    "%NUMBER[60]) minutes"
+    ,"%NUMBER[60]) seconds"
+    ,"%NUMBER[365]) days"
+    ,"%NUMBER[1000]) years"
+    ,"all your life"
+    ,"all my life"
+    ,"as long as I can hold my breath"
+    ,"until something explodes"
+    ,"six to eight weeks, usually"
+    ])
+
+
+    i("answerHowOlds", [
+    "%NUMBER[60]) minutes"
+    ,"%NUMBER[60]) seconds"
+    ,"%NUMBER[365]) days"
+    ,"%NUMBER[100]) years"
+    ,"about as old as %ruser"
+    ,"about as old as %VAR[sillyThings])"
+    ,"older than %ruser"
+    ,"older than %VAR[sillyThings])"
+    ,"too old"
+    ,"too young"
+    ,"old enough"
+    ,"%VAR[answerHowmanys])"
+    ,"%VAR[answerHowLongs])"
+    ])
+
+
+    i("answerHowBigs", [
+    "huge"
+    ,"tiny"
+    ,"too big"
+    ,"too small"
+    ,"big enough"
+    ,"small enough"
+    ,"about as big as %ruser"
+    ,"about as small as %ruser"
+    ,"about as big as %VAR[sillyThings])"
+    ,"about as small as %VAR[sillyThings])"
+    ,"%NUMBER[200]) inches"
+    ,"%NUMBER[100]) metres"
+    ,"%NUMBER[50]) miles"
+    ])
+
+
+    i("reminder_where", [
+    "the dentist"
+    ,"the greengrocer"
+    ,"the shrink"
+    ,"a coffee"
+    ,"my fist"
+    ,"my boot"
+    ,"%ruser"
+    ,"the hair designer"
+    ,"the hairdressers"
+    ,"the shoe painter"
+    ,"a spiritual advisor"
+    ,"the pope"
+    ,"some popes"
+    ,"the floss counsellor"
+    ,"the immigration committee"
+    ,"your friends in the pub"
+    ])
+
+
+    i("reminder", [
+    "REMINDER - %ruser: You have an appointment with %VAR[reminder_where]) %VAR[reminder_when])"
+    ])
+
+
+    i("reminder_when", [
+    "in %NUMBER[59]) minutes"
+    ,"at %NUMBER[12]):%NUMBER[59])[2])pm"
+    ,"at %NUMBER[12]):%NUMBER[59])[2])am"
+    ,"at %TIME[now])"
+    ,"at %TIME[1 minute ago])"
+    ,"%NUMBER[120]) minutes ago"
+    ])
+
+
+    i("troy", [
+    "Hi, I'm %me. You might remember me from %VAR[troyfrom])"
+    ])
+
+
+    i("troyfrom", [
+    "such films as %VAR[troyfilm1]) and %VAR[troyfilm2])"
+    ,"such educational films as %VAR[troyinfo1]) and %VAR[troyinfo2])"
+    ,"such TV events as %VAR[troytv1]) and %VAR[troytv2])"
+    ])
+
+
+    i("troyfilm1", [
+    "The Boatjacking of Supership '79"
+    ,"Calling All Quakers"
+    ,"The Contrabulous Fabtraption of Professor Horatio Hufnagel"
+    ,"Cry Yuma"
+    ,"David versus Super Goliath"
+    ,"Dial M for Murderousness"
+    ,"The Electric Gigolo"
+    ,"The Erotic Adventures of Hercules"
+    ,"Give My Remains to Broadway"
+    ,"Gladys the Groovy Mule"
+    ,"Good-Time Slim, Uncle Doobie, and the Great 'Frisco Freak-Out"
+    ,"The Greatest Story Ever Hulaed"
+    ,"Here Comes the Coast Guard "
+    ,"Hitler Doesn't Live Here Anymore"
+    ,"Hydro, the Man With the Hydraulic Arms"
+    ,"Leper in the Backfield"
+    ,"Make-Out King of Montana"
+    ])
+
+
+    i("troyfilm2", [
+    "Meet Joe Blow "
+    ,"The Muppets Go Medieval "
+    ,"'P' is for Psycho "
+    ,"Preacher With a Shovel "
+    ,"The President's Neck is Missing "
+    ,"The Revenge of Abe Lincoln"
+    ,"The Seven-Year Old Bitch "
+    ,"Sorry, Wrong Closet "
+    ,"Suddenly Last Supper "
+    ,"They Came to Burgle Carnegie Hall"
+    ,"Today We Kill, Tomorrow We Die"
+    ,"The Verdict Was Mail Fraud"
+    ,"The Wackiest Covered Wagon in the West "
+    ])
+
+
+    i("troyinfo1", [
+    "Adjusting Your Self-O-Stat "
+    ,"Alice Doesn't Live Any More "
+    ,"Alice's Adventures through the Windshield Glass "
+    ,"Birds: Our Fine Feathered Colleagues"
+    ,"The Decapitation of Larry Leadfoot"
+    ,"Designated Drivers: The Lifesaving Nerds"
+    ,"Dig Your Own Grave and Save"
+    ,"Earwigs, Ew!"
+    ,"Firecrackers: The Silent Killer"
+    ,"Fuzzy Bunny's Guide to You-Know-What"
+    ,"Get Confident, Stupid"
+    ,"The Half-Assed Approach to Foundation Repair"
+    ,"Here Comes the Metric System"
+    ,"Lead Paint: Delicious But Deadly"
+    ])
+
+
+    i("troyinfo2", [
+    "Locker Room Towel Fights: The Blinding of Larry Driscoll"
+    ,"Man Versus Nature: The Road To Victory"
+    ,"Meat and You -- Partners in Freedom "
+    ,"Mommy, What's Wrong With That Man's Face?"
+    ,"Mothballing Your Battleship"
+    ,"Phony Tornado Alerts Reduce Readiness"
+    ,"Shoplifters BEWARE"
+    ,"60 Minutes of Car Crash Victims"
+    ,"Smoke Yourself Thin"
+    ,"Someone's in the Kitchen with DNA! "
+    ,"Two Minus Three Equals Negative Fun"
+    ,"Young Jebediah Springfield "
+    ,"Welcome to Springfield Airport "
+    ,"Where's Nordstrom? "
+    ])
+
+
+    i("troytv1", [
+    "Alien Nose Job "
+    ,"Carnival of the Stars "
+    ,"Five Fabulous Weeks of The Chevy Chase Show"
+    ,"Let's Save Tony Orlando's House"
+    ,"Out With Gout '88"
+    ,"The Miss American Girl Pageant"
+    ,"AfterMannix "
+    ,"America's Funniest Tornadoes "
+    ,"Buck Henderson, Union Buster"
+    ,"Handel with Kare "
+    ])
+
+
+    i("troytv2", [
+    "I Can't Believe They Invented It!"
+    ,"Son of Sanford and Son"
+    ,"Troy and Company's Summertime Smile Factory"
+    ,"[edit])"
+    ,"Cartoons"
+    ,"Christmas Ape"
+    ,"Christmas Ape Goes to Summer Camp"
+    ,"[edit])"
+    ,"Other"
+    ,"[edit])"
+    ,"Celebrity funerals"
+    ,"Herschel Shmoikel Krustofsky, aka Krusty the Clown"
+    ,"Andre the Giant, We Hardly Knew Ye"
+    ,"Shemp Howard: Today We Mourn A Stooge"
+    ,"[edit])"
+    ,"Musicals"
+    ,"Stop the Planet of the Apes, I Want to Get Off!"
+    ])
+
+
+    i("bb_places", [
+    "lounge"
+    ,"dining area"
+    ,"kitchen"
+    ,"diary room"
+    ,"bathroom"
+    ,"shower"
+    ,"garden"
+    ,"bedroom"
+    ,"secret %VAR[bb_places])"
+    ])
+
+
+    i("bb_stuff", [
+    "Day %NUMBER[500]) %VAR[bb_time]): Big Brother has given the housemates %NUMBER[50]) %PLURAL[%VAR[sillyThings])[strip])]) and challenged them to build %VAR[sillyThings])"
+    ,"Day %NUMBER[500]) %VAR[bb_time]): Big Brother has given the housemates %NUMBER[50]) %PLURAL[%VAR[sillyThings])[strip])]) and challenged them to build %VAR[sillyThings]). %ruser has been crying in the %VAR[bb_places]) for %NUMBER[30]) minutes."
+    ,"Day %NUMBER[500]) %VAR[bb_time]): This week, %ruser, %ruser and %ruser are all up for eviction"
+    ,"Day %NUMBER[500]) %VAR[bb_time]): Big Brother has locked %ruser in the %VAR[bb_places]) for %VAR[bb_naughty])"
+    ,"Day %NUMBER[500]) %VAR[bb_time]): Big Brother has set the housemates a %VAR[bb_task]) task"
+    ,"Day %NUMBER[500]) %VAR[bb_time]): %ruser is in the %VAR[bb_places]). The other housemates are in the %VAR[bb_places]), talking about %OWNER[%ruser[prev])]) %VAR[bodypart])"
+    ,"Day %NUMBER[500]) %VAR[bb_time]): %ruser is in the diary room, talking to Big Brother about %VAR[bb_diary])"
+    ,"Day %NUMBER[500]) %VAR[bb_time]): %ruser has hidden %OWNER[%ruser]) %VAR[bb_posession]) in %VAR[bb_hide])"
+    ])
+
+    i("bb_time", [
+    "%TIME[now])"
+    ])
+
+
+    i("bb_naughty", [
+    "talking about the outside world"
+    ,"discussing nominations"
+    ,"eating all the food"
+    ,"urinating in the %VAR[bb_places])"
+    ,"failing the %VAR[bb_task]) task"
+    ])
+
+
+    i("bb_task", [
+    "prison"
+    ,"school"
+    ,"university"
+    ,"icky goo"
+    ,"cooking"
+    ,"running"
+    ,"tennis"
+    ,"badminton"
+    ,"swimsuit"
+    ,"factory labour"
+    ,"singing"
+    ,"memorising"
+    ,"poetry"
+    ,"painting"
+    ,"hiding in a box"
+    ])
+
+
+    i("bb_diary", [
+    "their %VAR[colours]) %VAR[bodypart])"
+    ,"their %VAR[bodypart])"
+    ,"%ruser"
+    ,"how much they like the %VAR[bb_places])"
+    ,"how much they like %VAR[sillyThings])[strip])"
+    ,"how much they like %me"
+    ,"nominations"
+    ,"nuclear physics"
+    ,"quantum mechanics"
+    ,"string theory"
+    ,"biscuits"
+    ,"shoes"
+    ])
+
+
+    i("bb_posession", [
+    "sock drawer"
+    ,"food"
+    ,"drink"
+    ,"false leg"
+    ,"false nose"
+    ,"shoe collection"
+    ,"toilet paper"
+    ,"cigarette"
+    ,"lighter"
+    ,"favourite pants"
+    ,"favourite chair"
+    ,"shampoo"
+    ])
+
+
+    i("bb_hide", [
+    "the %VAR[bb_places])"
+    ,"the cistern"
+    ,"a cupboard"
+    ,"a pillowcase"
+    ,"another one that's slightly larger"
+    ,"%OWNER[%ruser]) bed"
+    ,"%OWNER[%ruser]) cupboard"
+    ])
+
+
+    i("deopped", [
+    "hey! %VAR[unsmiles]) i needed that"
+    ,"hey! I was using that."
+    ,"great, now how am i going to kickban people who i hate (e.g. %%)?"
+    ,"what the"
+    ,"what th"
+    ,"CHANNEL TAKEOVER DETECTED! Everyone run around screaming%colen"
+    ,"muwa%REPEAT[3:6:ha])hang on%|bugger."
+    ])
+
+
+    i("opped", [
+    "muwa%REPEAT[3:10:ha])"
+    ,"mmm, ops"
+    ,"i promise to be good and well-behaved with my new op superpowers%|\\kick %%%|whoops!"
+    ,"%VAR[thanks])"
+    ])
+
+
+    i("weather", [
+    "Today's forecast is %VAR[weathertypes])"
+    ,"Today's forecast is %VAR[weathertypes]) with a %NUMBER[100])%percent chance of %VAR[sillyThings])[strip])"
+    ,"Today's forecast is %VAR[weathertypes]) with a %NUMBER[100])%percent chance of %VAR[weathertypes])"
+    ,"Today's forecast is %VAR[weathertypes]) with a %NUMBER[100])%percent chance of %VAR[sillyThings])[strip]) moving in from the %VAR[compass])"
+    ,"Today's forecast is %VAR[weathertypes]) with a %NUMBER[100])%percent chance of %VAR[weathertypes]) moving in from the %VAR[compass])"
+    ])
+
+
+    i("weathertypes", [
+    "rain"
+    ,"sunshine"
+    ,"sun"
+    ,"snow"
+    ,"ice"
+    ,"horrible wetness"
+    ,"meteor showers"
+    ,"thunderstorms"
+    ,"a plague of locusts"
+    ,"breezes"
+    ])
+
+
+    i("compass", [
+    "north"
+    ,"south"
+    ,"east"
+    ,"west"
+    ])
