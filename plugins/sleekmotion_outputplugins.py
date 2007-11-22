@@ -18,6 +18,7 @@
 """
 
 import random
+import re
 
 def typostransform( oldstring):
     corrections = []
@@ -29,8 +30,8 @@ def typostransform( oldstring):
         'e':{'new':'re','correct':"-r"},
         's':{'new':'sd','correct':"-d"},
         'l':{'new':';l','correct':"-;"}
-        
                 }
+    flips = [['is', 'si'], ['ome', 'oem'], ['ame', 'aem'], ['oe', 'eo'], ['aid', 'iad'], ['ers', 'ars'], ['ade', 'aed'], ['ite', 'eit'], ['hi', 'ih'], ['or', 'ro'], ['ip', 'pi'], ['ho', 'oh'], ['he', 'eh'], ['re', 'er'], ['in', 'ni'], ['lv', 'vl'], ['sec', 'sex'], ['ir', 'ri'], ['ou', 'uo'], ['ha', 'ah'], ['ui', 'iu'], ['ig', 'gi'], ['nd', 'dn']]
     outputwords = oldstring.split()
     
     typochance = 10
@@ -55,6 +56,14 @@ def typostransform( oldstring):
             typochance *= 0.6
             break
     output = " ".join(outputwords)
+
+    for flip in flips:
+        r = re.compile(flip[0])
+        if r.search(output) and random.randin(0,100) < typochance:
+            modified = re.sub(r, flip[1], output)
+            corrections.append("s/%s/%s/" %(flip[1],flip[0]))
+            typochance *= 0.6
+
     if len(corrections) > 0:
         output = output + "|" + " ".join(corrections)
     return output

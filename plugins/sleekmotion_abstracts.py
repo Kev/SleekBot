@@ -1328,7 +1328,7 @@ def importInto(sleekmotion):
     # 
     # bMotion_abstract_batchadd "joinins" [list "~rarr~" "~oof~" "ooh, can I come?" "can I join in?" "wahey-waterproof" ":)" "have fun ~rarr~" ]
     # 
-    # bMotion_abstract_batchadd "unsmiles" [list ":(" ";(" ":O" ":\[" ":<" "=(" "=\[" "=O" "o_O" "T_T" ":~(" ":'("]
+    i("unsmiles", [":(", ";(", ":O", ":\[", ":<", "=(", "=\[", "=O", "o_O", "T_T", ":~(", ":'("])
     # 
     # bMotion_abstract_batchadd "ruins" [list "Incompetence." "INCOMPETENCE%colen" "YOU INCOMPETENT FOOL!" "You've ruined it." "That's torn it." ":P" "I spy incompetence." "Idiot." "heh" "\"great\"" "\"well done\"" "\"Good\" job." "\"Good\" work." "plonker" "you plonker" "muppet" "idiot" "fool" "taunt!" "cretin" "moron" "Jade!" "\"Bonza.\""]
     # 
