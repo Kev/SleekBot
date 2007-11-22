@@ -171,7 +171,7 @@ class sleekmotion(object):
             varname = r.search(modified).group('varname')
             modified = re.sub(r, self.variableValue(varname), modified)
         
-        r = re.compile('%REPEAT\\{(?P<min>.+),(?P<max>.+),(?P<string>.+)\\}')
+        r = re.compile('%REPEAT\\{(?P<min>.+):(?P<max>.+):(?P<string>.+)\\}')
         while not r.search(modified) == None:
             string = r.search(modified).group('string')
             min = int(r.search(modified).group('min'))
@@ -181,6 +181,10 @@ class sleekmotion(object):
                 replacement = replacement + string
             modified = re.sub(r, replacement, modified)
         
+        #TODO
+        #/action
+        
+
         ready = (response == modified)
         
         while not ready:
