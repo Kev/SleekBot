@@ -20,7 +20,7 @@
 
 import logging
 
-class bmotion_simples(object):
+class sleekmotion_simples(object):
     def __init__(self, bot, config):
         self.bot = bot
         self.config = config

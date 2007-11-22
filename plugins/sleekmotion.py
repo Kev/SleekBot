@@ -217,7 +217,27 @@ class sleekmotion(object):
         """ Parses | out into multiple strings.
         """
         return response.split('|')
+    
+    def getRealName(self, handle, nick):
+        """ Fetch a real name for this handle. If none is available,
+            fall back to nick.
+        """    
+        return nick
         
+    def makeHappy(self):
+        """ Makes the bot happier.
+        """
+        pass
+    
+    def makeUnLonely(self):
+        """ Makes the bot less lonely.
+        """
+        pass
+        
+    def driftFriendship(self, handle, amount):
+        """ Adjust the bot's friendship towards handle by amount.
+        """
+        pass
         
     def handle_message(self, message):
         body = message.get('message', '')
@@ -229,7 +249,12 @@ class sleekmotion(object):
                     logging.debug("Deciding not to respond to match")
                     continue
                 if not trigger['function'] == None:
-                    response = trigger.function(body, message)
+                    jid = self.bot.getRealJidFromMessage(message)
+                    nick = message['name']
+                    handle = jid
+                    if not handle is None:
+                        handle = nick
+                    response = trigger['function'](nick, jid, handle, body, message)
                 elif not trigger['responseList'] == None:
                         response = trigger['responseList'][random.randint(0,len(trigger['responseList'])-1)]
                 else:
