@@ -33,22 +33,26 @@ def typostransform( oldstring):
                 }
     outputwords = oldstring.split()
     
+    typochance = 10
+    
     for i in range(len(outputwords)):
-        if outputwords[i] in wordpairs.keys() and random.randint(0,100) < 10:
+        if outputwords[i] in wordpairs.keys() and random.randint(0,100) < typochance:
             corrections.append("s/%s/%s/" % (wordpairs[outputwords[i]],outputwords[i]))
             outputwords[i] = wordpairs[outputwords[i]]
+            typochance *= 0.6
             continue
         for j in range(len(outputwords[i])):
-            if outputwords[i][j] in charpairs.keys() and random.randint(0,100) < 10:
+            if outputwords[i][j] in charpairs.keys() and random.randint(0,100) < typochance:
                 corrections.append(charpairs[outputwords[i][j]]['correct'])
                 outputwords[i] = outputwords[i][:j] + charpairs[outputwords[i][j]]['new'] + outputwords[i][j+1:]
-                break
+                typochance *= 0.6
     
     for i in range(len(outputwords) - 1):
-        if random.randint(0,100) < 10:
+        if random.randint(0,100) < typochance:
             outputwords[i] = "".join(outputwords[i:i+2])
             del outputwords[i+1]
             corrections.append('+space')
+            typochance *= 0.6
             break
     output = " ".join(outputwords)
     if len(corrections) > 0:
