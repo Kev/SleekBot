@@ -68,7 +68,7 @@ class bmotion_simples(object):
         self.bot.botplugin['sleekmotion'].registerTrigger("notbot", "%botnicks('s| is) a bot", 60, "notbots")
 
         self.bot.botplugin['sleekmotion'].registerTrigger("arebot", "((is %botnicks a bot)|(are you a bot,? %botnicks)|(^%botnicks:? are you a bot))", 60, "%VAR{nos}")
-        self.bot.botplugin['sleekmotion'].registerTrigger("rules", "^(%botnicks|bmotion) (rock(s|z)|own(s|z)|rule?(s|z)|pwn(s|z))$", 100, "%VAR{thanks}")
+        self.bot.botplugin['sleekmotion'].registerTrigger("rules", "(%botnicks|bmotion) (rock(s|z)|own(s|z)|rule?(s|z)|pwn(s|z))", 100, "%VAR{thanks}")
         #from simple_general.tcl
         self.bot.botplugin['sleekmotion'].registerTrigger("url-img", "(http|ftp)://([[:alnum:]]+\.)+[[:alnum:]]{2,3}.+\.(jpg|jpeg|gif|png)", 25, "%VAR{rarrs}") 
         self.bot.botplugin['sleekmotion'].registerTrigger("ali g", "^((aiii+)|wikkid|innit|respect|you got me mobile|you iz)", 40, "%VAR{aiis}") 
