@@ -106,668 +106,672 @@ def importInto(sleekmotion):
        "cadburys buttons",
        "edible panties",
      ])
-    # 
-    # set hiddenBehinds {
-    #   "heeeeyyyy"
-    #   "oi"
-    #   "hey, watch it"
-    #   "watch where you're putting your hands :P"
-    #   "/hides behind %%"
-    #   "/runs for it"
-    #   "/makes a break for it"
-    #   "I say, look over there%|/runs"
-    #   "/smacks %%"
-    #   "Shame I'm transparent today really"
-    # }
-    # 
-    # set satOns {
-    #   "hey ow :("
-    #   "heeeyyy :O"
-    #   "bah"
-    #   "arrrrgh"
-    #   "erk"
-    #   "gerrof!"
-    #   "NNK"
-    #   "mmmph!"
-    # }
-    # 
-    # #question answers
-    # set answerWhats {
-    #   "well you asked the right guy, i'm a whale biologist"
-    #   "a book"
-    #   "3 fingers"
-    #   "cycling"
-    #   "I can't tell you that!"
-    #   "a joint"
-    #   "coffee!"
-    #   "pizza"
-    #   "french fries of course!"
-    #   "talking"
-    #   "a TV"
-    #   "nothing%|/looks shifty."
-    #   "some string"
-    #   "a floppy disk"
-    #   "warm"
-    #   "cold"
-    #   "a CD"
-    #   "mp3!"
-    #   "the Lord of the Rings"
-    #   "the One Ring"
-    #   "a monitor"
-    #   "a snowboard"
-    #   "a wall"
-    #   "a processor"
-    #   "cheese"
-    #   "rainbows"
-    #   "kittens"
-    #   "%noun"
-    # }
-    # 
-    # set answerWhos {
-    #   "%ruser"
-    #   "me"
-    #   "you"
-    #   "Domilijn"
-    #   "Joost"
-    #   "Bill Gates"
-    #   "damo"
-    #   "monica"
-    #   "jms"
-    #   "Britney Spears"
-    #   "Colen"
-    #   "the Kazon"
-    #   "the cast of Dallas"
-    #   "Ling Xiaoyu"
-    #   "Hwoarang"
-    #   "Bob Monkhouse"
-    #   "Dale Winton"
-    #   "Anna Kournikova"
-    #   "Holly Valence"
-    #   "Harold from Neighbours"
-    #   "Jade of Big Brother"
-    #   "Davina McCall"
-    #   "Tony Blair"
-    #   "Graham Norton"
-    #   "the editor of The Sun"
-    #   "Tim"
-    #   "Brian"
-    #   "who do you think?"
-    # }
-    # 
-    # set answerWithWhos {
-    #   "%ruser"
-    #   "me"
-    #   "you"
-    #   "Domilijn"
-    #   "Joost"
-    #   "Bill Gates"
-    #   "damo"
-    #   "monica"
-    #   "jms"
-    #   "Britney Spears"
-    #   "Colen"
-    #   "the Kazon"
-    #   "the cast of Dallas"
-    #   "anyone, i'm easy"
-    #   "at least 3 females"
-    #   "Ling Xiaoyu"
-    #   "everyone!"
-    #   "Bob Monkhouse"
-    #   "Dale Winton"
-    #   "Anna Kournikova"
-    #   "Holly Valence"
-    #   "Harold from Neighbours"
-    #   "Jade of Big Brother"
-    #   "Davina McCall"
-    #   "Tony Blair"
-    #   "Graham Norton"
-    #   "the editor of The Sun"
-    #   "Tim"
-    #   "Brian"
-    #   "at least three men"
-    #   "probably at least 3 pr0n DVDs"
-    # }
-    # 
-    # set answerWhys {
-    #   "why not?"
-    #   "hmm?"
-    #   "because i said so"
-    #   "don't look at me, i thought YOU were responsible for that"
-    #   "sunspots"
-    #   "aliens"
-    #   "too hot"
-    #   "i think %ruser knows..."
-    #   "beats working"
-    #   "entropy"
-    #   "we tried that, but you were sick and my hat blew off"
-    # }
-    # 
-    # set answerWheres {
-    #   "in bed"
-    #   "behind the fridge"
-    #   "on the desk"
-    #   "in a book"
-    #   "Devon"
-    #   "Amsterdam"
-    #   "a cheese shop"
-    #   "Exeter"
-    #   "America"
-    #   "Mars"
-    #   "the USS Enterprise"
-    #   "north pole"
-    #   "in a field"
-    #   "under a book"
-    #   "on top of the telly"
-    #   "in the toilet"
-    #   "Chippenham"
-    #   "London"
-    #   "New York"
-    #   "%OWNER{%ruser} house"
-    #   "hidden."
-    #   "in the coffee pot"
-    #   "down the local shop"
-    #   "in the car"
-    #   "at the shops"
-    #   "over thair%|*point*"
-    #   "next to %ruser"
-    #   "in bed with Madonna"
-    # }
-    # set answerWellbeing {
-    #     "fine thanks"
-    #     "much better now"
-    #     "not now, I'm 'busy'. mmmmmm."
-    #     "so much better now I've got %VAR{sillyThings}"
-    #     "oh the pain, the pain, the....I'm fine thanks"
-    #     "I'm not bad thanks, how're you?"
-    # }
-    # set answerWhens {
-    #   "this morning"
-    #   "this afternoon"
-    #   "now!"
-    #   "this evening"
-    #   "yesterday"
-    #   "tomorrow"
-    #   "today"
-    #   "in 10 minutes"
-    #   "4:32"
-    #   "7:53"
-    #   "9:21"
-    #   "16:08"
-    # }
-    # 
-    # set answerHowmanys {
-    #   "42"
-    #   "5"
-    #   "34975"
-    #   "ninety-five"
-    #   "minus 6"
-    #   "6"
-    #   "342"
-    #   "pi"
-    #   "e"
-    #   "i"
-    #   "38"
-    #   "0"
-    #   "none"
-    #   "22"
-    #   "%NUMBER{1000}"
-    # }
-    # 
-    # set answerHows {
-    #   "magic"
-    #   "pull harder"
-    #   "give it a push"
-    #   "climb on top and try again"
-    #   "more lubricant"
-    #   "think happy thoughts!"
-    #   "using the power of greyskull"
-    #   "try twisting"
-    #   "teamwork"
-    #   "drugs. Gotta be drugs."
-    #   "drop an anvil on it"
-    #   "industrial light and magic"
-    #   "drink volvic first, then try"
-    # }
-    # 
-    # set phaserFires {
-    #   "/fires several shots from the forward phaser banks, disabling %%"
-    #   "/fires several shots from the forward phaser banks, destroying %%%|/flies out through the explosion in an impressive bit of piloting (not to mention rendering :)"
-    #   "/accidentally activates the wrong system and replicates a small tree"
-    #   "/misses a gear and stalls%|Oops%|%bot\[50,VAR{ruins}\]"
-    #   "/uses attack pattern alpha, spiralling towards %%, firing all phaser banks%|* %% is blown to pieces as %me flies off into the middle distance"
-    #   "/anchors %% to a small asteriod, paints a target on their upper hull, and fires a full phaser blast at them"
-    #   "/rolls over, flying over %% upside down, firing the dorsal phaser arrays on the way past"
-    #   "/flies around %%, firing the ventral arrays"
-    #   "/jumps to high impulse past %% and fires the aft phaser banks"
-    #   "System failure: TA/T/TS could not interface with phaser command processor (ODN failure)"
-    #   "/pulls the Picard move (the non-uniform one)"
-    # }
-    # 
-    # set torpedoFires {
-    #   "/fires a volley of torpedos at %%"
-    #   "/breaks into a roll and fires torpedos from dorsal and ventral launchers in sequence"
-    #   "/breaks into a roll and ties itself in a knot%|Damn.%|%bot\[50,VAR{ruins}\]"
-    #   "System failure: TSC error"
-    #   "/flies past %% and fires a full spread of torpedos from the aft launchers"
-    #   "/heads directly for %%, firing a full spread of torpedos from the forward lauchers%|/flies out through the wreakage"
-    # }
-    # 
-    # set everythingFires {
-    #   "/opens the cargo hold and ejects some plastic drums at %%"
-    #   "/lauches all the escape pods"
-    #   "/fires the Universe Gun(tm) at %%"
-    #   "/launches some torpedos and fires all phasers"
-    #   "/shoots a little stick with a flag reading 'BANG' on it out from the forward torpedo launchers"
-    #   "/lobs General Darian at %%"
-    # }
-    # 
-    # set trekNouns {
-    #   "Neelix"
-    #   "Captain Janeway"
-    #   "Deputy Wall Licker 97th Class Splock"
-    #   "the USS Enterspace"
-    #   "the USS Enterprise"
-    #   "the USS Voyager"
-    #   "a class M planet"
-    #   "a class Y planet"
-    #   "the holodeck"
-    #   "Deanna Troi"
-    #   "Tasha Yar"
-    #   "Lt Cmdr Tuvok"
-    #   "a shuttle"
-    #   "the phaser bank"
-    #   "several female Maquis crewmembers"
-    #   "the entire male crew"
-    #   "the entire female crew"
-    #   "the entire crew"
-    #   "the Kazon"
-    #   "a PADD"
-    #   "the FLT processor"
-    #   "the Crystalline Entity(tm)"
-    #   "a Targ"
-    #   "a proton"
-    #   "a Black Hole"
-    #   "Dr Crusher"
-    #   "the EMH"
-    #   "the Borg"
-    #   "Deep Space 9"
-    # }
-    # 
-    # set charges {
-    #   "exploding %%"
-    #   "setting fire to %%"
-    #   "gross incompetence"
-    #   "teaching the replicators to make decaffinated beverages"
-    #   "existing"
-    #   "misuse of %%"
-    #   "improper use of %%"
-    #   "improper conduct with %%"
-    #   "plotting with %%"
-    #   "doing warp 5 in a 3 zone"
-    #   "phase-shifting %%"
-    #   "having sex on %%"
-    #   "having sex with %%"
-    #   "attempting to replicate %%"
-    #   "terraforming %%"
-    #   "putting %% into suspended animation"
-    #   "writing a character development episode"
-    #   "timetravelling without a safety net"
-    # }
-    # 
-    # set punishments {
-    #   "talk to Neelix for 5 hours"
-    #   "be keel-dragged through an asteriod field"
-    #   "play chess against 7 of 9 (you may leave as soon as you win)"
-    #   "degauss the entire viewscreen with a toothpick"
-    #   "be Neelix's food taster for a day"
-    #   "have your holodeck priviledges removed for a week"
-    #   "listen to Harry Kim practice the clarinet"
-    #   "polish Captain Picard's head"
-    #   "polish the EMH's head"
-    #   "lick %% clean"
-    #   "watch that really bad warp 10 episode of Voyager. Twice"
-    #   "listen to an album by Olivia Newton-John"
-    #   "explain quantum physics to Jade"
-    #   "carry out a level 1 diagonstic single handed"
-    #   "find Geordi a date"
-    # }
-    # 
-    # set brigBanzais {
-    #   "The %% Being In Brig Bet!"
-    #   "The Naughty %% Charge Conundrum!"
-    #   "%%'s Prison Poser!"
-    # }
-    # 
-    # set banzaiMidBets {
-    #   "bet bet bet!"
-    #   "bet now! Time running out!"
-    #   "come on, bet!"
-    #   "what you waiting for? bet now!"
-    #   "you want friends to laugh at you? Bet!"
-    # }
-    # 
-    # set wands {
-    #   "/waves %hisher <notopic>magic wand</notopic>"
-    #   "Go go gadget magic wand!"
-    # }
-    # 
-    # set harhars {
-    #   "har har"
-    #   "h4w."
-    #   "h4w"
-    #   "This victory strengthens the soul of %me!"
-    #   "<canadian>Yeah, I am perfect!</canadian>"
-    #   "/<-- winnar"
-    #   "I am the greatest!"
-    # }
-    # 
-    # set analsexhelps {
-    #   "/hands %% the KY jelly"
-    #   "/watches"
-    #   "/offers to help"
-    #   "~rarr~"
-    #   "*wank*"
-    #   "/lubes %% up"
-    #   "/lubes %pronoun up"
-    # }
-    # 
-    # set wankhelps {
-    #   "/helps %%"
-    #   "~rarr~"
-    #   "~oof~"
-    #   "/watches"
-    #   "/perves"
-    # }
-    # 
-    # set niceTrys {
-    #   "Nice try."
-    #   "You wish."
-    #   "Stop trying to break me or I'll break you."
-    #   "00h! j00r try1n9 t0 h4X0r m3h!%|/ph33rs"
-    # }
-    # 
-    # 
-    # set awwws {
-    #   "awww"
-    #   "awww%|poor %%"
-    #   "awww%|/kisses it better"
-    #   "awww%|/rubs %% better"
-    #   "awww%|/sniggers at %%"
-    # }
-    # 
+ 
     i('randomReplies',[
-       "%ruser",
-       "Orange.",
-       "about half-past three, I think",
-       "r",
-       "more fun than a bucket of anchovies",
-       "more fun than a bucket of %VAR{sillyThings}{strip}",
-       "yes",
-       "no",
-       "maybe"
-,       "medium-rare"
-,       "no thanks, i already have some"
-,       "woah cool, let me try that!"
-,       "sorry no, I'm still sore from last time"
-,       "eh?"
-,       "what?"
-,       "yellow, and sometimes blue"
-,       "I like edam best of all"
-,       "perhaps"
-,       "I didn't like it before"
-,       "someone set up us the bomb"
-,       "we get signal"
-,       "nothing"
-,       "panties%|%BOT\[VAR{rarrs}\]"
-,       "moist knickers%|%BOT\[VAR{rarrs}\]"
-,       "what do you think?"
-,       "i can't tell you that"
-,       "it wasn't me"
-,       "exeter"
-,       "amsterdam"
-,       "you should ask Domilijn :)"
-,       "i'd rather not"
-,       "not particularly, no"
-,       "last night, yes"
-,       "i'll consider that"
-,       "do you really want to know that?"
-,       "i am not at liberty to discuss that"
-,       "only with spud"
-,       "why the hell not"
-,       "only if there are no alternatives"
-,       "what a silly question *giggle*"
-,       "let's all ask each other! that'll solve this problem!"
-,       "only on Wednesdays"
-,       "42"
-,       "a tv"
-,       "purple dildos"
-,       "shopping"
-,       "sailing"
-,       "coffee"
-,       "lots and lots of tea"
-,       "french fries of course!"
-,       "not without lubricant"
-,       "only with you %%"
-,       "only with %ruser"
-,       "no."
-,       "yes."
-,       "yes, but only on sundays and selected bank holidays"
-,       "yes, but only on the third wednesday of every month"
-,       "over there"
-,       "crap"
-,       "yes, that makes me horny"
-,       "yes, but only at the weekend"
-,       "no, never, not me"
-,       "you wish"
-,       "lemmie go look that up"
-,       "brb - library"
-,       "i'll need to look that one up %%"
-,       "i wish i knew"
-,       "have you tried google?"
-,       "www.google.com"
-,       "wtf are you asking me for?"
-,       "www.aj.com"
-,       "ask jeeves, he is smarter than the average %me"
-,       "cabbages"
-,       "penguins"
-,       "sometimes"
-,       "perhaps"
-,       "only with wizwoz"
-,       "only with %ruser"
-,       "sunday"
-,       "tuesday"
-,       "no, but it does make me horny"
-,       "no, that doesn't make me horny"
-,       "can i phone a friend?"
-,       "can i have 50:50?"
-,       "can i ask the audience?"
-,       "what do you think this is? Who Wants to be a Millionaire"
-,       "only when you win the lottery"
-,       "ask someone else"
-,       "have you asked chabby?"
-,       "69%|would i lie?"
-,       "69"
-,       "i know i know, but i have to be paid in pies"
-,       "if i tell you, i will have to kill you"
-,       "you want the answer? you can't handle the answer!"
-,       "you want the truth? you can't handle the truth!"
-,       "if i just reach in here%|*squelch*%|then the answer will be on this little bit of card"
-,       "let me consult a fortune cookie"
-,       "let me check your horoscope"
-,       "i'm not psychic"
-,       "omg yes"
-,       "omg no"
-,       "i might know"
-,       "i'll tell ya later"
-,       "only with fruit"
-,       "take one little step left"
-,       "who knows"
-,       "i might answer, one day"
-,       "death comes to those who wait"
-,       "what is your favourite colour?"
-,       "can i check?"
-,       "i might"
-,       "one day"
-,       "green%|No! Blue!"
-,       "a shrub"
-,       "a bush"
-,       "a shrubbery"
-,       "that depends. Who's asking?"
-,       "the answer lies in the stars%|bugger off there and find it"
-,       "%rbot knows"
-,       "If only I hadn't used up all my lifelines%|%bot\[50,you can have one of mine\]%|no thanks, don't know where it's been" ])
+        "%ruser",
+        "Orange.",
+        "about half-past three, I think",
+        "r",
+        "more fun than a bucket of anchovies",
+        "more fun than a bucket of %VAR{sillyThings}{strip}",
+        "yes",
+        "no",
+        "maybe"
+ ,       "medium-rare"
+ ,       "no thanks, i already have some"
+ ,       "woah cool, let me try that!"
+ ,       "sorry no, I'm still sore from last time"
+ ,       "eh?"
+ ,       "what?"
+ ,       "yellow, and sometimes blue"
+ ,       "I like edam best of all"
+ ,       "perhaps"
+ ,       "I didn't like it before"
+ ,       "someone set up us the bomb"
+ ,       "we get signal"
+ ,       "nothing"
+ ,       "panties%|%BOT\[VAR{rarrs}\]"
+ ,       "moist knickers%|%BOT\[VAR{rarrs}\]"
+ ,       "what do you think?"
+ ,       "i can't tell you that"
+ ,       "it wasn't me"
+ ,       "exeter"
+ ,       "amsterdam"
+ ,       "you should ask Domilijn :)"
+ ,       "i'd rather not"
+ ,       "not particularly, no"
+ ,       "last night, yes"
+ ,       "i'll consider that"
+ ,       "do you really want to know that?"
+ ,       "i am not at liberty to discuss that"
+ ,       "only with spud"
+ ,       "why the hell not"
+ ,       "only if there are no alternatives"
+ ,       "what a silly question *giggle*"
+ ,       "let's all ask each other! that'll solve this problem!"
+ ,       "only on Wednesdays"
+ ,       "42"
+ ,       "a tv"
+ ,       "purple dildos"
+ ,       "shopping"
+ ,       "sailing"
+ ,       "coffee"
+ ,       "lots and lots of tea"
+ ,       "french fries of course!"
+ ,       "not without lubricant"
+ ,       "only with you %%"
+ ,       "only with %ruser"
+ ,       "no."
+ ,       "yes."
+ ,       "yes, but only on sundays and selected bank holidays"
+ ,       "yes, but only on the third wednesday of every month"
+ ,       "over there"
+ ,       "crap"
+ ,       "yes, that makes me horny"
+ ,       "yes, but only at the weekend"
+ ,       "no, never, not me"
+ ,       "you wish"
+ ,       "lemmie go look that up"
+ ,       "brb - library"
+ ,       "i'll need to look that one up %%"
+ ,       "i wish i knew"
+ ,       "have you tried google?"
+ ,       "www.google.com"
+ ,       "wtf are you asking me for?"
+ ,       "www.aj.com"
+ ,       "ask jeeves, he is smarter than the average %me"
+ ,       "cabbages"
+ ,       "penguins"
+ ,       "sometimes"
+ ,       "perhaps"
+ ,       "only with wizwoz"
+ ,       "only with %ruser"
+ ,       "sunday"
+ ,       "tuesday"
+ ,       "no, but it does make me horny"
+ ,       "no, that doesn't make me horny"
+ ,       "can i phone a friend?"
+ ,       "can i have 50:50?"
+ ,       "can i ask the audience?"
+ ,       "what do you think this is? Who Wants to be a Millionaire"
+ ,       "only when you win the lottery"
+ ,       "ask someone else"
+ ,       "have you asked chabby?"
+ ,       "69%|would i lie?"
+ ,       "69"
+ ,       "i know i know, but i have to be paid in pies"
+ ,       "if i tell you, i will have to kill you"
+ ,       "you want the answer? you can't handle the answer!"
+ ,       "you want the truth? you can't handle the truth!"
+ ,       "if i just reach in here%|*squelch*%|then the answer will be on this little bit of card"
+ ,       "let me consult a fortune cookie"
+ ,       "let me check your horoscope"
+ ,       "i'm not psychic"
+ ,       "omg yes"
+ ,       "omg no"
+ ,       "i might know"
+ ,       "i'll tell ya later"
+ ,       "only with fruit"
+ ,       "take one little step left"
+ ,       "who knows"
+ ,       "i might answer, one day"
+ ,       "death comes to those who wait"
+ ,       "what is your favourite colour?"
+ ,       "can i check?"
+ ,       "i might"
+ ,       "one day"
+ ,       "green%|No! Blue!"
+ ,       "a shrub"
+ ,       "a bush"
+ ,       "a shrubbery"
+ ,       "that depends. Who's asking?"
+ ,       "the answer lies in the stars%|bugger off there and find it"
+ ,       "%rbot knows"
+ ,       "If only I hadn't used up all my lifelines%|%bot\[50,you can have one of mine\]%|no thanks, don't know where it's been" ])
 
     i('picksUp', [
-       "/picks up %%"
-,       "/helps %% back off the ground"
-,       "/gives %% a hand"])
-
-    # set dildoFlutePlays {
-    #   "this one time at band camp...%|well, i'll show you...%|/puts the flute in herself"
-    #   "this one time, at band camp, i put a flute in my pussy%|/demonstrates"
-    #   "/puts the flute in herself%|we did this at band camp one year, too"
-    # }
-    # 
-    # set dildoFluteFinishes {
-    #   "/rescues her flute and plays a happy tune"
-    #   "hey %%, want to play it? :P"
-    #   "and that's why I liked band camp :)"
-    # }
-    # 
-    # # %% = who, %2 = dildo
-    # set dildoPlays {
-    #   "/sits herself down and shows %% how she uses a %2"
-    #   "/lubes up and shows %% how pleased she is with her new present :D"
-    # }
-    # 
-    # # %% = dildo, %2 = who
-    # set dildoFinishes {
-    #   "/pulls out the %% and shoves it in %2's face%|you want some? :D"
-    #   "~oof~ ... much better :)"
-    # }
-    # 
-    # set dildoFemaleFemale {
-    #   "/would do some girl-on-girl action here on %%, but needs to know how :P%|KatieStar! ;)"
-    # }
-    # 
-    # set dildoFemaleFemaleSwap {
-    #   "ok, i hope you're done cos it's my turn now :)%|/has her turn with the %%"
-    #   "my turn my turn my turn!%|/swipes the %%"
-    # }
-    # 
-    # set dildoMaleFemale {
-    #   "*weg*%|/applies the %2 to %%"
-    #   "ooh you are norty%|/makes %% horny with the %2"
-    #   "i didn't realise you were in the mood for that%|*weg*%|/uses the %2 on %%"
-    #   "cor you are randy%|/sticks the %2 up %%"
-    #   "do you want me to help you eat that or help you sit on it?"
-    #   "hmm, and where do you expect me to put *that*?"
-    #   "/uses the %2 on %%"
-    #   "/abuses %% with the %2"
-    #   "/stretches %% with the %2"
-    # }
-    # 
-    # set dildoMaleMale {
-    #   "/would do some man-on-man action here on %%, but needs to know how :P%|hmm... who can I ask? :)"
-    # }
-    # 
-    # set dildoMaleMaleSwap {
-    #   "ok, i hope you're done cos it's my turn now :)%|/has his turn with the %%"
-    # }
-    # 
-    # set dildoMalePlays {
-    #   "/'plays' with the %2"
-    #   "/replicates himself some lube"
-    # }
-    # 
+        "/picks up %%"
+ ,       "/helps %% back off the ground"
+ ,       "/gives %% a hand"])
     i('handcoffees', [
-       "/me hands %% a coffee"
-,       "wake up%colen"
-,       "go to bed already"
-,       "sorry, are we <notopic>keeping you up</notopic>?"
-,       "you need a coffee"
-,       "/me throws water over %% to wake them up"
-,       "/me lends %% a pillow"
-,       "/me lends %% a cushion"
-,       "/me hands %% some ProPlus"
+        "/me hands %% a coffee"
+ ,       "wake up%colen"
+ ,       "go to bed already"
+ ,       "sorry, are we <notopic>keeping you up</notopic>?"
+ ,       "you need a coffee"
+ ,       "/me throws water over %% to wake them up"
+ ,       "/me lends %% a pillow"
+ ,       "/me lends %% a cushion"
+ ,       "/me hands %% some ProPlus"
+     ])
+    
+    i('hiddenBehinds', [
+      "heeeeyyyy"
+,      "oi"
+,      "hey, watch it"
+,      "watch where you're putting your hands :P"
+,      "/hides behind %%"
+,      "/runs for it"
+,      "/makes a break for it"
+,      "I say, look over there%|/runs"
+,      "/smacks %%"
+,      "Shame I'm transparent today really"
     ])
-    # 
-    # set parkedinsDislike {
-    #   "heyyy"
-    #   "hey OW"
-    #   "%colen"
-    #   "that's not very nice"
-    #   "ha, it's mine now!"
-    #   "hey, i don't like that"
-    #   "/disapproves of that sort of thing."
-    # }
-    # 
-    # set secondDildoPlays {
-    #   "/makes use of the additional %%%|%bot[50,sheesh]"
-    #   "/locates another hole for the %%%|%bot[50,sheesh]"
-    #   "thanks, but i don't have a free hand... could you put that one in for me?"
-    #   "woah cool!%|/gets some more lube%|%bot[50,sheesh]"
-    # }
-    # 
-    # set thrownAts {
-    #   "wh%REPEAT{4:10:e}!"
-    #   "I can seeee myyy house from heeeerrreeeeee!"
-    #   "*CRUMP*"
-    #   "/flattens %%"
-    #   "hey :("
-    #   "oi"
-    #   "/sails through the air towards %%"
-    #   "loookkk ooouuuttt beellooww!%|*CRUMP*%|ow :("
-    #   "/flies through the air with the greatest of ease"
-    #   "/does a triple inverted twist somersault and lands neatly next to %%"
-    # }
-    # 
-    # set bookmarks {
-    #   "%VAR{smiles}"
-    # }
-    # 
-    # set punchlines {
-    #   "but it's legal if it's HER dog."
-    #   "because penguins can't dance."
-    #   "look if you don't know where it is put your tongue away."
-    #   "you'll never be half the man your mother was!"
-    #   "so THAT'S where I put the watermelon!"
-    #   "2 in the front 2 in the back"
-    #   "a military coo"
-    #   "big holes all over Australia"
-    #   "that's not my dog!"
-    #   "depends if you're in Texas"
-    #   "she only shaved the front!"
-    # }
-    # 
-    # set typoFix {
-    #   "oops"
-    #   "oops %SETTING{output:typos:typos:_:_}"
-    #   "%colen"
-    #   "ffs"
-    #   "grrr %SETTING{output:typos:typos:_:_}"
-    #   "%SETTING{output:typos:typos:_:_}"
-    #   "-typo"
-    #   "/butterfingers"
-    # }
-    # 
+    
+    i('satOns', [
+      "hey ow :("
+,      "heeeyyy :O"
+,      "bah"
+,      "arrrrgh"
+,      "erk"
+,      "gerrof!"
+,      "NNK"
+,      "mmmph!"
+    ])
+    
+    #question answers
+    i('answerWhats', [
+      "well you asked the right guy, i'm a whale biologist"
+,      "a book"
+,      "3 fingers"
+,      "cycling"
+,      "I can't tell you that!"
+,      "a joint"
+,      "coffee!"
+,      "pizza"
+,      "french fries of course!"
+,      "talking"
+,      "a TV"
+,      "nothing%|/looks shifty."
+,      "some string"
+,      "a floppy disk"
+,      "warm"
+,      "cold"
+,      "a CD"
+,      "mp3!"
+,      "the Lord of the Rings"
+,      "the One Ring"
+,      "a monitor"
+,      "a snowboard"
+,      "a wall"
+,      "a processor"
+,      "cheese"
+,      "rainbows"
+,      "kittens"
+,      "%noun"
+    ])
+    
+    i('answerWhos', [
+      "%ruser"
+,      "me"
+,      "you"
+,      "Domilijn"
+,      "Joost"
+,      "Bill Gates"
+,      "damo"
+,      "monica"
+,      "jms"
+,      "Britney Spears"
+,      "Colen"
+,      "the Kazon"
+,      "the cast of Dallas"
+,      "Ling Xiaoyu"
+,      "Hwoarang"
+,      "Bob Monkhouse"
+,      "Dale Winton"
+,      "Anna Kournikova"
+,      "Holly Valence"
+,      "Harold from Neighbours"
+,      "Jade of Big Brother"
+,      "Davina McCall"
+,      "Tony Blair"
+,      "Graham Norton"
+,      "the editor of The Sun"
+,      "Tim"
+,      "Brian"
+,      "who do you think?"
+    ])
+    
+    i('answerWithWhos', [
+      "%ruser"
+,      "me"
+,      "you"
+,      "Domilijn"
+,      "Joost"
+,      "Bill Gates"
+,      "damo"
+,      "monica"
+,      "jms"
+,      "Britney Spears"
+,      "Colen"
+,      "the Kazon"
+,      "the cast of Dallas"
+,      "anyone, i'm easy"
+,      "at least 3 females"
+,      "Ling Xiaoyu"
+,      "everyone!"
+,      "Bob Monkhouse"
+,      "Dale Winton"
+,      "Anna Kournikova"
+,      "Holly Valence"
+,      "Harold from Neighbours"
+,      "Jade of Big Brother"
+,      "Davina McCall"
+,      "Tony Blair"
+,      "Graham Norton"
+,      "the editor of The Sun"
+,      "Tim"
+,      "Brian"
+,      "at least three men"
+,      "probably at least 3 pr0n DVDs"
+    ])
+    
+    i('answerWhys', [
+      "why not?"
+,      "hmm?"
+,      "because i said so"
+,      "don't look at me, i thought YOU were responsible for that"
+,      "sunspots"
+,      "aliens"
+,      "too hot"
+,      "i think %ruser knows..."
+,      "beats working"
+,      "entropy"
+,      "we tried that, but you were sick and my hat blew off"
+    ])
+    
+    i('answerWheres', [
+      "in bed"
+,      "behind the fridge"
+,      "on the desk"
+,      "in a book"
+,      "Devon"
+,      "Amsterdam"
+,      "a cheese shop"
+,      "Exeter"
+,      "America"
+,      "Mars"
+,      "the USS Enterprise"
+,      "north pole"
+,      "in a field"
+,      "under a book"
+,      "on top of the telly"
+,      "in the toilet"
+,      "Chippenham"
+,      "London"
+,      "New York"
+,      "%OWNER{%ruser} house"
+,      "hidden."
+,      "in the coffee pot"
+,      "down the local shop"
+,      "in the car"
+,      "at the shops"
+,      "over thair%|*point*"
+,      "next to %ruser"
+,      "in bed with Madonna"
+    ])
+    i('answerWellbeing', [
+        "fine thanks"
+,        "much better now"
+,        "not now, I'm 'busy'. mmmmmm."
+,        "so much better now I've got %VAR{sillyThings}"
+,        "oh the pain, the pain, the....I'm fine thanks"
+,        "I'm not bad thanks, how're you?"
+    ])
+    i('answerWhens', [
+      "this morning"
+,      "this afternoon"
+,      "now!"
+,      "this evening"
+,      "yesterday"
+,      "tomorrow"
+,      "today"
+,      "in 10 minutes"
+,      "4:32"
+,      "7:53"
+,      "9:21"
+,      "16:08"
+    ])
+    
+    i('answerHowmanys', [
+      "42"
+,      "5"
+,      "34975"
+,      "ninety-five"
+,      "minus 6"
+,      "6"
+,      "342"
+,      "pi"
+,      "e"
+,      "i"
+,      "38"
+,      "0"
+,      "none"
+,      "22"
+,      "%NUMBER{1000}"
+    ])
+    
+    i('answerHows', [
+      "magic"
+,      "pull harder"
+,      "give it a push"
+,      "climb on top and try again"
+,      "more lubricant"
+,      "think happy thoughts!"
+,      "using the power of greyskull"
+,      "try twisting"
+,      "teamwork"
+,      "drugs. Gotta be drugs."
+,      "drop an anvil on it"
+,      "industrial light and magic"
+,      "drink volvic first, then try"
+    ])
+    
+    i('phaserFires', [
+      "/fires several shots from the forward phaser banks, disabling %%"
+,      "/fires several shots from the forward phaser banks, destroying %%%|/flies out through the explosion in an impressive bit of piloting (not to mention rendering :)"
+,      "/accidentally activates the wrong system and replicates a small tree"
+,      "/misses a gear and stalls%|Oops%|%bot\[50,VAR{ruins}\]"
+,      "/uses attack pattern alpha, spiralling towards %%, firing all phaser banks%|* %% is blown to pieces as %me flies off into the middle distance"
+,      "/anchors %% to a small asteriod, paints a target on their upper hull, and fires a full phaser blast at them"
+,      "/rolls over, flying over %% upside down, firing the dorsal phaser arrays on the way past"
+,      "/flies around %%, firing the ventral arrays"
+,      "/jumps to high impulse past %% and fires the aft phaser banks"
+,      "System failure: TA/T/TS could not interface with phaser command processor (ODN failure)"
+,      "/pulls the Picard move (the non-uniform one)"
+    ])
+    
+    i('torpedoFires', [
+      "/fires a volley of torpedos at %%"
+,      "/breaks into a roll and fires torpedos from dorsal and ventral launchers in sequence"
+,      "/breaks into a roll and ties itself in a knot%|Damn.%|%bot\[50,VAR{ruins}\]"
+,      "System failure: TSC error"
+,      "/flies past %% and fires a full spread of torpedos from the aft launchers"
+,      "/heads directly for %%, firing a full spread of torpedos from the forward lauchers%|/flies out through the wreakage"
+    ])
+    
+    i('everythingFires', [
+      "/opens the cargo hold and ejects some plastic drums at %%"
+,      "/lauches all the escape pods"
+,      "/fires the Universe Gun(tm) at %%"
+,      "/launches some torpedos and fires all phasers"
+,      "/shoots a little stick with a flag reading 'BANG' on it out from the forward torpedo launchers"
+,      "/lobs General Darian at %%"
+    ])
+    
+    i('trekNouns', [
+      "Neelix"
+,      "Captain Janeway"
+,      "Deputy Wall Licker 97th Class Splock"
+,      "the USS Enterspace"
+,      "the USS Enterprise"
+,      "the USS Voyager"
+,      "a class M planet"
+,      "a class Y planet"
+,      "the holodeck"
+,      "Deanna Troi"
+,      "Tasha Yar"
+,      "Lt Cmdr Tuvok"
+,      "a shuttle"
+,      "the phaser bank"
+,      "several female Maquis crewmembers"
+,      "the entire male crew"
+,      "the entire female crew"
+,      "the entire crew"
+,      "the Kazon"
+,      "a PADD"
+,      "the FLT processor"
+,      "the Crystalline Entity(tm)"
+,      "a Targ"
+,      "a proton"
+,      "a Black Hole"
+,      "Dr Crusher"
+,      "the EMH"
+,      "the Borg"
+,      "Deep Space 9"
+    ])
+    
+    i('charges', [
+      "exploding %%"
+,      "setting fire to %%"
+,      "gross incompetence"
+,      "teaching the replicators to make decaffinated beverages"
+,      "existing"
+,      "misuse of %%"
+,      "improper use of %%"
+,      "improper conduct with %%"
+,      "plotting with %%"
+,      "doing warp 5 in a 3 zone"
+,      "phase-shifting %%"
+,      "having sex on %%"
+,      "having sex with %%"
+,      "attempting to replicate %%"
+,      "terraforming %%"
+,      "putting %% into suspended animation"
+,      "writing a character development episode"
+,      "timetravelling without a safety net"
+    ])
+    
+    i('punishments', [
+      "talk to Neelix for 5 hours"
+,      "be keel-dragged through an asteriod field"
+,      "play chess against 7 of 9 (you may leave as soon as you win)"
+,      "degauss the entire viewscreen with a toothpick"
+,      "be Neelix's food taster for a day"
+,      "have your holodeck priviledges removed for a week"
+,      "listen to Harry Kim practice the clarinet"
+,      "polish Captain Picard's head"
+,      "polish the EMH's head"
+,      "lick %% clean"
+,      "watch that really bad warp 10 episode of Voyager. Twice"
+,      "listen to an album by Olivia Newton-John"
+,      "explain quantum physics to Jade"
+,      "carry out a level 1 diagonstic single handed"
+,      "find Geordi a date"
+    ])
+    
+    i('brigBanzais', [
+      "The %% Being In Brig Bet!"
+,      "The Naughty %% Charge Conundrum!"
+,      "%%'s Prison Poser!"
+    ])
+    
+    i('banzaiMidBets', [
+      "bet bet bet!"
+,      "bet now! Time running out!"
+,      "come on, bet!"
+,      "what you waiting for? bet now!"
+,      "you want friends to laugh at you? Bet!"
+    ])
+    
+    i('wands', [
+      "/waves %hisher <notopic>magic wand</notopic>"
+,      "Go go gadget magic wand!"
+    ])
+    
+    i('harhars', [
+      "har har"
+,      "h4w."
+,      "h4w"
+,      "This victory strengthens the soul of %me!"
+,      "<canadian>Yeah, I am perfect!</canadian>"
+,      "/<-- winnar"
+,      "I am the greatest!"
+    ])
+    
+    i('analsexhelps', [
+      "/hands %% the KY jelly"
+,      "/watches"
+,      "/offers to help"
+,      "~rarr~"
+,      "*wank*"
+,      "/lubes %% up"
+,      "/lubes %pronoun up"
+    ])
+    
+    i('wankhelps', [
+      "/helps %%"
+,      "~rarr~"
+,      "~oof~"
+,      "/watches"
+,      "/perves"
+    ])
+    
+    i('niceTrys', [
+      "Nice try."
+,      "You wish."
+,      "Stop trying to break me or I'll break you."
+,      "00h! j00r try1n9 t0 h4X0r m3h!%|/ph33rs"
+    ])
+    
+    
+    i('awwws', [
+      "awww"
+,      "awww%|poor %%"
+,      "awww%|/kisses it better"
+,      "awww%|/rubs %% better"
+,      "awww%|/sniggers at %%"
+    ])
+    
+
+    i('dildoFlutePlays', [
+      "this one time at band camp...%|well, i'll show you...%|/puts the flute in herself"
+,      "this one time, at band camp, i put a flute in my pussy%|/demonstrates"
+,      "/puts the flute in herself%|we did this at band camp one year, too"
+    ])
+    
+    i('dildoFluteFinishes', [
+      "/rescues her flute and plays a happy tune"
+,      "hey %%, want to play it? :P"
+,      "and that's why I liked band camp :)"
+    ])
+    
+    # %% = who, %2 = dildo
+    i('dildoPlays', [
+      "/sits herself down and shows %% how she uses a %2"
+,      "/lubes up and shows %% how pleased she is with her new present :D"
+    ])
+    
+    # %% = dildo, %2 = who
+    i('dildoFinishes', [
+      "/pulls out the %% and shoves it in %2's face%|you want some? :D"
+,      "~oof~ ... much better :)"
+    ])
+    
+    i('dildoFemaleFemale', [
+      "/would do some girl-on-girl action here on %%, but needs to know how :P%|KatieStar! ;)"
+    ])
+    
+    i('dildoFemaleFemaleSwap', [
+      "ok, i hope you're done cos it's my turn now :)%|/has her turn with the %%"
+,      "my turn my turn my turn!%|/swipes the %%"
+    ])
+    
+    i('dildoMaleFemale', [
+      "*weg*%|/applies the %2 to %%"
+,      "ooh you are norty%|/makes %% horny with the %2"
+,      "i didn't realise you were in the mood for that%|*weg*%|/uses the %2 on %%"
+,      "cor you are randy%|/sticks the %2 up %%"
+,      "do you want me to help you eat that or help you sit on it?"
+,      "hmm, and where do you expect me to put *that*?"
+,      "/uses the %2 on %%"
+,      "/abuses %% with the %2"
+,      "/stretches %% with the %2"
+    ])
+    
+    i('dildoMaleMale', [
+      "/would do some man-on-man action here on %%, but needs to know how :P%|hmm... who can I ask? :)"
+    ])
+    
+    i('dildoMaleMaleSwap', [
+      "ok, i hope you're done cos it's my turn now :)%|/has his turn with the %%"
+    ])
+    
+    i('dildoMalePlays', [
+      "/'plays' with the %2"
+,      "/replicates himself some lube"
+    ])
+    
+
+    
+    i('parkedinsDislike', [
+      "heyyy"
+,      "hey OW"
+,      "%colen"
+,      "that's not very nice"
+,      "ha, it's mine now!"
+,      "hey, i don't like that"
+,      "/disapproves of that sort of thing."
+    ])
+    
+    i('secondDildoPlays', [
+      "/makes use of the additional %%%|%bot[50,sheesh]"
+,      "/locates another hole for the %%%|%bot[50,sheesh]"
+,      "thanks, but i don't have a free hand... could you put that one in for me?"
+,      "woah cool!%|/gets some more lube%|%bot[50,sheesh]"
+    ])
+    
+    i('thrownAts', [
+      "wh%REPEAT{4:10:e}!"
+,      "I can seeee myyy house from heeeerrreeeeee!"
+,      "*CRUMP*"
+,      "/flattens %%"
+,      "hey :("
+,      "oi"
+,      "/sails through the air towards %%"
+,      "loookkk ooouuuttt beellooww!%|*CRUMP*%|ow :("
+,      "/flies through the air with the greatest of ease"
+,      "/does a triple inverted twist somersault and lands neatly next to %%"
+    ])
+    
+    i('bookmarks', [
+      "%VAR{smiles}"
+    ])
+    
+    i('punchlines', [
+      "but it's legal if it's HER dog."
+,      "because penguins can't dance."
+,      "look if you don't know where it is put your tongue away."
+,      "you'll never be half the man your mother was!"
+,      "so THAT'S where I put the watermelon!"
+,      "2 in the front 2 in the back"
+,      "a military coo"
+,      "big holes all over Australia"
+,      "that's not my dog!"
+,      "depends if you're in Texas"
+,      "she only shaved the front!"
+    ])
+    
+    i('typoFix', [
+      "oops"
+,      "oops %SETTING{output:typos:typos:_:_}"
+,      "%colen"
+,      "ffs"
+,      "grrr %SETTING{output:typos:typos:_:_}"
+,      "%SETTING{output:typos:typos:_:_}"
+,      "-typo"
+,      "/butterfingers"
+    ])
+    
+
+    i('rehashes', [
+      "r"
+,      "Done."
+,      "ryoukai"
+,      "hai"
+,      "Rehash complete"
+,      "shiage desu"
+,      "rehash klaar"
+,      "okie"
+    ])
+    
+
     i('blehs', ["bleh", "feh", "meh"])
  
     i('huks', ["huk","kek","tilde","~"])
 
     i('yesnos',["%VAR{yeses}","%VAR{nos}"])
 
-    # set rehashes {
-    #   "r"
-    #   "Done."
-    #   "ryoukai"
-    #   "hai"
-    #   "Rehash complete"
-    #   "shiage desu"
-    #   "rehash klaar"
-    #   "okie"
-    # }
-    # 
     i('bodypart', [
        "toe"
     ,   "foot"
