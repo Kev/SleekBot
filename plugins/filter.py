@@ -75,6 +75,56 @@ class leetFilter():
         return result
             
 
+class chefFilter(object):
+    """    -------------------- Swedish Chef -----------------------
+
+    chef = {  
+      { th = "t" }, 
+
+      { ow = "o"},
+      {["([^%w])o"] = "%1oo",
+      O = "Oo"},
+
+      {au = "oo",
+      u = "oo", U = "Oo"},
+      {["([^o])o([^o])"] = "%1u%2"},
+      {ir = "ur",
+
+      an = "un", An = "Un", Au = "Oo"},
+
+      {e = "i", E = "I"},
+
+      { i = function () return select(math.random(2), "i", "ee"); end },
+
+      {a = "e", A = "E"},
+
+      {["e([^%w])"] = "e-a"},
+      {f = "ff"}, 
+
+      {v = "f", V = "F"},
+      {w = "v", W = "V"} };
+
+    function swedish(english)
+            eng, url = english:match("(.*)(http://.*)$"); -- (URLs at the END of text will be preserved)
+            if eng then english = eng; end
+
+            for _,v in ipairs(chef) do
+                    for k,v in pairs(v) do
+                            english = english:gsub(k,v);
+                    end
+            end
+            english = english:gsub("the", "zee");
+            english = english:gsub("The", "Zee");
+            english = english:gsub("tion", "shun");
+            return tostring(english..((url and url) or ""));
+    end
+    """
+    def __init__(self):
+        pass
+    
+    def filter(self, text):
+        pass
+
 class filter(object):
     def __init__(self, bot, config):
         self.bot = bot
@@ -84,6 +134,7 @@ class filter(object):
         self.bot.addHelp('filter', 'Text filter command', "Parses the text through a filter.", 'filter filtertype text')
         self.availableFilters = {}
         self.availableFilters['leet'] = leetFilter()
+#        self.availableFilters['chef'] = chefFilter()
         self.availableFilters['robber'] = robberFilter()
 
     def handle_filter(self, command, args, msg):
