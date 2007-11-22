@@ -110,7 +110,7 @@ class sleekmotion(object):
         """ Return a random value from a variable.
         """
         logging.debug("sleekmotion getting value for '%s'" %varname)
-        
+
         if varname not in self.store.store.keys():
             return "funny thing from an amusing list I've not defined yet (%s)" % varname
         
@@ -263,7 +263,8 @@ class sleekmotion(object):
                 elif not trigger['responseList'] == None:
                         response = trigger['responseList'][random.randint(0,len(trigger['responseList'])-1)]
                 else:
-                    response = self.variableValue(trigger['responseVar'])
+                    #response = self.variableValue(trigger['responseVar'])
+                    response = trigger['responseVar']
                 response = self.parseResponse(response, message)
                 logging.debug("Responding with '%s'" % response)
                 for responseLine in self.parseMultiline(response):

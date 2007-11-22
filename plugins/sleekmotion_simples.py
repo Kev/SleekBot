@@ -56,20 +56,20 @@ class sleekmotion_simples(object):
             
         self.about = "'bmotion_simples' Simple ports of all the bmotion simple plugins. \nBased on the bMotion plugin.\nWritten by Kevin Smith"
         t = self.bot.botplugin['sleekmotion'].registerTrigger
-        t('sneeze', '^\*?(/me sneezes|.hatsjoe|wachoo|sneezes|.a+tchoo+)', 60, 'blessyous')
-        t("zzz","^zzz+",50, 'handcoffees')
+        t('sneeze', '^\*?(/me sneezes|.hatsjoe|wachoo|sneezes|.a+tchoo+)', 60, '%VAR{blessyous}')
+        t("zzz","^zzz+",50, '%VAR{handcoffees}')
         t("takethat","^take that!",60, ["and party!","and party"])
         t("wrongsmiley",'{^L\($}', 60, ["taunt","fail","WORST. SMILEY. EVER.","try realigning your fingers for that one","E_SMILEY"])
         t("bisto","^ahh+$",10, "Bisto!")
         t("thinkso","^(no, )?(i|I) do(n't| not) think so",10, ["Mr Negative","I DO think so.", "and what would you know?"])
-        t("littlebit", "(what, )?not even a little bit", 40, "goonthens")
+        t("littlebit", "(what, )?not even a little bit", 40, "%VAR{goonthens}")
         t("nn", "(nn|gn|nite|night|nite ?nite),? (%botnicks|all)!*$", 100, ["nn %VAR{unsmiles}", "nn", "nite", "night", "nn %%", "sleep well", "sweet dreams"])
-        t("here","^any ?(one|body) (here|alive|talking)", 40, "here_responses")
+        t("here","^any ?(one|body) (here|alive|talking)", 40, "%VAR{here_responses}")
 
-        t("notbot", "%botnicks('s| is) a bot", 60, "notbots")
+        t("notbot", "%botnicks('s| is) a bot", 60, "%VAR{notbots}")
 
         t("arebot", "((is %botnicks a bot)|(are you a bot,? %botnicks)|(^%botnicks:? are you a bot))", 60, "%VAR{nos}")
-        t("rules", "(%botnicks|bmotion) (rock(s|z)|own(s|z)|rule?(s|z)|pwn(s|z))", 100, "%VAR{thanks}")
+        t("rules", "(%botnicks|bmotion|sleek|sleekmotion) (rock(s|z)|own(s|z)|rule?(s|z)|pwn(s|z))", 100, "%VAR{thanks}")
         #from simple_general.tcl
         t("url-img", "(http|ftp)://([[:alnum:]]+\.)+[[:alnum:]]{2,3}.+\.(jpg|jpeg|gif|png)", 25, "%VAR{rarrs}") 
         t("ali g", "^((aiii+)|wikkid|innit|respect|you got me mobile|you iz)", 40, "%VAR{aiis}") 
