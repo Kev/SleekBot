@@ -845,34 +845,33 @@ def importInto(sleekmotion):
      ])
 
     i("stolens", ["Hey NO :(%|That's mine%|/sulks at %%", "heeeeyyyy%|:(", "bah%|/steals it back", "/smacks %%", "hey no, that's *MINE*", "nnk", "what the?", "Stop! Thief!" ])
-    # 
-    # bMotion_abstract_batchadd "feelings" [ list "ok thanks" "fine" "all good" "pretty good" "bon" "okay" "not bad" "been worse" "been better" "friskier than a rabbit in springtime" "minging" "positively jade-like" "like John's mum on a Thursday night" "bonza" ]
-    # 
-    # bMotion_abstract_batchadd "lostPlot" [ list "I've forgotten the rest" "uh... was there more to that?" "I have no idea what's going on" "nevermind... you're obviously not ready for a statement of this magnitude" "what? leave me alone" ]
-    # 
-    # bMotion_abstract_batchadd "hugs" [ list "*hugs %%*" "/huggles %%" "/snuggles %%" "*snuggles %%*" "/huggles with %%" "/squeezes %%" "/snoofles %%" ]
-    # 
-    # bMotion_abstract_batchadd "hides" [list "/ducks" "/runs for the hills" "/legs it" "eek!%|/runs for it" "/hides behind %ruser" "/hides" "/duck-and-covers" "Don't be so silly." "Look over there!%|/runs" ]
-    # 
-    # bMotion_abstract_batchadd "stonedAnnounce" [list "/is quite obviously stoned" "/is stoned" "/is caned" "/is delighted to announce i have achieved the status 'stoned'%|Now to go for very stoned" ]
-    # 
-    # bMotion_abstract_batchadd "goDowns" [list "/goes down on %%" "/goes slowly down on %%" "/flops down on %%" "/pleasures %%" "/pleasures %% with %hisher tongue" ]
-    # 
-    # bMotion_abstract_batchadd "bigranjoins" [list "bhar" "r." "r %%" "a%REPEAT{3:8:r}" "boohar %%" "boom" "BOOM%colen" "BOOM!" "alors bof" "pop" "%%%colen" "%%!" "%% %VAR{smiles}" "oh my god it's %%... i'm so excited i wish i could wet my pants!" ]
-    # 
-    # bMotion_abstract_batchadd "hexMiddle" [list "Cheese Error" "FTB" "GBL" "+MELON+" "Octarine" "Sixth Dimension" "Teatime" "Phase Of Moon Generator" "Unreal Time Clock" "Anthill Inside" "Thaumic Disturbance" "Flux" "Influx" "Hive Interface" "Line 666" "Line %NUMBER{10000}" "Nether Realm" "Conjuring" "Octagram" "Archive Reference" "Enchantment" "Eternal Domain" "Paradox Shifting" "Here Comes The Cheese" "Ow" "%VAR{sillyThings}{strip}" ]
-    # 
-    # bMotion_abstract_batchadd "tech_tries" [list "sacrificing my boss" "reinstalling it" "going to a voodoo witch doctor" "covering it in honey" "putting the CD in the other way up" "putting the CD in the floppy drive" "smearing it with mud" "running it on my Mac" "rebooting" ]
-    # 
-    # bMotion_abstract_batchadd "goodlucks" [list "GL" "good luck :)" "good luck" "best of luck to you" "/crosses fingers" ]
-    # 
-    # bMotion_abstract_batchadd "goAways" [list "go away" "piss off" "shut up" "get lost" "..." "make like a banana" "sod off" "bugger off" ]
-    # 
-    # bMotion_abstract_batchadd "smacks" [list "smacks" "cuff" "hits" "pats" "slaps" "socks" "spanks" "chops" "clouts" "punches" "annihilates" "annuls" "axes" "butchers" "crusesh" "damages" "defaces" "eradicates" "erases" "exterminates" "extinguishes" "gust" "impairs" "kills" "lays waste" "levels" "liquidates" "maims" "mutilates" "nukes" "nullifies" "quashes" "quells" "ravages" "ravishes" "razes" "ruins" "sabotages" "shatters" "slays" "smashes" "snuffs out" "stamps out" "suppresses" "torpedoes" "trashes" "wastes" "wipes out" "wrecks" "zaps" ]
-    # 
-    # bMotion_abstract_batchadd "ranjoins" [list "hey %%" "hi %%" "hi there %%" "hi yo~" "Good Morning %%" "%% you're looking especially shagworthy today" "hay %%" "sup %%" "hay %% whats goin on" "lol l@@k its %%" "GENTLEMEN! BEHOLD!" "shh %%, it's quiet time now" "%% ._." "wilkommen %%" "uh oh, it's %%" "ieks, %%" "welcome to our next contestant, %%!" "wasn't expecting %%!%|/hides" "hey %% %VAR{food}%VAR{bodypart}"]
-    # 
-    # bMotion_abstract_register "food"
+    
+    i("feelings", ["ok thanks", "fine", "all good", "pretty good", "bon", "okay", "not bad", "been worse", "been better", "friskier than a rabbit in springtime", "minging", "positively jade-like", "like John's mum on a Thursday night", "bonza"])
+    
+    i("lostPlot", ["I've forgotten the rest", "uh... was there more to that?", "I have no idea what's going on", "nevermind... you're obviously not ready for a statement of this magnitude", "what? leave me alone"])
+    
+    i("hugs", ["*hugs %%*", "/huggles %%", "/snuggles %%", "*snuggles %%*", "/huggles with %%", "/squeezes %%", "/snoofles %%"])
+    
+    i("hides", ["/ducks", "/runs for the hills", "/legs it", "eek!%|/runs for it", "/hides behind %ruser", "/hides", "/duck-and-covers", "Don't be so silly.", "Look over there!%|/runs"])
+    
+    i("stonedAnnounce", ["/is quite obviously stoned", "/is stoned", "/is caned", "/is delighted to announce i have achieved the status 'stoned'%|Now to go for very stoned"])
+    
+    i("goDowns", ["/goes down on %%", "/goes slowly down on %%", "/flops down on %%", "/pleasures %%", "/pleasures %% with %hisher tongue"])
+    
+    i("bigranjoins", ["bhar", "r.", "r %%", "a%REPEAT{3:8:r}", "boohar %%", "boom", "BOOM%colen", "BOOM!", "alors bof", "pop", "%%%colen", "%%!", "%% %VAR{smiles}", "oh my god it's %%... i'm so excited i wish i could wet my pants!"])
+    
+    i("hexMiddle", ["Cheese Error", "FTB", "GBL", "+MELON+", "Octarine", "Sixth Dimension", "Teatime", "Phase Of Moon Generator", "Unreal Time Clock", "Anthill Inside", "Thaumic Disturbance", "Flux", "Influx", "Hive Interface", "Line 666", "Line %NUMBER{10000}", "Nether Realm", "Conjuring", "Octagram", "Archive Reference", "Enchantment", "Eternal Domain", "Paradox Shifting", "Here Comes The Cheese", "Ow", "%VAR{sillyThings}{strip}"])
+    
+    i("tech_tries", ["sacrificing my boss", "reinstalling it", "going to a voodoo witch doctor", "covering it in honey", "putting the CD in the other way up", "putting the CD in the floppy drive", "smearing it with mud", "running it on my Mac", "rebooting"])
+    
+    i("goodlucks", ["GL", "good luck :)", "good luck", "best of luck to you", "/crosses fingers"])
+    
+    i("goAways", ["go away", "piss off", "shut up", "get lost", "...", "make like a banana", "sod off", "bugger off"])
+    
+    i("smacks", ["smacks", "cuff", "hits", "pats", "slaps", "socks", "spanks", "chops", "clouts", "punches", "annihilates", "annuls", "axes", "butchers", "crusesh", "damages", "defaces", "eradicates", "erases", "exterminates", "extinguishes", "gust", "impairs", "kills", "lays waste", "levels", "liquidates", "maims", "mutilates", "nukes", "nullifies", "quashes", "quells", "ravages", "ravishes", "razes", "ruins", "sabotages", "shatters", "slays", "smashes", "snuffs out", "stamps out", "suppresses", "torpedoes", "trashes", "wastes", "wipes out", "wrecks", "zaps"])
+    
+    i("ranjoins", ["hey %%", "hi %%", "hi there %%", "hi yo~", "Good Morning %%", "%% you're looking especially shagworthy today", "hay %%", "sup %%", "hay %% whats goin on", "lol l@@k its %%", "GENTLEMEN! BEHOLD!", "shh %%, it's quiet time now", "%% ._.", "wilkommen %%", "uh oh, it's %%", "ieks, %%", "welcome to our next contestant, %%!", "wasn't expecting %%!%|/hides", "hey %% %VAR{food}%VAR{bodypart}"])
+
     i("food", [
        "honey"
     ,   "jam"
@@ -1068,34 +1067,34 @@ def importInto(sleekmotion):
  
     i("blownAways", ["/is blown off feet by force of %%'s statement%|%bot\[50,VAR{picksUp}\]", "/falls over%|%bot\[50,VAR{picksUp}\]", "/is blown away by force of %%'s statement%|%bot\[50,VAR{picksUp}\]", "ow my eyes :(", "/blinks", ":O", "o_O", ":o", "blimey", "crumbs", "i say", "lordy" ])
      
-    # bMotion_abstract_batchadd "shocked" [list "!" "!!!" "crikey" "blimey" "crumbs" "yikes" "wow" "boom" "marmalade" ":O" ":o" "ooh 'eck" "i say%|%BOT\[what do you say?\]%|I say, %VAR{ers}...%|%VAR{randomStuff}." "%colen" "O_O"    "A%REPEAT{4:7:R}GH!" ]
-    # 
-    # bMotion_abstract_batchadd "randomAways" [list "sex" "coffee" "food" "sleep" "campus" "town" "work" "working" "shopping" "gaming" "playing a game" "h4X0ring" "dvd" "watching a film" "brb"    "around" "taking over the world" "I am the magic horse($(=$&" "John's Mum" "sekrit" "auto-away" "code" "programming" "beer" "pub" "out" "*squeeky*" "tea" "fud" "bnar"  "bibble" "fnar" "coffee machine ~rarr~" "tantric sex" "pornography" "porn" "divx" "manual-away" "McDonalds" "yo mamma" "%ruser" "cookie" "penguin" "toilet" "shower"    "bath" "taking the guinea pig for a walk" "washing my hair" "removing my enemies from the timeline" "trimming my toenails"]
-    # 
-    # bMotion_abstract_batchadd "smokes" [list "/takes a drag" "/lights up" "/has a puff" "/smokes :)" "/partakes of herbal refreshment" ]
-    # 
-    # bMotion_abstract_batchadd "mingreplies" [list "not as much as you though" "yeah? well you ming more" "so? you're my role model" "oh no b-" "you bitch" "you suck like a dustbuster" ]
-    # 
-    # bMotion_abstract_batchadd "nos" [list "no." "no" "No." "No" "certainly not" "don't be so silly" "nope" "negative" "nup" "nada" "nein" "no siree bob" "maybe where you come from" "yesyesyesyesyesyes*%|*=no" "nnnk" "/shakes head" "*shakes head*" ]
-    # 
-    # bMotion_abstract_batchadd "tech_software" [list "windows" "xml spy" "installshield" "notepad" "media player" "wise for windows" "goldmine" "gmClass" "vmware" "the internet" ]
-    # 
-    # bMotion_abstract_batchadd "waveTooMuch" [list "What." "Are you practicing to be the Queen or something?" "..." ]
-    # 
-    # bMotion_abstract_batchadd "welcomes" [list "you're welcome" "no problem" "np" "no prob" "ok" "my pleasure" "any time" "only for you" "no biggie" "no worries" ]
-    # 
-    # bMotion_abstract_batchadd "greetings" [list "hey %%" "hi %%" "hey there %%" "how's it going %%" "* wave at %%" "yo %%" "y0 %%" "howdy %%" "hiya %%" "hi" "hey" "howdy" "hoi" "%VAR{jokeends}" "hi yo %%" ]
-    # 
-    # bMotion_abstract_batchadd "FRENCH" [list "%VAR{french1} %VAR{french2} %VAR{french3}" ]
-    # 
-    # bMotion_abstract_batchadd "hellos" [list "hello" "hey" "hi" "howdy" "greets" "sup"]
-    # 
-    # bMotion_abstract_batchadd "cyas" [list "l8r" "cya" "cya l8r" "bye" "byebye" "/waves" "you still here?" "quand vous retournez, apporter les tartes!" "talk to you later" "when you coming back?" "adieu" "toodle-oo" "ciao" "cheerio"]
-    # 
-    # bMotion_abstract_batchadd "balefired" [list "/vanishes from the continuum" "/ceases to have ever existed" "hey! :(" "/dodges%|/hits d+1 and does Chinese Fan on %%" ]
-    # 
-    # bMotion_abstract_batchadd "randomStuff" [list "I'm a doctor not %VAR{sillyThings}" "pika pika!" "pikachu!" "pika...CHUUUU!!! *ZZZAAP*" "*boing*" "moo." "BOOM" "BLAM" "Knickers.%|%BOT\[VAR{rarrs}\]" "/goes for coffee" "bof" "alors" "bhar" "arrrr.." "elbow."     "gorilla" "*yawn*" "*spangle*" "brb" "lalalala.. ow! I stubbed my toe :(%|%bot\[50,VAR{awwws}\]" "lum de dum de dum..." "/twiddles thumbs" "boom" "Look over there!" "bleh" "/puts on some banging house tunes" "zut alors" "alors bof" "groogle arrhar" "brb, loo"    "brb, sex" "uNF" "~rarr~" "~oof~" "Oops, I've ruined it." "Buttock Crunchies" "D'oh!" "setty mings lalalala" "pika" "Are you local?" "We'll have no trouble here" "Resistance is futile, you will be assimilated" "Resistance is futile, you will be 0wn3d" "Assimilation is futile, you will be resi... D'OH!" "I *didn't*"    "waCHOO *sniff*%|%BOT\[VAR{blessyous}\]" "blblblblblbl" "/assimilates the channel" "We are the B0rg. You will be 4551m1la70r3d." "wheeeee" "We are the Borg. Lower your shields and surrender your ship." "h%REPEAT{3:8:n}" "did you see that.." "You are the weakest link, goodbye." "Computer, deactivate iguana." "kerPOW" "kerSPLAT" "KAZAM" "kazOO" "yaZOO"   "spam, spam, spam, spam, spam, spam..." "Oh my god! There's an axe in my head.%|%BOT\[VAR{pullsOut}\]" "Mon dieu! Il y a une hache dans ma tete.%|%BOT\[VAR{pullsOut}\]" "ghay'cha'! nachwIjDaq betleH tu'lu'!%|%BOT\[VAR{pullsOut}\]" "Deus Meus! Securis in capite meo est.%|%BOT\[VAR{pullsOut}\]" "ALL YOUR BASE ARE BELONG TO US" "For great justice." "nostril" "%REPEAT{2:7:bl}" "wh%REPEAT{3:8:e}" "h%REPEAT{3:10:e} FUN" "ah bof" "I didn't!" "shh, sekrit" "SSSH SEKRIT"  "SILENCE%colen" "pop" "cabbages" "penguin" "cheese" "mmm chicken" "blimey" "crikey" "hoorah" "pie pie pie pie" "fantastic" "ho ho" "har har" "deary me" "m00se"     "llama" "frogs" "knickers" "bob" "kenneth" "nigel" "is everyone thooper?" "super" "thooper" "lashings of ginger beer" "It's not sugar in my sugar bowl, it's %VAR{sillyThings}{strip}" "I smell of %VAR{sillyThings}{strip}" "Honestly, I don't know how that %VAR{sillyThings}{strip} got in there. I must have slipped" ]
-    # 
+    i("shocked", ["!", "!!!", "crikey", "blimey", "crumbs", "yikes", "wow", "boom", "marmalade", ":O", ":o", "ooh 'eck", "i say%|%BOT\[what do you say?\])%|I say, %VAR{ers}...%|%VAR{randomStuff}.", "%colen", "O_O",    "A%REPEAT{4:7:R}GH!"])
+    
+    i("randomAways", ["sex", "coffee", "food", "sleep", "campus", "town", "work", "working", "shopping", "gaming", "playing a game", "h4X0ring", "dvd", "watching a film", "brb",    "around", "taking over the world", "I am the magic horse($(=$&", "John's Mum", "sekrit", "auto-away", "code", "programming", "beer", "pub", "out", "*squeeky*", "tea", "fud", "bnar",  "bibble", "fnar", "coffee machine ~rarr~", "tantric sex", "pornography", "porn", "divx", "manual-away", "McDonalds", "yo mamma", "%ruser", "cookie", "penguin", "toilet", "shower",    "bath", "taking the guinea pig for a walk", "washing my hair", "removing my enemies from the timeline", "trimming my toenails"])
+    
+    i("smokes", ["/takes a drag", "/lights up", "/has a puff", "/smokes :)", "/partakes of herbal refreshment"])
+    
+    i("mingreplies", ["not as much as you though", "yeah? well you ming more", "so? you're my role model", "oh no b-", "you bitch", "you suck like a dustbuster"])
+    
+    i("nos", ["no.", "no", "No.", "No", "certainly not", "don't be so silly", "nope", "negative", "nup", "nada", "nein", "no siree bob", "maybe where you come from", "yesyesyesyesyesyes*%|*=no", "nnnk", "/shakes head", "*shakes head*"])
+    
+    i("tech_software", ["windows", "xml spy", "installshield", "notepad", "media player", "wise for windows", "goldmine", "gmClass", "vmware", "the internet"])
+    
+    i("waveTooMuch", ["What.", "Are you practicing to be the Queen or something?", "..."])
+    
+    i("welcomes", ["you're welcome", "no problem", "np", "no prob", "ok", "my pleasure", "any time", "only for you", "no biggie", "no worries"])
+    
+    i("greetings", ["hey %%", "hi %%", "hey there %%", "how's it going %%", "* wave at %%", "yo %%", "y0 %%", "howdy %%", "hiya %%", "hi", "hey", "howdy", "hoi", "%VAR{jokeends}", "hi yo %%"])
+    
+    i("FRENCH", ["%VAR{french1} %VAR{french2} %VAR{french3}"])
+    
+    i("hellos", ["hello", "hey", "hi", "howdy", "greets", "sup"])
+    
+    i("cyas", ["l8r", "cya", "cya l8r", "bye", "byebye", "/waves", "you still here?", "quand vous retournez, apporter les tartes!", "talk to you later", "when you coming back?", "adieu", "toodle-oo", "ciao", "cheerio"])
+    
+    i("balefired", ["/vanishes from the continuum", "/ceases to have ever existed", "hey! :(", "/dodges%|/hits d+1 and does Chinese Fan on %%"])
+    
+    i("randomStuff", ["I'm a doctor not %VAR{sillyThings}", "pika pika!", "pikachu!", "pika...CHUUUU!!! *ZZZAAP*", "*boing*", "moo.", "BOOM", "BLAM", "Knickers.%|%BOT\[VAR{rarrs}\])", "/goes for coffee", "bof", "alors", "bhar", "arrrr..", "elbow.",    "gorilla", "*yawn*", "*spangle*", "brb", "lalalala.. ow! I stubbed my toe :(%|%bot\[50,VAR{awwws}\])", "lum de dum de dum...", "/twiddles thumbs", "boom", "Look over there!", "bleh", "/puts on some banging house tunes", "zut alors", "alors bof", "groogle arrhar", "brb, loo",    "brb, sex", "uNF", "~rarr~", "~oof~", "Oops, I've ruined it.", "Buttock Crunchies", "D'oh!", "setty mings lalalala", "pika", "Are you local?", "We'll have no trouble here", "Resistance is futile, you will be assimilated", "Resistance is futile, you will be 0wn3d", "Assimilation is futile, you will be resi... D'OH!", "I *didn't*",    "waCHOO *sniff*%|%BOT\[VAR{blessyous}\])", "blblblblblbl", "/assimilates the channel", "We are the B0rg. You will be 4551m1la70r3d.", "wheeeee", "We are the Borg. Lower your shields and surrender your ship.", "h%REPEAT{3:8:n}", "did you see that..", "You are the weakest link, goodbye.", "Computer, deactivate iguana.", "kerPOW", "kerSPLAT", "KAZAM", "kazOO", "yaZOO",   "spam, spam, spam, spam, spam, spam...", "Oh my god! There's an axe in my head.%|%BOT\[VAR{pullsOut}\])", "Mon dieu! Il y a une hache dans ma tete.%|%BOT\[VAR{pullsOut}\])", "ghay'cha'! nachwIjDaq betleH tu'lu'!%|%BOT\[VAR{pullsOut}\])", "Deus Meus! Securis in capite meo est.%|%BOT\[VAR{pullsOut}\])", "ALL YOUR BASE ARE BELONG TO US", "For great justice.", "nostril", "%REPEAT{2:7:bl}", "wh%REPEAT{3:8:e}", "h%REPEAT{3:10:e} FUN", "ah bof", "I didn't!", "shh, sekrit", "SSSH SEKRIT",  "SILENCE%colen", "pop", "cabbages", "penguin", "cheese", "mmm chicken", "blimey", "crikey", "hoorah", "pie pie pie pie", "fantastic", "ho ho", "har har", "deary me", "m00se",    "llama", "frogs", "knickers", "bob", "kenneth", "nigel", "is everyone thooper?", "super", "thooper", "lashings of ginger beer", "It's not sugar in my sugar bowl, it's %VAR{sillyThings}{strip}", "I smell of %VAR{sillyThings}{strip}", "Honestly, I don't know how that %VAR{sillyThings}{strip} got in there. I must have slipped"])
+    
     i("randomStuff", [
        "%VAR{weather}"
 ,       "Look, he's simulating sex with the floor"
