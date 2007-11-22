@@ -908,19 +908,19 @@ def importInto(sleekmotion):
     # 
     # bMotion_abstract_batchadd "prom_first" [list "piss" "shit" "fuck" "turd" "minge" "crap" "vadge" "shat" "clit" "cack" "arse" "cum" "wank" "flid" ]
     # 
-    # bMotion_abstract_batchadd "silences" [list "Be quiet" "Enough" "Silence!" "%colen" "no more!" "NNK" "Shhh" ]
+    i("silences", ["Be quiet", "Enough", "Silence!", "%colen", "no more!", "NNK", "Shhh" ])
     # 
     # bMotion_abstract_batchadd "hexEnd" [list "Disabled+++" "Occurance+++" "Portal Opening+++" "Detected+++" ": Reinstall Syrup+++" "snack break+++" "-(Why Not Take This Time To Register Your Purchase)+++" "=Error %REPEAT{3:6:%NUMBER{100}}+++" "%REPEAT{3:12:?}+++" "Warning : Excess %VAR{sillyThings}{strip}" "Data Lost+++" ": Redo From Start+++" "- Please Reboot Universe+++" "Aknowledgment+++" "Ended+++"     "-If Problem Persists Contact The Creator+++" "-Could Not Complete Destiny+++" "-no sufficient sentient life forms+++" "Technological Change+++" "-Access Completely And Indefinitely Denied+++" "-Query+++" "+++" "Waaaaah!+++" "Divide By Cucumber Error+++" ": Error - Division By Moonlight+++" ]
     # 
     # bMotion_abstract_batchadd "prom_second" [list "rifle" "flower" "desk" "curtain" "wheel" "door" "coin" "speaker" "lamp" "radio" "twix" "action" "account" "pump" "puma" "whistle" "shaver" "glass" "flute" "tea" "pot" "square" "robe" "apple" "cave" "lantern" "drawer" "card" "pants" ]
     # 
-    # bMotion_abstract_batchadd "ididntresponses" [list "no, *I* didn't" "Oh really." "Yes you did. We all saw it." "Of course you didn't." "Oh yes you did." "You must think us all fools." "nnk" "We all saw you" "I have proof you did" "caught on camera!"]
+    i("ididntresponses", ["no, *I* didn't", "Oh really.", "Yes you did. We all saw it.", "Of course you didn't.", "Oh yes you did.", "You must think us all fools.", "nnk", "We all saw you", "I have proof you did", "caught on camera!"])
     # 
     # bMotion_abstract_batchadd "aiis" [list "wikkid" "aii" "aiiiii" "innit" "respect" "westsyde%|/snaps wrist Ali G-stylee." "true" "keepin' it real" "iz wikkid" "wikkid stylin' of da wikkid!" "/is hangin with his crew" "Respect ma blingbling" "kickin it down with da home boy posse" "That is so last week" ]
     # 
     # bMotion_abstract_batchadd "randomStuffFemale" [list "This one time, at band camp, I put a flute..." "Does my arse look big in this?" "Does my bum look big in this?" "*ping*%|Did it just get cold in here?" "Do you know how we keep warm in Russia?%|... we play chess." "I kinda like thongs" "I wonder what happens when I put that in here...%|oooooooh!" "/plays with herself" "That ain't my belly button" "This one time, at band camp, I put %noun..." "/considers breast implants%|%PICKUSER\[female\]%|%BOT\[PICKUSER\[female\]|/feels up  to check|true, they aren't as good as ruser's|/feels up ruser's breasts|mmmm VAR{smiles}\]" "/considers sexchange operation%|%PICKUSER\[male\]%|/looks at %ruser%|Maybe not" "%PICKUSER\[female\]%|It's good to be female isn't it %ruser" ]
     # 
-    # bMotion_abstract_batchadd "randomStuff" [list "my speedos!" "there, good as new. except that we're three miles below the surface, we're out of food, and the channel doesn't work underwater%|%BOT\[tempers are wearing thin - let's just hope some bot doesn't kill everybody...\]" "i can't swallow that!%|%BOT\[well then good news! it's a suppository.\]" "arrrr... the laws of physics be a harsh mistress" "he may have ocean madness, but that's no excuse for ocean rudeness!" "in the event of an emergency, my ass can be used as a floatation device" "yes, we all miss our loved ones and gasses" "%ruser you half-mad half-insane maniac! be reasonable!" "these last 24 hours have been the happiest days of my life" "Undercover pursuit in progress! Baby." "chum-own" "ow!%|/grabs crotch%|/= Michael Jackson" "fuck%|that's another box of tissues i've got though" "damnit i've run out of %VAR{sillyThings}{strip} %VAR{unsmiles}" "/moonwalks%|%BOT\[that's nothing\]%|%BOT\[/sunwalks\]"]
+    i("randomStuff", ["my speedos!", "there, good as new. except that we're three miles below the surface, we're out of food, and the channel doesn't work underwater%|%BOT\[tempers are wearing thin - let's just hope some bot doesn't kill everybody...\]", "i can't swallow that!%|%BOT\[well then good news! it's a suppository.\]", "arrrr... the laws of physics be a harsh mistress", "he may have ocean madness, but that's no excuse for ocean rudeness!", "in the event of an emergency, my ass can be used as a floatation device", "yes, we all miss our loved ones and gasses", "%ruser you half-mad half-insane maniac! be reasonable!", "these last 24 hours have been the happiest days of my life", "Undercover pursuit in progress! Baby.", "chum-own", "ow!%|/grabs crotch%|/= Michael Jackson", "damn%|that's another box of tissues i've got though", "damnit i've run out of %VAR{sillyThings}{strip} %VAR{unsmiles}", "/moonwalks%|%BOT\[that's nothing\]%|%BOT\[/sunwalks\]"])
     # 
     # bMotion_abstract_batchadd "randomStuff_10_31" {
     #   "/creeps up behind %ruser wearing a sheet%|boo!" 
@@ -976,7 +976,7 @@ def importInto(sleekmotion):
     # 
     # bMotion_abstract_batchadd "blindings" [list "h%REPEAT{5:10:n}" "blinding" "h%REPEAT{5:10:n} blinding" ]
     # 
-    # bMotion_abstract_batchadd "ers" [list "er" "erm" "umm" "um" ]
+    i("ers", ["er", "erm", "umm", "um" ])
     # 
     # bMotion_abstract_batchadd "goodnights" [list "night" "nn" "night %%" "sleep well" "goodnight :)" "night :)" "g'night" "sleep well %%" "nn %%" "don't have really bad dreams about a nasty man coming to strangle you in your bed" "sleep well %%" ]
     # 

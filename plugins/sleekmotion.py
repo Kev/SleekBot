@@ -157,6 +157,16 @@ class sleekmotion(object):
             varname = r.search(modified).group('varname')
             modified = re.sub(r, self.variableValue(varname), modified)
         
+        r = re.compile('%REPEAT\\{(?P<min>.+),(?P<max>.+),(?P<string>.+)\\}')
+        while not r.search(modified) == None:
+            string = r.search(modified).group('string')
+            min = int(r.search(modified).group('min'))
+            max = int(r.search(modified).group('max'))
+            replacement = ""
+            for i in random.randint(min,max):
+                replacement = replacement + string
+            modified = re.sub(r, replacement, modified)
+        
         ready = (response == modified)
         
         while not ready:
