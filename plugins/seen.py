@@ -78,13 +78,19 @@ class seen(object):
         self.bot.addHelp('seen', 'Last seen Command', "See when a user was last seen", 'seen')
         self.started = datetime.timedelta(seconds = time.time())
         self.bot.add_event_handler("groupchat_presence", self.handle_groupchat_presence, threaded=True)
+        self.bot.add_event_handler("groupchat_message", self.handle_groupchat_message, threaded=True)
     
     def handle_groupchat_presence(self, presence):
         """ Keep track of the presences in mucs.
         """
         presence['dateTime'] = datetime.datetime.now()
         self.seenstore.update(presence['nick'], presence)
-        
+    
+    def handle_groupchat_message(self, message):
+        """ Keep track of activity through messages.
+        """
+        message['dateTime'] = datetime.datetime.now()
+        self.seenstore.update(message['name'], message)
     
     def handle_seen_request(self, command, args, msg):
         if args == None or args == "":
@@ -101,7 +107,9 @@ class seen(object):
         else:
             sinceTime = "%d seconds ago" % sinceTimeSeconds
         status = ""
-        if seenData['status'] != None:
+        if seenData.get('message', None) != None:
+            status = "saying '%s'" % seenData['message']
+        elif seenData.get('status', None) != None:
             status = "(%s)" % seenData['status']
         state = "in"
         if 'type' in seenData.keys() and seenData['type'] == 'unavailable':
