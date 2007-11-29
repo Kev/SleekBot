@@ -20,6 +20,7 @@
 import logging
 import re
 import random
+import sleekmotion
 
 class sleekmotionstore(object):
     def __init__(self):
@@ -51,13 +52,13 @@ class sleekmotionstore(object):
         f.close()
     
 
-class sleekmotion(object):
+class personality(object):
     def __init__(self, bot, config):
         self.bot = bot
         self.config = config
         self.store = sleekmotionstore()
         self.store.loaddefault()
-        self.about = "'sleekmotion' is an approximate port of bMotion to SleekBot.\nWritten By: Kevin Smith"
+        self.about = "'sleekmotion', SleekBot's personality, is an approximate port of bMotion to SleekBot.\nWritten By: Kevin Smith"
         #self.bot.addIMCommand('chatiness', self.handle_chatiness)
         #self.bot.addMUCCommand('chatiness', self.handle_chatiness)
         #self.bot.addHelp('chatiness', 'Chatiness command', "Multiplier for the chatiness of a bot.", 'chatiness 0-100')
