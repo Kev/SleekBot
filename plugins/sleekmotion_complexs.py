@@ -42,6 +42,7 @@ class sleekmotion_complexs(object):
         t("woot", "^[a-zA-Z0-9]+[!1~]+$", 5, self.woot)
         t("sorry1", "(i'm)?( )?(very)?( )?sorry(,)? %botnicks", 100, self.sorry)
         t("sorry2", "%botnicks:? sorry", 100, self.sorry)
+        t("plusplus", "^[a-zA-Z0-9]+\+\++$", 50, self.plusplus)
         
     def xmas(self, nick, jid, handle, body, message):
         self.bot.botplugin['sleekmotion'].makeHappy()
@@ -67,6 +68,14 @@ class sleekmotion_complexs(object):
     def woot(self, nick, jid, handle, body, message):
         response = self.bot.botplugin['sleekmotion'].variableValue("woots")
         item = re.compile('^(?P<item>[a-zA-Z0-9]+)[!1~]+$').search(body).group('item')
+        r = re.compile('%%')
+        while r.search(response):
+            response = re.sub(r, item, response)
+        return response
+        
+    def plusplus(self, nick, jid, handle, body, message):
+        response = self.bot.botplugin['sleekmotion'].variableValue("woots")
+        item = re.compile('^?P<item>[a-zA-Z0-9]+\+\++$').search(body).group('item')
         r = re.compile('%%')
         while r.search(response):
             response = re.sub(r, item, response)
