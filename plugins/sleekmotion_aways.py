@@ -80,7 +80,7 @@ class sleekmotion_aways(object):
         
     def loop(self):
         while 1:
-            if random.randint(0,100) < 5:
+            if random.randint(0,100) < 500:
                 self.setRandomStatus()
             time.sleep(60)
             
@@ -95,10 +95,12 @@ class sleekmotion_aways(object):
         logging.debug("sleekmotion_aways: setting random status '%s' '%s'" % (str(statusType), str(statusMessage)))
         if statusMessage is None or statusMessage == "":
             return
-        if statusType in ["dnd", "away", "xa", "ffc"]:
-            self.bot.sendPresence(pshow=statusType, pstatus=statusMessage)
-        else:
-            self.bot.sendPresence(pstatus=statusMessage)
+        recipients = [None]
+        if self.bot['xep_0045']:
+            for room in self.bot['xep_0045'].getJoinedRooms():
+                recipients.append(self.bot['xep_0045'].getOurJidInRoom(room))
+        for to in recipients:
+            self.bot.sendPresence(pshow=statusType, pstatus=statusMessage, pto=to)
         
     def handle_presence(self, presence):
         source = presence.attrib['from']
