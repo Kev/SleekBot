@@ -1,5 +1,5 @@
 """
-    sleekmotion.py - An approximate port of bMotion to Sleek.
+    personality.py - An approximate port of bMotion to Sleek.
     Copyright (C) 2007 Kevin Smith
 
     SleekBot is free software; you can redistribute it and/or modify
@@ -21,42 +21,13 @@ import logging
 import re
 import random
 import sleekmotion
-
-class sleekmotionstore(object):
-    def __init__(self):
-        self.chatiness = 1
-        self.store = {}
-
-    def loaddefault(self):
-        self.load("sleekmotion.dat")
-
-    def savedefault(self):
-        self.save("sleekmotion.dat")
-
-    def load(self, filename):
-        try:
-            f = open(filename, 'rb')
-        except:
-            logging.warning("Error loading sleekmotion config")
-            return
-        self = pickle.load(f)
-        f.close()
-
-    def save(self, filename):
-        try:
-            f = open(filename, 'wb')
-        except IOError:
-            logging.warning("Error saving sleekmotion config")
-            return
-        pickle.dump(self, f)
-        f.close()
     
 
 class personality(object):
     def __init__(self, bot, config):
         self.bot = bot
         self.config = config
-        self.store = sleekmotionstore()
+        self.store = sleekmotion.abstractstore.AbstractStore()
         self.store.loaddefault()
         self.about = "'sleekmotion', SleekBot's personality, is an approximate port of bMotion to SleekBot.\nWritten By: Kevin Smith"
         #self.bot.addIMCommand('chatiness', self.handle_chatiness)

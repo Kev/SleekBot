@@ -66,6 +66,7 @@ class sleekmotion_complexs(object):
         return "%VAR{hides}"
     
     def woot(self, nick, jid, handle, body, message):
+        logging.debug("Wooting")
         response = self.bot.botplugin['sleekmotion'].variableValue("woots")
         item = re.compile('^(?P<item>[a-zA-Z0-9]+)[!1~]+$').search(body).group('item')
         r = re.compile('%%')
@@ -74,6 +75,7 @@ class sleekmotion_complexs(object):
         return response
         
     def plusplus(self, nick, jid, handle, body, message):
+        logging.debug("PlusPlussing")
         response = self.bot.botplugin['sleekmotion'].variableValue("woots")
         item = re.compile('^?P<item>[a-zA-Z0-9]+\+\++$').search(body).group('item')
         r = re.compile('%%')
