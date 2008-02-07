@@ -10,4 +10,5 @@ while true;
 		svn up
 	fi
 	./sleekbot.py $1
+	sleep 60
 done
