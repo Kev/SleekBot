@@ -80,7 +80,7 @@ class sleekmotion_aways(object):
         
     def loop(self):
         while 1:
-            if random.randint(0,100) < 500:
+            if random.randint(0,100) < 5:
                 self.setRandomStatus()
             time.sleep(60)
             
