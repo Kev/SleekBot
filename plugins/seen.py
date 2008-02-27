@@ -19,59 +19,79 @@
 
 import datetime
 import time
-import pickle
+import logging
+
+class seenevent(object):
+    """ Represent the last know activity of a user.
+    """
+    messageType = 0
+    joinType = 1
+    partType = 2
+    presenceType = 3
+    
+    def __init__(self, nick, eventTime, muc, stanzaType, text=None):
+        """ Initialise seenevent 
+        """
+        self.nick = nick
+        self.eventTime = eventTime
+        self.muc = muc
+        self.stanzaType = stanzaType
+        self.text = text
 
 class seenstore(object):
-    def __init__(self):
-        self.null = None
-        self.data = {}
-        self.loaddefault()
-        
+    def __init__(self, store):
+        #self.null = None
+        #self.data = {}
+        #self.loaddefault()
+        self.store = store
+        self.createTable()
+      
+    def createTable(self):
+        db = self.store.getDb()
+        #Yes, I know this is completely denormalised, and if it becomes more complex I'll refactor the schema
+        if not len(db.execute("pragma table_info('seen')").fetchall()) > 0:
+            db.execute("""CREATE TABLE seen (
+                       id INTEGER PRIMARY KEY AUTOINCREMENT,
+                       nick VARCHAR(256), eventTime DATETIME, muc VARCHAR(256), stanzaType INTEGER, text VARCHAR(256))""")
+        db.close()
     
-    def update(self, nick, seenData):
-        self.data[nick.lower()] = seenData
-        self.savedefault()
+    def update(self, event):
+        db = self.store.getDb()
+        cur = db.cursor()
+        logging.debug("Updating seen")
+        cur.execute('SELECT * FROM seen WHERE nick=?', (event.nick,))
+        if (len(cur.fetchall()) > 0):
+            cur.execute('UPDATE seen SET nick=?, eventTime=?, muc=?, stanzaType=?, text=? WHERE nick=?', (event.nick, event.eventTime, event.muc, event.stanzaType, event.text, event.nick))
+            logging.debug("Updated existing seen")
+        else:
+            cur.execute('INSERT INTO seen(nick, eventTime, muc, stanzaType, text) VALUES(?,?,?,?,?)',(event.nick, event.eventTime, event.muc, event.stanzaType, event.text))
+            logging.debug("Added new seen")
+        db.commit()
+        db.close()
 
         
     def get(self, nick):
-        if self.data.has_key(nick.lower()):
-            return self.data[nick.lower()]
-        return None
+        db = self.store.getDb()
+        cur = db.cursor()
+        cur.execute('SELECT * FROM seen WHERE nick=?', (nick,))
+        results = cur.fetchall()
+        if len(results) == 0:
+            return None
+        return seenevent(results[0][1],datetime.datetime.strptime(results[0][2][0:19],"""%Y-%m-%d %H:%M:%S""" ),results[0][3],results[0][4],results[0][5])
+        db.close()
         
     def delete(self, nick):
-        if self.data.has_key(nick.lower()):
-            del self.data[nick.lower()]
-            self.savedefault()
+        db = self.store.getDb()
+        cur = db.cursor()
+        cur.execute('DELETE FROM seen WHERE nick=?', (nick,))
+        db.commit()
+        db.close()
     
-    def loaddefault(self):
-        self.load("seen.dat")
-        
-    def savedefault(self):
-        self.save("seen.dat")
-        
-    def load(self, filename):
-        try:
-            f = open(filename, 'rb')
-        except:
-            print """Error loading seen data"""
-            return
-        self.data = pickle.load(f)
-        f.close()
-
-    def save(self, filename):
-        try:
-            f = open(filename, 'wb')
-        except IOError:
-            print """Error saving seen data"""
-            return
-        pickle.dump(self.data, f)
-        f.close()
-
 class seen(object):
     def __init__(self, bot, config):
         self.bot = bot
         self.config = config
-        self.seenstore = seenstore()
+        self.seenstore = seenstore(self.bot.store)
         self.about = "Allows users to query the last time a sure was seen."
         self.bot.addIMCommand('seen', self.handle_seen_request)
         self.bot.addMUCCommand('seen', self.handle_seen_request)
@@ -84,13 +104,20 @@ class seen(object):
         """ Keep track of the presences in mucs.
         """
         presence['dateTime'] = datetime.datetime.now()
-        self.seenstore.update(presence['nick'], presence)
+        if presence.get('type', None) == 'unavailable':
+            pType = seenevent.partType
+        else:
+            pType = seenevent.presenceType
+        self.seenstore.update(seenevent(presence['nick'], presence['dateTime'], presence['room'], pType, presence.get('status', None)))
+        
     
     def handle_groupchat_message(self, message):
         """ Keep track of activity through messages.
         """
+        if 'message' not in message.keys():
+            return
         message['dateTime'] = datetime.datetime.now()
-        self.seenstore.update(message['name'], message)
+        self.seenstore.update(seenevent(message['name'], message['dateTime'], message['room'], seenevent.messageType, message['message']))
     
     def handle_seen_request(self, command, args, msg):
         if args == None or args == "":
@@ -98,7 +125,7 @@ class seen(object):
         seenData = self.seenstore.get(args)
         if seenData == None:
             return "I have never seen '" + args + "'"
-        sinceTimeSeconds = (datetime.datetime.now() - seenData['dateTime']).seconds
+        sinceTimeSeconds = (datetime.datetime.now() - seenData.eventTime).seconds
         sinceTime = ""
         if sinceTimeSeconds >= 3600:
             sinceTime = "%d hours ago" % (sinceTimeSeconds / 3600)
@@ -107,13 +134,13 @@ class seen(object):
         else:
             sinceTime = "%d seconds ago" % sinceTimeSeconds
         status = ""
-        if seenData.get('message', None) != None:
-            status = "saying '%s'" % seenData['message']
-        elif seenData.get('status', None) != None:
-            status = "(%s)" % seenData['status']
+        if seenData.stanzaType == seenevent.messageType:
+            status = "saying '%s'" % seenData.text
+        elif seenData.stanzaType == seenevent.presenceType and seenData.text is not None:
+            status = "(%s)" % seenData.text
         state = "in"
-        if 'type' in seenData.keys() and seenData['type'] == 'unavailable':
+        if seenData.stanzaType == seenevent.partType:
             state = "leaving"
         #if seenData['show'] == None:
         #    state = "joining"
-        return "'%s' was last seen %s %s %s %s"  %(args, state, seenData['room'], sinceTime, status)
+        return "'%s' was last seen %s %s %s %s"  %(args, state, seenData.muc, sinceTime, status)

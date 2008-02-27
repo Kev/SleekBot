@@ -40,7 +40,7 @@ class muc_stability(object):
                 for muc in self.bot['xep_0045'].getJoinedRooms():
                     jid = self.bot['xep_0045'].getOurJidInRoom(muc)
                     self.bot.sendMessage(jid, None, mtype='chat')
-            time.sleep(30)
+            time.sleep(600)
 
     def handle_message_error(self, xml):
         """ On error messages, see if it's from a muc, and rejoin the muc if so.

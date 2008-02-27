@@ -5,6 +5,8 @@
 	<rooms>
 		<muc room='bar@conference.jabber.org' nick='SleekBot' />
 	</rooms>
+	<!--Location of the sqlite3 database used for persistent storage.-->
+	<storage file='test.sqlite' />
 <!--  <require-membership /> -->
 	<!--Users the bot knows about. Owners have full access to the bot, admins have the next layer of access. If require-membership is set, the bot won't respond to anyone unless they have at least a member entry. Banned users are always ignored.-->
 	<users>

@@ -20,6 +20,7 @@
 import logging
 import sleekxmpp.sleekxmpp
 from basebot import basebot
+from store import store
 from optparse import OptionParser
 from xml.etree import ElementTree as ET
 import os
@@ -33,11 +34,17 @@ class sleekbot(sleekxmpp.sleekxmpp.xmppclient, basebot):
         self.botconfig = self.loadConfig(configFile)
         sleekxmpp.sleekxmpp.xmppclient.__init__(self, jid, password, ssl, plugin_config)
         basebot.__init__(self)
+        storageXml = self.botconfig.find('storage')
+        if storageXml is not None:
+            self.store = store(storageXml.attrib['file'])
+        else:
+            logging.warning("No storage element found in config file - proceeding with no persistent storage, plugin behaviour may be undefined.")
         self.rooms = {}
         self.botplugin = {}
         self.pluginModules = {}
         self.add_event_handler("session_start", self.start, threaded=True)
-        self.loadConfig(self.configFile)
+        #KIS: I saw the current like and thought it redundant, so am commenting
+        #self.loadConfig(self.configFile)
         self.register_bot_plugins()
         self.registerCommands()
     
