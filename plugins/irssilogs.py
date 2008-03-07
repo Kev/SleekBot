@@ -85,6 +85,7 @@ class irssilogfile(object):
         """ Append the line to the log
         """
         self.logfile.write("%s\n" % line)
+        self.logfile.flush()
         
 class irssilogs(object):
     def __init__(self, bot, config):
