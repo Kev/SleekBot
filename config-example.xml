@@ -48,6 +48,11 @@
 			<plugin name='seen'>
 				<config />
 			</plugin>
+			<plugin name='irssilogs'>
+				<config> 
+				  <log room='sleek@conference.psi-im.org' file='/home/bots/logbot/muclogs/sleek_at_conference.psi-im.org.irssi' />
+				</config>
+			</plugin>
 			<plugin name='rssbot'>
 				<config>
 					<feed url='http://planet.psi-im.org/atom.xml' refresh='20'>
