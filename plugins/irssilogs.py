@@ -34,7 +34,7 @@ class irssilogfile(object):
     def datetimeToTimestamp(self, dt):
         """ Convert a datetime to hh:mm
         """
-        return "00:00"
+        return "%02d:%02d" % (dt.hour, dt.minute)
         
     def logPresence(self, presence):
         """ Log the presence to the file.
@@ -80,7 +80,20 @@ class irssilogfile(object):
             line = '%(time)s <%(nick)s> %(body)s'
 
         self.appendLogLine(line % values)
-    
+        
+    def logDateChange(self, newDate):
+        """ Log a date change.
+            Format:
+            --- Day changed Thu Aug 16 2007
+        """
+        values = {}
+        values['dayOfWeek'] = ['Monday', 'Tuesay', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'][newDate.weekday()]
+        values['day'] = newDate.day
+        values['monthName'] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][newDate.month - 1]
+        values['year'] = newDate.year
+        line = "--- Day changed %(dayOfWeek)s %(monthName)s %(day)s %(year)s"
+        self.appendLogLine(line % values)
+        
     def appendLogLine(self, line):
         """ Append the line to the log
         """
@@ -97,6 +110,7 @@ class irssilogs(object):
         self.roomLogFiles = {}
         self.roomMembers = {}
         logs = self.config.findall('log')
+        self.lastdate = datetime.datetime.now()
         if logs:
             for log in logs:
                 room = log.attrib['room']
@@ -104,12 +118,18 @@ class irssilogs(object):
                 self.roomLogFiles[room] = irssilogfile(room, fileName)
                 self.roomMembers[room] = []
                 logging.info("irssilogs.py script logging %s to %s." % (room, fileName))
-                
+
+    def check_for_date_change(self, date):
+        if (date - self.lastdate).days > 0:
+            for log in self.roomLogFiles.values():
+                self.lastdate = date
+                log.logDateChange(date)            
     
     def handle_groupchat_presence(self, presence):
         """ Monitor MUC presences.
         """
         presence['dateTime'] = datetime.datetime.now()
+        self.check_for_date_change(presence['dateTime'])
         if presence['room'] in self.roomLogFiles.keys():
             if presence.get('type', None) == 'unavailable' or presence['nick'] not in self.roomMembers[presence['room']]:
                 self.roomLogFiles[presence['room']].logPresence(presence)
@@ -126,6 +146,7 @@ class irssilogs(object):
         """ Monitor MUC messages.
         """
         message['dateTime'] = datetime.datetime.now()
+        self.check_for_date_change(message['dateTime'])
         if message['room'] in self.roomLogFiles.keys():
             self.roomLogFiles[message['room']].logMessage(message)
 
