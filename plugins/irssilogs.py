@@ -20,6 +20,7 @@
 import datetime
 import time
 import logging
+import codecs
 
 class irssilogfile(object):
     """ Handle writing to a single irssi log file.
@@ -29,7 +30,7 @@ class irssilogfile(object):
         """
         self.muc = muc
         self.fileName = fileName
-        self.logfile = open(self.fileName, 'a')
+        self.logfile = codecs.open(self.fileName, 'a', 'utf-8')
     
     def datetimeToTimestamp(self, dt):
         """ Convert a datetime to hh:mm
