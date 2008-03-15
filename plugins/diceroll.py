@@ -141,7 +141,7 @@ class diceCalc(object):
 				match = finddice.search(self.calc)
 				if match is None:
 					break
-				print match.group()
+				#print match.group()
 				self.dicesets.append(self.dstring(match.group()))
 				self.dicesets[-1].roll()
 				self.dicesets[-1].sort()
@@ -155,8 +155,8 @@ class diceCalc(object):
 		return Die(int(sides)) * int(times)
 	
 	def show(self):
-		#output = "%s = %s\n" % (self.calc, self.total)
-		output = "Total: %s\n" % self.total
+		output = "%s = %s\n" % (self.calc, self.total)
+		#output = "Total: %s\n" % self.total
 		numDice = 0
 		dicelist = []
 		for dice in self.dicesets:
@@ -164,7 +164,16 @@ class diceCalc(object):
 			for die in dice.dice_list:
 				dicelist.append( str(die) )
 				numDice += 1
-		if numDice < 2 :
-			output = ""
+		#if numDice < 2 :
+		#	output = ""
 		output += ', '.join(dicelist)
 		return output
+	
+if __name__ == '__main__':
+	command = ''
+	while command != 'quit':
+		if command:
+			d = diceCalc(command)
+			print d.show()
+		command = raw_input()
+
