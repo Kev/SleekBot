@@ -238,7 +238,7 @@ Also, thank you Athena for putting up with me while I programmed.""")
     def start(self, event):
         #TODO: make this configurable
         self.requestRoster()
-        self.sendPresence(ppriority = self.botconfig.find('auth').attrib['priority'])
+        self.sendPresence(ppriority = self.botconfig.find('auth').get('priority', '1'))
         self.joinRooms()
     
     def rehash(self):
