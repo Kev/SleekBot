@@ -23,6 +23,7 @@ import thread
 import time
 import re
 import pickle
+from html2text.html2text import html2text
 
 class rssbot(object):
     def __init__(self, bot, config):
@@ -90,7 +91,7 @@ class rssbot(object):
         #print u"found content in key %s" % contentKey
         content = self.bot.xmlesc(item['content'][0].value)
         content = item['content'][0].value
-        text = u"Update from feed %s\n%s\n%s" % (feedName, self.bot.xmlesc(item['title']), content)
+        text = html2text("Update from feed %s\n%s\n%s" % (feedName, self.bot.xmlesc(item['title']), content))
         self.bot.sendMessage(muc, text, mtype='groupchat')
     
     def cacheFilename(self, feedUrl):
