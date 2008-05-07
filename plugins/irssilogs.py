@@ -46,7 +46,9 @@ class irssilogfile(object):
         values = {}
         values['nick'] = presence['nick']
         values['reason'] = presence.get('status', "")
-        values['userhost'] = presence['room']
+        values['userhost'] = self.bot['xep_0045'].getJidProperty(presence['room'], presence['nick'], 'jid')
+        if values['userhost'] is None:
+            values['userhost'] = "%s/%s" % (presence['room'], presence['nick'])
         values['time'] = self.datetimeToTimestamp(presence['dateTime'])
         values['room'] = '#%s' % presence['room']
         if presence.get('type', None) == 'unavailable':
