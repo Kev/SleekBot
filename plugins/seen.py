@@ -169,7 +169,7 @@ class seen(object):
         else:
             pType = seenevent.presenceType
         self.seenstore.update(seenevent(presence['nick'], presence['dateTime'], presence['room'], pType, presence.get('status', None)))
-        self.jidstore.update(jidevent(presence['nick'], presence['room'], self.bot.getRealJid(presence['jid']) , presence['dateTime']))
+        #self.jidstore.update(jidevent(presence['nick'], presence['room'], self.bot.getRealJid(presence['jid']) , presence['dateTime']))
         
         
     
@@ -180,7 +180,7 @@ class seen(object):
             return
         message['dateTime'] = datetime.datetime.now()
         self.seenstore.update(seenevent(message['name'], message['dateTime'], message['room'], seenevent.messageType, message['message']))
-        self.jidstore.update(jidevent(message['name'], message['room'], self.bot.getRealJidFromMessag(message), message['dateTime']))
+        #self.jidstore.update(jidevent(message['name'], message['room'], self.bot.getRealJidFromMessag(message), message['dateTime']))
         
     
     def handle_seen_request(self, command, args, msg):
