@@ -72,7 +72,7 @@ Also, thank you Athena for putting up with me while I programmed.""")
         self.plugin['xep_0050'].addCommand('plugins', 'Plugins', pluginform, self.form_plugin_command, True)
     
     
-    def form_plugin_command(self, form):
+    def form_plugin_command(self, form, sessid):
         value = form.getValues()
         option = value['option']
         plugin = value['plugin']
