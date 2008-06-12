@@ -30,6 +30,12 @@
 			<plugin name='admin'>
 				<config />
 			</plugin>
+			<plugin name='pubsub_browser'>
+				<config />
+			</plugin>
+			<plugin name='mood'>
+				<config />
+			</plugin>
 			<plugin name='filter'>
 				<config />
 			</plugin>
