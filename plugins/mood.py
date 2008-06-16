@@ -5,6 +5,7 @@ class mood(object):
 	def __init__(self, bot, config):
 		self.bot = bot
 		self.config = config
+		self.about = "Set the bot's mood!"
 		self.pubsub = self.bot.plugin['xep_0060']
 		self.xform = self.bot.plugin['xep_0004']
 		self.adhoc = self.bot.plugin['xep_0050']
