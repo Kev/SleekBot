@@ -60,6 +60,7 @@ class pubsub_browser(object):
 		if nodeform:
 			return nodeform, self.createLeafHandlerSubmit, True
 		else:
+		#if True:
 			if self.bot.plugin['xep_0060'].create_node(self.bot.server, self.adhoc.sessions[sessid]['pubsubnode']):
 				return self.getStatusForm('Error', "Unable to retrieve default node configuration.\nNode without configuration was created instead."), None, False
 			return self.getStatusForm('Error', "Unable to retrieve default node configuration.\nFurthermore, creating a node without a configuration failed."), None, False
