@@ -40,31 +40,32 @@ class sleekbot(sleekxmpp.sleekxmpp.xmppclient, basebot):
         else:
             logging.warning("No storage element found in config file - proceeding with no persistent storage, plugin behaviour may be undefined.")
         self.rooms = {}
-        self.botplugin = {}
-        self.pluginModules = {}
+        self.botPlugin = {}
+        self.pluginConfig = {}
         self.add_event_handler("session_start", self.start, threaded=True)
-        #KIS: I saw the current like and thought it redundant, so am commenting
-        #self.loadConfig(self.configFile)
         self.register_bot_plugins()
         self.registerCommands()
     
     def loadConfig(self, configFile):
-        """ Loads the specified config. Does not attempt to make changes based upon config.
+        """ Load the specified config. Does not attempt to make changes based upon config.
         """
         return ET.parse(configFile)
     
     def registerCommands(self):
+        """ Register all ad-hoc commands with SleekXMPP.
+        """
         aboutform = self.plugin['xep_0004'].makeForm('form', "About SleekBot")
         aboutform.addField('about', 'fixed', value=
-"""SleekBot was written by Nathan Fritz.
+"""SleekBot was written by Nathan Fritz and Kevin Smith.
 SleekBot uses SleekXMPP which was also written by Nathan Fritz.
+http://sleekbot.googlecode.com
 -----------------------------------------------------------------
-Special thanks to Kevin Smith and David Search.
-Also, thank you Athena for putting up with me while I programmed.""")
+Special thanks to David Search.
+Also, thank you Athena and Cath for putting up with us while we programmed.""")
         self.plugin['xep_0050'].addCommand('about', 'About Sleekbot', aboutform)
         pluginform = self.plugin['xep_0004'].makeForm('form', 'Plugins')
         plugins = pluginform.addField('plugin', 'list-single', 'Plugins')
-        for key in self.botplugin:
+        for key in self.botPlugin:
             plugins.addOption(key, key)
         plugins = pluginform.addField('option', 'list-single', 'Commands')
         plugins.addOption('about', 'About')
@@ -73,12 +74,14 @@ Also, thank you Athena for putting up with me while I programmed.""")
     
     
     def form_plugin_command(self, form, sessid):
+        """ Take appropriate action when a plugin ad-hoc request is received.
+        """
         value = form.getValues()
         option = value['option']
         plugin = value['plugin']
         if option == 'about':
             aboutform = self.plugin['xep_0004'].makeForm('form', "About SleekBot")
-            aboutform.addField('about', 'fixed', value=self.botplugin[plugin].about)
+            aboutform.addField('about', 'fixed', value=self.botPlugin[plugin].about)
             return aboutform, None, False
         elif option == 'config':
             pass
@@ -97,7 +100,7 @@ Also, thank you Athena for putting up with me while I programmed.""")
     def deregister_bot_plugins(self):
         """ Unregister all loaded bot plugins.
         """
-        for plugin in self.botplugin.keys():
+        for plugin in self.botPlugin.keys():
             self.deregisterBotPlugin(plugin)
     
     def plugin_name_to_module(self, pluginname):
@@ -107,33 +110,27 @@ Also, thank you Athena for putting up with me while I programmed.""")
         # discover relative "path" to the plugins module from the main app, and import it.
         return "%s.%s" % (globals()['plugins'].__name__, pluginname)
     
-    def deregisterBotPlugin(self, pluginname):
+    def deregisterBotPlugin(self, pluginName):
         """ Unregisters a bot plugin.
         """
-        logging.info("Unloading plugin %s" % pluginname)
-        if hasattr(self.botplugin[pluginname], 'shutDown'):
+        logging.info("Unloading plugin %s" % pluginName)
+        if hasattr(self.botPlugin[pluginName], 'shutDown'):
             logging.debug("Plugin has a shutDown() method, so calling that.")
-            self.botplugin[pluginname].shutDown()
-        del self.botplugin[pluginname]
+            self.botPlugin[pluginName].shutDown()
+        del self.pluginConfig[pluginName]
+        del self.botPlugin[pluginName]
     
     def registerBotPlugin(self, pluginname, config):
 		""" Registers a bot plugin pluginname is the file and class name,
 		and config is an xml element passed to the plugin. Will reload the plugin module,
 		so previously loaded plugins can be updated.
 		"""
-		#f self.pluginModules.has_key(pluginname):
-		#	del sys.modules[self.plugin_name_to_module(pluginname)]
-		#	self.pluginModules[pluginname] = reload(self.pluginModules[pluginname])
-		#else:
-		#	self.pluginModules[pluginname] = __import__(self.plugin_name_to_module(pluginname))
-# init the plugin class
-		#self.botplugin[pluginname] = getattr(getattr(self.pluginModules[pluginname], pluginname), pluginname)(self, config)
-		try:
+		if pluginname in globals()['plugins'].__dict__:
 			reload(globals()['plugins'].__dict__[pluginname])
-		except:
+		else:
 			__import__(self.plugin_name_to_module(pluginname))
-		self.botplugin[pluginname] = getattr(globals()['plugins'].__dict__[pluginname], pluginname)(self, config)
-			
+		self.botPlugin[pluginname] = getattr(globals()['plugins'].__dict__[pluginname], pluginname)(self, config)
+		self.pluginConfig[pluginname] = config
 		return True
         
     def getOwners(self):
