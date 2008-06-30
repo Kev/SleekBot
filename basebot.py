@@ -6,6 +6,7 @@ class basebot(object):
 		self.im_prefix = '/'
 		self.muc_commands = {}
 		self.muc_prefix = '!'
+		self.callbacks = []
 		self.polls = []
 		self.help = []
 		self.addIMCommand('help', self.handle_help)
@@ -51,7 +52,16 @@ class basebot(object):
 					self.sendMessage("%s" % msg.get('room', ''), response, mtype=msg.get('type', 'groupchat'))
 				else:
 					self.sendMessage("%s/%s" % (msg.get('jid', ''), msg.get('resource', '')), response, mtype=msg.get('type', 'chat'))
+		self.handle_event(msg)
+		    
 	
+	def handle_event(self, event):
+	    """ Handle an event
+	    """
+	    for callback in self.callbacks:
+	        for response in callback.evaluate(event):
+	            response.execute()
+	        
 	def handle_help(self, command, args, msg):
 		response = ''
 		if not args:
@@ -80,3 +90,8 @@ class basebot(object):
 	
 	def addMUCCommand(self, command, pointer):
 		self.muc_commands[command] = pointer
+
+    def registerCallback(self, callbackObject):
+        """ Register a callback object with the bot.
+        """
+		self.callbacks.append(callbackObject)
