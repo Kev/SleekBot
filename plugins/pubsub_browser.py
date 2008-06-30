@@ -36,15 +36,26 @@ class pubsub_browser(object):
 		createcollect = self.bot.plugin['xep_0004'].makeForm('form', "Create Collection")
 		createcollect.addField('node', 'text-single', 'Node name')
 		self.bot.plugin['xep_0050'].addCommand('newcollection', 'Create Collection', createcollect, self.createCollectionHandler, True)
+
 		setitem = self.bot.plugin['xep_0004'].makeForm('form', "Set Item")
 		setitem.addField('node', 'text-single')
 		setitem.addField('id', 'text-single')
 		setitem.addField('xml', 'text-multi')
 		self.bot.plugin['xep_0050'].addCommand('setitem', 'Set Item', setitem, self.setItemHandler, True)
+
+		remitem = self.bot.plugin['xep_0004'].makeForm('form', "Retract Item")
+		remitem.addField('node', 'text-single', 'Node name')
+		remitem.addField('id', 'text-single')
+		self.bot.plugin['xep_0050'].addCommand('remitem', 'Retract Item', remitem, self.retractItemHandler, True)
+
 		
 		confnode = self.bot.plugin['xep_0004'].makeForm('form', "Configure Node")
 		confnode.addField('node', 'text-single')
 		self.bot.plugin['xep_0050'].addCommand('confnode', 'Configure Node', confnode, self.updateConfigHandler, True)
+		
+		subnode = self.bot.plugin['xep_0004'].makeForm('form', "Subscribe Node")
+		subnode.addField('node', 'text-single')
+		self.bot.plugin['xep_0050'].addCommand('subnode', 'Subscribe Node', subnode, self.subscribeNodeHandler, True)
 	
 	def getStatusForm(self, title, msg):
 		status = self.xform.makeForm('form', title)
@@ -80,6 +91,13 @@ class pubsub_browser(object):
 		if nodeform:
 			return nodeform, self.updateConfigHandler, True
 	
+	def subscribeNodeHandler(self, form, sessid):
+		value = form.getValues()
+		node = value.get('node')
+		if self.pubsub.subscribe(self.bot.server, node):
+			return self.getStatusForm('Done', "Subscribed to node %s." % node), None, False
+		return self.getStatusForm('Error', "Could not subscribe to %s." % node), None, False
+	
 	def updateConfigHandler(self, form, sessid):
 		value = form.getValues()
 		node = value.get('node')
@@ -101,4 +119,11 @@ class pubsub_browser(object):
 		self.pubsub.setItem(self.bot.server, value['node'], {value['id']: ET.fromstring(value['xml'])})
 		done = self.xform.makeForm('form', "Finished")
 		done.addField('done', 'fixed', value="Published Item.")
+		return done, None, False
+	
+	def retractItemHandler(self, form, sessid):
+		value = form.getValues()
+		self.pubsub.deleteItem(self.bot.server, value['node'], value['id'])
+		done = self.xform.makeForm('form', "Finished")
+		done.addField('done', 'fixed', value="Retracted Item.")
 		return done, None, False
