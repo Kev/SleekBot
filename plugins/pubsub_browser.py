@@ -24,6 +24,7 @@ class pubsub_browser(object):
 	def __init__(self, bot, config):
 		self.bot = bot
 		self.config = config
+		self.psserver = config.get('server', self.bot.server)
 		self.about = "Create and configure nodes, leafs, and add items."
 		self.pubsub = self.bot.plugin['xep_0060']
 		self.xform = self.bot.plugin['xep_0004']
@@ -66,18 +67,18 @@ class pubsub_browser(object):
 		value = form.getValues()
 		node = value.get('node')
 		self.adhoc.sessions[sessid]['pubsubnode'] = node
-		nodeform = self.pubsub.getNodeConfig(self.bot.server)
+		nodeform = self.pubsub.getNodeConfig(self.psserver)
 		logging.debug("nodeform: %s" % nodeform)
 		if nodeform:
 			return nodeform, self.createLeafHandlerSubmit, True
 		else:
 		#if True:
-			if self.bot.plugin['xep_0060'].create_node(self.bot.server, self.adhoc.sessions[sessid]['pubsubnode']):
+			if self.bot.plugin['xep_0060'].create_node(self.psserver, self.adhoc.sessions[sessid]['pubsubnode']):
 				return self.getStatusForm('Error', "Unable to retrieve default node configuration.\nNode without configuration was created instead."), None, False
 			return self.getStatusForm('Error', "Unable to retrieve default node configuration.\nFurthermore, creating a node without a configuration failed."), None, False
 	
 	def createLeafHandlerSubmit(self, form, sessid):
-		if not self.bot.plugin['xep_0060'].create_node(self.bot.server, self.adhoc.sessions[sessid]['pubsubnode'], form):
+		if not self.bot.plugin['xep_0060'].create_node(self.psserver, self.adhoc.sessions[sessid]['pubsubnode'], form):
 			return self.getStatusForm('Error', "Could not create node."), None, False
 		else:
 			return self.getStatusForm('Done', "Node %s created." % self.adhoc.sessions[sessid]['pubsubnode']), None, False
@@ -86,15 +87,15 @@ class pubsub_browser(object):
 		value = form.getValues()
 		node = value.get('node')
 		self.adhoc.sessions[sessid]['pubsubnode'] = node
-		self.bot.plugin['xep_0060'].create_node(self.bot.server, node, collection=True)
-		nodeform = self.pubsub.getNodeConfig(self.bot.server, node)
+		self.bot.plugin['xep_0060'].create_node(self.psserver, node, collection=True)
+		nodeform = self.pubsub.getNodeConfig(self.psserver, node)
 		if nodeform:
 			return nodeform, self.updateConfigHandler, True
 	
 	def subscribeNodeHandler(self, form, sessid):
 		value = form.getValues()
 		node = value.get('node')
-		if self.pubsub.subscribe(self.bot.server, node):
+		if self.pubsub.subscribe(self.psserver, node):
 			return self.getStatusForm('Done', "Subscribed to node %s." % node), None, False
 		return self.getStatusForm('Error', "Could not subscribe to %s." % node), None, False
 	
@@ -102,7 +103,7 @@ class pubsub_browser(object):
 		value = form.getValues()
 		node = value.get('node')
 		self.adhoc.sessions[sessid]['pubsubnode'] = node
-		nodeform = self.pubsub.getNodeConfig(self.bot.server, node)
+		nodeform = self.pubsub.getNodeConfig(self.psserver, node)
 		if nodeform:
 			return nodeform, self.updateConfigHandlerSubmit, True
 		else:
@@ -110,20 +111,20 @@ class pubsub_browser(object):
 	
 	def updateConfigHandlerSubmit(self, form, sessid):
 		node = self.adhoc.sessions[sessid]['pubsubnode']
-		self.pubsub.setNodeConfig(self.bot.server, node, form)
+		self.pubsub.setNodeConfig(self.psserver, node, form)
 		return self.getStatusForm('Done', "Updated node %s." % node), None, False
 	
 	
 	def setItemHandler(self, form, sessid):
 		value = form.getValues()
-		self.pubsub.setItem(self.bot.server, value['node'], {value['id']: ET.fromstring(value['xml'])})
+		self.pubsub.setItem(self.psserver, value['node'], {value['id']: ET.fromstring(value['xml'])})
 		done = self.xform.makeForm('form', "Finished")
 		done.addField('done', 'fixed', value="Published Item.")
 		return done, None, False
 	
 	def retractItemHandler(self, form, sessid):
 		value = form.getValues()
-		self.pubsub.deleteItem(self.bot.server, value['node'], value['id'])
+		self.pubsub.deleteItem(self.psserver, value['node'], value['id'])
 		done = self.xform.makeForm('form', "Finished")
 		done.addField('done', 'fixed', value="Retracted Item.")
 		return done, None, False
