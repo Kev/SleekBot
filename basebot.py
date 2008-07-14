@@ -94,4 +94,4 @@ class basebot(object):
     def registerCallback(self, callbackObject):
         """ Register a callback object with the bot.
         """
-        self.callbacks.append(callbackObject)>>>>>>> .r135
+        self.callbacks.append(callbackObject)
