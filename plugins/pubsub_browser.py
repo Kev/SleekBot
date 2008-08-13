@@ -58,6 +58,15 @@ class pubsub_browser(object):
 		subnode.addField('node', 'text-single')
 		self.bot.plugin['xep_0050'].addCommand('subnode', 'Subscribe Node', subnode, self.subscribeNodeHandler, True)
 	
+		affiliation = self.bot.plugin['xep_0004'].makeForm('form', "Change Affiliation")
+		affiliation.addField('node', 'text-single', 'Node name')
+		affiliation.addField('jid', 'text-single')
+		affs = affiliation.addField('affiliation', 'list-single', 'Affilation')
+		affs_list = ('owner', 'publisher', 'member', 'none', 'outcast')
+		for aff in affs_list:
+			affs.addOption(aff, aff.title())
+		self.bot.plugin['xep_0050'].addCommand('affiliation', 'Change Affiliation', affiliation, self.setAffiliation, True)
+		
 	def getStatusForm(self, title, msg):
 		status = self.xform.makeForm('form', title)
 		status.addField('done', 'fixed', value=msg)
@@ -127,4 +136,11 @@ class pubsub_browser(object):
 		self.pubsub.deleteItem(self.psserver, value['node'], value['id'])
 		done = self.xform.makeForm('form', "Finished")
 		done.addField('done', 'fixed', value="Retracted Item.")
+		return done, None, False
+	
+	def setAffiliation(self, form, sessid):
+		value = form.getValues()
+		self.pubsub.modifyAffiliation(self.psserver, value['node'], value['jid'], value['affiliation'])
+		done = self.xform.makeForm('form', "Finished")
+		done.addField('done', 'fixed', value="Updated Affiliation.")
 		return done, None, False
