@@ -56,8 +56,13 @@ class pubsub_browser(object):
 		
 		subnode = self.bot.plugin['xep_0004'].makeForm('form', "Subscribe Node")
 		subnode.addField('node', 'text-single')
+		subnode.addField('jid', 'text-single')
 		self.bot.plugin['xep_0050'].addCommand('subnode', 'Subscribe Node', subnode, self.subscribeNodeHandler, True)
 	
+		delnode = self.bot.plugin['xep_0004'].makeForm('form', "Delete Node")
+		delnode.addField('node', 'text-single')
+		self.bot.plugin['xep_0050'].addCommand('delnode', 'Delete Node', delnode, self.deleteNodeHandler, True)
+
 		affiliation = self.bot.plugin['xep_0004'].makeForm('form', "Change Affiliation")
 		affiliation.addField('node', 'text-single', 'Node name')
 		affiliation.addField('jid', 'text-single')
@@ -104,9 +109,17 @@ class pubsub_browser(object):
 	def subscribeNodeHandler(self, form, sessid):
 		value = form.getValues()
 		node = value.get('node')
-		if self.pubsub.subscribe(self.psserver, node):
+		jid = value.get('jid')
+		if self.pubsub.subscribe(self.psserver, node, subscribee=jid):
 			return self.getStatusForm('Done', "Subscribed to node %s." % node), None, False
 		return self.getStatusForm('Error', "Could not subscribe to %s." % node), None, False
+	
+	def deleteNodeHandler(self, form, sessid):
+		value = form.getValues()
+		node = value.get('node')
+		if self.pubsub.deleteNode(self.psserver, node):
+			return self.getStatusForm('Done', "Deleted node %s." % node), None, False
+		return self.getStatusForm('Error', "Could not delete %s." % node), None, False
 	
 	def updateConfigHandler(self, form, sessid):
 		value = form.getValues()
