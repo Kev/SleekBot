@@ -139,7 +139,7 @@ class pubsub_browser(object):
 	
 	def setItemHandler(self, form, sessid):
 		value = form.getValues()
-		self.pubsub.setItem(self.psserver, value['node'], {value['id']: ET.fromstring(value['xml'])})
+		self.pubsub.setItem(self.psserver, value['node'], [(value['id'], ET.fromstring(value['xml']))])
 		done = self.xform.makeForm('form', "Finished")
 		done.addField('done', 'fixed', value="Published Item.")
 		return done, None, False
