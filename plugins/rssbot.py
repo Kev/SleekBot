@@ -89,8 +89,11 @@ class rssbot(object):
         #    print "No content found for item"
         #    return
         #print u"found content in key %s" % contentKey
-        content = self.bot.xmlesc(item['content'][0].value)
-        content = item['content'][0].value
+        if 'content' in item:
+            content = self.bot.xmlesc(item['content'][0].value)
+            content = item['content'][0].value
+        else:
+            content = ''
         text = html2text("Update from feed %s\n%s\n%s" % (feedName, self.bot.xmlesc(item['title']), content))
         self.bot.sendMessage(muc, text, mtype='groupchat')
     
