@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.5
+#!/usr/bin/env python
 """
     This file is part of SleekXMPP.
 
@@ -18,7 +18,7 @@
 """
 
 import logging
-import sleekxmpp.sleekxmpp
+import sleekxmpp
 from basebot import basebot
 from store import store
 from optparse import OptionParser
@@ -28,11 +28,11 @@ import time
 import plugins
 import sys
 
-class sleekbot(sleekxmpp.sleekxmpp.xmppclient, basebot):
+class sleekbot(sleekxmpp.ClientXMPP, basebot):
     def __init__(self, configFile, jid, password, ssl=False, plugin_config = {}):
         self.configFile = configFile
         self.botconfig = self.loadConfig(configFile)
-        sleekxmpp.sleekxmpp.xmppclient.__init__(self, jid, password, ssl, plugin_config)
+        sleekxmpp.ClientXMPP.__init__(self, jid, password, ssl, plugin_config)
         basebot.__init__(self)
         storageXml = self.botconfig.find('storage')
         if storageXml is not None:
@@ -43,6 +43,11 @@ class sleekbot(sleekxmpp.sleekxmpp.xmppclient, basebot):
         self.botPlugin = {}
         self.pluginConfig = {}
         self.add_event_handler("session_start", self.start, threaded=True)
+        self.registerPlugin('xep_0004')
+        self.registerPlugin('xep_0030')
+        self.registerPlugin('xep_0045')
+        self.registerPlugin('xep_0050')
+        self.registerPlugin('xep_0060')
         self.register_bot_plugins()
         self.registerCommands()
     
@@ -234,7 +239,7 @@ Also, thank you Athena and Cath for putting up with us while we programmed.""")
 
     def start(self, event):
         #TODO: make this configurable
-        self.requestRoster()
+        self.getRoster()
         self.sendPresence(ppriority = self.botconfig.find('auth').get('priority', '1'))
         self.joinRooms()
     
